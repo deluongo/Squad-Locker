@@ -215,7 +215,9 @@
                                         </div>
                                     </div>
                                     <!-- END Stats -->
-
+                                    <div class="twitter-scroll">
+                                        <a class="twitter-timeline" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/DevonLuongo">Tweets by DevonLuongo</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                    </div>
 
                                     <!-- More -->
                                     <div class="text-center">
@@ -378,6 +380,19 @@
 @endsection
 
 @section('js')
+@section('page-js')
+
+        <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+        <script src="{{URL::asset('/js/core/jquery.min.js')}}"></script>
+        <script src="{{URL::asset('/js/core/bootstrap.min.js')}}"></script>
+        <script src="{{URL::asset('/js/core/jquery.slimscroll.min.js')}}"></script>
+        <script src="{{URL::asset('/js/core/jquery.scrollLock.min.js')}}"></script>
+        <script src="{{URL::asset('/js/core/jquery.appear.min.js')}}"></script>
+        <script src="{{URL::asset('/js/core/jquery.countTo.min.js')}}"></script>
+        <script src="{{URL::asset('/js/core/jquery.placeholder.min.js')}}"></script>
+        <script src="{{URL::asset('/js/core/js.cookie.min.js')}}"></script>
+        <script src="{{URL::asset('/js/app.js')}}"></script>
+
     <!-- Page JS Plugins + Page JS Code -->
     {{-- Yield any page specific JS files or anything else you might want at the end of the body --}}
     @yield('page-js')

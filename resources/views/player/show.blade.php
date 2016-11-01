@@ -272,7 +272,7 @@
                                 <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
                             </li>
                             <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
                         <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Updates</h3>
@@ -282,9 +282,9 @@
                             <!-- Facebook Notification -->
                             <li>
                                 <div class="list-timeline-time">3 hrs ago</div>
-                                <i class="fa fa-facebook list-timeline-icon bg-default"></i>
+                                <i class="fa fa-youtube list-timeline-icon bg-city"></i>
                                 <div class="list-timeline-content">
-                                    <p class="font-w600">+ 290 Page Likes</p>
+                                    <p class="font-w600">+ 24 new followers</p>
                                     <p class="font-s13">This is great, keep it up!</p>
                                 </div>
                             </li>
@@ -295,7 +295,7 @@
                                 <div class="list-timeline-time">4 hrs ago</div>
                                 <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
                                 <div class="list-timeline-content">
-                                    <p class="font-w600">3 New Products were added!</p>
+                                    <p class="font-w600">3 New Badges were added!</p>
                                     <div class="push-10-t">
                                         <a class="item item-rounded push-10-r bg-info" data-toggle="tooltip" title="MyPanel" href="javascript:void(0)">
                                             <i class="si si-rocket text-white-op"></i>
@@ -321,17 +321,6 @@
                                 </div>
                             </li>
                             <!-- END Twitter Notification -->
-
-                            <!-- System Notification -->
-                            <li>
-                                <div class="list-timeline-time">1 day ago</div>
-                                <i class="fa fa-database list-timeline-icon bg-smooth"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">Database backup completed!</p>
-                                    <p class="font-s13">Download the <a href="javascript:void(0)">latest backup</a>.</p>
-                                </div>
-                            </li>
-                            <!-- END System Notification -->
 
                             <!-- Social Notification -->
                             <li>
@@ -427,7 +416,7 @@
                     <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
                             <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
                         <h3 class="block-title"><i class="si si-badge"></i> Badges</h3>
@@ -468,7 +457,7 @@
                     <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
                             <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
                         <h3 class="block-title"><i class="fa fa-fw fa-pencil"></i> Scouting Report</h3>
@@ -530,7 +519,7 @@
                     <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
                             <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
                         <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teammates</h3>
@@ -573,17 +562,6 @@
 
 @section('page-js')
 
-        <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
-
-        <script src="{{URL::asset('/js/core/jquery.min.js')}}"></script>
-        <script src="{{URL::asset('/js/core/bootstrap.min.js')}}"></script>
-        <script src="{{URL::asset('/js/core/jquery.slimscroll.min.js')}}"></script>
-        <script src="{{URL::asset('/js/core/jquery.scrollLock.min.js')}}"></script>
-        <script src="{{URL::asset('/js/core/jquery.appear.min.js')}}"></script>
-        <script src="{{URL::asset('/js/core/jquery.countTo.min.js')}}"></script>
-        <script src="{{URL::asset('/js/core/jquery.placeholder.min.js')}}"></script>
-        <script src="{{URL::asset('/js/core/js.cookie.min.js')}}"></script>
-        <script src="{{URL::asset('/js/app.js')}}"></script>
 
         <!-- Page JS Plugins -->
         <script src="{{URL::asset('/js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>

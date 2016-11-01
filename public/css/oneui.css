@@ -177,6 +177,9 @@ h6,
   color: #999999;
   text-transform: none;
 }
+.twitter-scroll {
+    overflow: scroll;
+}
 @media screen and (min-width: 768px) {
   .content-heading {
     margin-top: 25px;
@@ -5966,7 +5969,7 @@ fieldset[disabled] .form-material.floating > label {
      margin-top: -5px;
      padding-top: -20px;
  }
- 
+
 .rep-rating {
     width: auto;
     height: 50px;
