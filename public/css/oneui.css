@@ -5962,6 +5962,11 @@ fieldset[disabled] .form-material.floating > label {
 /*
  *  My Player Elements
  */
+ .grade-margin {
+     margin-top: -5px;
+     padding-top: -20px;
+ }
+ 
 .rep-rating {
     width: auto;
     height: 50px;
@@ -5991,15 +5996,15 @@ fieldset[disabled] .form-material.floating > label {
     .block-title {
       margin-left: -6px;
   }
+
+    h3, .h3 {
+      font-size: 19px;
+      }
 }
 
 .label-shrink {
     zoom: 0.8;
     -moz-transform: scale(0.5);
-}
-.grade-margin {
-    margin-top: -5px;
-    padding-top: -20px;
 }
 
 .extra-pad-vert {

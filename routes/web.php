@@ -16,6 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('/player', 'PlayerController@show')->name('player.show');
+Route::get('/player-nav-js', 'PlayerController@show2')->name('player.player-nav-js');
+
 Route::get('/team', 'TeamController@show')->name('team.show');
 
 Route::get('/register', 'RegisterController@showv2')->name('register.showv2');

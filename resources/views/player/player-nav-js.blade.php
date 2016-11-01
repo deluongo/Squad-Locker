@@ -583,7 +583,6 @@
         <script src="{{URL::asset('/js/core/jquery.countTo.min.js')}}"></script>
         <script src="{{URL::asset('/js/core/jquery.placeholder.min.js')}}"></script>
         <script src="{{URL::asset('/js/core/js.cookie.min.js')}}"></script>
-        <script src="{{URL::asset('/js/app.js')}}"></script>
 
         <!-- Page JS Plugins -->
         <script src="{{URL::asset('/js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>

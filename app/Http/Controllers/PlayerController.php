@@ -10,4 +10,9 @@ class PlayerController extends Controller
     {
         return view('player.show');
     }
+
+    public function show2()
+    {
+        return view('player.player-nav-js');
+    }
 }
