@@ -56,7 +56,7 @@
                                         </ul>
                                         <h3 class="block-title">Off-Ball</h3>
                                     </div>
-                                    <div class="block-content block-content-full text-center" id="bg-block-content">
+                                    <div class="block-content block-content-full text-center" id="bg-block-content-two">
                                         <a class="h1 font-w300 text-white" href="javascript:void(0)">Slasher</a>
                                         <div class="row">
                                             <span class="h4 text-muted text-white pull-left">All-Star 4</span>
@@ -72,7 +72,7 @@
 
 
 
-                                    <div class="block-content block-content-full text-center" id="bg-block-content">
+                                    <div class="block-content block-content-full text-center" id="bg-block-content-three">
                                         <div class="clearfix push-5">
                                             <div class="social-buttons">
                                                 <a href="#" class="social-button youtube">

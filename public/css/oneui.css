@@ -6050,6 +6050,13 @@ fieldset[disabled] .form-material.floating > label {
   padding: 20px 20px;
 }
 
+#bg-block-content-two {
+  padding: 20px 20px;
+}
+#bg-block-content-three {
+  padding: 20px 20px;
+}
+
 .block-content p,
 .block-content .push,
 .block-content .block,
