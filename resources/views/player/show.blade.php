@@ -32,45 +32,60 @@
     <div class="content content-boxed">
         <div class="row">
             <div class="col-sm-4 col-sm-4 push-15 clearfix">
-                <div class="bg-image" style="background-image: url({{asset('/img/favicons/slasher.jpg')}})">
-                    <div class="bg-black-op">
-                        <div class="block block-themed block-transparent play-style-height">
-                            <div class="block-header" id="bg-block-header">
-                                <ul class="block-options">
-                                    <li>
-                                        <button type="button"><i class="si si-settings"></i></button>
-                                    </li>
-                                </ul>
-                                <h3 class="block-title">Off-Ball</h3>
-                            </div>
-                            <div class="block-content block-content-full text-center" id="bg-block-content">
-                                <a class="h1 font-w300 text-white" href="javascript:void(0)">Slasher</a>
-                                <div class="row">
-                                    <span class="h4 text-muted text-white pull-left">All-Star 4</span>
-                                </div>
-
-
-                                <div class="row pull-b">
-                                    <div class="progress progress-mini pull-b">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                <div class="block">
+                    <div class="block-header bg-gray-lighter">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Play Style</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="bg-image" style="background-image: url({{asset('/img/favicons/slasher.jpg')}})">
+                            <div class="bg-black-op">
+                                <div class="block block-themed block-transparent play-style-height">
+                                    <div class="block-header" id="bg-block-header">
+                                        <ul class="block-options">
+                                            <li>
+                                                <button type="button"><i class="si si-settings"></i></button>
+                                            </li>
+                                        </ul>
+                                        <h3 class="block-title">Off-Ball</h3>
                                     </div>
-                                </div>
-                            </div>
+                                    <div class="block-content block-content-full text-center" id="bg-block-content">
+                                        <a class="h1 font-w300 text-white" href="javascript:void(0)">Slasher</a>
+                                        <div class="row">
+                                            <span class="h4 text-muted text-white pull-left">All-Star 4</span>
+                                        </div>
+
+
+                                        <div class="row pull-b">
+                                            <div class="progress progress-mini pull-b">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
 
-                            <div class="block-content block-content-full text-center" id="bg-block-content">
-                                <div class="clearfix push-5">
-                                    <div class="social-buttons">
-                                        <a href="#" class="social-button youtube">
-                                            <i class="fa fa-youtube-play"></i>
-                                        </a>
-                                        <a href="#" class="social-button twitter">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-button twitch">
-                                            <i class="fa fa-twitch"></i>
-                                        </a>
+                                    <div class="block-content block-content-full text-center" id="bg-block-content">
+                                        <div class="clearfix push-5">
+                                            <div class="social-buttons">
+                                                <a href="#" class="social-button youtube">
+                                                    <i class="fa fa-youtube-play"></i>
+                                                </a>
+                                                <a href="#" class="social-button twitter">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                                <a href="#" class="social-button twitch">
+                                                    <i class="fa fa-twitch"></i>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -79,181 +94,196 @@
                 </div>
             </div>
             <div class="col-sm-8 col-xs-12 clearfix">
-                <div class="content-grid">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <div class="block block-themed">
-                                    <div class="block-header bg-success sm-padding">
-                                        <h3 class="block-title">Teammate</h3>
-                                    </div>
-                                    <div class="block-content sm-padding">
-                                        <span class="label label-warning clear label-margin label-shrink">7 votes</span>
-                                        <h1 class="text-success center grade-margin">A+</h1>
-                                    </div>
-                                    <div class="js-rating center rating-shrink" data-precision="true" data-score="4.5">
-                                        <input name="score" type="hidden" value="3.006696428571429">
-                                    </div>
-                                </div>
-                                <div class="block block-themed">
-                                    <div class="block-header bg-warning clearfix">
-                                        <h3 class="block-title">Ability</h3>
-                                    </div>
-                                    <div class="block-content">
-                                        <span class="label label-danger clear label-margin label-shrink">2 votes</span>
-                                        <h1 class="text-warning center grade-margin">B-</h1>
-                                    </div>
-                                    <div class="js-rating center rating-shrink" data-precision="true" data-score="3" style="cursor: pointer;">
-                                        <input name="score" type="hidden" value="3.006696428571429">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-3">
-                                <div class="block block-themed">
-                                    <div class="block-header bg-success sm-padding">
-                                        <h3 class="block-title">Efficiency</h3>
-                                    </div>
-                                    <div class="block-content sm-padding">
-                                        <span class="label label-success clear label-margin label-shrink">+3</span>
-                                        <div class="row">
-                                            <div class="h3 text-success center  extra-pad-vert font-w700 text-success" data-toggle="countTo" data-to="28.2">28.2 <span class="h6">PER</span></div>
+                <div class="block">
+                    <div class="block-header bg-gray-lighter">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                            </li>
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Stats</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="content-grid">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <div class="block block-themed">
+                                            <div class="block-header bg-success sm-padding">
+                                                <h3 class="block-title">Teammate</h3>
+                                            </div>
+                                            <div class="block-content sm-padding">
+                                                <span class="label label-warning clear label-margin label-shrink">7 votes</span>
+                                                <h1 class="text-success center grade-margin">A+</h1>
+                                            </div>
+                                            <div class="js-rating center rating-shrink" data-precision="true" data-score="4.5">
+                                                <input name="score" type="hidden" value="3.006696428571429">
+                                            </div>
                                         </div>
+                                        <div class="block block-themed">
+                                            <div class="block-header bg-warning clearfix">
+                                                <h3 class="block-title">Ability</h3>
+                                            </div>
+                                            <div class="block-content">
+                                                <span class="label label-danger clear label-margin label-shrink">2 votes</span>
+                                                <h1 class="text-warning center grade-margin">B-</h1>
+                                            </div>
+                                            <div class="js-rating center rating-shrink" data-precision="true" data-score="3" style="cursor: pointer;">
+                                                <input name="score" type="hidden" value="3.006696428571429">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <div class="block block-themed">
+                                            <div class="block-header bg-success sm-padding">
+                                                <h3 class="block-title">Efficiency</h3>
+                                            </div>
+                                            <div class="block-content sm-padding">
+                                                <span class="label label-success clear label-margin label-shrink">+3</span>
+                                                <div class="row">
+                                                    <div class="h3 text-success center  extra-pad-vert font-w700 text-success" data-toggle="countTo" data-to="28.2">28.2 <span class="h6">PER</span></div>
+                                                </div>
 
-                                    </div>
-                                    <div class="row text-center font-s13">
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-up push-5-l"></i>
-                                                <span class="hidden-xs">Real!</span>
-                                            </a>
+                                            </div>
+                                            <div class="row text-center font-s13">
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <span class="hidden-xs">Real!</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-down push-5-l"></i>
+                                                        <span class="hidden-xs">Fake</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-down push-5-l"></i>
-                                                <span class="hidden-xs">Fake</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="block block-themed">
-                                    <div class="block-header bg-success clearfix">
-                                        <h3 class="block-title">Shooting</h3>
-                                    </div>
-                                    <div class="block-content">
-                                        <span class="label label-danger clear label-margin label-shrink">-4</span>
-                                        <h3 class="text-success center  extra-pad-vert">.625<span class="h6"> %</span></h3>
-                                    </div>
-                                    <div class="row text-center font-s13">
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-up push-5-l"></i>
-                                                <span class="hidden-xs">Real!</span>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-down push-5-l"></i>
-                                                <span class="hidden-xs">Fake</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-3">
-                                <div class="block block-themed">
-                                    <div class="block-header bg-warning sm-padding">
-                                        <h3 class="block-title">Assists</h3>
-                                    </div>
-                                    <div class="block-content sm-padding">
-                                        <span class="label label-warning clear label-margin label-shrink">
-                                            <i class="fa fa-refresh fa-spin"></i>
-                                        </span>
-                                        <h3 class="text-warning center extra-pad-vert">2.4 <span class="h6">APG</span></h3>
-                                    </div>
-                                    <div class="row text-center font-s13">
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-up push-5-l"></i>
-                                                <span class="hidden-xs">Real!</span>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-down push-5-l"></i>
-                                                <span class="hidden-xs">Fake</span>
-                                            </a>
+                                        <div class="block block-themed">
+                                            <div class="block-header bg-success clearfix">
+                                                <h3 class="block-title">Shooting</h3>
+                                            </div>
+                                            <div class="block-content">
+                                                <span class="label label-danger clear label-margin label-shrink">-4</span>
+                                                <h3 class="text-success center  extra-pad-vert">.625<span class="h6"> %</span></h3>
+                                            </div>
+                                            <div class="row text-center font-s13">
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <span class="hidden-xs">Real!</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-down push-5-l"></i>
+                                                        <span class="hidden-xs">Fake</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="block block-themed">
-                                    <div class="block-header bg-danger clearfix">
-                                        <h3 class="block-title">APG/PPG</h3>
-                                    </div>
-                                    <div class="block-content">
-                                        <span class="label label-warning clear label-margin label-shrink">
-                                            <i class="fa fa-refresh fa-spin"></i>
-                                        </span>
-                                        <h3 class="text-danger center extra-pad-vert">1:2</h3>
-                                    </div>
-                                    <div class="row text-center font-s13">
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-up push-5-l"></i>
-                                                <span class="hidden-xs">Real!</span>
-                                            </a>
+                                    <div class="col-xs-3">
+                                        <div class="block block-themed">
+                                            <div class="block-header bg-warning sm-padding">
+                                                <h3 class="block-title">Assists</h3>
+                                            </div>
+                                            <div class="block-content sm-padding">
+                                                <span class="label label-warning clear label-margin label-shrink">
+                                                    <i class="fa fa-refresh fa-spin"></i>
+                                                </span>
+                                                <h3 class="text-warning center extra-pad-vert">2.4 <span class="h6">APG</span></h3>
+                                            </div>
+                                            <div class="row text-center font-s13">
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <span class="hidden-xs">Real!</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-down push-5-l"></i>
+                                                        <span class="hidden-xs">Fake</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-down push-5-l"></i>
-                                                <span class="hidden-xs">Fake</span>
-                                            </a>
+                                        <div class="block block-themed">
+                                            <div class="block-header bg-danger clearfix">
+                                                <h3 class="block-title">APG/PPG</h3>
+                                            </div>
+                                            <div class="block-content">
+                                                <span class="label label-warning clear label-margin label-shrink">
+                                                    <i class="fa fa-refresh fa-spin"></i>
+                                                </span>
+                                                <h3 class="text-danger center extra-pad-vert">1:2</h3>
+                                            </div>
+                                            <div class="row text-center font-s13">
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <span class="hidden-xs">Real!</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-down push-5-l"></i>
+                                                        <span class="hidden-xs">Fake</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-3">
-                                <div class="block block-themed">
-                                    <div class="block-header bg-success sm-padding">
-                                        <h3 class="block-title">Points</h3>
-                                    </div>
-                                    <div class="block-content sm-padding">
-                                        <span class="label label-success clear label-margin label-shrink">+1</span>
-                                        <h3 class="text-success center extra-pad-vert">7.5 <span class="h6">PPG</span></h3>
-                                    </div>
-                                    <div class="row text-center font-s13">
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-up push-5-l"></i>
-                                                <span class="hidden-xs">Real!</span>
-                                            </a>
+                                    <div class="col-xs-3">
+                                        <div class="block block-themed">
+                                            <div class="block-header bg-success sm-padding">
+                                                <h3 class="block-title">Points</h3>
+                                            </div>
+                                            <div class="block-content sm-padding">
+                                                <span class="label label-success clear label-margin label-shrink">+1</span>
+                                                <h3 class="text-success center extra-pad-vert">7.5 <span class="h6">PPG</span></h3>
+                                            </div>
+                                            <div class="row text-center font-s13">
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <span class="hidden-xs">Real!</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-down push-5-l"></i>
+                                                        <span class="hidden-xs">Fake</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-down push-5-l"></i>
-                                                <span class="hidden-xs">Fake</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="block block-themed widget-height">
-                                    <div class="block-header bg-success clearfix">
-                                        <h3 class="block-title">Rebounds</h3>
-                                    </div>
-                                    <div class="block-content">
-                                        <span class="label label-success clear label-margin label-shrink">+1</span>
-                                        <h3 class="text-success center  extra-pad-vert">3.1 <span class="h6">RPG</span></h3>
-                                    </div>
-                                    <div class="row text-center font-s13">
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-up push-5-l"></i>
-                                                <span class="hidden-xs">Real!</span>
-                                            </a>
-                                        </div>
-                                        <div class="col-xs-6">
-                                            <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                <i class="fa fa-thumbs-down push-5-l"></i>
-                                                <span class="hidden-xs">Fake</span>
-                                            </a>
+                                        <div class="block block-themed widget-height">
+                                            <div class="block-header bg-success clearfix">
+                                                <h3 class="block-title">Rebounds</h3>
+                                            </div>
+                                            <div class="block-content">
+                                                <span class="label label-success clear label-margin label-shrink">+1</span>
+                                                <h3 class="text-success center  extra-pad-vert">3.1 <span class="h6">RPG</span></h3>
+                                            </div>
+                                            <div class="row text-center font-s13">
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <span class="hidden-xs">Real!</span>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                        <i class="fa fa-thumbs-down push-5-l"></i>
+                                                        <span class="hidden-xs">Fake</span>
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -573,10 +603,7 @@
         <script src="{{URL::asset('/js/plugins/flot/jquery.flot.resize.min.js')}}"></script>
         <script src="{{URL::asset('/js/plugins/jquery-raty/jquery.raty.min.js')}}"></script>
 
-        <!-- Page JS Code -->
-        <script src="{{ URL::asset('/js/pages/base_comp_charts.js') }}"></script>
-        <script src="{{ URL::asset('/js/pages/base_comp_rating.js') }}"></script>
-        <script src="{{ URL::asset('/js/pages/base_pages_ecom_dashboard.js') }}"></script>
+
         <script>
             jQuery(function () {
                 // Init page helpers (Easy Pie Chart plugin)
