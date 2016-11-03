@@ -376,7 +376,7 @@
         <!-- END Main Container -->
         {{-- Yield the apps model --}}
         @yield('apps')
-
+</div>
 @endsection
 
 @section('js')
