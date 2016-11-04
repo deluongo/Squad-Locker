@@ -45,9 +45,9 @@
                         <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Play Style</h3>
                     </div>
                     <div class="block-content">
-                        <div class="bg-image" style="background-image: url({{asset('/img/favicons/slasher.jpg')}})">
-                            <div class="bg-black-op">
-                                <div class="block block-themed block-transparent play-style-height">
+                        <div class="bg-image play-style-height play-style-margin" style="background-image: url({{asset('/img/favicons/slasher.jpg')}})">
+                            <div class="bg-black-op play-style-height">
+                                <div class="block block-themed block-transparent play-style-margin">
                                     <div class="block-header" id="bg-block-header">
                                         <ul class="block-options">
                                             <li>
@@ -57,34 +57,28 @@
                                         <h3 class="block-title">Off-Ball</h3>
                                     </div>
                                     <div class="block-content block-content-full text-center" id="bg-block-content-two">
-                                        <a class="h1 font-w300 text-white" href="javascript:void(0)">Slasher</a>
-                                        <div class="row">
+                                        <a class="h1 font-w300 text-white" href="javascript:void(0)">Slasher</a><br />
+                                        <a class="h5 font-w300 text-white" href="javascript:void(0)">Facilitator</a>
+                                        <div class="row push-20-t push-5">
                                             <span class="h4 text-muted text-white pull-left">All-Star 4</span>
                                         </div>
-
-
                                         <div class="row pull-b">
                                             <div class="progress progress-mini pull-b">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%"></div>
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
                                             </div>
                                         </div>
                                     </div>
-
-
-
-                                    <div class="block-content block-content-full text-center" id="bg-block-content-three">
-                                        <div class="clearfix push-5">
-                                            <div class="social-buttons">
-                                                <a href="#" class="social-button youtube">
-                                                    <i class="fa fa-youtube-play"></i>
-                                                </a>
-                                                <a href="#" class="social-button twitter">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                                <a href="#" class="social-button twitch">
-                                                    <i class="fa fa-twitch"></i>
-                                                </a>
-                                            </div>
+                                    <div class="clearfix push-10 social-margin">
+                                        <div class="social-buttons remove-margin-r remove-margin-l pull-b">
+                                            <a href="https://www.youtube.com/user/prettyboyfredo" target="_blank" class="social-button youtube">
+                                                <i class="fa fa-youtube-play"></i>
+                                            </a>
+                                            <a href="https://twitter.com/Prettyboyfredo" target="_blank" class="social-button twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                            <a href="https://www.twitch.tv/prettyboyfredo" target="_blank" class="social-button twitch">
+                                                <i class="fa fa-twitch"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -107,10 +101,10 @@
                         <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Stats</h3>
                     </div>
                     <div class="block-content">
-                        <div class="content-grid">
+                        <div class="content-grid margin-stats-b">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <div class="block block-themed">
+                                        <div class="block block-themed margin-stats-b">
                                             <div class="block-header bg-success sm-padding">
                                                 <h3 class="block-title">Teammate</h3>
                                             </div>
@@ -118,11 +112,11 @@
                                                 <span class="label label-warning clear label-margin label-shrink">7 votes</span>
                                                 <h1 class="text-success center grade-margin">A+</h1>
                                             </div>
-                                            <div class="js-rating center rating-shrink" data-precision="true" data-score="4.5">
+                                            <div class="js-rating center" data-precision="true" data-score="4.5">
                                                 <input name="score" type="hidden" value="3.006696428571429">
                                             </div>
                                         </div>
-                                        <div class="block block-themed">
+                                        <div class="block block-themed remove-margin-b">
                                             <div class="block-header bg-warning clearfix">
                                                 <h3 class="block-title">Ability</h3>
                                             </div>
@@ -130,27 +124,27 @@
                                                 <span class="label label-danger clear label-margin label-shrink">2 votes</span>
                                                 <h1 class="text-warning center grade-margin">B-</h1>
                                             </div>
-                                            <div class="js-rating center rating-shrink" data-precision="true" data-score="3" style="cursor: pointer;">
+                                            <div class="js-rating center" data-precision="true" data-score="3" style="cursor: pointer;">
                                                 <input name="score" type="hidden" value="3.006696428571429">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <div class="block block-themed">
+                                        <div class="block block-themed margin-stats-b">
                                             <div class="block-header bg-success sm-padding">
                                                 <h3 class="block-title">Efficiency</h3>
                                             </div>
                                             <div class="block-content sm-padding">
-                                                <span class="label label-success clear label-margin label-shrink">+3</span>
+                                                <span class="label label-success clear label-margin label-shrink">+<span data-toggle="countTo" data-to="3">3</span></span>
                                                 <div class="row">
-                                                    <div class="h3 text-success center  extra-pad-vert font-w700 text-success" data-toggle="countTo" data-to="28.2">28.2 <span class="h6">PER</span></div>
+                                                    <h3 class="text-success center extra-pad-vert">28.2<span class="h6"> PER</span></h3>
                                                 </div>
 
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
@@ -162,7 +156,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="block block-themed">
+                                        <div class="block block-themed remove-margin-b">
                                             <div class="block-header bg-success clearfix">
                                                 <h3 class="block-title">Shooting</h3>
                                             </div>
@@ -173,7 +167,7 @@
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
@@ -187,7 +181,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <div class="block block-themed">
+                                        <div class="block block-themed margin-stats-b">
                                             <div class="block-header bg-warning sm-padding">
                                                 <h3 class="block-title">Assists</h3>
                                             </div>
@@ -200,7 +194,7 @@
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
@@ -212,7 +206,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="block block-themed">
+                                        <div class="block block-themed remove-margin-b">
                                             <div class="block-header bg-danger clearfix">
                                                 <h3 class="block-title">APG/PPG</h3>
                                             </div>
@@ -225,7 +219,7 @@
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
@@ -239,7 +233,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <div class="block block-themed">
+                                        <div class="block block-themed margin-stats-b">
                                             <div class="block-header bg-success sm-padding">
                                                 <h3 class="block-title">Points</h3>
                                             </div>
@@ -250,7 +244,7 @@
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
@@ -262,7 +256,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="block block-themed widget-height">
+                                        <div class="block block-themed widget-height remove-margin-b">
                                             <div class="block-header bg-success clearfix">
                                                 <h3 class="block-title">Rebounds</h3>
                                             </div>
@@ -273,7 +267,7 @@
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l"></i>
+                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
@@ -602,7 +596,7 @@
         <script src="{{URL::asset('/js/plugins/flot/jquery.flot.stack.min.js')}}"></script>
         <script src="{{URL::asset('/js/plugins/flot/jquery.flot.resize.min.js')}}"></script>
         <script src="{{URL::asset('/js/plugins/jquery-raty/jquery.raty.min.js')}}"></script>
-
+        <script src="{{URL::asset('/js/pages/base_comp_rating.js') }}"></script>
 
         <script>
             jQuery(function () {

@@ -5965,6 +5965,11 @@ fieldset[disabled] .form-material.floating > label {
 /*
  *  My Player Elements
  */
+ .social-margin {
+     margin-top: 10px;
+     padding-bottom: 10px;
+     padding-top:5px;
+ }
  .grade-margin {
      margin-top: -5px;
      padding-top: -20px;
@@ -5988,21 +5993,15 @@ fieldset[disabled] .form-material.floating > label {
   padding: 15px 20px;
 }
 .label-margin {
-    margin: -20px;
+    margin: -13px;
 }
 
-@media (max-width: 470px) {
-    .rating-shrink {
-        zoom: 0.8;
-        -moz-transform: scale(0.7);
-    }
-    .block-title {
-      margin-left: -6px;
-  }
+.play-style-margin {
+    margin-bottom: 15px !important;
+}
 
-    h3, .h3 {
-      font-size: 19px;
-      }
+.play-style-height {
+    min-height: 240px;
 }
 
 .label-shrink {
@@ -6040,7 +6039,7 @@ fieldset[disabled] .form-material.floating > label {
 .block-content {
   margin: 0 auto;
   margin-top: 5px;
-  padding: 0px 15px 1px;
+  padding: 0px 10px 1px;
   max-width: 100%;
   overflow-x: visible;
   -webkit-transition: opacity 0.2s ease-out;
@@ -6054,7 +6053,7 @@ fieldset[disabled] .form-material.floating > label {
   padding: 20px 20px;
 }
 #bg-block-content-three {
-  padding: 20px 20px;
+  padding: 20px 15px;
 }
 
 .block-content p,
@@ -7141,6 +7140,28 @@ a.block.block-link-hover3:active {
     display: block;
   }
 }
+@media (max-width: 470px) {
+    .rating-shrink {
+        zoom: 0.8;
+        -moz-transform: scale(0.7);
+    }
+    .block-title {
+      margin-left: -6px;
+  }
+
+    h3, .h3 {
+      font-size: 16px;
+    }
+
+    .block-title {
+      font-size: 11px;
+      margin-left: -10px;
+    }
+
+    .h6 {
+      font-size: 12px;
+    }
+}
 .img-container.fx-img-zoom-in:hover > img {
   -webkit-transform: scale(1.2);
   -ms-transform: scale(1.2);
@@ -7359,6 +7380,9 @@ a.block.block-link-hover3:active {
 }
 .remove-margin-l {
   margin-left: 0 !important;
+}
+.margin-stats-b {
+  margin-bottom: 12px !important;
 }
 .remove-padding {
   padding: 0 !important;
