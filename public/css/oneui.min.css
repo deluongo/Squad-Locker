@@ -2144,6 +2144,10 @@ a.list-group-item:hover, a.list-group-item:focus {
     }
 }
 
+.margin-10 {
+    margin-top: 10px;
+}
+
 .fa-rotate-90 {
     -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
     -webkit-transform: rotate(90deg);

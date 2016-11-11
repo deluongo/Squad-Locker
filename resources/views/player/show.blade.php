@@ -22,8 +22,8 @@
                 </div>
             </div>
             <h1 class="h2 text-white push-10-t animated zoomIn">CaptainAwesome650</h1>
-            <h2 class="h4 text-white-op animated zoomIn">Rivit City | PG | Playmaker</h2>
-            <p class="font-w300 text-muted text-white-op animated zoomIn"><em>"Bro...play defense..." *THROWS MOUTHPIRECE*</em></p>
+            <h2 class="h4 text-white-op animated zoomIn">{{ $affiliation }} | {{ $position }} | {{ $archetype }}</h2>
+            <p class="font-w300 text-muted text-white-op animated zoomIn"><em>{{ $tagline }}</em></p>
         </div>
     </div>
     <!-- END Page Header -->
@@ -54,29 +54,29 @@
                                                 <button type="button"><i class="si si-settings"></i></button>
                                             </li>
                                         </ul>
-                                        <h3 class="block-title">Off-Ball</h3>
+                                        <h3 class="block-title"> {{ $type }}</h3>
                                     </div>
                                     <div class="block-content block-content-full text-center" id="bg-block-content-two">
-                                        <a class="h1 font-w300 text-white" href="javascript:void(0)">Slasher</a><br />
-                                        <a class="h5 font-w300 text-white" href="javascript:void(0)">Facilitator</a>
+                                        <a class="h1 font-w300 text-white" href="javascript:void(0)">{{ $style }}</a><br />
+                                        <a class="h5 font-w300 text-white" href="javascript:void(0)">{{ $role }}</a>
                                         <div class="row push-20-t push-5">
-                                            <span class="h4 text-muted text-white pull-left">All-Star 4</span>
+                                            <span class="h4 text-muted text-white pull-left">{{ $rep_level }}</span>
                                         </div>
                                         <div class="row pull-b">
                                             <div class="progress progress-mini pull-b">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="{{ $rep_progress }}" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="clearfix push-10 social-margin">
                                         <div class="social-buttons remove-margin-r remove-margin-l pull-b">
-                                            <a href="https://www.youtube.com/user/prettyboyfredo" target="_blank" class="social-button youtube">
+                                            <a href="{{ $youtube }}" target="_blank" class="social-button youtube">
                                                 <i class="fa fa-youtube-play"></i>
                                             </a>
-                                            <a href="https://twitter.com/Prettyboyfredo" target="_blank" class="social-button twitter">
+                                            <a href="{{ $twitter }}" target="_blank" class="social-button twitter">
                                                 <i class="fa fa-twitter"></i>
                                             </a>
-                                            <a href="https://www.twitch.tv/prettyboyfredo" target="_blank" class="social-button twitch">
+                                            <a href="{{ $twitch }}" target="_blank" class="social-button twitch">
                                                 <i class="fa fa-twitch"></i>
                                             </a>
                                         </div>
@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="block-content sm-padding">
                                                 <span class="label label-warning clear label-margin label-shrink">7 votes</span>
-                                                <h1 class="text-success center grade-margin">A+</h1>
+                                                <h1 class="text-success center grade-margin">{{ $team_grade }}</h1>
                                             </div>
                                             <div class="js-rating center" data-precision="true" data-score="4.5">
                                                 <input name="score" type="hidden" value="3.006696428571429">
@@ -122,7 +122,7 @@
                                             </div>
                                             <div class="block-content">
                                                 <span class="label label-danger clear label-margin label-shrink">2 votes</span>
-                                                <h1 class="text-warning center grade-margin">B-</h1>
+                                                <h1 class="text-warning center grade-margin">{{ $skill_grade }}</h1>
                                             </div>
                                             <div class="js-rating center" data-precision="true" data-score="3" style="cursor: pointer;">
                                                 <input name="score" type="hidden" value="3.006696428571429">
@@ -137,7 +137,7 @@
                                             <div class="block-content sm-padding">
                                                 <span class="label label-success clear label-margin label-shrink">+<span data-toggle="countTo" data-to="3">3</span></span>
                                                 <div class="row">
-                                                    <h3 class="text-success center extra-pad-vert">28.2<span class="h6"> PER</span></h3>
+                                                    <h3 class="text-success center extra-pad-vert">{{ $per }}<span class="h6"> PER</span></h3>
                                                 </div>
 
                                             </div>
@@ -162,7 +162,7 @@
                                             </div>
                                             <div class="block-content">
                                                 <span class="label label-danger clear label-margin label-shrink">-4</span>
-                                                <h3 class="text-success center  extra-pad-vert">.625<span class="h6"> %</span></h3>
+                                                <h3 class="text-success center  extra-pad-vert">{{ $fg }}<span class="h6"> %</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -189,7 +189,7 @@
                                                 <span class="label label-warning clear label-margin label-shrink">
                                                     <i class="fa fa-refresh fa-spin"></i>
                                                 </span>
-                                                <h3 class="text-warning center extra-pad-vert">2.4 <span class="h6">APG</span></h3>
+                                                <h3 class="text-warning center extra-pad-vert">{{ $apg }} <span class="h6">APG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -214,7 +214,7 @@
                                                 <span class="label label-warning clear label-margin label-shrink">
                                                     <i class="fa fa-refresh fa-spin"></i>
                                                 </span>
-                                                <h3 class="text-danger center extra-pad-vert">1:2</h3>
+                                                <h3 class="text-danger center extra-pad-vert">{{ $apg_ppg }}</h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -239,7 +239,7 @@
                                             </div>
                                             <div class="block-content sm-padding">
                                                 <span class="label label-success clear label-margin label-shrink">+1</span>
-                                                <h3 class="text-success center extra-pad-vert">7.5 <span class="h6">PPG</span></h3>
+                                                <h3 class="text-success center extra-pad-vert">{{ $ppg }} <span class="h6">PPG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -262,7 +262,7 @@
                                             </div>
                                             <div class="block-content">
                                                 <span class="label label-success clear label-margin label-shrink">+1</span>
-                                                <h3 class="text-success center  extra-pad-vert">3.1 <span class="h6">RPG</span></h3>
+                                                <h3 class="text-success center  extra-pad-vert">{{ $rpg }} <span class="h6">RPG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">

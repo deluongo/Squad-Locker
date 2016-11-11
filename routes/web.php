@@ -23,6 +23,9 @@ Route::get('/team', 'TeamController@show')->name('team.show');
 Route::get('/register', 'RegisterController@showv2')->name('register.showv2');
 Route::post('/register', 'RegisterController@submit')->name('register.showv2');
 
+Route::get('/update', 'UpdateController@show')->name('update.show');
+Route::post('/update', 'UpdateController@submit')->name('update.post');
+
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
 
 Route::get('/stream', 'StreamController@show')->name('stream.show');

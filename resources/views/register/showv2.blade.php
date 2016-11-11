@@ -58,6 +58,15 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class="form-material form-material-success">
+                                        <label class="css-input switch switch-sm switch-success" for="system">Gaming System
+                                            <span>PS4</span><input class="form-control" id="system" name="system"><span>XBOX</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="form-material form-material-success">
                                         <input class="form-control" id="ps4-gamertag" name="ps4-gamertag" placeholder="Enter your PS4 Gamertag">
                                         <label for="ps4-gamertag">PS4 Gamertag</label>
                                     </div>

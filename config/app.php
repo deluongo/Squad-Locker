@@ -168,6 +168,7 @@ return [
          */
 
         //
+        Cmgmyr\Messenger\MessengerServiceProvider::class,
 
         /*
          * Application Service Providers...

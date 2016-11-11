@@ -23,15 +23,32 @@ class CreatePlayersTable extends Migration
               # keep track of changes to a row
               $table->timestamps();
 
-              # The rest of the fields...
-              $table->string('name');
+              # Paek fields
+              $table->string('rep_level');
+              $table->integer('rep_progress');
+
+              # Player profile fields
+              $table->string('name')->unique();
+              $table->string('archetype');
+              $table->string('position');
+              $table->string('affiliation');
+              $table->text('tagline');
+
+              # Social fields
+              $table->string('twitter');
+              $table->string('youtube');
+              $table->string('twitch');
+
+              # Playstyle fields
               $table->string('type');
               $table->string('role');
               $table->string('style');
+
+              #Player stats
               $table->string('team_grade');
               $table->string('skill_grade');
               $table->float('per');
-              $table->float('fg%');
+              $table->float('fg');
               $table->float('apg');
               $table->float('apg_ppg');
               $table->float('ppg');
