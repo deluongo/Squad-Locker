@@ -17,12 +17,20 @@ class PlayersTableSeeder extends Seeder
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 
+         //Account Settings
+         //'email' => 'deluongo@gmail.com'
+         //'username' => 'deluongo'
+         //'password' => 'bluebear'
+
+
          //Profile
          'name' => 'CaptainAwesome650',
          'archetype' => 'Playmaker',
          'position' => 'PG',
          'affiliation' => 'Rivit City',
          'tagline' => '"Bro...play defense..." *THROWS MOUTHPIRECE*',
+         //'bg_image' => 'asset("/img/photos/pg2k.jpg")',
+         //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Social
          'twitter' => 'https://www.youtube.com/user/deluongo',
@@ -32,6 +40,9 @@ class PlayersTableSeeder extends Seeder
          //Park
          'rep_level' => 'All-Star 4',
          'rep_progress' => 60,
+         'rep_status' => 'All-Star',
+         'status_level' => 4,
+
 
          //Playstyle
          'type' => 'Off-Ball',
@@ -54,16 +65,25 @@ class PlayersTableSeeder extends Seeder
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 
+         //Account Settings
+         //'email' => 'prettyboifredo@gmail.com'
+         //'username' => 'prettyboifredo'
+         //'password' => 'toopretty'
+
          //Profile
          'name' => 'PrettyBoiFredo',
          'archetype' => 'Sharp Shooter',
          'position' => 'SF',
          'affiliation' => 'Sunset',
          'tagline' => 'Too pretty for my shirt BOI!',
+         //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
+         //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Park
          'rep_level' => 'Superstar 2',
          'rep_progress' => 20,
+         'rep_status' => 'Superstar',
+         'status_level' => 2,
 
          //Social
          'twitter' => 'https://www.youtube.com/user/prettyboyfredo',
@@ -73,7 +93,7 @@ class PlayersTableSeeder extends Seeder
          //Playstyle
          'type' => 'Ball-Dominant',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Penetrator',
+         'style' => 'Ankle-Breaking-Driver',
 
          //Stats
          'team_grade' => 'B+',

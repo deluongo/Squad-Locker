@@ -23,9 +23,16 @@ class CreatePlayersTable extends Migration
               # keep track of changes to a row
               $table->timestamps();
 
+              # Account Settings
+              #$table->string('email')
+              #table->string('username')
+              #$table->string('password')
+
               # Paek fields
               $table->string('rep_level');
               $table->integer('rep_progress');
+              $table->string('rep_status');
+              $table->integer('status_level');
 
               # Player profile fields
               $table->string('name')->unique();
@@ -33,6 +40,8 @@ class CreatePlayersTable extends Migration
               $table->string('position');
               $table->string('affiliation');
               $table->text('tagline');
+              //$table->string('bg_image');
+              //$table->string('profile_pic');
 
               # Social fields
               $table->string('twitter');

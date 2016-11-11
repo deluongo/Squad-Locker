@@ -31,6 +31,8 @@ class PlayerController extends Controller
             $archetype = $player->archetype;
             $position = $player->position;
             $tagline = $player->tagline;
+            //$bg_image = $player->bg_image;
+            //$profile_pic = $player->profile_pic;
 
             //Park
             $rep_level = $player->rep_level;
