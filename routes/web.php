@@ -24,13 +24,14 @@ Route::get('/register', 'RegisterController@showv2')->name('register.showv2');
 Route::post('/register', 'RegisterController@submit')->name('register.showv2');
 
 Route::get('/update', 'UpdateController@show')->name('update.show');
-Route::post('/update', 'UpdateController@submit')->name('update.post');
+Route::post('/update', 'UpdateController@post')->name('update.post');
 
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
 
 Route::get('/stream', 'StreamController@show')->name('stream.show');
 
-
+Route::get('/teamupdate', 'TeamUpdateController@show')->name('teamupdate.show');
+Route::post('/teamupdate', 'TeamUpdateController@post')->name('teamupdate.post');
 
 Route::get('/formswizard', 'FormsWizardController@show')->name('formswizard.show');
 

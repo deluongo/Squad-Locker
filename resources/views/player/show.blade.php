@@ -14,14 +14,14 @@
     <!-- Page Header -->
     <div class="content bg-image" style="background-image: url({{asset('/img/photos/pg2k.jpg')}})">
         <div class="push-100-t push-15 clearfix">
-            <div class="push-15-r pull-left animated fadeIn">
+            <div class="push-15-r pull-left animated zoomInRight">
                 <div class="js-pie-chart pie-chart" data-percent="80" data-line-width="3" data-size="100" data-bar-color="#abe37d" data-track-color="#eeeeee" data-scale-color="#dddddd">
                     <span>
                         <img class="img-avatar" src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="">
                     </span>
                 </div>
             </div>
-            <h1 class="h2 text-white push-10-t animated zoomIn">CaptainAwesome650</h1>
+            <h1 class="h2 text-white push-10-t animated zoomIn">{{ $name }}</h1>
             <h2 class="h4 text-white-op animated zoomIn">{{ $affiliation }} | {{ $position }} | {{ $archetype }}</h2>
             <p class="font-w300 text-muted text-white-op animated zoomIn"><em>{{ $tagline }}</em></p>
         </div>
@@ -51,7 +51,7 @@
                                     <div class="block-header" id="bg-block-header">
                                         <ul class="block-options">
                                             <li>
-                                                <button type="button"><i class="si si-settings"></i></button>
+                                                <a href="/update" class="button"><i class="si si-settings"></i></a>
                                             </li>
                                         </ul>
                                         <h3 class="block-title"> {{ $type }}</h3>
@@ -105,24 +105,24 @@
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-success sm-padding">
+                                            <div class="block-header bg-{{$team_grade_color}} sm-padding">
                                                 <h3 class="block-title">Teammate</h3>
                                             </div>
                                             <div class="block-content sm-padding">
                                                 <span class="label label-warning clear label-margin label-shrink">7 votes</span>
-                                                <h1 class="text-success center grade-margin">{{ $team_grade }}</h1>
+                                                <h1 class="text-{{ $team_grade_color}} center grade-margin">{{ $team_grade }}</h1>
                                             </div>
                                             <div class="js-rating center" data-precision="true" data-score="4.5">
                                                 <input name="score" type="hidden" value="3.006696428571429">
                                             </div>
                                         </div>
                                         <div class="block block-themed remove-margin-b">
-                                            <div class="block-header bg-warning clearfix">
+                                            <div class="block-header bg-{{$skill_grade_color}} clearfix">
                                                 <h3 class="block-title">Ability</h3>
                                             </div>
                                             <div class="block-content">
                                                 <span class="label label-danger clear label-margin label-shrink">2 votes</span>
-                                                <h1 class="text-warning center grade-margin">{{ $skill_grade }}</h1>
+                                                <h1 class="text-{{$skill_grade_color}} center grade-margin">{{ $skill_grade }}</h1>
                                             </div>
                                             <div class="js-rating center" data-precision="true" data-score="3" style="cursor: pointer;">
                                                 <input name="score" type="hidden" value="3.006696428571429">
@@ -131,13 +131,13 @@
                                     </div>
                                     <div class="col-xs-3">
                                         <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-success sm-padding">
+                                            <div class="block-header bg-{{$per_color}} sm-padding">
                                                 <h3 class="block-title">Efficiency</h3>
                                             </div>
                                             <div class="block-content sm-padding">
                                                 <span class="label label-success clear label-margin label-shrink">+<span data-toggle="countTo" data-to="3">3</span></span>
                                                 <div class="row">
-                                                    <h3 class="text-success center extra-pad-vert">{{ $per }}<span class="h6"> PER</span></h3>
+                                                    <h3 class="text-{{$per_color}} center extra-pad-vert">{{ $per }}<span class="h6"> PER</span></h3>
                                                 </div>
 
                                             </div>
@@ -157,12 +157,12 @@
                                             </div>
                                         </div>
                                         <div class="block block-themed remove-margin-b">
-                                            <div class="block-header bg-success clearfix">
+                                            <div class="block-header bg-{{$fg_color}} clearfix">
                                                 <h3 class="block-title">Shooting</h3>
                                             </div>
                                             <div class="block-content">
                                                 <span class="label label-danger clear label-margin label-shrink">-4</span>
-                                                <h3 class="text-success center  extra-pad-vert">{{ $fg }}<span class="h6"> %</span></h3>
+                                                <h3 class="text-{{$fg_color}} center  extra-pad-vert">{{ $fg }}<span class="h6"> %</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -182,14 +182,14 @@
                                     </div>
                                     <div class="col-xs-3">
                                         <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-warning sm-padding">
+                                            <div class="block-header bg-{{$apg_color}} sm-padding">
                                                 <h3 class="block-title">Assists</h3>
                                             </div>
                                             <div class="block-content sm-padding">
                                                 <span class="label label-warning clear label-margin label-shrink">
                                                     <i class="fa fa-refresh fa-spin"></i>
                                                 </span>
-                                                <h3 class="text-warning center extra-pad-vert">{{ $apg }} <span class="h6">APG</span></h3>
+                                                <h3 class="text-{{$apg_color}} center extra-pad-vert">{{ $apg }} <span class="h6">APG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -207,14 +207,14 @@
                                             </div>
                                         </div>
                                         <div class="block block-themed remove-margin-b">
-                                            <div class="block-header bg-danger clearfix">
+                                            <div class="block-header bg-{{$apg_ppg_color}} clearfix">
                                                 <h3 class="block-title">APG/PPG</h3>
                                             </div>
                                             <div class="block-content">
                                                 <span class="label label-warning clear label-margin label-shrink">
                                                     <i class="fa fa-refresh fa-spin"></i>
                                                 </span>
-                                                <h3 class="text-danger center extra-pad-vert">{{ $apg_ppg }}</h3>
+                                                <h3 class="text-{{$apg_ppg_color}} center extra-pad-vert">{{ $apg_ppg }}</h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -234,12 +234,12 @@
                                     </div>
                                     <div class="col-xs-3">
                                         <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-success sm-padding">
+                                            <div class="block-header bg-{{$ppg_color}} sm-padding">
                                                 <h3 class="block-title">Points</h3>
                                             </div>
                                             <div class="block-content sm-padding">
                                                 <span class="label label-success clear label-margin label-shrink">+1</span>
-                                                <h3 class="text-success center extra-pad-vert">{{ $ppg }} <span class="h6">PPG</span></h3>
+                                                <h3 class="text-{{$ppg_color}} center extra-pad-vert">{{ $ppg }} <span class="h6">PPG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">
@@ -257,12 +257,12 @@
                                             </div>
                                         </div>
                                         <div class="block block-themed widget-height remove-margin-b">
-                                            <div class="block-header bg-success clearfix">
+                                            <div class="block-header bg-{{$rpg_color}} clearfix">
                                                 <h3 class="block-title">Rebounds</h3>
                                             </div>
                                             <div class="block-content">
                                                 <span class="label label-success clear label-margin label-shrink">+1</span>
-                                                <h3 class="text-success center  extra-pad-vert">{{ $rpg }} <span class="h6">RPG</span></h3>
+                                                <h3 class="text-{{$rpg_color}} center  extra-pad-vert">{{ $rpg }} <span class="h6">RPG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
                                                 <div class="col-xs-6">

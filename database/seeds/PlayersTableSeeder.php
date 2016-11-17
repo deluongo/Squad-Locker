@@ -18,9 +18,9 @@ class PlayersTableSeeder extends Seeder
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 
          //Account Settings
-         //'email' => 'deluongo@gmail.com'
-         //'username' => 'deluongo'
-         //'password' => 'bluebear'
+         'email' => 'deluongo@gmail.com',
+         'username' => 'deluongo',
+         'password' => 'bluebear',
 
 
          //Profile
@@ -53,8 +53,8 @@ class PlayersTableSeeder extends Seeder
          'team_grade' => 'A+',
          'skill_grade' => 'B+',
          'per' => 28.2,
-         'fg' => .625,
-         'apg' => 2.4,
+         'fg' => 75,
+         'apg' => 2.5,
          'apg_ppg' => 1.2,
          'ppg' => 4.6,
          'rpg' => 3.1
@@ -66,9 +66,9 @@ class PlayersTableSeeder extends Seeder
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 
          //Account Settings
-         //'email' => 'prettyboifredo@gmail.com'
-         //'username' => 'prettyboifredo'
-         //'password' => 'toopretty'
+         'email' => 'prettyboifredo@gmail.com',
+         'username' => 'prettyboifredo',
+         'password' => 'toopretty',
 
          //Profile
          'name' => 'PrettyBoiFredo',
@@ -99,8 +99,8 @@ class PlayersTableSeeder extends Seeder
          'team_grade' => 'B+',
          'skill_grade' => 'A-',
          'per' => 16.4,
-         'fg' => .435,
-         'apg' => 1.6,
+         'fg' => 25,
+         'apg' => 1.5,
          'apg_ppg' => 0.8,
          'ppg' => 6.8,
          'rpg' => 1.3

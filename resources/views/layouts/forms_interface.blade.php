@@ -1,4 +1,4 @@
-@extends('layouts.structure')
+@extends('layouts.forms_structure')
 
 @section('title')
     {{-- Yield the title if it exists, otherwise default to 'Squad Locker' --}}

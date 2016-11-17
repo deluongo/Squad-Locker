@@ -24,9 +24,9 @@ class CreatePlayersTable extends Migration
               $table->timestamps();
 
               # Account Settings
-              #$table->string('email')
-              #table->string('username')
-              #$table->string('password')
+              $table->string('email');
+              $table->string('username');
+              $table->string('password');
 
               # Paek fields
               $table->string('rep_level');

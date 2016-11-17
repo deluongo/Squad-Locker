@@ -1,18 +1,18 @@
-@extends('layouts.structure_forms')
+@extends('layouts.forms_interface')
 
 
 @section('title')
-    'Registration'
+    'Update Player Data'
 @endsection
 
-@section('content')
+@section('main')
 <!-- Page Content -->
 <div class="content content-boxed">
     <!-- User Header -->
     <div class="block">
         <!-- Basic Info -->
         <div class="bg-image" style="background-image: url({{asset('/img/photos/pg2k.jpg')}})">
-            <div class="block-content bg-primary-op text-center overflow-hidden">
+            <div class="block-content bg-primary-op @if(!$notification == null) bg-black-op @endif text-center overflow-hidden">
                 <ul class="block-options">
                     <li>
                         <button type="button"><i class="si si-settings"></i></button>
@@ -60,8 +60,27 @@
     </div>
     <!-- END User Header -->
 
+    <!-- Notification Block -->
+    @if(!$notification == null)
+    <div class="block">
+        <!-- Basic Info -->
+            <div class="block-content bg-success text-center overflow-hidden">
+                <div class="push-10 animated fadeInUp">
+                    <h1 class="h3 font-w600 text-white push-5">Success</h2>
+                    <h2 class="h5 text-white-op">{{ $notification }}</h3>
+                    <form action="/player">
+                        <button class="btn btn-sm bg-primary push-10-t" type="submit"><i class="si si-game-controller push-5-r"></i>  View MyPlayer</button>
+                    </form>
+                </div>
+            </div>
+        <!-- END Basic Info -->
+    </div>
+
+    @endif
+
     <!-- Main Content -->
-    <form action="pages_profile_edit.html" method="post" onsubmit="return false;">
+    <form action="/update" method="post">
+        {{ csrf_field() }}
         <div class="block">
             <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
                 <li class="active">
@@ -82,13 +101,20 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label for="profile-email">Email Address</label>
-                                    <input class="form-control input-lg" type="email" id="profile-email" name="profile-email" placeholder="Enter your email.." value="admin@example.com">
+                                    <input class="form-control input-lg" type="email" id="profile-email" name="email" placeholder="Enter your email.." value="{{ $email }}">
+                                    @if($errors->get('email'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('email') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-xs-6">
                                     <label for="profile-firstname">Username</label>
-                                    <input class="form-control input-lg" type="text" id="username" name="username" placeholder="Update your username.." value="deluongo">
+                                    <input class="form-control input-lg" type="text" id="username" name="username" placeholder="Update your username.." value="{{ $username }}">
                                 </div>
                                 <div class="col-xs-6">
                                     <label for="profile-lastname">Password</label>
@@ -107,7 +133,14 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <label for="profile-password">GamerTag</label>
-                                    <input class="form-control input-lg" type="text" id="gamertag" name="gamertag" value="{{$name}}">
+                                    <input class="form-control input-lg" type="text" id="name" name="name" value="{{$name}}">
+                                    @if($errors->get('name'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('name') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
@@ -120,14 +153,35 @@
                                 <div class="col-xs-4">
                                     <label for="twitter">Twitter</label>
                                     <input class="form-control input-lg" type="text" id="twitter" name="twitter" value="{{$twitter}}">
+                                    @if($errors->get('twitter'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('twitter') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
                                 </div>
                                 <div class="col-xs-4">
                                     <label for="youtube">Youtube</label>
                                     <input class="form-control input-lg" type="text" id="youtube" name="youtube" value="{{$youtube}}">
+                                    @if($errors->get('youtube'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('youtube') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
                                 </div>
                                 <div class="col-xs-4">
                                     <label for="twitch">Twitch</label>
                                     <input class="form-control input-lg" type="text" id="twitch" name="twitch" value="{{$twitch}}">
+                                    @if($errors->get('twitch'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('twitch') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
                                 </div>
 
                             </div>
@@ -203,7 +257,7 @@
                             <div class="form-group">
                                 <div class="col-xs-4">
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input type="radio" name="style" @if($style == 'Dribble-N-Dime') checked @endif><span></span> Dribble-N-Dime
+                                        <input type="radio" name="style" value='Dribble-N-Dime' @if($style == 'Dribble-N-Dime') checked @endif><span></span> Dribble-N-Dime
                                     </label>
                                     <label class="css-input css-radio css-radio-primary push-10-r">
                                         <input type="radio" name="style" @if($style == 'Run-The-Break') checked @endif><span></span> Run-The-Break
@@ -212,7 +266,7 @@
                                         <input type="radio" name="style" @if($style == 'Pass-To-Assist-King') checked @endif><span></span> Pass-To-Assist-King
                                     </label>
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input type="radio" name="style" @if($style == 'Assist-King') checked @endif><span></span> Assist-King
+                                        <input type="radio" name="style" value='Assist-King' @if($style == 'Assist-King') checked @endif><span></span> Assist-King
                                     </label>
                                     <label class="css-input css-radio css-radio-primary push-10-r">
                                         <input type="radio" name="style" @if($style == 'Ball-Movement-Coach') checked @endif><span></span> Ball-Movement-Coach
@@ -289,6 +343,13 @@
                                 <div class="col-xs-4">
                                     <label for="fg">FG%</label>
                                     <input class="form-control input-lg" type="text" id="fg" name="fg" placeholder="Update your gield goal percentage.." value="{{$fg}}">
+                                    @if($errors->get('fg'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('fg') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
                                 </div>
                                 <div class="col-xs-4">
                                     <label for="apg">APG</label>
@@ -314,7 +375,7 @@
                 </div>
                 <!-- END Privacy Tab -->
             </div>
-            <div class="block-content  bg-gray-lighter text-center">
+            <div class="block-content bg-gray-lighter text-center margin-10">
                 <button class="btn btn-sm btn-primary margin-10" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
                 <button class="btn btn-sm btn-warning margin-10" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
             </div>
