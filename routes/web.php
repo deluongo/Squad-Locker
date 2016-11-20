@@ -28,6 +28,8 @@ Route::post('/update', 'UpdateController@post')->name('update.post');
 
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
 
+Route::get('/free-agency/teams', 'FindTeamController@show')->name('findteam.show');
+
 Route::get('/stream', 'StreamController@show')->name('stream.show');
 
 Route::get('/teamupdate', 'TeamUpdateController@show')->name('teamupdate.show');

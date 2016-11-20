@@ -48,7 +48,9 @@
         {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
         @yield('head')
 
-
+        <!-- SumoMe Install
+        <script src="//load.sumome.com/" data-sumo-site-id="fb60ddc55e6d0c65d90a3638aaaacc2a7b181fea41db21f14bebcdd9d5423d75" async="async"></script>
+        //-->
         <!-- END Stylesheets -->
     </head>
     <body>

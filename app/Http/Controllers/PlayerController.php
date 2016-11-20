@@ -49,6 +49,7 @@ class PlayerController extends Controller
             $style = $player->style;
 
             //Stats
+            $overall_talent_score = $player->overall_talent_score;
             $team_grade = $player->team_grade;
             $skill_grade = $player->skill_grade;
             $per = $player->per;
@@ -57,118 +58,21 @@ class PlayerController extends Controller
             $apg_ppg = $player->apg_ppg;
             $ppg = $player->ppg;
             $rpg = $player->rpg;
+
+            //Colors
+            $progress_chart_color = $player->progress_chart_color;
+            $progress_bar_color = $player->progress_bar_color;
+            $team_grade_color = $player->team_grade_color;
+            $skill_grade_color = $player->skill_grade_color;
+            $per_color = $player->per_color;
+            $fg_color = $player->fg_color;
+            $apg_color = $player->apg_color;
+            $apg_ppg_color = $player->apg_ppg_color;
+            $ppg_color = $player->ppg_color;
+            $rpg_color = $player->rpg_color;
         }
         else {
             return 'Player data not found.';
-        }
-
-        $overall_talent_score = (int) round( ( 100 * (($fg/100)*$ppg + $apg_ppg*$apg/1.5 + 2*$rpg ) / 20 ) );
-        /* ======================================================
-        Context Colors
-        ====================================================== */
-        ### Teammate Grade ###
-        if ($team_grade == 'A+' || $team_grade == 'A' || $team_grade == 'A-') {
-            $team_grade_color = "success";
-        }
-        elseif ($team_grade == 'B+' || $team_grade == 'B' || $team_grade == 'B-') {
-            $team_grade_color = "warning";
-        }
-        else {
-            $team_grade_color ="danger";
-        }
-        ### Skill Grade ###
-        if ($skill_grade == 'A+' || $skill_grade ==  'A' || $skill_grade ==  'A-') {
-            $skill_grade_color = "success";
-        }
-        elseif ($skill_grade == 'B+' || $skill_grade ==  'B' || $skill_grade ==  'B-') {
-            $skill_grade_color = "warning";
-        }
-        else {
-            $skill_grade_color ="danger";
-        }
-        ### PER ###
-        if ($per >= 20 ) {
-            $per_color = "success";
-        }
-        elseif (10 < $per && $per < 20) {
-            $per_color = "warning";
-        }
-        else {
-            $per_color ="danger";
-        }
-        ### FG% ###
-        if ($fg >= 60 ) {
-            $fg_color = "success";
-        }
-        elseif ( 45 < $fg && $fg < 60) {
-            $fg_color = "warning";
-        }
-        else {
-            $fg_color ="danger";
-        }
-        ### APG ###
-        if ($apg >= 3) {
-            $apg_color = "success";
-        }
-        elseif ( 3 > $apg && $apg > 1 ) {
-            $apg_color = "warning";
-        }
-        else {
-            $apg_color ="danger";
-        }
-        ### APG/PPG ###
-        if ($apg_ppg >= 2 ) {
-            $apg_ppg_color = "success";
-        }
-        elseif ( 1 < $apg_ppg && $apg_ppg< 2) {
-            $apg_ppg_color = "warning";
-        }
-        else {
-            $apg_ppg_color ="danger";
-        }
-        ### PPG ###
-        if ($ppg >= 6) {
-            $ppg_color = "success";
-        }
-        elseif (4 < $ppg && $ppg< 6 ) {
-            $ppg_color = "warning";
-        }
-        else {
-            $ppg_color ="danger";
-        }
-        ### RPG ###
-        if ($rpg >= 3) {
-            $rpg_color = "success";
-        }
-        elseif (4 > $rpg && $rpg> 2) {
-            $rpg_color = "warning";
-        }
-        else {
-            $rpg_color ="danger";
-        }
-        ### Progress Chart###
-        if ($overall_talent_score >= 66) {
-            $progress_chart_color = "#abe37d";
-
-        }
-        elseif (66 > $overall_talent_score && $overall_talent_score > 33) {
-            $progress_chart_color = "#FADB7D";
-
-        }
-        else {
-            $progress_chart_color ="#FAAE7E";
-        }
-        ### Progress Bar ###
-        if ($rep_progress >= 66) {
-            $progress_bar_color = "success";
-
-        }
-        elseif (66 > $rep_progress && $rep_progress> 33) {
-            $progress_bar_color = "warning";
-
-        }
-        else {
-            $progress_bar_color = "danger";
         }
 
         //Navigation Active
@@ -278,6 +182,14 @@ class PlayerController extends Controller
         else {
             $team_grade_color = '';
         }
+
+        $per = number_format($per, 1, '.', '');
+        $fg = number_format($fg, 1, '.', '');
+        $apg = number_format($apg, 1, '.', '');
+        $apg_ppg = number_format($apg_ppg, 1, '.', '');
+        $ppg = number_format($ppg, 1, '.', '');
+        $rpg = number_format($rpg, 1, '.', '');
+
 
 
         //Navigation Active

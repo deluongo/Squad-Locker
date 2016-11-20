@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="row pull-b">
                                             <div class="progress progress-mini pull-b">
-                                                <div class="progress-bar progress-bar-{{$progress_bar_color}}" role="progressbar" aria-valuenow="{{$progress_bar}}" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+                                                <div class="progress-bar progress-bar-{{$progress_bar_color}}" role="progressbar" aria-valuenow="{{$progress_bar}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$progress_bar}}%"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -300,137 +300,29 @@
                                 <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
-                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Updates</h3>
+                        <h3 class="block-title"><i class="fa fa-fw fa-pencil"></i> Scouting Report</h3>
                     </div>
                     <div class="block-content">
-                        <ul class="list list-timeline pull-t">
-                            <!-- Facebook Notification -->
-                            <li>
-                                <div class="list-timeline-time">3 hrs ago</div>
-                                <i class="fa fa-youtube list-timeline-icon bg-city"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">+ 24 new followers</p>
-                                    <p class="font-s13">This is great, keep it up!</p>
-                                </div>
-                            </li>
-                            <!-- END Facebook Notification -->
+                        <div id="disqus_thread"></div>
+                            <script>
 
-                            <!-- Generic Notification -->
-                            <li>
-                                <div class="list-timeline-time">4 hrs ago</div>
-                                <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">3 New Badges were added!</p>
-                                    <div class="push-10-t">
-                                        <a class="item item-rounded push-10-r bg-info" data-toggle="tooltip" title="MyPanel" href="javascript:void(0)">
-                                            <i class="si si-rocket text-white-op"></i>
-                                        </a>
-                                        <a class="item item-rounded push-10-r bg-amethyst" data-toggle="tooltip" title="Project Time" href="javascript:void(0)">
-                                            <i class="si si-calendar text-white-op"></i>
-                                        </a>
-                                        <a class="item item-rounded push-10-r bg-city" data-toggle="tooltip" title="iDashboard" href="javascript:void(0)">
-                                            <i class="si si-speedometer text-white-op"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- END Generic Notification -->
-
-                            <!-- Twitter Notification -->
-                            <li>
-                                <div class="list-timeline-time">12 hrs ago</div>
-                                <i class="fa fa-twitter list-timeline-icon bg-info"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">+ 1150 Followers</p>
-                                    <p class="font-s13">You’re getting more and more followers, keep it up!</p>
-                                </div>
-                            </li>
-                            <!-- END Twitter Notification -->
-
-                            <!-- Social Notification -->
-                            <li>
-                                <div class="list-timeline-time">2 days ago</div>
-                                <i class="fa fa-user-plus list-timeline-icon bg-success"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">+ 5 Friend Requests</p>
-                                    <ul class="nav-users push-10-t push">
-                                        <li>
-                                            <a href="base_pages_profile.html">
-                                                <img class="img-avatar" src="{{asset('/img/avatars/avatar4.jpg')}}" alt="">
-                                                <i class="fa fa-circle text-success"></i> Amanda Powell
-                                                <div class="font-w400 text-muted"><small>Web Designer</small></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="base_pages_profile.html">
-                                                <img class="img-avatar" src="{{asset('/img/avatars/avatar11.jpg')}}" alt="">
-                                                <i class="fa fa-circle text-success"></i> Eric Lawson
-                                                <div class="font-w400 text-muted"><small>Graphic Designer</small></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="base_pages_profile.html">
-                                                <img class="img-avatar" src="{{asset('/img/avatars/avatar1.jpg')}}" alt="">
-                                                <i class="fa fa-circle text-warning"></i> Emma Cooper
-                                                <div class="font-w400 text-muted"><small>Photographer</small></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="base_pages_profile.html">
-                                                <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                                <i class="fa fa-circle text-warning"></i> Eugene Burke
-                                                <div class="font-w400 text-muted"><small>Copywriter</small></div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="base_pages_profile.html">
-                                                <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                                <i class="fa fa-circle text-danger"></i> Ethan Howard
-                                                <div class="font-w400 text-muted"><small>UI Designer</small></div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <!-- END Social Notification -->
-
-                            <!-- System Notification -->
-                            <li>
-                                <div class="list-timeline-time">1 week ago</div>
-                                <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">System updated to v2.02</p>
-                                    <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
-                                </div>
-                            </li>
-                            <!-- END System Notification -->
-
-                            <!-- Generic Notification -->
-                            <li>
-                                <div class="list-timeline-time">2 weeks ago</div>
-                                <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">1 New Product was added!</p>
-                                    <div class="push-10-t">
-                                        <a class="item item-rounded push-10-r bg-modern" data-toggle="tooltip" title="eSettings" href="javascript:void(0)">
-                                            <i class="si si-settings text-white-op"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- END Generic Notification -->
-
-                            <!-- System Notification -->
-                            <li>
-                                <div class="list-timeline-time">2 months ago</div>
-                                <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
-                                <div class="list-timeline-content">
-                                    <p class="font-w600">System updated to v2.01</p>
-                                    <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
-                                </div>
-                            </li>
-                            <!-- END System Notification -->
-                        </ul>
+                            /**
+                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                            /*
+                            var disqus_config = function () {
+                            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                            };
+                            */
+                            (function() { // DON'T EDIT BELOW THIS LINE
+                            var d = document, s = d.createElement('script');
+                            s.src = '//p4test.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                            })();
+                            </script>
+                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     </div>
                 </div>
                 <!-- END Timeline -->

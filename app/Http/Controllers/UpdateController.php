@@ -222,7 +222,116 @@ class UpdateController extends Controller
             $ppg = $request->input('ppg');
             $rpg = $request->input('rpg');
 
-            $player = Player::where('name', '=', 'CaptainAwesome650')->first();
+            $overall_talent_score = (int) round( ( 100 * (($fg/100)*$ppg + $apg_ppg*$apg/1.5 + 2*$rpg ) / 20 ) );
+
+
+            /* ======================================================
+            Context Colors
+            ====================================================== */
+            ### Teammate Grade ###
+            if ($team_grade == 'A+' || $team_grade == 'A' || $team_grade == 'A-') {
+                $team_grade_color = "success";
+            }
+            elseif ($team_grade == 'B+' || $team_grade == 'B' || $team_grade == 'B-') {
+                $team_grade_color = "warning";
+            }
+            else {
+                $team_grade_color ="danger";
+            }
+            ### Skill Grade ###
+            if ($skill_grade == 'A+' || $skill_grade ==  'A' || $skill_grade ==  'A-') {
+                $skill_grade_color = "success";
+            }
+            elseif ($skill_grade == 'B+' || $skill_grade ==  'B' || $skill_grade ==  'B-') {
+                $skill_grade_color = "warning";
+            }
+            else {
+                $skill_grade_color ="danger";
+            }
+            ### PER ###
+            if ($per >= 20 ) {
+                $per_color = "success";
+            }
+            elseif (10 < $per && $per < 20) {
+                $per_color = "warning";
+            }
+            else {
+                $per_color ="danger";
+            }
+            ### FG% ###
+            if ($fg >= 60 ) {
+                $fg_color = "success";
+            }
+            elseif ( 45 < $fg && $fg < 60) {
+                $fg_color = "warning";
+            }
+            else {
+                $fg_color ="danger";
+            }
+            ### APG ###
+            if ($apg >= 3) {
+                $apg_color = "success";
+            }
+            elseif ( 3 > $apg && $apg > 1 ) {
+                $apg_color = "warning";
+            }
+            else {
+                $apg_color ="danger";
+            }
+            ### APG/PPG ###
+            if ($apg_ppg >= 2 ) {
+                $apg_ppg_color = "success";
+            }
+            elseif ( 1 < $apg_ppg && $apg_ppg< 2) {
+                $apg_ppg_color = "warning";
+            }
+            else {
+                $apg_ppg_color ="danger";
+            }
+            ### PPG ###
+            if ($ppg >= 6) {
+                $ppg_color = "success";
+            }
+            elseif (4 < $ppg && $ppg< 6 ) {
+                $ppg_color = "warning";
+            }
+            else {
+                $ppg_color ="danger";
+            }
+            ### RPG ###
+            if ($rpg >= 3) {
+                $rpg_color = "success";
+            }
+            elseif (4 > $rpg && $rpg> 2) {
+                $rpg_color = "warning";
+            }
+            else {
+                $rpg_color ="danger";
+            }
+            ### Progress Chart###
+            if ($overall_talent_score >= 66) {
+                $progress_chart_color = "#abe37d";
+
+            }
+            elseif (66 > $overall_talent_score && $overall_talent_score > 33) {
+                $progress_chart_color = "#FADB7D";
+
+            }
+            else {
+                $progress_chart_color ="#FAAE7E";
+            }
+            ### Progress Bar ###
+            if ($rep_progress >= 66) {
+                $progress_bar_color = "success";
+
+            }
+            elseif (66 > $rep_progress && $rep_progress> 33) {
+                $progress_bar_color = "warning";
+
+            }
+            else {
+                $progress_bar_color = "danger";
+            }
 
             if($player) {
                 //Account Settings
@@ -256,6 +365,7 @@ class UpdateController extends Controller
                 $player->style = $style;
 
                 //Stats
+                $player->overall_talent_score = $overall_talent_score;
                 $player->team_grade = $team_grade;
                 $player->skill_grade = $skill_grade;
                 $player->per = $per;
@@ -264,6 +374,18 @@ class UpdateController extends Controller
                 $player->apg_ppg = $apg_ppg;
                 $player->ppg = $ppg;
                 $player->rpg = $rpg;
+
+                // Colors
+                $player->progress_chart_color = $progress_chart_color;
+                $player->progress_bar_color = $progress_bar_color;
+                $player->team_grade_color = $team_grade_color;
+                $player->skill_grade_color = $skill_grade_color;
+                $player->per_color = $per_color;
+                $player->fg_color = $fg_color;
+                $player->apg_color = $apg_color;
+                $player->apg_ppg_color = $apg_ppg_color;
+                $player->ppg_color = $ppg_color;
+                $player->rpg_color = $rpg_color;
 
                 # Save the changes
                 $player->save();
@@ -307,6 +429,7 @@ class UpdateController extends Controller
                 $player->style = $style;
 
                 //Stats
+                $player->overall_talent_score = $overall_talent_score;
                 $player->team_grade = $team_grade;
                 $player->skill_grade = $skill_grade;
                 $player->per = $per;
@@ -330,6 +453,7 @@ class UpdateController extends Controller
             $team_update_heading = '';
             $free_agency_heading = '';
             $activity_stream_heading = '';
+
 
             $data = ['team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
             return view('update.show')->with($data);

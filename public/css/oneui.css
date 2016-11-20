@@ -173,6 +173,7 @@ h6,
     margin-bottom: 30px;
 
 }
+
 @media screen and (min-width: 768px) {
   .page-heading small {
     margin-top: 0;
@@ -1640,6 +1641,11 @@ a.list-group-item:focus {
   width: 20px;
   text-align: center;
 }
+
+.leftarrow {
+  content: "\f104";
+}
+
 .tooltip-inner {
   padding: 6px 8px;
   background-color: #2c343f;
@@ -1730,10 +1736,22 @@ a.list-group-item:focus {
 .table > tbody > tr > th,
 .table > tfoot > tr > th {
   padding: 16px 10px 12px;
-  font-family: "Source Sans Pro", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 15px;
+  font-family: "Raleway", sans-serif;
+  font-size: 9px;
   font-weight: 600;
   text-transform: uppercase;
+}
+table {
+    font-family: "Raleway", sans-serif;
+    font-size: 12px;
+}
+.table-font {
+    font-family: "Raleway", sans-serif;
+
+}
+.table-num {
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
 }
 .table > thead > tr > th {
   border-bottom: 1px solid #ddd;
@@ -4408,6 +4426,14 @@ a.list-group-item:focus {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+.inside-button-label {
+    max-width: 210px;
+    max-height: 73.75px;
+    margin: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
 .sr-only-focusable:active,
 .sr-only-focusable:focus {
   position: static;
@@ -6470,6 +6496,11 @@ a.block.block-link-hover3:active {
 .nav-main a.active:hover {
   color: #fff;
 }
+
+.picture-button:hover {
+  color: #fff;
+}
+
 .nav-main a.active > i,
 .nav-main a.active:hover > i {
   color: #fff;
@@ -7153,30 +7184,27 @@ a.block.block-link-hover3:active {
   left: 0;
   text-align: center;
 }
-.img-container > img {
+.img-container:hover > img {
   -webkit-transition: -webkit-transform 0.35s ease-out;
   transition: transform 0.35s ease-out;
+  color: white;
 }
-.img-container:hover .img-options {
+.img-container .img-options {
   opacity: 1;
   visibility: visible;
 }
 @media screen and (max-width: 767px) {
-  .img-container .img-options {
-    display: none;
-  }
-  .img-container:hover .img-options {
-    display: block;
-  }
+
 }
 @media (max-width: 470px) {
+
     .rating-shrink {
         zoom: 0.8;
         -moz-transform: scale(0.7);
     }
     .block-title {
       margin-left: -6px;
-  }
+    }
 
     h3, .h3 {
       font-size: 16px;

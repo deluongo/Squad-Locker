@@ -84,12 +84,12 @@ class TeamController extends Controller
         }
 
         # Team Stats
-        $per = round($per / $num_players, 1);
-        $fg = round($fg / $num_players, 1);
-        $apg = round($apg * 3 / $num_players, 1);
-        $ppg = round($ppg * 3 / $num_players, 1);
-        $rpg = round($rpg * 3 / $num_players, 1);
-        $apg_ppg = round($apg/$ppg, 1);
+        $per = number_format(round($per / $num_players, 1), 1, '.', '');
+        $fg = number_format(round($fg / $num_players, 1), 1, '.', '');
+        $apg = number_format(round($apg * 3 / $num_players, 1), 1, '.', '');
+        $ppg = number_format(round($ppg * 3 / $num_players, 1), 1, '.', '');
+        $rpg = number_format(round($rpg * 3 / $num_players, 1), 1, '.', '');
+        $apg_ppg = number_format(round($apg/$ppg, 1), 1, '.', '');
 
         # Progress Bar
         $progress_bar = ( 1 / ( 1 + pow( ($losses/$wins), 2 ) ) ) * 100;

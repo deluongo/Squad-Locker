@@ -54,6 +54,7 @@ class CreatePlayersTable extends Migration
               $table->string('style');
 
               #Player stats
+              $table->string('overall_talent_score');
               $table->string('team_grade');
               $table->string('skill_grade');
               $table->float('per');
@@ -62,6 +63,18 @@ class CreatePlayersTable extends Migration
               $table->float('apg_ppg');
               $table->float('ppg');
               $table->float('rpg');
+
+              #Colors
+              $table->string('progress_chart_color');
+              $table->string('progress_bar_color');
+              $table->string('team_grade_color');
+              $table->string('skill_grade_color');
+              $table->string('per_color');
+              $table->string('fg_color');
+              $table->string('apg_color');
+              $table->string('apg_ppg_color');
+              $table->string('ppg_color');
+              $table->string('rpg_color');
 
               # FYI: We're skipping the 'tags' field for now; more on that later.
 

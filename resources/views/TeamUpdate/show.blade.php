@@ -259,7 +259,7 @@
                     <div class="row items-push">
                         <div class="col-sm-10 col-sm-offset-1 form-horizontal">
                             <div class="form-group">
-                                <div class="col-xs-3">
+                                <div class="col-md-3 col-xs-6">
                                     <label for="movement">Movement</label>
                                     <select class="form-control" id="movement" name="movement" size="5" multiple="no">
                                         <option value="Ball-Movement" @if($movement == 'Ball-Movement') selected @endif>Ball-Movement</option>
@@ -269,7 +269,7 @@
                                         <option value="Player Movement" @if($movement == 'Player Movement') selected @endif>Player Movement</option>
                                     </select>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-md-3 col-xs-6">
                                     <label for="tempo">Tempo</label>
                                     <select class="form-control" id="tempo" name="tempo" size="5" multiple="no">
                                         <option value="Fast" @if($tempo == 'Fast') selected @endif>Fast</option>
@@ -279,7 +279,7 @@
                                         <option value="Slow" @if($tempo == 'Slow') selected @endif>Slow</option>
                                     </select>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-md-3 col-xs-6">
                                     <label for="offense">Offense</label>
                                     <select class="form-control" id="offense" name="offense" size="5" multiple="no">
                                         <option value="Motion" @if($offense == 'Motion') selected @endif>Motion</option>
@@ -289,7 +289,7 @@
                                         <option value="7 Seconds" @if($offense == '7 Seconds') selected @endif>7 Seconds</option>
                                     </select>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-md-3 col-xs-6">
                                     <label for="defense">Defense</label>
                                     <select class="form-control" id="defense" name="defense" size="5" multiple="no">
                                         <option value="Team-D" @if($defense == 'Team-D') selected @endif>Team-D</option>

@@ -1,5 +1,9 @@
 @extends('layouts.structure')
 
+@section('head')
+    @yield('css')
+@endsection
+
 @section('title')
     {{-- Yield the title if it exists, otherwise default to 'Squad Locker' --}}
     @yield('title','Squad Locker')
@@ -303,10 +307,11 @@
                                 <a href="/player" class={{ $my_player_heading }}><i class="si si-game-controller"></i><span class="sidebar-mini-hide">My Player</span></a>
                             </li>
                             <li>
-                                <a href="/update" class={{ $update_heading }} ><i class="si si-list"></i><span class="sidebar-mini-hide">Update Stats</span></a>
-                            </li>
-                            <li>
                                 <a href="/team" class={{ $my_team_heading }} ><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">My Team</span></a>
+                            </li>
+                            <li class="nav-main-heading"><span class="sidebar-mini-hide">Edit</span></li>
+                            <li>
+                                <a href="/update" class={{ $update_heading }} ><i class="si si-list"></i><span class="sidebar-mini-hide">Update Player</span></a>
                             </li>
                             <li>
                                 <a href="/teamupdate" class={{ $team_update_heading }} ><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">Update Team</span></a>

@@ -62,6 +62,27 @@ class CreateTeamsTable extends Migration
               $table->string('youtube');
               $table->string('twitch');
 
+              #Player stats
+              //$table->string('overall_talent_score');
+              $table->float('per');
+              $table->float('fg');
+              $table->float('apg');
+              $table->float('apg_ppg');
+              $table->float('ppg');
+              $table->float('rpg');
+
+              #Colors
+              $table->string('progress_chart_color');
+              $table->string('progress_bar_color');
+              $table->string('team_grade_color');
+              $table->string('skill_grade_color');
+              $table->string('per_color');
+              $table->string('fg_color');
+              $table->string('apg_color');
+              $table->string('apg_ppg_color');
+              $table->string('ppg_color');
+              $table->string('rpg_color');
+
           });
     }
 

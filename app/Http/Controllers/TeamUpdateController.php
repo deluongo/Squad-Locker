@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use p4\Http\Requests;
 use DB;
 use Carbon;
+use p4\Player;
 use p4\Team; # <--- NEW
 
 
@@ -205,7 +206,142 @@ class TeamUpdateController extends Controller
             $rpg = $request->input('rpg');
             */
 
-            $team = Team::where('name', '=', 'StraightFundamental')->first();
+            $per = 0;
+            $fg = 0;
+            $apg = 0;
+            $apg_ppg = 0;
+            $ppg = 0;
+            $rpg = 0;
+            $num_players = 0;
+
+            for ($i = 1; $i <= 10; $i++) {
+                if (${'player'.$i} != '') {
+                    $player = Player::where('name', '=', ${'player'.$i})->first();
+                    if($player) {
+                        $per += $player->per;
+                        $fg += $player->fg;
+                        $apg += $player->apg;
+                        $ppg += $player->ppg;
+                        $rpg +=$player->rpg;
+
+                        $num_players += 1;
+
+                        ${'player'.$i.'_name'} = $player->name;
+                        ${'player'.$i.'_per'} = $player->per;
+                        ${'player'.$i.'_team_grade'} = $player->team_grade;
+                        ${'player'.$i.'_skill_grade'} = $player->skill_grade;
+                    }
+
+                }
+            }
+
+            # Team Stats
+            $per = number_format(round($per / $num_players, 1), 1, '.', '');
+            $fg = number_format(round($fg / $num_players, 1), 1, '.', '');
+            $apg = number_format(round($apg * 3 / $num_players, 1), 1, '.', '');
+            $ppg = number_format(round($ppg * 3 / $num_players, 1), 1, '.', '');
+            $rpg = number_format(round($rpg * 3 / $num_players, 1), 1, '.', '');
+            $apg_ppg = number_format(round($apg/$ppg, 1), 1, '.', '');
+
+            # Progress Bar
+            $progress_bar = ( 1 / ( 1 + pow( ($losses/$wins), 2 ) ) ) * 100;
+
+            /* ======================================================
+            Context Colors
+            ====================================================== */
+            ### Teammate Grade ###
+            if ($team_grade == 'A+' || $team_grade == 'A' || $team_grade == 'A-') {
+                $team_grade_color = "success";
+            }
+            elseif ($team_grade == 'B+' || $team_grade == 'B' || $team_grade == 'B-') {
+                $team_grade_color = "warning";
+            }
+            else {
+                $team_grade_color ="danger";
+            }
+            ### Skill Grade ###
+            if ($skill_grade == 'A+' || $skill_grade ==  'A' || $skill_grade ==  'A-') {
+                $skill_grade_color = "success";
+            }
+            elseif ($skill_grade == 'B+' || $skill_grade ==  'B' || $skill_grade ==  'B-') {
+                $skill_grade_color = "warning";
+            }
+            else {
+                $skill_grade_color ="danger";
+            }
+            ### PER ###
+            if ($per >= 20 ) {
+                $per_color = "success";
+            }
+            elseif (10 < $per && $per < 20) {
+                $per_color = "warning";
+            }
+            else {
+                $per_color ="danger";
+            }
+            ### FG% ###
+            if ($fg >= 60 ) {
+                $fg_color = "success";
+            }
+            elseif ( 45 < $fg && $fg < 60) {
+                $fg_color = "warning";
+            }
+            else {
+                $fg_color ="danger";
+            }
+            ### APG ###
+            if ($apg >= 3) {
+                $apg_color = "success";
+            }
+            elseif ( 3 > $apg && $apg > 1 ) {
+                $apg_color = "warning";
+            }
+            else {
+                $apg_color ="danger";
+            }
+            ### APG/PPG ###
+            if ($apg_ppg >= 2 ) {
+                $apg_ppg_color = "success";
+            }
+            elseif ( 1 < $apg_ppg && $apg_ppg< 2) {
+                $apg_ppg_color = "warning";
+            }
+            else {
+                $apg_ppg_color ="danger";
+            }
+            ### PPG ###
+            if ($ppg >= 6) {
+                $ppg_color = "success";
+            }
+            elseif (4 < $ppg && $ppg< 6 ) {
+                $ppg_color = "warning";
+            }
+            else {
+                $ppg_color ="danger";
+            }
+            ### RPG ###
+            if ($rpg >= 3) {
+                $rpg_color = "success";
+            }
+            elseif (4 > $rpg && $rpg> 2) {
+                $rpg_color = "warning";
+            }
+            else {
+                $rpg_color ="danger";
+            }
+            ### Progress Bar ###
+            if ($progress_bar >= 66) {
+                $progress_chart_color = "#abe37d";
+                $progress_bar_color = "success";
+            }
+            elseif (66 > $progress_bar && $progress_bar> 33) {
+                $progress_chart_color = "#FADB7D";
+                $progress_bar_color = "warning";
+            }
+            else {
+                $progress_chart_color ="#FAAE7E";
+                $progress_bar_color = "danger";
+            }
 
             if($team) {
 
@@ -240,6 +376,26 @@ class TeamUpdateController extends Controller
                 $team->twitter = $twitter;
                 $team->youtube = $youtube;
                 $team->twitch = $twitch;
+
+                //Stats
+                $team->per = $per;
+                $team->fg = $fg;
+                $team->apg = $apg;
+                $team->apg_ppg = $apg_ppg;
+                $team->ppg = $ppg;
+                $team->rpg = $rpg;
+
+                // Colors
+                $team->progress_chart_color = $progress_chart_color;
+                $team->progress_bar_color = $progress_bar_color;
+                $team->team_grade_color = $team_grade_color;
+                $team->skill_grade_color = $skill_grade_color;
+                $team->per_color = $per_color;
+                $team->fg_color = $fg_color;
+                $team->apg_color = $apg_color;
+                $team->apg_ppg_color = $apg_ppg_color;
+                $team->ppg_color = $ppg_color;
+                $team->rpg_color = $rpg_color;
 
                 # Save the changes
                 $team->save();
@@ -279,6 +435,25 @@ class TeamUpdateController extends Controller
                 $team->youtube = $youtube;
                 $team->twitch = $twitch;
 
+                //Stats
+                $team->per = $per;
+                $team->fg = $fg;
+                $team->apg = $apg;
+                $team->apg_ppg = $apg_ppg;
+                $team->ppg = $ppg;
+                $team->rpg = $rpg;
+
+                // Colors
+                $team->progress_chart_color = $progress_chart_color;
+                $team->progress_bar_color = $progress_bar_color;
+                $team->team_grade_color = $team_grade_color;
+                $team->skill_grade_color = $skill_grade_color;
+                $team->per_color = $per_color;
+                $team->fg_color = $fg_color;
+                $team->apg_color = $apg_color;
+                $team->apg_ppg_color = $apg_ppg_color;
+                $team->ppg_color = $ppg_color;
+                $team->rpg_color = $rpg_color;
 
                 # Save the changes
                 $team->save();
