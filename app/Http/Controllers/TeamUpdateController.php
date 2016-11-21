@@ -2,6 +2,7 @@
 
 namespace p4\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use p4\Http\Requests;
 use DB;
@@ -12,9 +13,19 @@ use p4\Team; # <--- NEW
 
 class TeamUpdateController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show()
     {
-        $team = Team::where('name', '=', 'StraightFundamental')->first();
+        $team = Team::where('gamertag', '=', Auth::user()->name )->first();
 
         $notification = null;
 

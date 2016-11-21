@@ -9,25 +9,8 @@ use DB;
 use Carbon;
 use p4\Player;
 
-class PlayerController extends Controller
+class ViewPlayerController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-    * Display the specified resource.
-    *
-    * @param  int
-    * @return \Illuminate\Http\Response
-    */
-
     /* ======================================================
     Display on load
     ====================================================== */
@@ -115,7 +98,7 @@ class PlayerController extends Controller
     /* ======================================================
     Display on form submit
     ====================================================== */
-    public function post(Request $request)
+    public function get(Request $request)
     {
 
         $this->validate($request, [

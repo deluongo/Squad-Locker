@@ -27,6 +27,7 @@ Route::get('/update', 'UpdateController@show')->name('update.show');
 Route::post('/update', 'UpdateController@post')->name('update.post');
 
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
+Route::post('/free-agency', 'AgencyController@post')->name('agency.post');
 
 Route::get('/free-agency/teams', 'FindTeamController@show')->name('findteam.show');
 
@@ -36,6 +37,17 @@ Route::get('/teamupdate', 'TeamUpdateController@show')->name('teamupdate.show');
 Route::post('/teamupdate', 'TeamUpdateController@post')->name('teamupdate.post');
 
 Route::get('/formswizard', 'FormsWizardController@show')->name('formswizard.show');
+
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
+    Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
+    Route::post('/', ['as' => 'messages.store', 'uses' => 'MessagesController@store']);
+    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'MessagesController@show']);
+    Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
+});
+
+Route::get('/login', 'LoginController@show')->name('login.show');
+Route::post('/login', 'LoginController@post')->name('login.post');
 
 Route::get('/debug', function() {
 
@@ -71,3 +83,7 @@ Route::get('/debug', function() {
     echo '</pre>';
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
