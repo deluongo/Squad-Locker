@@ -169,6 +169,10 @@
             </form>
             </div>
 
+        <div class="block">
+            <div class="block-header">
+
+            </div>
             <div class="block-content">
                 <div class="block">
                     <div class="block-content">
@@ -176,7 +180,7 @@
                             <thead>
                                 <tr role="row">
                                     <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 100px;">Name</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Type: activate to sort column ascending" style="width: 50px;">Movement</th>
+                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Type: activate to sort column ascending" style="width: 50px;">Feel</th>
                                     <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 100px;">Tempo</th>
                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 100px;">Off</th>
                                     <th class="hidden-md sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 50px;">Def</th>

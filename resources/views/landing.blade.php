@@ -39,10 +39,10 @@
                                 <h1 class="h2 font-w700 text-white push-20 visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">We Connect Complementary Playstyles</h1>
                                 <h2 class="h4 text-white-op visibility-hidden" data-toggle="appear" data-timeout="750" data-class="animated fadeIn"><em>We're built and tailered for competative NBA 2K Gamers</em></h2>
                                 <div class="push-50-t push-20 text-center">
-                                    <a class="btn btn-rounded btn-noborder btn-lg btn-success push-10-r push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" href="http://goo.gl/6LF10W">
+                                    <a class="btn btn-rounded btn-noborder btn-lg btn-success push-10-r push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInLeft" href="/register">
                                         <i class="fa fa-shopping-cart push-10-r"></i>Sign-Up
                                     </a>
-                                    <a class="btn btn-rounded btn-noborder btn-lg btn-primary push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" href="base_pages_dashboard.html">Log In</a>
+                                    <a class="btn btn-rounded btn-noborder btn-lg btn-primary push-5 visibility-hidden" data-toggle="appear" data-class="animated fadeInRight" href="/login">Log In</a>
                                 </div>
                             </div>
                             <!-- END Section Content -->
