@@ -2,7 +2,7 @@
 
 
 @section('title')
-    'Update Player Data'
+    Update {{$name}}
 @endsection
 
 @section('main')

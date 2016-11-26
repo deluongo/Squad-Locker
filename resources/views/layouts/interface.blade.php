@@ -316,10 +316,14 @@
                             <li>
                                 <a href="/teamupdate" class={{ $team_update_heading }} ><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">Update Team</span></a>
                             </li>
-                            <li class="nav-main-heading"><span class="sidebar-mini-hide">Connect</span></li>
+                            <li class="nav-main-heading"><span class="sidebar-mini-hide">My Profile</span></li>
                             <li>
-                                <a href="/free-agency" class={{ $free_agency_heading }} ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Free Agency</span></a>
+                                <a href="/free-agency" class={{ $free_agency_heading }} ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Find Players</span></a>
                             </li>
+                            <li>
+                                <a href="/free-agency/teams" class={{ $find_teams_heading }} ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Find Teams</span></a>
+                            </li>
+                            <li class="nav-main-heading"><span class="sidebar-mini-hide">Connect</span></li>
                             <li>
                                 <a href="/stream" class={{ $activity_stream_heading }}  ><i class="si si-list"></i><span class="sidebar-mini-hide">Activity Stream</span></a>
                             </li>
@@ -337,6 +341,59 @@
         <header id="header-navbar" class="content-mini content-mini-full">
             <!-- Header Navigation Right -->
             <ul class="nav-header pull-right">
+                <li class="push-5-t push-5">
+                <!--     {{ Auth::user()->name }}  -->
+                </li>
+                <li data-brackets-id='607'>
+                      <div data-brackets-id='608' class="btn-group">
+                          <button data-brackets-id='609' class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
+                              <img data-brackets-id='610' src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="Avatar">
+                              <span data-brackets-id='611' class="caret"></span>
+                          </button>
+                          <ul data-brackets-id='612' class="dropdown-menu dropdown-menu-right">
+                              <li data-brackets-id='613' class="dropdown-header">Profile</li>
+                              <li data-brackets-id='614'>
+                                  <a data-brackets-id='615' tabindex="-1" href="">
+                                      <i data-brackets-id='616' class="si si-envelope-open pull-right"></i>
+                                      <span data-brackets-id='617' class="badge badge-primary pull-right">3</span>Inbox
+                                  </a>
+                              </li>
+                              <li data-brackets-id='618'>
+                                  <a data-brackets-id='619' tabindex="-1" href="/player">
+                                      <i data-brackets-id='620' class="si si-user pull-right"></i>
+                                      <span data-brackets-id='621' class="badge badge-success pull-right">1</span>My Player
+                                  </a>
+                              </li>
+                              <li data-brackets-id='625' class="divider"></li>
+                              <li data-brackets-id='626' class="dropdown-header">Actions</li>
+                              <!-- Authentication Links -->
+                              @if (Auth::guest())
+                                  <li>
+                                      <a href="{{ url('/login') }}">
+                                          <i data-brackets-id='629' class="si si-lock pull-right"></i>Login
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="{{ url('/register') }}">
+                                          <i data-brackets-id='629' class="si si-shield pull-right">Register
+                                      </a>
+                                  </li>
+                              @else
+                                  <li>
+                                      <a href="{{ url('/logout') }}"
+                                          onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                          <i data-brackets-id='632' class="si si-logout pull-right"></i>Logout
+                                      </a>
+
+                                      <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                          {{ csrf_field() }}
+                                      </form>
+                                  </li>
+                              @endif
+                          </ul>
+                      </div>
+                  </li>
                 <li>
                     <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
                     <button class="btn btn-default" data-toggle="layout" data-action="side_overlay_toggle" type="button">

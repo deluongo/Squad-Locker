@@ -2,7 +2,7 @@
 
 
 @section('title')
-    '$gamertag's Locker'
+    Team {{$name}}
 @endsection
 
 @section('block-header')

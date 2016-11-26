@@ -57,6 +57,7 @@ class CreateTeamsTable extends Migration
               $table->string('player9')->default($player_default);
               $table->string('player10')->default($player_default);
 
+              $table->integer('num_players')->default(0);
               # Social fields
               $table->string('twitter');
               $table->string('youtube');

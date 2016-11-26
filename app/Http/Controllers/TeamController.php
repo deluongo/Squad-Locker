@@ -21,7 +21,7 @@ class TeamController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function show()
     {
         $team = Team::where('gamertag', '=', Auth::user()->name)->first();
@@ -212,6 +212,7 @@ class TeamController extends Controller
         $team_update_heading = '';
         $free_agency_heading = '';
         $activity_stream_heading = '';
+        $find_teams_heading = '';
 
         $data = ['num_players' => $num_players, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'abbreviation' => $abbreviation,
                 'team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'type' => $type,
@@ -222,7 +223,7 @@ class TeamController extends Controller
                 'player1_skill_grade' => $player1_skill_grade, 'player1_per' => $player1_per, 'player2_name' => $player2_name, 'player2_team_grade' => $player2_team_grade,
                 'player2_skill_grade' => $player2_skill_grade, 'player2_per' => $player2_per, 'team_grade_color' => $team_grade_color, 'skill_grade_color' => $skill_grade_color, 'per_color' => $per_color,
                 'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color, 'apg_ppg_color' => $apg_ppg_color,
-                'progress_bar' => $progress_bar, 'progress_bar_color' => $progress_bar_color, 'progress_chart_color' => $progress_chart_color
+                'progress_bar' => $progress_bar, 'progress_bar_color' => $progress_bar_color, 'progress_chart_color' => $progress_chart_color, 'find_teams_heading' => $find_teams_heading 
             ];
 
         return view('team.show')->with($data);

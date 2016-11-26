@@ -80,8 +80,9 @@ class UpdateController extends Controller
         $free_agency_heading = '';
         $activity_stream_heading = '';
         $team_update_heading = '';
+        $find_teams_heading = '';
 
-        $data = ['team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
+        $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
         return view('update.show')->with($data);
     }
 
@@ -93,6 +94,9 @@ class UpdateController extends Controller
         {
             $player = Player::where('name', '=', 'CaptainAwesome650')->first();
 
+            /* ======================================================
+            Retrieve Default/Stored DB Values
+            ====================================================== */
             if($player) {
                 //Account Settings
                 $email = $player->email;
@@ -134,6 +138,11 @@ class UpdateController extends Controller
                 $ppg = $player->ppg;
                 $rpg = $player->rpg;
             }
+
+            /* ======================================================
+            Server Side Validation
+            ====================================================== */
+
             //if (!$request->input('email') == $email){'unique:players'};
             //if (!$request->input('username') == $username){'username' => 'unique:players'};
             // Ensure Unique Inputs
@@ -173,6 +182,10 @@ class UpdateController extends Controller
                 'fg' => 'numeric|max:100|min:0'
 
             ]);
+
+            /* ======================================================
+            Store Form Results
+            ====================================================== */
             //Account Settings
             if (!$request->input('email') == null) {
                 $email = $request->input('email');
@@ -344,6 +357,38 @@ class UpdateController extends Controller
                 $progress_bar_color = "danger";
             }
 
+            /* ======================================================
+            Player Type | Role
+            ====================================================== */
+
+            $facilitator1_array = ['Dribble-N-Dime', 'Run-The-Break', 'Assist-King'];
+            $scorer_array = ['Shot-Creator', 'Ankle-Breaking-Driver', 'Blow-By-Dunker', 'Isolation-Specialist', 'Post-Move-Master', 'Fast-Break-Finisher'];
+            $facilitator2_array = ['Pass-To-Assist-King', 'Ball-Movement-Coach', 'Screen-And-D', 'Inside-Out-Big', 'Defensive-Anchor', 'Boards-N-Outlets', 'Putback-King'];
+            $finisher_array = ['Pick-N-Roll-Big', 'Second-Chance-Only', 'Backdoor-Posterizer', 'Catch-N-Shoot', 'Slash-N-Shoot'];
+
+            $on_ball_array = array_merge($facilitator1_array, $scorer_array);
+            $off_ball_array = array_merge($facilitator2_array, $finisher_array);
+
+            if (in_array($style, $scorer_array)) {
+                $role = "Scorer";
+            }
+            elseif (in_array($style, $finisher_array)) {
+                $role = "Finisher";
+            }
+            else {
+                $role = "Facilitator";
+            }
+
+            if (in_array($style, $on_ball_array)) {
+                $type = "On-Ball";
+            }
+            else {
+                $type = "Off-Ball";
+            }
+
+            /* ======================================================
+            Update Database
+            ====================================================== */
             if($player) {
                 //Account Settings
                 $player->email = $email;
@@ -464,9 +509,10 @@ class UpdateController extends Controller
             $team_update_heading = '';
             $free_agency_heading = '';
             $activity_stream_heading = '';
+            $find_teams_heading = '';
 
 
-            $data = ['team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
+            $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
             return view('update.show')->with($data);
         }
 

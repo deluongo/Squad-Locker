@@ -25,7 +25,7 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'CaptainAwesome650',
-         'archetype' => 'Playmaker',
+         'style' => 'Assist-King',
          'position' => 'PG',
          'affiliation' => 'Rivit City',
          'tagline' => '"Bro...play defense..." *THROWS MOUTHPIRECE*',
@@ -47,7 +47,7 @@ class PlayersTableSeeder extends Seeder
          //Playstyle
          'type' => 'Off-Ball',
          'role' => 'Facilitator',
-         'style' => 'Assist-King',
+         'archetype' => 'Playmaker',
 
          //Stats
          'overall_talent_score' => 0,
@@ -85,9 +85,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'PrettyBoiFredo',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Catch-N-Shoot',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -104,9 +104,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Sharp Shooter',
 
          //Stats
          'overall_talent_score' => 0,
@@ -144,9 +144,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'YESSSSeer',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Drible-N-Dime',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -163,9 +163,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Sharp Shooter',
 
          //Stats
          'overall_talent_score' => 0,
@@ -203,9 +203,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'JLN345534',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Drible-N-Dime',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -222,9 +222,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Sharp Shooter',
 
          //Stats
          'overall_talent_score' => 0,
@@ -262,9 +262,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'SnapYAfangersss',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Sharp Shooter',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -281,9 +281,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Catch-N-Shoot',
 
          //Stats
          'overall_talent_score' => 0,
@@ -321,9 +321,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'YATiddle',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Run-The-Break',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -340,9 +340,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Sharp Shooter',
 
          //Stats
          'overall_talent_score' => 0,
@@ -380,9 +380,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'HillaryClinton',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Run-The-Break',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -399,9 +399,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'Off-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Sharp Shooter',
 
          //Stats
          'overall_talent_score' => 0,
@@ -439,9 +439,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'LamarOdellBack',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Pass-To-Assist-King',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -458,9 +458,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'Off-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Sharp Shooter',
 
          //Stats
          'overall_talent_score' => 0,
@@ -498,9 +498,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'YungDRUPAL',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Pass-To-Assist-King',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -517,9 +517,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'Off-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Playmaker',
 
          //Stats
          'overall_talent_score' => 0,
@@ -557,9 +557,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'YungJeezy',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Assist-King',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -576,9 +576,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'Off-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Playmaker',
 
          //Stats
          'overall_talent_score' => 0,
@@ -616,9 +616,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'StillKANG',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Assist-King',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -635,9 +635,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Playmaker',
 
          //Stats
          'overall_talent_score' => 0,
@@ -675,9 +675,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'BAYarrrrea',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Ball-Movement-Coach',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -694,9 +694,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Playmaker',
 
          //Stats
          'overall_talent_score' => 0,
@@ -734,9 +734,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'SouljaBoi',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Ball-Movement-Coach',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -753,9 +753,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Lockdown Defender',
 
          //Stats
          'overall_talent_score' => 0,
@@ -793,9 +793,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'TELLem324',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Screen-And-D',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -812,9 +812,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Lockdown Defender',
 
          //Stats
          'overall_talent_score' => 0,
@@ -852,9 +852,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'Jump3rs1',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Screen-And-D',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -871,9 +871,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Lockdown Defender',
 
          //Stats
          'overall_talent_score' => 0,
@@ -911,9 +911,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'Jump3rs56',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Inside-Out-Big',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -930,9 +930,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Slasher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -970,9 +970,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'AishaCurry30',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Inside-Out-Big',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -989,9 +989,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Slasher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1029,9 +1029,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'LSK',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Defensive-Anchor',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1048,9 +1048,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Slasher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1088,9 +1088,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'SwisherSweet',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Defensive-Anchor',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1107,9 +1107,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'Off-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Slasher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1147,9 +1147,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => '2chaaaains',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Boards-N-Outlets',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1166,9 +1166,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'On-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Athletic Finisher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1206,9 +1206,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'LILyachty',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Boards-N-Outlets',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1225,9 +1225,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'On-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Athletic Finisher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1265,9 +1265,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'PReign',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Putback-King',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1284,9 +1284,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'On-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Athletic Finisher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1324,9 +1324,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'PJenkyJumper',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Putback-King',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1343,9 +1343,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'On-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Athletic Finisher',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1383,9 +1383,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'SweatyOLDguy',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Shot-Creator',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1402,9 +1402,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'On-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Stretch Big',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1442,9 +1442,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'LATERlooser',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Shot-Creator',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1461,9 +1461,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
-         'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'type' => 'On-Ball',
+         'role' => 'Facilitator',
+         'archetype' => 'Stretch Big',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1501,9 +1501,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'LighteningIT007',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Ankle-Breaking-Driver',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1520,9 +1520,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Stretch Big',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1560,9 +1560,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => '2FRESH4U',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Ankle-Breaking-Driver',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1579,9 +1579,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Stretch Big',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1619,9 +1619,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'JakkinUPPPPPPP',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Blow-By-Dunker',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1638,9 +1638,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Post Scorer',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1678,9 +1678,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => '30CurryLighter',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Blow-By-Dunker',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1697,9 +1697,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Post Scorer',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1737,9 +1737,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'ChefCurryBoi99',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Isolation-Specialist',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1756,9 +1756,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Post Scorer',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1796,9 +1796,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'DumpTrucksOnDatA$$',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Isolation-Specialist',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1815,9 +1815,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Glass Cleaner',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1855,9 +1855,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'ChaCh1Ng',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Post-Move-Master',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1874,9 +1874,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Glass Cleaner',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1914,9 +1914,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'NotSoFastGUy',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Post-Move-Master',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1933,9 +1933,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Glass Cleaner',
 
          //Stats
          'overall_talent_score' => 0,
@@ -1973,9 +1973,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'MakeItRain888',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Fast-Break-Finisher',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -1992,9 +1992,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Point Forward',
 
          //Stats
          'overall_talent_score' => 0,
@@ -2032,9 +2032,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'PBallHard',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Pick-N-Roll-Big',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -2051,9 +2051,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Point Forward',
 
          //Stats
          'overall_talent_score' => 0,
@@ -2091,9 +2091,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'JumpShotKiller84',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Second-Chance-Only',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -2110,9 +2110,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Point Forward',
 
          //Stats
          'overall_talent_score' => 0,
@@ -2150,9 +2150,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'GetAtMe16',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Slash-N-Shoot',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -2169,9 +2169,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Shot Creator',
 
          //Stats
          'overall_talent_score' => 0,
@@ -2209,9 +2209,9 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'NoNameMonster',
-         'archetype' => 'Sharp Shooter',
+         'style' => 'Backdoor-Posterizer',
          'position' => 'SF',
-         'affiliation' => 'Sunset',
+         'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
@@ -2228,9 +2228,9 @@ class PlayersTableSeeder extends Seeder
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
-         'type' => 'Ball-Dominant',
+         'type' => 'On-Ball',
          'role' => 'Scorer',
-         'style' => 'Ankle-Breaking-Driver',
+         'archetype' => 'Shot Creator',
 
          //Stats
          'overall_talent_score' => 0,

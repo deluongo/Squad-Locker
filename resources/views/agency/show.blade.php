@@ -6,51 +6,45 @@
 @endsection
 
 @section('title')
-    '$gamertag's Locker'
-@endsection
-
-@section('block-header')
-        Free Agency
+    Find Players
 @endsection
 
 
 @section('main')
     <!-- Page Header -->
     <div class="background-white-op">
-
-
-    <div class="content bg-primary-darker">
-        <div class="row items-push">
-            <div class="col-sm-7 clearfix">
-                <div class="push-15-r pull-left">
-                    <span>
-                        <img class="img-avatar" src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="">
-                    </span>
+        <div class="content bg-charcoal">
+            <div class="row items-push">
+                <div class="col-sm-7 clearfix">
+                    <div class="push-15-r pull-left">
+                        <span>
+                            <img class="img-avatar" src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="">
+                        </span>
+                    </div>
+                    <h2 class="page heading push-5-t text-white">{{$name}}</h2>
+                    <h2 class="h5 text-white-op">{{$affiliation}} | {{$position}} | {{$archetype}} </h2>
                 </div>
-                <h2 class="page heading push-5-t">{{$name}}</h2>
-                <h2 class="h5">{{$affiliation}} | {{$position}} | {{$archetype}}</h2>
-            </div>
-            <div class="col-sm-5 text-right hidden-xs">
-                <ol class="breadcrumb push-10-t">
-                    <li><a class="link-effect larger" href="/free-agency/teams">
-                        Find Teams
-                    </a></li>
-                    <i class="fa fa-angle-left push-5-r push-5-l"></i>
-                    <li><a class="larger" href="/free-agency">
-                         Find Players
-                    </a></li>
-                </ol>
+                <div class="col-sm-5 text-right hidden-xs">
+                    <ol class="breadcrumb push-10-t">
+                        <li><a class="link-effect larger" href="/free-agency/teams">
+                            Find Teams
+                        </a></li>
+                        <i class="fa fa-angle-left push-5-r push-5-l"></i>
+                        <li><a class="larger text-white-op" href="/free-agency">
+                             Find Players
+                        </a></li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
-        </div>
     <!-- END Page Header -->
 
     <!-- Page Content -->
     <div class="content">
         <!-- My Block -->
         <div class="block">
-            <div class="block-header bg-gray-lighter">
+            <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
                         <button type="button"><i class="si si-settings"></i></button>
@@ -93,103 +87,103 @@
                     </div>
                 </div>
             </div>
-            <!-- Main Content -->
+            <!-- Filter Form Content -->
             <form action="/free-agency" method="post">
                 {{ csrf_field() }}
-                <div class="block">
+                <div class="block h5">
                     <div class="block-content">
                         <div class="row items-push">
                             <div class="form-group">
                                 <div class="form-horizontal push-20-l push-20-r">
-                                    <div class="col-xs-4 col-sm-2 col-lg-1">
+                                    <div class="col-xs-3 col-sm-2 col-lg-1">
                                         <label for="search_position">Position</label>
-                                        <select class="form-control" id="search_position" name="search_position" size="5" multiple="no">
-                                            <option value="PG" @if($search_position == 'PG') selected @endif>PG</option>
-                                            <option value="SG" @if($search_position == 'SG') selected @endif>SG</option>
-                                            <option value="SF" @if($search_position == 'SF') selected @endif>SF</option>
-                                            <option value="PF" @if($search_position == 'PF') selected @endif>PF</option>
-                                            <option value="C" @if($search_position == 'C') selected @endif>C</option>
+                                        <select class="form-control" id="search_position" name="search_position[]" size="5" multiple="true">
+                                            <option value="PG" @if(in_array('PG', $search_position)) selected @endif>PG</option>
+                                            <option value="SG" @if(in_array('SG', $search_position)) selected @endif>SG</option>
+                                            <option value="SF" @if(in_array('SF', $search_position)) selected @endif>SF</option>
+                                            <option value="PF" @if(in_array('PF', $search_position)) selected @endif>PF</option>
+                                            <option value="C" @if(in_array('C', $search_position)) selected @endif>C</option>
                                         </select>
                                     </div>
-                                    <div class="col-xs-4 col-sm-4 col-lg-2">
+                                    <div class="col-xs-5 col-sm-4 col-lg-2">
                                         <label for="search_affiliation">Affiliation</label>
-                                        <select class="form-control" id="search_affiliation" name="search_affiliation" size="5" multiple="no">
-                                            <option value="Pro-Am Team" @if($search_affiliation == 'Pro-Am Team') selected @endif>Pro-Am Team</option>
-                                            <option value="Rivit City" @if($search_affiliation == 'Rivit City') selected @endif>Rivit City</option>
-                                            <option value="Sunset Beach" @if($search_affiliation == 'Sunset Beach') selected @endif>Sunset Beach</option>
-                                            <option value="Old Town" @if($search_affiliation == 'Old Town') selected @endif>Old Town</option>
-                                            <option value="Cross Park Squad" @if($search_affiliation == 'Cross Park Squad') selected @endif>Cross Park Squad</option>
+                                        <select class="form-control" id="search_affiliation" name="search_affiliation[]" size="5" multiple="true">
+                                            <option value="Pro-Am Team" @if(in_array('Pro-Am Team', $search_affiliation)) selected @endif>Pro-Am Team</option>
+                                            <option value="Rivit City" @if(in_array('Rivit City', $search_affiliation)) selected @endif>Rivit City</option>
+                                            <option value="Sunset Beach" @if(in_array('Sunset Beach', $search_affiliation)) selected @endif>Sunset Beach</option>
+                                            <option value="Old Town" @if(in_array('Old Town', $search_affiliation)) selected @endif>Old Town</option>
+                                            <option value="Cross Park Squad" @if(in_array('Cross Park Squad', $search_affiliation)) selected @endif>Cross Park Squad</option>
                                         </select>
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-lg-2">
                                         <label for="search_rep_status">Park Rep</label>
-                                        <select class="form-control" id="search_rep_status" name="search_rep_status" size="5" multiple="no">
-                                            <option value="Rookie" @if($search_rep_status == 'Rookie') selected @endif>Rookie</option>
-                                            <option value="Pro" @if($search_rep_status == 'Pro') selected @endif>Pro</option>
-                                            <option value="All-Star" @if($search_rep_status == 'All-Star') selected @endif>All-Star</option>
-                                            <option value="Superstar" @if($search_rep_status == 'Superstar') selected @endif>Supertar</option>
-                                            <option value="Legend" @if($search_rep_status == 'Legend') selected @endif>Legend</option>
+                                        <select class="form-control" id="search_rep_status" name="search_rep_status[]" size="5" multiple="true">
+                                            <option value="Rookie" @if(in_array('Rookie', $search_rep_status)) selected @endif>Rookie</option>
+                                            <option value="Pro" @if(in_array('Pro', $search_rep_status)) selected @endif>Pro</option>
+                                            <option value="All-Star" @if(in_array('All-Star', $search_rep_status)) selected @endif>All-Star</option>
+                                            <option value="Superstar" @if(in_array('Superstar', $search_rep_status)) selected @endif>Superstar</option>
+                                            <option value="Legend" @if(in_array('Legend', $search_rep_status)) selected @endif>Legend</option>
                                         </select>
                                     </div>
-                                    <div class="col-xs-4 col-sm-2 col-lg-1">
+                                    <div class="col-xs-3 col-sm-2 col-lg-1">
                                         <label for="search_rep_level">Level</label>
-                                        <select class="form-control" id="search_rep_level" name="search_rep_level" size="5" multiple="no">
-                                            <option value="1" @if($search_rep_level == 1) selected @endif>1</option>
-                                            <option value="2" @if($search_rep_level == 2) selected @endif>2</option>
-                                            <option value="3" @if($search_rep_level == 3) selected @endif>3</option>
-                                            <option value="4" @if($search_rep_level == 4) selected @endif>4</option>
-                                            <option value="5" @if($search_rep_level == 5) selected @endif>5</option>
+                                        <select class="form-control" id="search_rep_level" name="search_rep_level[]" size="5" multiple="true">
+                                            <option value=1 @if(in_array(1, $search_rep_level)) selected @endif>1</option>
+                                            <option value=2 @if(in_array(2, $search_rep_level)) selected @endif>2</option>
+                                            <option value=3 @if(in_array(3, $search_rep_level)) selected @endif>3</option>
+                                            <option value=4 @if(in_array(4, $search_rep_level)) selected @endif>4</option>
+                                            <option value=5 @if(in_array(5, $search_rep_level)) selected @endif>5</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-5 col-sm-4 col-lg-2">
+                                        <label for="search_type_role">Type | Role</label>
+                                        <select class="form-control" id="search_type" name="search_type[]" size="5" multiple="true">
+                                            <option value="On-Ball | Facilitator" @if(in_array('On-Ball | Facilitator', $search_type_role)) selected @endif>On-Ball | Facilitator</option>
+                                            <option value="On-Ball | Scorer" @if(in_array('On-Ball | Scorer', $search_type_role)) selected @endif>On-Ball | Scorer</option>
+                                            <option value="Off-Ball | Facilitator" @if(in_array('Off-Ball | Facilitator', $search_type_role)) selected @endif>Off-Ball | Facilitator</option>
+                                            <option value="Off-Ball | Finisher" @if(in_array('Off-Ball | Finisher', $search_type_role)) selected @endif>Off-Ball | Finisher</option>
                                         </select>
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-lg-2">
                                         <label for="search_archetype">Archetype</label>
-                                        <select class="form-control" id="search_archetype" name="search_archetype" size="5" multiple="no">
-                                            <option value="Playmaker" @if($search_archetype == 'Playmaker') selected @endif>Playmaker</option>
-                                            <option value="Lockdown Defender" @if($search_archetype == 'Lockdown Defender') selected @endif>Lockdown Defender</option>
-                                            <option value="Sharp Shooter" @if($search_archetype == 'Sharp Shooter') selected @endif>Sniper</option>
-                                            <option value="Slasher" @if($search_archetype == 'Slasher') selected @endif>Slasher</option>
-                                            <option value="Athletic Finisher" @if($search_archetype == 'Athletic Finisher') selected @endif>Athletic Finisher</option>
-                                            <option value="Stretch Big" @if($search_archetype == 'Stretch Big') selected @endif>Stretch Big</option>
-                                            <option value="Post Scorer" @if($search_archetype == 'Post Scorer') selected @endif>Post Scorer</option>
-                                            <option value="Glass Cleaner" @if($search_archetype == 'Glass Cleaner') selected @endif>Glass Cleaner</option>
-                                            <option value="Point Forward" @if($search_archetype == 'Point Forward') selected @endif>Point Forward</option>
-                                            <option value="Shot Creator" @if($search_archetype == 'Shot Creator') selected @endif>Shot Creator</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-4 col-sm-4 col-lg-2">
-                                        <label for="search_type">Type | Role</label>
-                                        <select class="form-control" id="search_type" name="search_type" size="5" multiple="no">
-                                            <option value="Ball-Dominant | Facilitator" @if($search_type == 'Ball-Dominant Facilitator') selected @endif>Ball-Dominant | Facilitator</option>
-                                            <option value="Ball-Dominant | Scorer" @if($search_type == 'Ball-Dominant Scorer') selected @endif>Ball-Dominant | Scorer</option>
-                                            <option value="Off-Ball | Facilitator" @if($search_type == 'Off-Ball Facilitator') selected @endif>Off-Ball | Facilitator</option>
-                                            <option value="Off-Ball | Finisher" @if($search_type == 'Off-Ball Finisher') selected @endif>Off-Ball | Finisher</option>
+                                        <select class="form-control" id="search_archetype" name="search_archetype[]" size="5" multiple="true">
+                                            <option value="Playmaker" @if(in_array('Playmaker', $search_archetype))  selected @endif>Playmaker</option>
+                                            <option value="Lockdown Defender" @if(in_array('Lockdown Defender', $search_archetype)) selected @endif>Lockdown Defender</option>
+                                            <option value="Sharp Shooter" @if(in_array('Sharp Shooter', $search_archetype)) selected @endif>Sharp Shooter</option>
+                                            <option value="Slasher" @if(in_array('Slasher', $search_archetype)) selected @endif>Slasher</option>
+                                            <option value="Athletic Finisher" @if(in_array('Athletic Finisher', $search_archetype)) selected @endif>Athletic Finisher</option>
+                                            <option value="Stretch Big" @if(in_array('Stretch Big', $search_archetype)) selected @endif>Stretch Big</option>
+                                            <option value="Post Scorer" @if(in_array('Post Scorer', $search_archetype)) selected @endif>Post Scorer</option>
+                                            <option value="Glass Cleaner" @if(in_array('Glass Cleaner', $search_archetype)) selected @endif>Glass Cleaner</option>
+                                            <option value="Point Forward" @if(in_array('Point Forward', $search_archetype)) selected @endif>Point Forward</option>
+                                            <option value="Shot Creator" @if(in_array('Shot Creator', $search_archetype)) selected @endif>Shot Creator</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-4 col-lg-2">
                                         <label for="search_style">Style</label>
-                                        <select class="form-control" id="search_style" name="search_style" size="5" multiple="no">
-                                            <option value="Dribble-N-Dime" @if($search_style == 'Dribble-N-Dime') selected @endif>Dribble-N-Dime</option>
-                                            <option value="Run-The-Break" @if($search_style == 'Run-The-Break') selected @endif>Run-The-Break</option>
-                                            <option value="Pass-To-Assist-King" @if($search_style == 'Pass-To-Assist-King') selected @endif>Pass-To-Assist-King</option>
-                                            <option value="Assist-King" @if($search_style == 'Assist-King') selected @endif>Assist-King</option>
-                                            <option value="Ball-Movement-Coach" @if($search_style == 'Ball-Movement-Coach') selected @endif>Ball-Movement-Coach</option>
-                                            <option value="Screen-And-D" @if($search_style == 'Screen-And-D') selected @endif>Screen-And-D</option>
-                                            <option value="Inside-Out-Big" @if($search_style == 'Inside-Out-Big') selected @endif>Inside-Out-Big</option>
-                                            <option value="Defensive-Anchor" @if($search_style == 'Defensive-Anchor') selected @endif>Defensive-Anchor</option>
-                                            <option value="Boards-N-Outlets" @if($search_style == 'Boards-N-Outlets') selected @endif>Boards-N-Outlets</option>
-                                            <option value="Putback-King" @if($search_style == 'Putback-King') selected @endif>Putback-King</option>
-                                            <option value="Shot-Creator" @if($search_style == 'Shot-Creator') selected @endif>Shot-Creator</option>
+                                        <select class="form-control" id="search_style" name="search_style[]" size="5" multiple="true">
+                                            <option value="Dribble-N-Dime" @if(in_array('Drible-N-Dime', $search_style)) selected @endif>Dribble-N-Dime</option>
+                                            <option value="Run-The-Break"  @if(in_array('Run-The-Break', $search_style)) selected @endif>Run-The-Break</option>
+                                            <option value="Pass-To-Assist-King" @if(in_array('Pass-To-Assist-King', $search_style)) selected @endif>Pass-To-Assist-King</option>
+                                            <option value="Assist-King" @if(in_array('Assist-King', $search_style)) selected @endif>Assist-King</option>
+                                            <option value="Ball-Movement-Coach" @if(in_array('Ball-Movement-Coach', $search_style)) selected @endif>Ball-Movement-Coach</option>
+                                            <option value="Screen-And-D" @if(in_array('Screen-And-D', $search_style)) selected @endif>Screen-And-D</option>
+                                            <option value="Inside-Out-Big" @if(in_array('Inside-Out-Big', $search_style)) selected @endif>Inside-Out-Big</option>
+                                            <option value="Defensive-Anchor" @if(in_array('Defensive-Anchor', $search_style)) selected @endif>Defensive-Anchor</option>
+                                            <option value="Boards-N-Outlets" @if(in_array('Boards-N-Outlets', $search_style)) selected @endif>Boards-N-Outlets</option>
+                                            <option value="Putback-King" @if(in_array('Putback-King', $search_style)) selected @endif>Putback-King</option>
+                                            <option value="Shot-Creator" @if(in_array('Shot-Creator', $search_style)) selected @endif>Shot-Creator</option>
 
-                                            <option value="Ankle-Breaking-Dimer" @if($search_style == 'Ankle-Breaking-Dimer') selected @endif>Ankle-Breaking-Dimer</option>
-                                            <option value="Blow-By-Dunker" @if($search_style == 'Blow-By-Dunker') selected @endif>Blow-By-Dunker</option>
-                                            <option value="Isolation-Specialist" @if($search_style == 'Isolation-Specialist') selected @endif>Isolation-Specialist</option>
-                                            <option value="Post-Move-Master" @if($search_style == 'Post-Move-Master') selected @endif>Post-Move-Master</option>
-                                            <option value="Fast-Break-Finisher" @if($search_style == 'Fast-Break-Finisher') selected @endif>Fast-Break-Finisher</option>
-                                            <option value="Pick-N-Roll-Big" @if($search_style == 'Pick-N-Roll-Big') selected @endif>Pick-N-Roll-Big</option>
-                                            <option value="Second-Chance-Only" @if($search_style == 'Second-Chance-Only') selected @endif>Second-Chance-Only</option>
-                                            <option value="Backdoor-Posterizer" @if($search_style == 'Backdoor-Posterizer') selected @endif>Backdoor-Posterizer</option>
-                                            <option value="Catch-N-Shoot" @if($search_style == 'Catch-N-Shoot') selected @endif>Catch-N-Shoot</option>
-                                            <option value="Slash-N-Shoot" @if($search_style == 'Slash-N-Shoot') selected @endif>Slash-N-Shoot</option>
+                                            <option value="Ankle-Breaking-Driver" @if(in_array('Ankle-Breaking-Driver', $search_style)) selected @endif>Ankle-Breaking-Driver</option>
+                                            <option value="Blow-By-Dunker" @if(in_array('Blow-By-Dunker', $search_style)) selected @endif>Blow-By-Dunker</option>
+                                            <option value="Isolation-Specialist" @if(in_array('Isolation-Specialist', $search_style)) selected @endif>Isolation-Specialist</option>
+                                            <option value="Post-Move-Master" @if(in_array('Post-Move-Master', $search_style)) selected @endif>Post-Move-Master</option>
+                                            <option value="Fast-Break-Finisher" @if(in_array('Fast-Break-Finisher', $search_style)) selected @endif>Fast-Break-Finisher</option>
+                                            <option value="Pick-N-Roll-Big" @if(in_array('Pick-N-Roll-Big', $search_style)) selected @endif>Pick-N-Roll-Big</option>
+                                            <option value="Second-Chance-Only" @if(in_array('Second-Chance-Only', $search_style)) selected @endif>Second-Chance-Only</option>
+                                            <option value="Backdoor-Posterizer" @if(in_array('Backdoor-Posterizer', $search_style)) selected @endif>Backdoor-Posterizer</option>
+                                            <option value="Catch-N-Shoot" @if(in_array('Catch-N-Shoot', $search_style)) selected @endif>Catch-N-Shoot</option>
+                                            <option value="Slash-N-Shoot" @if(in_array('Slash-N-Shoot', $search_style)) selected @endif>Slash-N-Shoot</option>
                                         </select>
                                     </div>
                                 </div>
@@ -203,7 +197,7 @@
                 </div>
             </form>
         </div>
-                        <!-- END Password Tab -->
+        <!-- END Filtr Form -->
 
         <div class="block">
             <div class="block-header">
@@ -225,36 +219,40 @@
                             <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
                             <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
                             <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
-                            <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Actions</th>
+                            <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Act</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($players as $player)
-                            <tr role="row" @if ($player->id & 1) class="odd" @else class="even" @endif>
-                                <td class="hidden-sm hidden-xs font-w600">{{ $player->name }}</td>
-                                <td class="hidden-xs">{{ $player->type }}</td>
-                                <td class="hidden-xs">{{ $player->role }}</td>
-                                <td class="">{{ $player->style }}</td>
-                                <td class="center">
-                                    <h3 class="text-{{$player->team_grade_color}} table-font">{{ $player->team_grade }}</h3>
-                                </td>
+                            @if(in_array($player->type, $search_type) AND in_array($player->role, $search_role) AND in_array($player->style, $search_style)
+                                AND in_array($player->position, $search_position) AND in_array($player->affiliation, $search_affiliation) AND in_array($player->rep_status, $search_rep_status)
+                                AND in_array($player->status_level, $search_rep_level) AND in_array($player->archetype, $search_archetype))
+                                <tr role="row" @if ($player->id & 1) class="odd" @else class="even" @endif>
+                                    <td class="hidden-sm hidden-xs font-w600">{{ $player->name }}</td>
+                                    <td class="hidden-xs">{{ $player->type }}</td>
+                                    <td class="hidden-xs">{{ $player->role }}</td>
+                                    <td class="">{{ $player->style }}</td>
+                                    <td class="center">
+                                        <h3 class="text-{{$player->team_grade_color}} table-font">{{ $player->team_grade }}</h3>
+                                    </td>
 
-                                <td class="center">
-                                    <h3 class="text-{{$player->skill_grade_color}} table-font">{{ $player->skill_grade }}</h3>
-                                </td>
-                                <td class="hidden-md hidden-sm hidden-xs sorting {{$player->per_color}} table-num">{{ $player->per }}</td>
-                                <td class="hidden-sm hidden-xs sorting {{$player->fg_color}} table-num">{{ $player->fg }}%</td>
-                                <td class="hidden-md hidden-sm hidden-xs sorting {{$player->apg_color}} table-num">{{ $player->apg}}</td>
-                                <td class="hidden-sm hidden-xs sorting {{$player->apg_ppg_color}} table-num">{{ $player->apg_ppg }}</td>
-                                <td class="hidden-md hidden-sm hidden-xs sorting {{$player->ppg_color}} table-num">{{ $player->ppg }}</td>
-                                <td class="hidden-md hidden-sm hidden-xs sorting {{$player->rpg_color}} table-num">{{ $player->rpg }}</td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-success push-5-t" type="button" data-toggle="tooltip" title="" data-original-title="Edit Client"><i class="fa fa-plus"></i></button>
-                                        <button class="btn btn-xs btn-default push-5-t" type="button" data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <td class="center">
+                                        <h3 class="text-{{$player->skill_grade_color}} table-font">{{ $player->skill_grade }}</h3>
+                                    </td>
+                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->per_color}} table-num">{{ $player->per }}</td>
+                                    <td class="hidden-sm hidden-xs sorting {{$player->fg_color}} table-num">{{ $player->fg }}%</td>
+                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->apg_color}} table-num">{{ $player->apg}}</td>
+                                    <td class="hidden-sm hidden-xs sorting {{$player->apg_ppg_color}} table-num">{{ $player->apg_ppg }}</td>
+                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->ppg_color}} table-num">{{ $player->ppg }}</td>
+                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->rpg_color}} table-num">{{ $player->rpg }}</td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <button class="btn btn-xs btn-success push-5-t" type="button" data-toggle="tooltip" title="" data-original-title="Edit Client"><i class="fa fa-plus"></i></button>
+                                            <a class="btn btn-xs btn-default push-5-t" href="/free-agency" type="button" data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>

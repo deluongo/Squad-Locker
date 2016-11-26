@@ -2,7 +2,7 @@
 
 
 @section('title')
-    '$gamertag's Locker'
+    {{ Auth::user()->name }}'s Locker
 @endsection
 
 @section('block-header')

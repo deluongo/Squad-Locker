@@ -2,7 +2,7 @@
 
 
 @section('title')
-    'Update team Data'
+    Update {{$name}}
 @endsection
 
 @section('main')
@@ -11,8 +11,8 @@
     <!-- User Header -->
     <div class="block">
         <!-- Basic Info -->
-        <div class="bg-image" style="background-image: url({{asset('/img/photos/pg2k.jpg')}})">
-            <div class="block-content bg-primary-op @if(!$notification == null) bg-black-op @endif text-center overflow-hidden">
+        <div class="bg-image" style="background-image: url({{asset('/img/photos/steph2face.jpg')}})">
+            <div class="block-content bg-city-op @if(!$notification == null) bg-black-op @endif text-center overflow-hidden">
                 <ul class="block-options">
                     <li>
                         <button type="button"><i class="si si-settings"></i></button>

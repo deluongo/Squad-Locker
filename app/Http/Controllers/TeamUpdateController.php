@@ -63,6 +63,7 @@ class TeamUpdateController extends Controller
             $player9 = $team->player9;
             $player10 = $team->player10;
 
+            $num_players = $team->num_players;
             //Social
             $twitter = $team->twitter;
             $youtube = $team->youtube;
@@ -83,8 +84,9 @@ class TeamUpdateController extends Controller
         $team_update_heading = 'active';
         $free_agency_heading = '';
         $activity_stream_heading = '';
+        $find_teams_heading = '';
 
-        $data = ['gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation, 'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses, 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6, 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10];
+        $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation, 'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses, 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6, 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10];
         return view('teamupdate.show')->with($data);
     }
 
@@ -128,6 +130,7 @@ class TeamUpdateController extends Controller
                 $player9 = $team->player9;
                 $player10 = $team->player10;
 
+                $num_players = $team->num_players;
                 //Social
                 $twitter = $team->twitter;
                 $youtube = $team->youtube;
@@ -216,6 +219,43 @@ class TeamUpdateController extends Controller
             $ppg = $request->input('ppg');
             $rpg = $request->input('rpg');
             */
+            $num_players = 0;
+            if ($player1 != '') {
+                $num_players += 1;
+            }
+            if ($player2 != '') {
+                $num_players += 1;
+            }
+            if ($player3 != '') {
+                $num_players += 1;
+            }
+            if ($player4 != '') {
+                $num_players += 1;
+            }
+            if ($player5 != '') {
+                $num_players += 1;
+            }
+            if ($player6 != '') {
+                $num_players += 1;
+            }
+            if ($player7 != '') {
+                $num_players += 1;
+            }
+            if ($player8 != '') {
+                $num_players += 1;
+            }
+            if ($player9 != '') {
+                $num_players += 1;
+            }
+            if ($player10 != '') {
+                $num_players += 1;
+            }
+            if ($player11 != '') {
+                $num_players += 1;
+            }
+            if ($player12 != '') {
+                $num_players += 1;
+            }
 
             $per = 0;
             $fg = 0;
@@ -225,7 +265,7 @@ class TeamUpdateController extends Controller
             $rpg = 0;
             $num_players = 0;
 
-            for ($i = 1; $i <= 10; $i++) {
+            for ($i = 1; $i <= $num_players; $i++) {
                 if (${'player'.$i} != '') {
                     $player = Player::where('name', '=', ${'player'.$i})->first();
                     if($player) {
@@ -383,6 +423,7 @@ class TeamUpdateController extends Controller
                 $team->player9 = $player9;
                 $team->player10 = $player10;
 
+                $team->num_players = $num_players;
                 //Social
                 $team->twitter = $twitter;
                 $team->youtube = $youtube;
@@ -441,6 +482,7 @@ class TeamUpdateController extends Controller
                 $team->player9 = $player9;
                 $team->player10 = $player10;
 
+                $team->num_players = $num_players;
                 //Social
                 $team->twitter = $twitter;
                 $team->youtube = $youtube;
@@ -480,8 +522,9 @@ class TeamUpdateController extends Controller
             $my_team_heading = '';
             $free_agency_heading = '';
             $activity_stream_heading = '';
+            $find_teams_heading = '';
 
-            $data = ['gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation, 'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses, 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6, 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10];
+            $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation, 'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses, 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6, 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10];
             return view('teamupdate.show')->with($data);
 
     }

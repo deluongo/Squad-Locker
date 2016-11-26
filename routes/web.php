@@ -27,9 +27,10 @@ Route::get('/update', 'UpdateController@show')->name('update.show');
 Route::post('/update', 'UpdateController@post')->name('update.post');
 
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
-Route::post('/free-agency', 'AgencyController@post')->name('agency.post');
+Route::post('/free-agency', 'AgencyController@post')->name('agency.show');
 
 Route::get('/free-agency/teams', 'FindTeamController@show')->name('findteam.show');
+Route::post('/free-agency/teams', 'FindTeamController@post')->name('findteam.show');
 
 Route::get('/stream', 'StreamController@show')->name('stream.show');
 
@@ -46,8 +47,8 @@ Route::group(['prefix' => 'messages'], function () {
     Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 });
 
-Route::get('/login', 'LoginController@show')->name('login.show');
-Route::post('/login', 'LoginController@post')->name('login.post');
+#Route::get('/login', 'LoginController@show')->name('login.show');
+#Route::post('/login', 'LoginController@post')->name('login.post');
 
 Route::get('/debug', function() {
 

@@ -93,6 +93,7 @@ class PlayerController extends Controller
         $team_update_heading = '';
         $free_agency_heading = '';
         $activity_stream_heading = '';
+        $find_teams_heading = '';
 
         $data = ['team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
             'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
@@ -101,7 +102,7 @@ class PlayerController extends Controller
             'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg,
             'ppg' => $ppg, 'rpg' => $rpg, 'team_grade_color' => $team_grade_color, 'skill_grade_color' => $skill_grade_color, 'per_color' => $per_color,
             'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color,
-            'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score
+            'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score, 'find_teams_heading' => $find_teams_heading
         ];
 
         return view('player.show')->with($data);
@@ -209,10 +210,11 @@ class PlayerController extends Controller
         $my_team_heading = '';
         $free_agency_heading = '';
         $activity_stream_heading = '';
+        $find_teams_heading = '';
 
         $data = ['update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
             'activity_stream_heading' => $activity_stream_heading, 'name' => $name, 'per' => $per, 'fg' => $fg, 'apg' => $apg,
-            'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
+            'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'find_teams_heading' => $find_teams_heading];
         return view('player.show')->with($data);
 
     }
