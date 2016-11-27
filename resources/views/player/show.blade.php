@@ -366,70 +366,174 @@
                         </div>
                     </div>
                 </div>
-                <!-- END Products -->
+            </div>
+        <!-- END Activity -->
+        <div class="col-sm-7 col-lg-8">
+            <!-- Timeline -->
+           <div class="block">
+               <div class="block-header bg-gray-lighter">
+                   <ul class="block-options">
+                       <li>
+                           <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                       </li>
+                       <li>
+                           <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                       </li>
+                   </ul>
+                   <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Updates</h3>
+               </div>
+               <div class="block-content">
+                       <ul class="list list-timeline pull-t">
+                           <!-- Facebook Notification -->
+                           <li>
+                               <div class="list-timeline-time">3 hrs ago</div>
+                               <i class="fa fa-youtube list-timeline-icon bg-city"></i>
+                               <div class="list-timeline-content clearfix">
+                                   <ul class="nav-users push-10-t push">
+                                       <li>
+                                           <a href="base_pages_profile.html">
+                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
+                                               <i class="fa fa-circle text-success"></i> Dennis Ross
+                                               <div class="font-w400 text-muted"><small>Web Developer</small></div>
+                                           </a>
+                                       </li>
+                                   </ul>
+                                   <button class="btn btn-success push-5-r push-10" type="button">
+                                       <i class="fa fa-plus"></i> Add &nbsp;
+                                   </button>
+                                   <button class="btn btn-danger push-5-r push-10" type="button">
+                                       <i class="fa fa-times"></i> Deny
+                                   </button>
+                               </div>
 
-                <!-- Ratings -->
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="fa fa-fw fa-pencil"></i> Scouting Report</h3>
-                    </div>
-                    <div class="block-content">
-                        <ul class="list list-simple">
-                            <li>
-                                <div class="push-5 clearfix">
-                                    <div class="text-warning pull-right">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <a class="font-w600" href="base_pages_profile.html">Ethan Howard</a>
-                                    <span class="text-muted">(5/5)</span>
-                                </div>
-                                <div class="font-s13">Flawless design execution! I'm really impressed with the product, it really helped me build my app so fast! Thank you!</div>
-                            </li>
-                            <li>
-                                <div class="push-5 clearfix">
-                                    <div class="text-warning pull-right">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <a class="font-w600" href="base_pages_profile.html">Megan Dean</a>
-                                    <span class="text-muted">(5/5)</span>
-                                </div>
-                                <div class="font-s13">Great value for money and awesome support! Would buy again and again! Thanks!</div>
-                            </li>
-                            <li>
-                                <div class="push-5 clearfix">
-                                    <div class="text-warning pull-right">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <a class="font-w600" href="base_pages_profile.html">Scott Ruiz</a>
-                                    <span class="text-muted">(5/5)</span>
-                                </div>
-                                <div class="font-s13">Working great in all my devices, quality and quantity in a great package! Thank you!</div>
-                            </li>
-                        </ul>
-                        <div class="text-center push">
-                            <small><a href="javascript:void(0)">Read More..</a></small>
-                        </div>
+
+
+                           </li>
+                           <!-- END Facebook Notification -->
+
+                           <!-- Generic Notification -->
+                           <li>
+                               <div class="list-timeline-time">4 hrs ago</div>
+                               <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
+                               <div class="list-timeline-content">
+                                   <p class="font-w600">3 New Badges were added!</p>
+                                   <div class="push-10-t">
+                                       <a class="item item-rounded push-10-r bg-info" data-toggle="tooltip" title="MyPanel" href="javascript:void(0)">
+                                           <i class="si si-rocket text-white-op"></i>
+                                       </a>
+                                       <a class="item item-rounded push-10-r bg-amethyst" data-toggle="tooltip" title="Project Time" href="javascript:void(0)">
+                                           <i class="si si-calendar text-white-op"></i>
+                                       </a>
+                                       <a class="item item-rounded push-10-r bg-city" data-toggle="tooltip" title="iDashboard" href="javascript:void(0)">
+                                           <i class="si si-speedometer text-white-op"></i>
+                                       </a>
+                                   </div>
+                               </div>
+                           </li>
+                           <!-- END Generic Notification -->
+
+                           <!-- Twitter Notification -->
+                           <li>
+                               <div class="list-timeline-time">12 hrs ago</div>
+                               <i class="fa fa-twitter list-timeline-icon bg-info"></i>
+                               <div class="list-timeline-content">
+                                   <p class="font-w600">+ 1150 Followers</p>
+                                   <p class="font-s13">You’re getting more and more followers, keep it up!</p>
+                               </div>
+                           </li>
+                           <!-- END Twitter Notification -->
+
+                           <!-- Social Notification -->
+                           <li>
+                               <div class="list-timeline-time">2 days ago</div>
+                               <i class="fa fa-user-plus list-timeline-icon bg-success"></i>
+                               <div class="list-timeline-content">
+                                   <p class="font-w600">+ 5 Friend Requests</p>
+                                   <ul class="nav-users push-10-t push">
+                                       <li>
+                                           <a href="base_pages_profile.html">
+                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar4.jpg')}}" alt="">
+                                               <i class="fa fa-circle text-success"></i> Amanda Powell
+                                               <div class="font-w400 text-muted"><small>Web Designer</small></div>
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="base_pages_profile.html">
+                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar11.jpg')}}" alt="">
+                                               <i class="fa fa-circle text-success"></i> Eric Lawson
+                                               <div class="font-w400 text-muted"><small>Graphic Designer</small></div>
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="base_pages_profile.html">
+                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar1.jpg')}}" alt="">
+                                               <i class="fa fa-circle text-warning"></i> Emma Cooper
+                                               <div class="font-w400 text-muted"><small>Photographer</small></div>
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="base_pages_profile.html">
+                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
+                                               <i class="fa fa-circle text-warning"></i> Eugene Burke
+                                               <div class="font-w400 text-muted"><small>Copywriter</small></div>
+                                           </a>
+                                       </li>
+                                       <li>
+                                           <a href="base_pages_profile.html">
+                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
+                                               <i class="fa fa-circle text-danger"></i> Ethan Howard
+                                               <div class="font-w400 text-muted"><small>UI Designer</small></div>
+                                           </a>
+                                       </li>
+                                   </ul>
+                               </div>
+                           </li>
+                           <!-- END Social Notification -->
+
+                           <!-- System Notification -->
+                           <li>
+                               <div class="list-timeline-time">1 week ago</div>
+                               <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
+                               <div class="list-timeline-content">
+                                   <p class="font-w600">System updated to v2.02</p>
+                                   <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
+                               </div>
+                           </li>
+                           <!-- END System Notification -->
+
+                           <!-- Generic Notification -->
+                           <li>
+                               <div class="list-timeline-time">2 weeks ago</div>
+                               <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
+                               <div class="list-timeline-content">
+                                   <p class="font-w600">1 New Product was added!</p>
+                                   <div class="push-10-t">
+                                       <a class="item item-rounded push-10-r bg-modern" data-toggle="tooltip" title="eSettings" href="javascript:void(0)">
+                                           <i class="si si-settings text-white-op"></i>
+                                       </a>
+                                   </div>
+                               </div>
+                           </li>
+                           <!-- END Generic Notification -->
+
+                           <!-- System Notification -->
+                           <li>
+                               <div class="list-timeline-time">2 months ago</div>
+                               <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
+                               <div class="list-timeline-content">
+                                   <p class="font-w600">System updated to v2.01</p>
+                                   <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
+                               </div>
+                           </li>
+                           <!-- END System Notification -->
+                       </ul>
                     </div>
                 </div>
-                <!-- END Ratings -->
+            </div>
+            <!-- END Timeline -->
 
+                <!-- END Ratings -->
+            <div class="col-sm-5 col-lg-4">
                 <!-- Followers -->
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
