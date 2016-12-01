@@ -10,24 +10,12 @@ use Carbon;
 use p4\Team; # <--- NEW
 use p4\Player; # <--- NEW
 
-class TeamController extends Controller
+class ViewTeamController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
-    public function show($name)
+    public function show()
     {
-
-        #$player = Player::where('name', '=', Auth::user()->name )->first();
-        $team = Team::where('name', '=', $name)->first();
-        #->where(($player->pivot->status == 2) || ($player->pivot->status == 1));
+        $team = Team::where('gamertag', '=', $name)->first();
 
         if($team) {
             //Account Settings
@@ -210,8 +198,6 @@ class TeamController extends Controller
 
 
         $team_members = [];
-        $owner = '';
-
         foreach($team->players as $player) {
             if ($player->pivot->status == 2) {
                 $team_members[] = $player;
@@ -230,9 +216,6 @@ class TeamController extends Controller
         $free_agency_heading = '';
         $activity_stream_heading = '';
         $find_teams_heading = '';
-
-        $teams_owned = [];
-        $teams_on = [];
 
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
@@ -256,7 +239,7 @@ class TeamController extends Controller
                 'team_members' => $team_members, 'owner' => $owner, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'team_profile_pic' => $team_profile_pic, 'team_bg_pic' => $team_bg_pic
             ];
 
-        return view('team.show')->with($data);
+        return view('viewteam.show')->with($data);
 
     }
 }

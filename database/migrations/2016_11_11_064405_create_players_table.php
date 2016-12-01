@@ -35,6 +35,8 @@ class CreatePlayersTable extends Migration
               $table->integer('status_level');
 
               # Player profile fields
+              $table->string('player_profile_pic')->default('https://s3.amazonaws.com/thinkific/courses/course_card_image_000/004/5921439502331.original.jpg?1439502331');
+              $table->string('player_bg_pic')->default('http://img.ecumenicalnews.com/full/16438/nba-2k17-legend-edition.jpg');
               $table->string('name')->unique();
               $table->string('archetype');
               $table->string('position');
@@ -65,6 +67,7 @@ class CreatePlayersTable extends Migration
               $table->float('rpg');
 
               #Colors
+              $table->string('profile_pic_color');
               $table->string('progress_chart_color');
               $table->string('progress_bar_color');
               $table->string('team_grade_color');

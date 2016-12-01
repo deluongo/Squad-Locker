@@ -29,6 +29,8 @@ class PlayersTableSeeder extends Seeder
          'position' => 'PG',
          'affiliation' => 'Rivit City',
          'tagline' => '"Bro...play defense..." *THROWS MOUTHPIRECE*',
+         'player_profile_pic' => 'https://yt3.ggpht.com/-8DWfe0gZvK0/AAAAAAAAAAI/AAAAAAAAAAA/H2FyH-fiPwg/s900-c-k-no-mo-rj-c0xffffff/photo.jpg',
+         'player_bg_pic' => '/img/photos/pg2k.jpg',
          //'bg_image' => 'asset("/img/photos/pg2k.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
@@ -62,7 +64,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#abe37d',
-         'progress_bar_color' => 'success',
+         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'success',
          'skill_grade_color' => 'danger',
          'per_color' => 'success',
@@ -89,6 +91,8 @@ class PlayersTableSeeder extends Seeder
          'position' => 'SF',
          'affiliation' => 'Old Town',
          'tagline' => 'Too pretty for my shirt BOI!',
+         'player_profile_pic' => '/img/avatars/prettyboyfredo.jpg',
+         'player_bg_pic' => '/img/photos/pg2k.jpg',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
@@ -121,7 +125,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -180,7 +184,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -239,7 +243,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -298,7 +302,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'danger',
@@ -357,7 +361,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -416,7 +420,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -475,7 +479,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -534,7 +538,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -593,7 +597,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -652,7 +656,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -711,7 +715,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'success',
+         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -770,7 +774,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -829,7 +833,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -888,7 +892,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -947,7 +951,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -959,6 +963,7 @@ class PlayersTableSeeder extends Seeder
      ]);
 
      DB::table('players')->insert([
+
          //Housekeeping
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
@@ -1006,7 +1011,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'success',
+         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1065,7 +1070,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1124,7 +1129,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1183,7 +1188,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1242,7 +1247,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'success',
+         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1301,7 +1306,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1360,7 +1365,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1419,7 +1424,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1478,7 +1483,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'danger',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1537,7 +1542,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'success',
+         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'success',
          'skill_grade_color' => 'success',
          'per_color' => 'success',
@@ -1596,7 +1601,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1655,7 +1660,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'danger',
@@ -1714,7 +1719,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'success',
+         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'success',
          'skill_grade_color' => 'success',
          'per_color' => 'success',
@@ -1773,7 +1778,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1832,7 +1837,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -1891,7 +1896,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'danger',
          'skill_grade_color' => 'success',
          'per_color' => 'danger',
@@ -1950,7 +1955,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -2009,7 +2014,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'danger',
          'skill_grade_color' => 'success',
          'per_color' => 'danger',
@@ -2068,7 +2073,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -2127,7 +2132,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -2186,7 +2191,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
@@ -2245,7 +2250,7 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger',
+         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',

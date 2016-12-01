@@ -82,7 +82,18 @@ class UpdateController extends Controller
         $team_update_heading = '';
         $find_teams_heading = '';
 
-        $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
+
+        $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
         return view('update.show')->with($data);
     }
 
@@ -335,14 +346,17 @@ class UpdateController extends Controller
             ### Progress Chart###
             if ($overall_talent_score >= 66) {
                 $progress_chart_color = "#abe37d";
+                $profile_pic_color = "success";
 
             }
             elseif (66 > $overall_talent_score && $overall_talent_score > 33) {
                 $progress_chart_color = "#FADB7D";
+                $profile_pic_color = "warning";
 
             }
             else {
                 $progress_chart_color ="#FAAE7E";
+                $profile_pic_color = "danger";
             }
             ### Progress Bar ###
             if ($rep_progress >= 66) {
@@ -432,6 +446,7 @@ class UpdateController extends Controller
                 $player->rpg = $rpg;
 
                 // Colors
+                $player->profile_pic_color = $profile_pic_color;
                 $player->progress_chart_color = $progress_chart_color;
                 $player->progress_bar_color = $progress_bar_color;
                 $player->team_grade_color = $team_grade_color;
@@ -495,6 +510,19 @@ class UpdateController extends Controller
                 $player->ppg = $ppg;
                 $player->rpg = $rpg;
 
+                // Colors
+                $player->profile_pic_color = $profile_pic_color;
+                $player->progress_chart_color = $progress_chart_color;
+                $player->progress_bar_color = $progress_bar_color;
+                $player->team_grade_color = $team_grade_color;
+                $player->skill_grade_color = $skill_grade_color;
+                $player->per_color = $per_color;
+                $player->fg_color = $fg_color;
+                $player->apg_color = $apg_color;
+                $player->apg_ppg_color = $apg_ppg_color;
+                $player->ppg_color = $ppg_color;
+                $player->rpg_color = $rpg_color;
+
                 # Save the changes
                 $player->save();
 
@@ -511,8 +539,19 @@ class UpdateController extends Controller
             $activity_stream_heading = '';
             $find_teams_heading = '';
 
+            $player = Player::where('name', '=', Auth::user()->name )->first();
 
-            $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg];
+            foreach($player->teams as $team) {
+                if ($team->pivot->status == 2) {
+                    $teams_owned[] = $team;
+                }
+                elseif($team->pivot->status == 1) {
+                    $teams_on[] = $team;
+                }
+            }
+
+
+            $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
             return view('update.show')->with($data);
         }
 

@@ -2,6 +2,7 @@
 
 namespace p4\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use p4\Http\Requests;
 use DB;
@@ -11,6 +12,16 @@ use p4\Player; # <--- NEW
 
 class FindTeamController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show()
     {
         $teams = Team::all();
@@ -26,6 +37,17 @@ class FindTeamController extends Controller
         $activity_stream_heading = '';
         $find_teams_heading = 'active';
 
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
+
         $name = $player->name;
         $affiliation = $player->affiliation;
         $position = $player->position;
@@ -39,12 +61,13 @@ class FindTeamController extends Controller
         $search_members = [1,2,3,4,5,6,7,8];
         $search_type = ['MyPark Squad', 'Pro-Am Team'];
 
-        $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement, 'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type, 'search_offense' => $search_offense, 'search_defense' => $search_defense, 'find_teams_heading' => $find_teams_heading, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'teams' => $teams,  'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading];
+        $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement, 'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type, 'search_offense' => $search_offense, 'search_defense' => $search_defense, 'find_teams_heading' => $find_teams_heading, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'teams' => $teams,  'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
         return view('findteam.show')->with($data);
     }
 
     public function post(Request $request)
     {
+
         $teams = Team::all();
 
         $player = Player::where('name', '=', 'CaptainAwesome650')->first();
@@ -57,6 +80,17 @@ class FindTeamController extends Controller
         $free_agency_heading = '';
         $activity_stream_heading = '';
         $find_teams_heading = 'active';
+
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
 
         $name = $player->name;
         $affiliation = $player->affiliation;
@@ -78,7 +112,7 @@ class FindTeamController extends Controller
             array_push($search_type, 'MyPark Squad');
         }
 
-        $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement, 'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type, 'search_offense' => $search_offense, 'search_defense' => $search_defense, 'find_teams_heading' => $find_teams_heading, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'teams' => $teams,  'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading];
+        $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement, 'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type, 'search_offense' => $search_offense, 'search_defense' => $search_defense, 'find_teams_heading' => $find_teams_heading, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'teams' => $teams,  'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
         return view('findteam.show')->with($data);
     }
 }

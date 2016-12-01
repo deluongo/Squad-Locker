@@ -296,16 +296,34 @@
                     </div>
                     <!-- END Side Header -->
 
-                    <!-- Side Content -->
+                    <!-- Side Navigation -->
                     <div class="side-content">
                         <ul class="nav-main">
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">My Profile</span></li>
                             <li>
                                 <a href="/player" class={{ $my_player_heading }}><i class="si si-game-controller"></i><span class="sidebar-mini-hide">My Player</span></a>
                             </li>
-                            <li>
-                                <a href="/team" class={{ $my_team_heading }} ><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">My Team</span></a>
-                            </li>
+                            <li class=@if(!$my_team_heading == '') "open" @endif>
+                                <a href="/team" class="{{ $my_team_heading }} nav-submenu" data-toggle="nav-submenu"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">My Teams</span></a>
+                                <ul>
+                                    @if(!$teams_owned == null)
+                                        <li class="nav-sub-header">Owned</li>
+                                        @foreach($teams_owned as $team)
+                                            <li>
+                                                <a href="/myteam/{{$team->name}}">{{$team->name}}</a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                    @if(!$teams_on == null)
+                                        <li class="nav-sub-header">Rostered</li>
+                                        @foreach($teams_on as $team)
+                                            <li>
+                                                <a href="/myteam/{{$team->name}}">{{$team->name}}</a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
+                                </li>
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">Edit</span></li>
                             <li>
                                 <a href="/update" class={{ $update_heading }} ><i class="si si-list"></i><span class="sidebar-mini-hide">Update Player</span></a>

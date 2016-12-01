@@ -16,9 +16,13 @@ Route::get('/', function () {
 });
 
 Route::get('/player', 'PlayerController@show')->name('player.show');
-Route::get('/player-nav-js', 'PlayerController@show2')->name('player.player-nav-js');
+#Route::get('/player-nav-js', 'PlayerController@show2')->name('player.player-nav-js');
 
-Route::get('/team', 'TeamController@show')->name('team.show');
+Route::get('player/{name}', 'ViewPlayerController@show')->name('viewplayer.show');
+
+Route::get('/myteam/{name}', 'TeamController@show')->name('team.show');
+
+Route::get('team/{name}', 'ViewTeamController@show')->name('viewteam.show');
 
 Route::get('/register', 'RegisterController@showv2')->name('register.showv2');
 Route::post('/register', 'RegisterController@submit')->name('register.showv2');

@@ -12,12 +12,12 @@
 @section('main')
 
     <!-- Page Header -->
-    <div class="content bg-image" style="background-image: url({{asset($team_bg_pic)}})">
+    <div class="content bg-image" style="background-image: url({{asset('/img/photos/steph2face.jpg')}})">
         <div class="push-100-t push-15 clearfix">
             <div class="push-15-r pull-left animated zoomInRight">
                 <div class="js-pie-chart pie-chart" data-percent="{{$progress_bar}}" data-line-width="3" data-size="100" data-bar-color="{{$progress_chart_color}}" data-track-color="#eeeeee" data-scale-color="#dddddd">
                     <span>
-                        <img class="img-avatar" src="{{asset($team_profile_pic)}}" alt="">
+                        <img class="img-avatar" src="{{asset('/img/avatars/rttf.jpg')}}" alt="">
                     </span>
                 </div>
             </div>
@@ -343,7 +343,7 @@
                         <ul class="nav-users push">
                             <h5>Owner</h5>
                             <li>
-                                <a href="player/{{$owner->name}}">
+                                <a href="base_pages_profile.html">
                                     <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
                                     <i class="fa fa-circle text-{{$owner->profile_pic_color}}"></i> {{ $owner->name }}
                                     <div class="font-w400 text-muted"><small> <span class="text-{{$owner->team_grade_color}}"> {{ $owner->team_grade }} </span> | <span class="text-{{$owner->skill_grade_color}}"> {{  $owner->skill_grade }}</span> | <span class="text-{{$owner->per_color}}"> {{ $owner->per }} </span></small></div>
@@ -352,7 +352,7 @@
                             <h5>Players</h5>
                             @foreach($team_members as $player)
                                 <li>
-                                    <a href="player/{{$player->name}}">
+                                    <a href="base_pages_profile.html">
                                         <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
                                         <i class="fa fa-circle text-{{$player->profile_pic_color}}"></i> {{ $player->name }}
                                         <div class="font-w400 text-muted"><small> <span class="text-{{$player->team_grade_color}}"> {{ $player->team_grade }} </span> | <span class="text-{{$player->skill_grade_color}}"> {{  $player->skill_grade }}</span> | <span class="text-{{$player->per_color}}"> {{ $player->per }} </span></small></div>

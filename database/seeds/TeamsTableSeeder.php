@@ -19,6 +19,9 @@ class TeamsTableSeeder extends Seeder
              'gamertag' => 'CaptainAwesome650',
              # Team Settings
              'name' => 'StraightFundamental',
+             'team_bg_pic' => '/img/photos/steph2face.jpg',
+             'team_profile_pic' => '/img/avatars/rttf.jpg',
+
              'abbreviation' => 'SFTU',
              'wins' => '110',
              'losses' => '24',

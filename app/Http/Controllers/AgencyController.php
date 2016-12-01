@@ -2,6 +2,7 @@
 
 namespace p4\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use p4\Http\Requests;
 use DB;
@@ -11,6 +12,17 @@ use p4\Player; # <--- NEW
 
 class AgencyController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show()
     {
         $players = Player::all();
@@ -25,6 +37,17 @@ class AgencyController extends Controller
         $free_agency_heading = 'active';
         $activity_stream_heading = '';
         $find_teams_heading = '';
+
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
 
         $name = $player->name;
         $affiliation = $player->affiliation;
@@ -48,7 +71,7 @@ class AgencyController extends Controller
             array_push($search_role, explode(' | ', $filter)[1]);
         }
 
-        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name , 'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position, 'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status, 'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading];
+        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name , 'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position, 'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status, 'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
 
         return view('agency.show')->with($data);
     }
@@ -67,6 +90,17 @@ class AgencyController extends Controller
         $free_agency_heading = 'active';
         $activity_stream_heading = '';
         $find_teams_heading = '';
+
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
 
         $name = $player->name;
         $affiliation = $player->affiliation;
@@ -122,7 +156,7 @@ class AgencyController extends Controller
         }
 
 
-        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name , 'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position, 'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status, 'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading];
+        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name , 'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position, 'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status, 'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
 
         return view('agency.show')->with($data);
     }

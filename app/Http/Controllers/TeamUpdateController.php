@@ -52,17 +52,6 @@ class TeamUpdateController extends Controller
             $team_grade = $team->team_grade;
             $skill_grade = $team->skill_grade;
 
-            $player1 = $team->player1;
-            $player2 = $team->player2;
-            $player3 = $team->player3;
-            $player4 = $team->player4;
-            $player5 = $team->player5;
-            $player6 = $team->player6;
-            $player7 = $team->player7;
-            $player8 = $team->player8;
-            $player9 = $team->player9;
-            $player10 = $team->player10;
-
             $num_players = $team->num_players;
             //Social
             $twitter = $team->twitter;
@@ -76,6 +65,32 @@ class TeamUpdateController extends Controller
             $notification = 'Team data not found.';
         }
 
+        $player1 = $gamertag;
+        $player2 = '';
+        $player3 = '';
+        $player4 = '';
+        $player5 = '';
+        $player6 = '';
+        $player7 = '';
+        $player8 = '';
+        $player9 = '';
+        $player10 = '';
+
+        //Team Members
+        $team_members = [];
+
+        $i = 2;
+        foreach($team->players as $player) {
+            if ($player->pivot->status == 2) {
+                $team_members[] = $player;
+                ${'player'.$i} = $player->name;
+                $i += 1;
+            }
+        }
+
+        $num_players = count($team_members);
+
+
 
         //Navigation Active
         $my_player_heading = '';
@@ -86,7 +101,27 @@ class TeamUpdateController extends Controller
         $activity_stream_heading = '';
         $find_teams_heading = '';
 
-        $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation, 'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses, 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6, 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10];
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
+
+        $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo,
+                'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading,
+                'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
+                'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name,
+                'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation,
+                'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses,
+                'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6,
+                'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10, 'team_members' => $team_members,
+                'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on
+         ];
         return view('teamupdate.show')->with($data);
     }
 
@@ -119,17 +154,6 @@ class TeamUpdateController extends Controller
                 $team_grade = $team->team_grade;
                 $skill_grade = $team->skill_grade;
 
-                $player1 = $team->player1;
-                $player2 = $team->player2;
-                $player3 = $team->player3;
-                $player4 = $team->player4;
-                $player5 = $team->player5;
-                $player6 = $team->player6;
-                $player7 = $team->player7;
-                $player8 = $team->player8;
-                $player9 = $team->player9;
-                $player10 = $team->player10;
-
                 $num_players = $team->num_players;
                 //Social
                 $twitter = $team->twitter;
@@ -139,6 +163,7 @@ class TeamUpdateController extends Controller
                 //Gamertag
                 $gamertag = $team->gamertag;
             }
+
 
             if ($request->input('gamertag') != $gamertag) {
                 $uni_tag = "|unique:players";
@@ -250,12 +275,6 @@ class TeamUpdateController extends Controller
             if ($player10 != '') {
                 $num_players += 1;
             }
-            if ($player11 != '') {
-                $num_players += 1;
-            }
-            if ($player12 != '') {
-                $num_players += 1;
-            }
 
             $per = 0;
             $fg = 0;
@@ -263,9 +282,16 @@ class TeamUpdateController extends Controller
             $apg_ppg = 0;
             $ppg = 0;
             $rpg = 0;
-            $num_players = 0;
 
-            for ($i = 1; $i <= $num_players; $i++) {
+            $owner = Player::where('name', '=', $gamertag)->first();
+
+
+
+            if(!$owner->teams->contains($team->id)) {
+                $owner->teams()->attach($team->id, array('status' => 1));
+            }
+
+            for ($i = 2; $i <= $num_players+1; $i++) {
                 if (${'player'.$i} != '') {
                     $player = Player::where('name', '=', ${'player'.$i})->first();
                     if($player) {
@@ -281,10 +307,27 @@ class TeamUpdateController extends Controller
                         ${'player'.$i.'_per'} = $player->per;
                         ${'player'.$i.'_team_grade'} = $player->team_grade;
                         ${'player'.$i.'_skill_grade'} = $player->skill_grade;
+                        #$player->teams()->sync($team);
+                        if(!$player->teams->contains($team->id)){
+                            $player->teams()->attach($team->id, array('status' => 2));
+                        }
                     }
-
                 }
             }
+
+            //Team Members
+            $team_members = [];
+
+            $i = 2;
+            foreach($team->players as $player) {
+                if ($player->pivot->status == 2) {
+                    $team_members[] = $player;
+                    ${'player'.$i} = $player->name;
+                    $i += 1;
+                }
+            }
+
+            $num_players = count($team_members);
 
             # Team Stats
             $per = number_format(round($per / $num_players, 1), 1, '.', '');
@@ -514,7 +557,7 @@ class TeamUpdateController extends Controller
                 $notification = "Player details for $team have been uploaded. Check your team's profile to view changes.";
 
             }
-            echo $notification;
+
             //Navigation Active
             $my_player_heading = '';
             $update_heading = '';
@@ -524,7 +567,27 @@ class TeamUpdateController extends Controller
             $activity_stream_heading = '';
             $find_teams_heading = '';
 
-            $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation, 'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses, 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6, 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10];
+            $player = Player::where('name', '=', Auth::user()->name )->first();
+
+            foreach($player->teams as $team) {
+                if ($team->pivot->status == 2) {
+                    $teams_owned[] = $team;
+                }
+                elseif($team->pivot->status == 1) {
+                    $teams_on[] = $team;
+                }
+            }
+
+            $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo,
+                    'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading,
+                    'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
+                    'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'tagline' => $tagline, 'name' => $name,
+                    'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'type' => $type, 'affiliation' => $affiliation,
+                    'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses,
+                    'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6,
+                    'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10, 'team_members' => $team_members,
+                    'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+
             return view('teamupdate.show')->with($data);
 
     }

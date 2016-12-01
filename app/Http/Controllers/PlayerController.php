@@ -8,6 +8,7 @@ use p4\Http\Requests;
 use DB;
 use Carbon;
 use p4\Player;
+use p4\Team;
 
 class PlayerController extends Controller
 {
@@ -35,6 +36,19 @@ class PlayerController extends Controller
     {
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
+        $player_teams = [];
+        $owned_teams = [];
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $player_teams[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $owned_teams[] = $team;
+            }
+        }
+
+
         if($player) {
             //Profile
             $name = $player->name;
@@ -42,6 +56,8 @@ class PlayerController extends Controller
             $archetype = $player->archetype;
             $position = $player->position;
             $tagline = $player->tagline;
+            $player_bg_pic = $player->player_bg_pic;
+            $player_profile_pic = $player->player_profile_pic;
             //$bg_image = $player->bg_image;
             //$profile_pic = $player->profile_pic;
 
@@ -95,6 +111,15 @@ class PlayerController extends Controller
         $activity_stream_heading = '';
         $find_teams_heading = '';
 
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
+
         $data = ['team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
             'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
             'name' => $name, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter,
@@ -102,7 +127,10 @@ class PlayerController extends Controller
             'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg,
             'ppg' => $ppg, 'rpg' => $rpg, 'team_grade_color' => $team_grade_color, 'skill_grade_color' => $skill_grade_color, 'per_color' => $per_color,
             'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color,
-            'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score, 'find_teams_heading' => $find_teams_heading
+            'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
+            'find_teams_heading' => $find_teams_heading, 'player_teams' => $player_teams,  'owned_teams' => $owned_teams, 'progress_bar_color' => $progress_bar_color,
+            'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
+            'player_profile_pic' => $player_profile_pic
         ];
 
         return view('player.show')->with($data);
@@ -211,6 +239,18 @@ class PlayerController extends Controller
         $free_agency_heading = '';
         $activity_stream_heading = '';
         $find_teams_heading = '';
+
+        $teams_owned = [];
+        $teams_on = [];
+
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 2) {
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 1) {
+                $teams_on[] = $team;
+            }
+        }
 
         $data = ['update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
             'activity_stream_heading' => $activity_stream_heading, 'name' => $name, 'per' => $per, 'fg' => $fg, 'apg' => $apg,

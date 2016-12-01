@@ -25,6 +25,9 @@ class CreateTeamsTable extends Migration
 
               # Owner
               $table->string('gamertag');
+              $table->string('team_profile_pic')->default('https://s3.amazonaws.com/thinkific/courses/course_card_image_000/004/5921439502331.original.jpg?1439502331');
+              $table->string('team_bg_pic')->default('http://cdn.idigitaltimes.com/sites/idigitaltimes.com/files/2016/06/01/nba-2k16-champs-tournament.JPG');
+
               # Team Settings
               $table->string('name');
               $table->string('abbreviation');
