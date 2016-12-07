@@ -172,7 +172,6 @@
                                       </ul>
                                     @endif
                                 </div>
-
                             </div>
                         </div>
                     </div>

@@ -17,8 +17,8 @@ class PlayerTeamTableSeeder extends Seeder
          # First, create an array of all the books we want to associate tags with
          # The *key* will be the book title, and the *value* will be an array of tags.
          $players =[
-             'CaptainAwesome650' => ['Drewkerbockers'],
-             'PrettyBoiFredo' => ['StraightFundamental','Drewkerbockers'],
+             'CaptainAwesome650' => ['StraightFundamental'],
+             'PrettyBoiFredo' => ['Drewkerbockers'],
              'HillaryClinton' => ['StraightFundamental']
          ];
 

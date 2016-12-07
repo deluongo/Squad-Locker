@@ -36,19 +36,6 @@ class PlayerController extends Controller
     {
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
-        $player_teams = [];
-        $owned_teams = [];
-
-        foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
-                $player_teams[] = $team;
-            }
-            elseif($team->pivot->status == 1) {
-                $owned_teams[] = $team;
-            }
-        }
-
-
         if($player) {
             //Profile
             $name = $player->name;
@@ -111,12 +98,29 @@ class PlayerController extends Controller
         $activity_stream_heading = '';
         $find_teams_heading = '';
 
+        $teams_owned = [];
+        $teams_on = [];
+
         foreach($player->teams as $team) {
             if ($team->pivot->status == 2) {
                 $teams_owned[] = $team;
             }
             elseif($team->pivot->status == 1) {
                 $teams_on[] = $team;
+            }
+        }
+
+        $all_teams = array_merge($teams_owned, $teams_on);
+
+        $team_members = [];
+        $player_names = [];
+
+        foreach($all_teams as $team) {
+            foreach($team->players as $player) {
+                if (!in_array($player->name, $player_names)) {
+                    $player_names[] = $player->name;
+                    $team_members[] = $player;
+                }
             }
         }
 
@@ -128,17 +132,12 @@ class PlayerController extends Controller
             'ppg' => $ppg, 'rpg' => $rpg, 'team_grade_color' => $team_grade_color, 'skill_grade_color' => $skill_grade_color, 'per_color' => $per_color,
             'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color,
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
-            'find_teams_heading' => $find_teams_heading, 'player_teams' => $player_teams,  'owned_teams' => $owned_teams, 'progress_bar_color' => $progress_bar_color,
+            'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams
         ];
 
         return view('player.show')->with($data);
-    }
-
-    public function show2()
-    {
-        return view('player.player-nav-js');
     }
 
     /* ======================================================
@@ -249,6 +248,41 @@ class PlayerController extends Controller
             }
             elseif($team->pivot->status == 1) {
                 $teams_on[] = $team;
+            }
+        }
+
+        /* ======================================================
+        Attatch Players to Teams
+        ====================================================== */
+
+        //Attatch authenticated user as team owner (Status = 1)
+        if(!$owner->teams->contains($team->id)) {
+            $owner->teams()->attach($team->id, array('status' => 1));
+        }
+
+        //Loop through all players added to team
+        for ($i = 2; $i <= $num_players+1; $i++) {
+            if (${'player'.$i} != '') {
+               //Load player object
+                $player = Player::where('name', '=', ${'player'.$i})->first();
+                //Add player stats to team stats
+                if($player) {
+                    //Player stats
+                    $per += $player->per;
+                    $fg += $player->fg;
+                    $apg += $player->apg;
+                    $ppg += $player->ppg;
+                    $rpg +=$player->rpg;
+                    //Track each loop
+                    $num_players += 1;
+
+
+                    //If player not already attatched to team
+                    if(!$player->teams->contains($team->id)){
+                       //Attatch player as team member (Status = 2)
+                        $player->teams()->attach($team->id, array('status' => 2));
+                    }
+                }
             }
         }
 

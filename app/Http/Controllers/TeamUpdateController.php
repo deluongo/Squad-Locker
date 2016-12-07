@@ -286,35 +286,44 @@ class TeamUpdateController extends Controller
             $owner = Player::where('name', '=', $gamertag)->first();
 
 
+            /* ======================================================
+            Attatch Players to Teams
+            ====================================================== */
 
+            //Attatch authenticated user as team owner (Status = 1)
             if(!$owner->teams->contains($team->id)) {
                 $owner->teams()->attach($team->id, array('status' => 1));
             }
 
+            //Loop through all players added to team
             for ($i = 2; $i <= $num_players+1; $i++) {
                 if (${'player'.$i} != '') {
+                   //Load player object
                     $player = Player::where('name', '=', ${'player'.$i})->first();
+                    //Add player stats to team stats
                     if($player) {
+                        //Player stats
                         $per += $player->per;
                         $fg += $player->fg;
                         $apg += $player->apg;
                         $ppg += $player->ppg;
                         $rpg +=$player->rpg;
-
+                        //Track each loop
                         $num_players += 1;
 
-                        ${'player'.$i.'_name'} = $player->name;
-                        ${'player'.$i.'_per'} = $player->per;
-                        ${'player'.$i.'_team_grade'} = $player->team_grade;
-                        ${'player'.$i.'_skill_grade'} = $player->skill_grade;
-                        #$player->teams()->sync($team);
+
+                        //If player not already attatched to team
                         if(!$player->teams->contains($team->id)){
+                           //Attatch player as team member (Status = 2)
                             $player->teams()->attach($team->id, array('status' => 2));
                         }
                     }
                 }
             }
 
+            /* ======================================================
+
+            ====================================================== */
             //Team Members
             $team_members = [];
 

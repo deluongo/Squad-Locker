@@ -100,8 +100,8 @@
                         </ul>
                         <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Stats</h3>
                     </div>
-                    <div class="block-content">
-                        <div class="content-grid margin-stats-b">
+                    <div class="block-content remove-margin-b">
+                        <div class="content-grid ">
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="block block-themed margin-stats-b">
@@ -130,7 +130,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <div class="block block-themed margin-stats-b">
+                                        <div class="block block-themed remove-margin-b">
                                             <div class="block-header bg-{{$per_color}} sm-padding">
                                                 <h3 class="block-title">Efficiency</h3>
                                             </div>
@@ -139,21 +139,22 @@
                                                 <div class="row">
                                                     <h3 class="text-{{$per_color}} center extra-pad-vert">{{ $per }}<span class="h6"> PER</span></h3>
                                                 </div>
-
                                             </div>
                                             <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
-                                                        <span class="hidden-xs">Real!</span>
-                                                    </a>
+                                              <form action="/update" method="post">
+                                                <div class="col-xs-6 truth-btn">
+                                                      <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                          <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
+                                                          <span class="hidden-xs">Real!</span>
+                                                      </a>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-down push-5-l"></i>
                                                         <span class="hidden-xs">Fake</span>
                                                     </a>
                                                 </div>
+                                              </form>
                                             </div>
                                         </div>
                                         <div class="block block-themed remove-margin-b">
@@ -165,13 +166,13 @@
                                                 <h3 class="text-{{$fg_color}} center  extra-pad-vert">{{ $fg }}<span class="h6"> %</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-down push-5-l"></i>
                                                         <span class="hidden-xs">Fake</span>
@@ -181,7 +182,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <div class="block block-themed margin-stats-b">
+                                        <div class="block block-themed remove-margin-b">
                                             <div class="block-header bg-{{$apg_color}} sm-padding">
                                                 <h3 class="block-title">Assists</h3>
                                             </div>
@@ -192,13 +193,13 @@
                                                 <h3 class="text-{{$apg_color}} center extra-pad-vert">{{ $apg }} <span class="h6">APG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-down push-5-l"></i>
                                                         <span class="hidden-xs">Fake</span>
@@ -217,13 +218,13 @@
                                                 <h3 class="text-{{$apg_ppg_color}} center extra-pad-vert">{{ $apg_ppg }}</h3>
                                             </div>
                                             <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-down push-5-l"></i>
                                                         <span class="hidden-xs">Fake</span>
@@ -233,7 +234,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
-                                        <div class="block block-themed margin-stats-b">
+                                        <div class="block block-themed remove-margin-b">
                                             <div class="block-header bg-{{$ppg_color}} sm-padding">
                                                 <h3 class="block-title">Points</h3>
                                             </div>
@@ -242,13 +243,13 @@
                                                 <h3 class="text-{{$ppg_color}} center extra-pad-vert">{{ $ppg }} <span class="h6">PPG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-down push-5-l"></i>
                                                         <span class="hidden-xs">Fake</span>
@@ -265,13 +266,13 @@
                                                 <h3 class="text-{{$rpg_color}} center  extra-pad-vert">{{ $rpg }} <span class="h6">RPG</span></h3>
                                             </div>
                                             <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
                                                 </div>
-                                                <div class="col-xs-6">
+                                                <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-down push-5-l"></i>
                                                         <span class="hidden-xs">Fake</span>
@@ -326,63 +327,50 @@
                 </div>
                 <!-- END Timeline -->
             </div>
+
+            <!-- Teammates -->
             <div class="col-sm-5 col-lg-4">
-                <!-- Products -->
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
                             <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
-                        <h3 class="block-title"><i class="si si-badge"></i> Badges</h3>
+                        <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teammates</h3>
                     </div>
                     <div class="block-content">
-                        <ul class="list list-simple list-li-clearfix">
-                            <li>
-                                <a class="item item-rounded pull-left push-10-r bg-info" href="javascript:void(0)">
-                                    <i class="si si-rocket text-white-op"></i>
-                                </a>
-                                <h5 class="push-10-t">MyPanel</h5>
-                                <div class="font-s13">Responsive App Template</div>
-                            </li>
-                            <li>
-                                <a class="item item-rounded pull-left push-10-r bg-amethyst" href="javascript:void(0)">
-                                    <i class="si si-calendar text-white-op"></i>
-                                </a>
-                                <h5 class="push-10-t">Project Time</h5>
-                                <div class="font-s13">Web application</div>
-                            </li>
-                            <li>
-                                <a class="item item-rounded pull-left push-10-r bg-danger" href="javascript:void(0)">
-                                    <i class="si si-speedometer text-white-op"></i>
-                                </a>
-                                <h5 class="push-10-t">iDashboard</h5>
-                                <div class="font-s13">Bootstrap Admin Template</div>
-                            </li>
+                        <ul class="nav-users push">
+                            @foreach($team_members as $player)
+                                <li>
+                                    <a href="/player/{{$player->name}}">
+                                        <img class="img-avatar" src="{{$player->player_profile_pic}}" alt="Profile Picture">
+                                        <i class="fa fa-circle text-{{$player->profile_pic_color}}"></i> <div class="font-18px font-w400">{{ $player->name }}</div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $player->team_grade }} </span> | <span class="text-{{$player->skill_grade_color}}"> {{  $player->skill_grade }}</span> | <span class="text-{{$player->per_color}}"> {{ $player->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$player->ppg_color}}"> {{ $player->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$player->apg_color}}"> {{ $player->apg }} <small><small><small>APG</small></small></span></small></div>
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
-                        <div class="text-center push">
-                            <small><a href="javascript:void(0)">View More..</a></small>
-                        </div>
                     </div>
                 </div>
             </div>
-        <!-- END Activity -->
-        <div class="col-sm-7 col-lg-8">
+            <!-- END Teammates -->
+
             <!-- Timeline -->
-           <div class="block">
-               <div class="block-header bg-gray-lighter">
-                   <ul class="block-options">
-                       <li>
-                           <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
-                       </li>
-                       <li>
-                           <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
-                       </li>
-                   </ul>
-                   <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Updates</h3>
-               </div>
-               <div class="block-content">
+            <div class="col-sm-7 col-lg-8">
+               <div class="block">
+                   <div class="block-header bg-gray-lighter">
+                       <ul class="block-options">
+                           <li>
+                               <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                           </li>
+                           <li>
+                               <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                           </li>
+                       </ul>
+                       <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Updates</h3>
+                   </div>
+                   <div class="block-content">
                        <ul class="list list-timeline pull-t">
                            <!-- Facebook Notification -->
                            <li>
@@ -532,49 +520,7 @@
             </div>
             <!-- END Timeline -->
 
-                <!-- END Ratings -->
-            <div class="col-sm-5 col-lg-4">
-                <!-- Followers -->
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="si si-puzzle"></i> Teammates</h3>
-                    </div>
-                    <div class="block-content">
-                        <ul class="nav-users push">
-                            <li>
-                                <a href="base_pages_profile.html">
-                                    <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                    <i class="fa fa-circle text-success"></i> Dennis Ross
-                                    <div class="font-w400 text-muted"><small>Web Developer</small></div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="base_pages_profile.html">
-                                    <img class="img-avatar" src="{{asset('/img/avatars/avatar3.jpg')}}" alt="">
-                                    <i class="fa fa-circle text-success"></i> Laura Bell
-                                    <div class="font-w400 text-muted"><small>Web Designer</small></div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="base_pages_profile.html">
-                                    <img class="img-avatar" src="{{asset('/img/avatars/avatar1.jpg')}}" alt="">
-                                    <i class="fa fa-circle text-warning"></i> Tiffany Kim
-                                    <div class="font-w400 text-muted"><small>Photographer</small></div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="text-center push">
-                            <small><a href="javascript:void(0)">Load More..</a></small>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Followers -->
-            </div>
+            <!-- Teams -->
             <div class="col-sm-5 col-lg-4">
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
@@ -587,47 +533,77 @@
                     </div>
                     <div class="block-content">
                         <h5>Owned</h5>
-                        <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Name</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team record">Record</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team">Type</th>
-                            </thead>
-                            <tbody>
-                                @foreach($owned_teams as $team)
-                                        <tr role="row" @if ($team->id & 1) class="odd" @else class="even" @endif>
-                                            <td class="hidden-sm hidden-xs font-w600">{{ $team->name }}</td>
-                                            <td class="hidden-xs">{{ $team->wins }} - {{ $team->losses }} </td>
-                                            <td class="hidden-xs">{{ $team->type }}</td>
-                                        </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <h5>Acquired</h5>
-                        <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Name</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team record">Record</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team">Type</th>
-                            </thead>
-                            <tbody>
-                                @foreach($player_teams as $team)
-                                        <tr role="row" @if ($team->id & 1) class="odd" @else class="even" @endif>
-                                            <td class="hidden-sm hidden-xs font-w600">{{ $team->name }}</td>
-                                            <td class="hidden-xs">{{ $team->wins }} - {{ $team->losses }} </td>
-                                            <td class="hidden-xs">{{ $team->type }}</td>
-                                        </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        <ul class="nav-users push">
+                            @foreach($teams_owned as $team)
+                                <li>
+                                    <a href="/team/{{$team->name}}">
+                                        <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
+                                        <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span></div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></span></small></div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <h5>Signed</h5>
+                        <ul class="nav-users push">
+                            @foreach($teams_on as $team)
+                                <li>
+                                    <a href="/team/{{$team->name}}">
+                                        <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
+                                        <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></span></small></div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
             </div>
+
+            <!-- Badges -->
+            <div class="col-sm-5 col-lg-4">
+                <div class="block">
+                    <div class="block-header bg-gray-lighter">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title"><i class="si si-badge"></i> Badges</h3>
+                    </div>
+                    <div class="block-content">
+                        <ul class="list list-simple list-li-clearfix">
+                            <li>
+                                <a class="item item-rounded pull-left push-10-r bg-info" href="javascript:void(0)">
+                                    <i class="si si-rocket text-white-op"></i>
+                                </a>
+                                <h5 class="push-10-t">MyPanel</h5>
+                                <div class="font-s13">Responsive App Template</div>
+                            </li>
+                            <li>
+                                <a class="item item-rounded pull-left push-10-r bg-amethyst" href="javascript:void(0)">
+                                    <i class="si si-calendar text-white-op"></i>
+                                </a>
+                                <h5 class="push-10-t">Project Time</h5>
+                                <div class="font-s13">Web application</div>
+                            </li>
+                            <li>
+                                <a class="item item-rounded pull-left push-10-r bg-danger" href="javascript:void(0)">
+                                    <i class="si si-speedometer text-white-op"></i>
+                                </a>
+                                <h5 class="push-10-t">iDashboard</h5>
+                                <div class="font-s13">Bootstrap Admin Template</div>
+                            </li>
+                        </ul>
+                        <div class="text-center push">
+                            <small><a href="javascript:void(0)">View More..</a></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- END Badges -->
         </div>
     <!-- END Page Content -->
-
 @endsection
 
 @section('page-js')
@@ -643,6 +619,10 @@
         <script src="{{URL::asset('/js/plugins/flot/jquery.flot.resize.min.js')}}"></script>
         <script src="{{URL::asset('/js/plugins/jquery-raty/jquery.raty.min.js')}}"></script>
         <script src="{{URL::asset('/js/pages/base_comp_rating.js') }}"></script>
+
+        <!--
+        <script src="{{URL::asset('/js/ajax/magic.js')}}"></script>
+        -->
 
         <script>
             jQuery(function () {

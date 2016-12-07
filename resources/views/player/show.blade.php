@@ -88,202 +88,203 @@
                 </div>
             </div>
             <div class="col-sm-8 col-xs-12 clearfix">
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
-                            </li>
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Stats</h3>
-                    </div>
-                    <div class="block-content">
-                        <div class="content-grid margin-stats-b">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-{{$team_grade_color}} sm-padding">
-                                                <h3 class="block-title">Teammate</h3>
-                                            </div>
-                                            <div class="block-content sm-padding">
-                                                <span class="label label-warning clear label-margin label-shrink">7 votes</span>
-                                                <h1 class="text-{{ $team_grade_color}} center grade-margin">{{ $team_grade }}</h1>
-                                            </div>
-                                            <div class="js-rating center" data-precision="true" data-score="4.5">
-                                                <input name="score" type="hidden" value="3.006696428571429">
-                                            </div>
-                                        </div>
-                                        <div class="block block-themed remove-margin-b">
-                                            <div class="block-header bg-{{$skill_grade_color}} clearfix">
-                                                <h3 class="block-title">Ability</h3>
-                                            </div>
-                                            <div class="block-content">
-                                                <span class="label label-danger clear label-margin label-shrink">2 votes</span>
-                                                <h1 class="text-{{$skill_grade_color}} center grade-margin">{{ $skill_grade }}</h1>
-                                            </div>
-                                            <div class="js-rating center" data-precision="true" data-score="3" style="cursor: pointer;">
-                                                <input name="score" type="hidden" value="3.006696428571429">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-{{$per_color}} sm-padding">
-                                                <h3 class="block-title">Efficiency</h3>
-                                            </div>
-                                            <div class="block-content sm-padding">
-                                                <span class="label label-success clear label-margin label-shrink">+<span data-toggle="countTo" data-to="3">3</span></span>
-                                                <div class="row">
-                                                    <h3 class="text-{{$per_color}} center extra-pad-vert">{{ $per }}<span class="h6"> PER</span></h3>
-                                                </div>
-
-                                            </div>
-                                            <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
+              <div class="block">
+                  <div class="block-header bg-gray-lighter">
+                      <ul class="block-options">
+                          <li>
+                              <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                          </li>
+                          <li>
+                              <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                          </li>
+                      </ul>
+                      <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Stats</h3>
+                  </div>
+                  <div class="block-content remove-margin-b">
+                      <div class="content-grid">
+                              <div class="row">
+                                  <div class="col-xs-3">
+                                      <div class="block block-themed margin-stats-b">
+                                          <div class="block-header bg-{{$team_grade_color}} sm-padding">
+                                              <h3 class="block-title">Teammate</h3>
+                                          </div>
+                                          <div class="block-content sm-padding">
+                                              <span class="label label-warning clear label-margin label-shrink">7 votes</span>
+                                              <h1 class="text-{{ $team_grade_color}} center grade-margin">{{ $team_grade }}</h1>
+                                          </div>
+                                          <div class="js-rating center" data-precision="true" data-score="4.5">
+                                              <input name="score" type="hidden" value="3.006696428571429">
+                                          </div>
+                                      </div>
+                                      <div class="block block-themed remove-margin-b">
+                                          <div class="block-header bg-{{$skill_grade_color}} clearfix">
+                                              <h3 class="block-title">Ability</h3>
+                                          </div>
+                                          <div class="block-content">
+                                              <span class="label label-danger clear label-margin label-shrink">2 votes</span>
+                                              <h1 class="text-{{$skill_grade_color}} center grade-margin">{{ $skill_grade }}</h1>
+                                          </div>
+                                          <div class="js-rating center" data-precision="true" data-score="3" style="cursor: pointer;">
+                                              <input name="score" type="hidden" value="3.006696428571429">
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-xs-3">
+                                      <div class="block block-themed remove-margin-b">
+                                          <div class="block-header bg-{{$per_color}} sm-padding">
+                                              <h3 class="block-title">Efficiency</h3>
+                                          </div>
+                                          <div class="block-content sm-padding">
+                                              <span class="label label-success clear label-margin label-shrink">+<span data-toggle="countTo" data-to="3">3</span></span>
+                                              <div class="row">
+                                                  <h3 class="text-{{$per_color}} center extra-pad-vert">{{ $per }}<span class="h6"> PER</span></h3>
+                                              </div>
+                                          </div>
+                                          <div class="row text-center font-s13">
+                                            <form action="/update" method="post">
+                                              <div class="col-xs-6 truth-btn">
                                                     <a class="font-w600 text-gray-dark" href="javascript:void(0)">
                                                         <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
                                                         <span class="hidden-xs">Real!</span>
                                                     </a>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-down push-5-l"></i>
-                                                        <span class="hidden-xs">Fake</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block block-themed remove-margin-b">
-                                            <div class="block-header bg-{{$fg_color}} clearfix">
-                                                <h3 class="block-title">Shooting</h3>
-                                            </div>
-                                            <div class="block-content">
-                                                <span class="label label-danger clear label-margin label-shrink">-4</span>
-                                                <h3 class="text-{{$fg_color}} center  extra-pad-vert">{{ $fg }}<span class="h6"> %</span></h3>
-                                            </div>
-                                            <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
-                                                        <span class="hidden-xs">Real!</span>
-                                                    </a>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-down push-5-l"></i>
-                                                        <span class="hidden-xs">Fake</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-{{$apg_color}} sm-padding">
-                                                <h3 class="block-title">Assists</h3>
-                                            </div>
-                                            <div class="block-content sm-padding">
-                                                <span class="label label-warning clear label-margin label-shrink">
-                                                    <i class="fa fa-refresh fa-spin"></i>
-                                                </span>
-                                                <h3 class="text-{{$apg_color}} center extra-pad-vert">{{ $apg }} <span class="h6">APG</span></h3>
-                                            </div>
-                                            <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
-                                                        <span class="hidden-xs">Real!</span>
-                                                    </a>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-down push-5-l"></i>
-                                                        <span class="hidden-xs">Fake</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block block-themed remove-margin-b">
-                                            <div class="block-header bg-{{$apg_ppg_color}} clearfix">
-                                                <h3 class="block-title">APG/PPG</h3>
-                                            </div>
-                                            <div class="block-content">
-                                                <span class="label label-warning clear label-margin label-shrink">
-                                                    <i class="fa fa-refresh fa-spin"></i>
-                                                </span>
-                                                <h3 class="text-{{$apg_ppg_color}} center extra-pad-vert">{{ $apg_ppg }}</h3>
-                                            </div>
-                                            <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
-                                                        <span class="hidden-xs">Real!</span>
-                                                    </a>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-down push-5-l"></i>
-                                                        <span class="hidden-xs">Fake</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <div class="block block-themed margin-stats-b">
-                                            <div class="block-header bg-{{$ppg_color}} sm-padding">
-                                                <h3 class="block-title">Points</h3>
-                                            </div>
-                                            <div class="block-content sm-padding">
-                                                <span class="label label-success clear label-margin label-shrink">+1</span>
-                                                <h3 class="text-{{$ppg_color}} center extra-pad-vert">{{ $ppg }} <span class="h6">PPG</span></h3>
-                                            </div>
-                                            <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
-                                                        <span class="hidden-xs">Real!</span>
-                                                    </a>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-down push-5-l"></i>
-                                                        <span class="hidden-xs">Fake</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="block block-themed widget-height remove-margin-b">
-                                            <div class="block-header bg-{{$rpg_color}} clearfix">
-                                                <h3 class="block-title">Rebounds</h3>
-                                            </div>
-                                            <div class="block-content">
-                                                <span class="label label-success clear label-margin label-shrink">+1</span>
-                                                <h3 class="text-{{$rpg_color}} center  extra-pad-vert">{{ $rpg }} <span class="h6">RPG</span></h3>
-                                            </div>
-                                            <div class="row text-center font-s13">
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
-                                                        <span class="hidden-xs">Real!</span>
-                                                    </a>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <a class="font-w600 text-gray-dark" href="javascript:void(0)">
-                                                        <i class="fa fa-thumbs-down push-5-l"></i>
-                                                        <span class="hidden-xs">Fake</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                              </div>
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-down push-5-l"></i>
+                                                      <span class="hidden-xs">Fake</span>
+                                                  </a>
+                                              </div>
+                                            </form>
+                                          </div>
+                                      </div>
+                                      <div class="block block-themed remove-margin-b">
+                                          <div class="block-header bg-{{$fg_color}} clearfix">
+                                              <h3 class="block-title">Shooting</h3>
+                                          </div>
+                                          <div class="block-content">
+                                              <span class="label label-danger clear label-margin label-shrink">-4</span>
+                                              <h3 class="text-{{$fg_color}} center  extra-pad-vert">{{ $fg }}<span class="h6"> %</span></h3>
+                                          </div>
+                                          <div class="row text-center font-s13">
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
+                                                      <span class="hidden-xs">Real!</span>
+                                                  </a>
+                                              </div>
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-down push-5-l"></i>
+                                                      <span class="hidden-xs">Fake</span>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-xs-3">
+                                      <div class="block block-themed remove-margin-b">
+                                          <div class="block-header bg-{{$apg_color}} sm-padding">
+                                              <h3 class="block-title">Assists</h3>
+                                          </div>
+                                          <div class="block-content sm-padding">
+                                              <span class="label label-warning clear label-margin label-shrink">
+                                                  <i class="fa fa-refresh fa-spin"></i>
+                                              </span>
+                                              <h3 class="text-{{$apg_color}} center extra-pad-vert">{{ $apg }} <span class="h6">APG</span></h3>
+                                          </div>
+                                          <div class="row text-center font-s13">
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
+                                                      <span class="hidden-xs">Real!</span>
+                                                  </a>
+                                              </div>
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-down push-5-l"></i>
+                                                      <span class="hidden-xs">Fake</span>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="block block-themed remove-margin-b">
+                                          <div class="block-header bg-{{$apg_ppg_color}} clearfix">
+                                              <h3 class="block-title">APG/PPG</h3>
+                                          </div>
+                                          <div class="block-content">
+                                              <span class="label label-warning clear label-margin label-shrink">
+                                                  <i class="fa fa-refresh fa-spin"></i>
+                                              </span>
+                                              <h3 class="text-{{$apg_ppg_color}} center extra-pad-vert">{{ $apg_ppg }}</h3>
+                                          </div>
+                                          <div class="row text-center font-s13">
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
+                                                      <span class="hidden-xs">Real!</span>
+                                                  </a>
+                                              </div>
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-down push-5-l"></i>
+                                                      <span class="hidden-xs">Fake</span>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="col-xs-3">
+                                      <div class="block block-themed remove-margin-b">
+                                          <div class="block-header bg-{{$ppg_color}} sm-padding">
+                                              <h3 class="block-title">Points</h3>
+                                          </div>
+                                          <div class="block-content sm-padding">
+                                              <span class="label label-success clear label-margin label-shrink">+1</span>
+                                              <h3 class="text-{{$ppg_color}} center extra-pad-vert">{{ $ppg }} <span class="h6">PPG</span></h3>
+                                          </div>
+                                          <div class="row text-center font-s13">
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
+                                                      <span class="hidden-xs">Real!</span>
+                                                  </a>
+                                              </div>
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-down push-5-l"></i>
+                                                      <span class="hidden-xs">Fake</span>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="block block-themed widget-height remove-margin-b">
+                                          <div class="block-header bg-{{$rpg_color}} clearfix">
+                                              <h3 class="block-title">Rebounds</h3>
+                                          </div>
+                                          <div class="block-content">
+                                              <span class="label label-success clear label-margin label-shrink">+1</span>
+                                              <h3 class="text-{{$rpg_color}} center  extra-pad-vert">{{ $rpg }} <span class="h6">RPG</span></h3>
+                                          </div>
+                                          <div class="row text-center font-s13">
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-up push-5-l remove-margin-l remove-margin-r"></i>
+                                                      <span class="hidden-xs">Real!</span>
+                                                  </a>
+                                              </div>
+                                              <div class="col-xs-6 truth-btn">
+                                                  <a class="font-w600 text-gray-dark" href="javascript:void(0)">
+                                                      <i class="fa fa-thumbs-down push-5-l"></i>
+                                                      <span class="hidden-xs">Fake</span>
+                                                  </a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                 </div>
             </div>
 
@@ -326,8 +327,159 @@
                 </div>
                 <!-- END Timeline -->
             </div>
+
+            <!-- Teammates -->
             <div class="col-sm-5 col-lg-4">
-                <!-- Products -->
+               <div class="block">
+                  <div class="block-header bg-gray-lighter">
+                     <ul class="block-options">
+                        <li>
+                           <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
+                        </li>
+                     </ul>
+                     <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teammates</h3>
+                  </div>
+                  <div class="block-content">
+                     <ul class="nav-users push">
+                        @foreach($team_members as $player)
+                        <li>
+                           <a href="/player/{{$player->name}}">
+                              <img class="img-avatar" src="{{$player->player_profile_pic}}" alt="Profile Picture">
+                              <i class="fa fa-circle text-{{$player->profile_pic_color}}"></i> <div class="font-18px font-w400">{{ $player->name }}</div>
+                              <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $player->team_grade }} </span> | <span class="text-{{$player->skill_grade_color}}"> {{  $player->skill_grade }}</span> | <span class="text-{{$player->per_color}}"> {{ $player->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$player->ppg_color}}"> {{ $player->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$player->apg_color}}"> {{ $player->apg }} <small><small><small>APG</small></small></span></small></div>
+                           </a>
+                        </li>
+                        @endforeach
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <!-- END Teammates -->
+
+            <!-- Roster Moves -->
+            <div class="col-sm-7 col-lg-8">
+               <div class="block">
+                  <!-- Header -->
+                  <ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
+                     <li class="active">
+                        <a href="#myplayer-tabs-incoming-player-invites"><i class="fa fa-home"></i> Squad Invites</a>
+                     </li>
+                     <li class="">
+                        <a href="#myplayer-tabs-incoming-player-requests"><i class="fa fa-pencil"></i> Player Requests</a>
+                     </li>
+                     <li class="">
+                        <a href="#myplayer-tabs-scouting-report-central"><i class="fa fa-cog"></i> Scouting Report</a>
+                     </li>
+                  </ul>
+                  <div class="block-content tab-content remove-margin remove-padding">
+                     <div class="tab-pane active bg-hover-color" id="myplayer-tabs-incoming-player-invites">
+                        <div class="row push-0">
+                           @foreach($team_members as $player)
+                           <div class="col-xs-12 col-lg-6">
+                              <div class="block remove-margin margin-20-t">
+                                 <div class="block-header">
+                                    <h3 class="block-title center">{{$player->name}}</h3>
+                                 </div>
+                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                    <div class="flipper">
+                                       <div class="front bg-hover-color">
+                                          <canvas id="myChart" class="center-chart padding-10-v push-20 push-10-t"></canvas>
+                                       </div>
+                                       <div class="back">
+                                          <div class="text-center bg-image fill-container parent" style="background-image: url({{$player->player_bg_pic}})">
+                                             <div class="child remove-padding full-width">
+                                                <img class="img-avatar img-avatar96 img-avatar-thumb" src={{$player->player_profile_pic}} alt="">
+                                                <h2 class="h4 text-white-op">{{ $player->affiliation }} | {{ $player->position }} | {{ $player->archetype }}</h2>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+
+                                 <div class="text-center">
+                                    <div class="row items-push">
+                                       <div class="col-xs-6 remove-margin remove-padding-r">
+                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
+                                             <div class="padding-15-h padding-20-v">
+                                                <i class="si si-check fa-2x text-success"></i>
+                                             </div>
+                                          </a>
+                                       </div>
+                                       <div class="col-xs-6 remove-margin remove-padding-l">
+                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
+                                             <div class="padding-15-h padding-20-v">
+                                                <i class="si si-close fa-2x text-danger"></i>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+
+                              </div>
+                           </div>
+                           @endforeach
+                        </div>
+                     </div>
+                     <div class="tab-pane" id="myplayer-tabs-incoming-player-requests">
+
+                           <canvas id="myChart2" width="400" height="400"></canvas>
+
+                     </div>
+                     <div class="tab-pane" id="myplayer-tabs-scouting-report-central">
+                        <h4 class="font-w300 push-15">Settings Tab</h4>
+                        <p>...</p>
+                     </div>
+                  </div>
+
+               </div>
+            </div>
+
+            <!-- Teams -->
+            <div class="col-sm-5 col-lg-4">
+                <div class="block">
+                    <div class="block-header bg-gray-lighter">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teams</h3>
+                    </div>
+                    <div class="block-content">
+                        <h5>Owned</h5>
+                        <ul class="nav-users push">
+                            @foreach($teams_owned as $team)
+
+                                <li>
+                                    <a href="/team/{{$team->name}}">
+                                        <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
+                                        <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span></div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></span></small></div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <h5>Signed</h5>
+                        <ul class="nav-users push">
+                            @foreach($teams_on as $team)
+
+                                <li>
+                                    <a href="/team/{{$team->name}}">
+                                        <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
+                                        <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></span></small></div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Badges -->
+            <div class="col-sm-5 col-lg-4">
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
@@ -367,9 +519,10 @@
                     </div>
                 </div>
             </div>
-        <!-- END Activity -->
+        <!-- END Badges -->
+
+        <!-- Timeline -->
         <div class="col-sm-7 col-lg-8">
-            <!-- Timeline -->
            <div class="block">
                <div class="block-header bg-gray-lighter">
                    <ul class="block-options">
@@ -383,248 +536,154 @@
                    <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Updates</h3>
                </div>
                <div class="block-content">
-                       <ul class="list list-timeline pull-t">
-                           <!-- Facebook Notification -->
-                           <li>
-                               <div class="list-timeline-time">3 hrs ago</div>
-                               <i class="fa fa-youtube list-timeline-icon bg-city"></i>
-                               <div class="list-timeline-content clearfix">
-                                   <ul class="nav-users push-10-t push">
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-success"></i> Dennis Ross
-                                               <div class="font-w400 text-muted"><small>Web Developer</small></div>
-                                           </a>
-                                       </li>
-                                   </ul>
-                                   <button class="btn btn-success push-5-r push-10" type="button">
-                                       <i class="fa fa-plus"></i> Add &nbsp;
-                                   </button>
-                                   <button class="btn btn-danger push-5-r push-10" type="button">
-                                       <i class="fa fa-times"></i> Deny
-                                   </button>
-                               </div>
-
-
-
-                           </li>
-                           <!-- END Facebook Notification -->
-
-                           <!-- Generic Notification -->
-                           <li>
-                               <div class="list-timeline-time">4 hrs ago</div>
-                               <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">3 New Badges were added!</p>
-                                   <div class="push-10-t">
-                                       <a class="item item-rounded push-10-r bg-info" data-toggle="tooltip" title="MyPanel" href="javascript:void(0)">
-                                           <i class="si si-rocket text-white-op"></i>
+                   <ul class="list list-timeline pull-t">
+                       <!-- Facebook Notification -->
+                       <li>
+                           <div class="list-timeline-time">3 hrs ago</div>
+                           <i class="fa fa-youtube list-timeline-icon bg-city"></i>
+                           <div class="list-timeline-content clearfix">
+                               <ul class="nav-users push-10-t push">
+                                   <li>
+                                       <a href="base_pages_profile.html">
+                                           <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
+                                           <i class="fa fa-circle text-success"></i> Dennis Ross
+                                           <div class="font-w400 text-muted"><small>Web Developer</small></div>
                                        </a>
-                                       <a class="item item-rounded push-10-r bg-amethyst" data-toggle="tooltip" title="Project Time" href="javascript:void(0)">
-                                           <i class="si si-calendar text-white-op"></i>
+                                   </li>
+                               </ul>
+                               <button class="btn btn-success push-5-r push-10" type="button">
+                                   <i class="fa fa-plus"></i> Add &nbsp;
+                               </button>
+                               <button class="btn btn-danger push-5-r push-10" type="button">
+                                   <i class="fa fa-times"></i> Deny
+                               </button>
+                           </div>
+
+
+
+                       </li>
+                       <!-- END Facebook Notification -->
+
+                       <!-- Generic Notification -->
+                       <li>
+                           <div class="list-timeline-time">4 hrs ago</div>
+                           <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
+                           <div class="list-timeline-content">
+                               <p class="font-w600">3 New Badges were added!</p>
+                               <div class="push-10-t">
+                                   <a class="item item-rounded push-10-r bg-info" data-toggle="tooltip" title="MyPanel" href="javascript:void(0)">
+                                       <i class="si si-rocket text-white-op"></i>
+                                   </a>
+                                   <a class="item item-rounded push-10-r bg-amethyst" data-toggle="tooltip" title="Project Time" href="javascript:void(0)">
+                                       <i class="si si-calendar text-white-op"></i>
+                                   </a>
+                                   <a class="item item-rounded push-10-r bg-city" data-toggle="tooltip" title="iDashboard" href="javascript:void(0)">
+                                       <i class="si si-speedometer text-white-op"></i>
+                                   </a>
+                               </div>
+                           </div>
+                       </li>
+                       <!-- END Generic Notification -->
+
+                       <!-- Twitter Notification -->
+                       <li>
+                           <div class="list-timeline-time">12 hrs ago</div>
+                           <i class="fa fa-twitter list-timeline-icon bg-info"></i>
+                           <div class="list-timeline-content">
+                               <p class="font-w600">+ 1150 Followers</p>
+                               <p class="font-s13">You’re getting more and more followers, keep it up!</p>
+                           </div>
+                       </li>
+                       <!-- END Twitter Notification -->
+
+                       <!-- Social Notification -->
+                       <li>
+                           <div class="list-timeline-time">2 days ago</div>
+                           <i class="fa fa-user-plus list-timeline-icon bg-success"></i>
+                           <div class="list-timeline-content">
+                               <p class="font-w600">+ 5 Friend Requests</p>
+                               <ul class="nav-users push-10-t push">
+                                   <li>
+                                       <a href="base_pages_profile.html">
+                                           <img class="img-avatar" src="{{asset('/img/avatars/avatar4.jpg')}}" alt="">
+                                           <i class="fa fa-circle text-success"></i> Amanda Powell
+                                           <div class="font-w400 text-muted"><small>Web Designer</small></div>
                                        </a>
-                                       <a class="item item-rounded push-10-r bg-city" data-toggle="tooltip" title="iDashboard" href="javascript:void(0)">
-                                           <i class="si si-speedometer text-white-op"></i>
+                                   </li>
+                                   <li>
+                                       <a href="base_pages_profile.html">
+                                           <img class="img-avatar" src="{{asset('/img/avatars/avatar11.jpg')}}" alt="">
+                                           <i class="fa fa-circle text-success"></i> Eric Lawson
+                                           <div class="font-w400 text-muted"><small>Graphic Designer</small></div>
                                        </a>
-                                   </div>
-                               </div>
-                           </li>
-                           <!-- END Generic Notification -->
-
-                           <!-- Twitter Notification -->
-                           <li>
-                               <div class="list-timeline-time">12 hrs ago</div>
-                               <i class="fa fa-twitter list-timeline-icon bg-info"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">+ 1150 Followers</p>
-                                   <p class="font-s13">You’re getting more and more followers, keep it up!</p>
-                               </div>
-                           </li>
-                           <!-- END Twitter Notification -->
-
-                           <!-- Social Notification -->
-                           <li>
-                               <div class="list-timeline-time">2 days ago</div>
-                               <i class="fa fa-user-plus list-timeline-icon bg-success"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">+ 5 Friend Requests</p>
-                                   <ul class="nav-users push-10-t push">
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar4.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-success"></i> Amanda Powell
-                                               <div class="font-w400 text-muted"><small>Web Designer</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar11.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-success"></i> Eric Lawson
-                                               <div class="font-w400 text-muted"><small>Graphic Designer</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar1.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-warning"></i> Emma Cooper
-                                               <div class="font-w400 text-muted"><small>Photographer</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-warning"></i> Eugene Burke
-                                               <div class="font-w400 text-muted"><small>Copywriter</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-danger"></i> Ethan Howard
-                                               <div class="font-w400 text-muted"><small>UI Designer</small></div>
-                                           </a>
-                                       </li>
-                                   </ul>
-                               </div>
-                           </li>
-                           <!-- END Social Notification -->
-
-                           <!-- System Notification -->
-                           <li>
-                               <div class="list-timeline-time">1 week ago</div>
-                               <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">System updated to v2.02</p>
-                                   <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
-                               </div>
-                           </li>
-                           <!-- END System Notification -->
-
-                           <!-- Generic Notification -->
-                           <li>
-                               <div class="list-timeline-time">2 weeks ago</div>
-                               <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">1 New Product was added!</p>
-                                   <div class="push-10-t">
-                                       <a class="item item-rounded push-10-r bg-modern" data-toggle="tooltip" title="eSettings" href="javascript:void(0)">
-                                           <i class="si si-settings text-white-op"></i>
+                                   </li>
+                                   <li>
+                                       <a href="base_pages_profile.html">
+                                           <img class="img-avatar" src="{{asset('/img/avatars/avatar1.jpg')}}" alt="">
+                                           <i class="fa fa-circle text-warning"></i> Emma Cooper
+                                           <div class="font-w400 text-muted"><small>Photographer</small></div>
                                        </a>
-                                   </div>
-                               </div>
-                           </li>
-                           <!-- END Generic Notification -->
+                                   </li>
+                                   <li>
+                                       <a href="base_pages_profile.html">
+                                           <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
+                                           <i class="fa fa-circle text-warning"></i> Eugene Burke
+                                           <div class="font-w400 text-muted"><small>Copywriter</small></div>
+                                       </a>
+                                   </li>
+                                   <li>
+                                       <a href="base_pages_profile.html">
+                                           <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
+                                           <i class="fa fa-circle text-danger"></i> Ethan Howard
+                                           <div class="font-w400 text-muted"><small>UI Designer</small></div>
+                                       </a>
+                                   </li>
+                               </ul>
+                           </div>
+                       </li>
+                       <!-- END Social Notification -->
 
-                           <!-- System Notification -->
-                           <li>
-                               <div class="list-timeline-time">2 months ago</div>
-                               <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">System updated to v2.01</p>
-                                   <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
+                       <!-- System Notification -->
+                       <li>
+                           <div class="list-timeline-time">1 week ago</div>
+                           <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
+                           <div class="list-timeline-content">
+                               <p class="font-w600">System updated to v2.02</p>
+                               <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
+                           </div>
+                       </li>
+                       <!-- END System Notification -->
+
+                       <!-- Generic Notification -->
+                       <li>
+                           <div class="list-timeline-time">2 weeks ago</div>
+                           <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
+                           <div class="list-timeline-content">
+                               <p class="font-w600">1 New Product was added!</p>
+                               <div class="push-10-t">
+                                   <a class="item item-rounded push-10-r bg-modern" data-toggle="tooltip" title="eSettings" href="javascript:void(0)">
+                                       <i class="si si-settings text-white-op"></i>
+                                   </a>
                                </div>
-                           </li>
-                           <!-- END System Notification -->
-                       </ul>
-                    </div>
+                           </div>
+                       </li>
+                       <!-- END Generic Notification -->
+
+                       <!-- System Notification -->
+                       <li>
+                           <div class="list-timeline-time">2 months ago</div>
+                           <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
+                           <div class="list-timeline-content">
+                               <p class="font-w600">System updated to v2.01</p>
+                               <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
+                           </div>
+                       </li>
+                       <!-- END System Notification -->
+                   </ul>
                 </div>
             </div>
-            <!-- END Timeline -->
-
-                <!-- END Ratings -->
-            <div class="col-sm-5 col-lg-4">
-                <!-- Followers -->
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="si si-puzzle"></i> Teammates</h3>
-                    </div>
-                    <div class="block-content">
-                        <ul class="nav-users push">
-                            <li>
-                                <a href="base_pages_profile.html">
-                                    <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                    <i class="fa fa-circle text-success"></i> Dennis Ross
-                                    <div class="font-w400 text-muted"><small>Web Developer</small></div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="base_pages_profile.html">
-                                    <img class="img-avatar" src="{{asset('/img/avatars/avatar3.jpg')}}" alt="">
-                                    <i class="fa fa-circle text-success"></i> Laura Bell
-                                    <div class="font-w400 text-muted"><small>Web Designer</small></div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="base_pages_profile.html">
-                                    <img class="img-avatar" src="{{asset('/img/avatars/avatar1.jpg')}}" alt="">
-                                    <i class="fa fa-circle text-warning"></i> Tiffany Kim
-                                    <div class="font-w400 text-muted"><small>Photographer</small></div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="text-center push">
-                            <small><a href="javascript:void(0)">Load More..</a></small>
-                        </div>
-                    </div>
-                </div>
-                <!-- END Followers -->
-            </div>
-            <div class="col-sm-5 col-lg-4">
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teams</h3>
-                    </div>
-                    <div class="block-content">
-                        <h5>Owned</h5>
-                        <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Name</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team record">Record</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team">Type</th>
-                            </thead>
-                            <tbody>
-                                @foreach($owned_teams as $team)
-                                        <tr role="row" @if ($team->id & 1) class="odd" @else class="even" @endif>
-                                            <td class="hidden-sm hidden-xs font-w600">{{ $team->name }}</td>
-                                            <td class="hidden-xs">{{ $team->wins }} - {{ $team->losses }} </td>
-                                            <td class="hidden-xs">{{ $team->type }}</td>
-                                        </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                        <h5>Acquired</h5>
-                        <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
-                            <thead>
-                                <tr role="row">
-                                    <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending">Name</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team record">Record</th>
-                                    <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team">Type</th>
-                            </thead>
-                            <tbody>
-                                @foreach($player_teams as $team)
-                                        <tr role="row" @if ($team->id & 1) class="odd" @else class="even" @endif>
-                                            <td class="hidden-sm hidden-xs font-w600">{{ $team->name }}</td>
-                                            <td class="hidden-xs">{{ $team->wins }} - {{ $team->losses }} </td>
-                                            <td class="hidden-xs">{{ $team->type }}</td>
-                                        </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <!-- END Timeline -->
         </div>
     <!-- END Page Content -->
 
@@ -636,7 +695,7 @@
         <!-- Page JS Plugins -->
         <script src="{{URL::asset('/js/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
         <script src="{{URL::asset('/js/plugins/easy-pie-chart/jquery.easypiechart.min.js')}}"></script>
-        <script src="{{URL::asset('/js/plugins/chartjs/Chart.min.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.3/Chart.bundle.min.js"></script>
         <script src="{{URL::asset('/js/plugins/flot/jquery.flot.min.js')}}"></script>
         <script src="{{URL::asset('/js/plugins/flot/jquery.flot.pie.min.js')}}"></script>
         <script src="{{URL::asset('/js/plugins/flot/jquery.flot.stack.min.js')}}"></script>
@@ -651,6 +710,114 @@
                 // Init page helpers (Appear + CountTo plugins)
                 App.initHelpers(['appear', 'appear-countTo']);
             });
+
+            Chart.defaults.global.legend.display = false;
+
+            var radar_data = {
+               labels: ["PER", "PPG", "APG", "FG%", "APG/PPG", "RPG", "Rep"],
+               datasets: [
+                   {
+
+                      backgroundColor: "rgba(253,180,93,0.8)",
+                      borderColor: "rgba(253,180,93,1)",
+                      pointBackgroundColor: "rgba(253,180,93,1)",
+                      pointBorderColor: "#fff",
+                      pointHoverBackgroundColor: "#fff",
+                      pointHoverBorderColor: "rgba(253,180,93,1)",
+                      data: [65, 59, 90, 81, 56, 55, 40]
+                   },
+                   {
+
+                      backgroundColor: "rgba(237,140,125,0.8)",
+                      borderColor: "rgba(237,140,125,1)",
+                      pointBackgroundColor:  "rgba(237,140,125,1)",
+                      pointBorderColor: "#fff",
+                      pointHoverBackgroundColor: "#fff",
+                      pointHoverBorderColor:  "rgba(237,140,125,1)",
+                      data: [22, 49, 30, 24, 19, 65, 42]
+                   },
+                   {
+
+                      backgroundColor: "rgba(117,203,207,0.8)",
+                      borderColor: "rgba(117,203,207,1)",
+                      pointBackgroundColor:  "rgba(117,203,207,1)",
+                      pointBorderColor: "#fff",
+                      pointHoverBackgroundColor: "#fff",
+                      pointHoverBorderColor:  "rgba(117,203,207,1)",
+                      data: [99, 74, 22, 7, 4, 2, 92]
+                   }
+                ]
+            };
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+               type: "radar",
+               data: radar_data,
+               options: {
+                  responsive: true
+               },
+               options: {
+                       scale: {
+                           reverse: false,
+                           ticks: {
+                                beginAtZero: true
+                           }
+                       }
+               }
+            });
+
+            var ctx = document.getElementById("myChart2");
+            var radar_data2 = {
+                labels: ["PER", "PPG", "APG", "FG%", "APG/PPG", "RPG", "Rep"],
+                datasets: [
+                    {
+                       label: "Player Stats",
+                       backgroundColor: "rgba(253,180,93,0.8)",
+                       borderColor: "rgba(253,180,93,1)",
+                       pointBackgroundColor: "rgba(253,180,93,1)",
+                       pointBorderColor: "#fff",
+                       pointHoverBackgroundColor: "#fff",
+                       pointHoverBorderColor: "rgba(253,180,93,1)",
+                       data: [65, 59, 90, 81, 56, 55, 40]
+                    },
+                    {
+                       label: "Skill Adjusted Stats",
+                       backgroundColor: "rgba(237,140,125,0.8)",
+                       borderColor: "rgba(237,140,125,1)",
+                       pointBackgroundColor:  "rgba(237,140,125,1)",
+                       pointBorderColor: "#fff",
+                       pointHoverBackgroundColor: "#fff",
+                       pointHoverBorderColor:  "rgba(237,140,125,1)",
+                       data: [22, 49, 30, 24, 19, 65, 42]
+                    },
+                    {
+                       label: "Teammate Adjusted Stats",
+                       backgroundColor: "rgba(117,203,207,0.8)",
+                       borderColor: "rgba(117,203,207,1)",
+                       pointBackgroundColor:  "rgba(117,203,207,1)",
+                       pointBorderColor: "#fff",
+                       pointHoverBackgroundColor: "#fff",
+                       pointHoverBorderColor:  "rgba(117,203,207,1)",
+                       data: [99, 74, 22, 7, 4, 2, 92]
+                    }
+
+                ]
+            };
+
+             var myChart2 = new Chart(ctx, {
+                type: "radar",
+                data: radar_data2,
+                options: {
+                   responsive: true
+                },
+                options: {
+                        scale: {
+                            reverse: false,
+                            ticks: {
+                                 beginAtZero: true
+                            }
+                        }
+                }
+             });
         </script>
 
 @endsection

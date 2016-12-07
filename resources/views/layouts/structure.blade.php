@@ -17,7 +17,7 @@
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
 
-        <link rel="shortcut icon" href="{{ asset('/img/favicons/basketball.jpg') }}">
+        <link rel="shortcut icon" href="{{ asset('/img/favicons/l.png') }}">
 
         <link rel="icon" type="image/jpg" href="{{ asset('/img/favicons/logo-16x16.jpg') }}" sizes="16x16">
         <link rel="icon" type="image/jpg" href="{{ asset('/img/favicons/logo-32x32.jpg') }}" sizes="32x32">
