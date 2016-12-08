@@ -191,7 +191,7 @@
                         </div>
                     </div>
                     <div class="push-20-t text-center margin-10">
-                        <button class="btn btn-sm btn-primary push-15" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                        <button class="btn btn-sm btn-primary push-15" name="submitButton" id="submitButton" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
                         <button class="btn btn-sm btn-warning push-15" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
                     </div>
                 </div>
@@ -199,63 +199,69 @@
         </div>
         <!-- END Filtr Form -->
 
+
         <div class="block">
             <div class="block-header">
 
             </div>
             <div class="block-content">
-                <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
-                    <thead>
-                        <tr role="row">
-                            <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
-                            <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Type: activate to sort column ascending" style="width: 250px;">Type</th>
-                            <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 150px;">Role</th>
-                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 350px;">Style</th>
-                            <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
-                            <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Skille Grade: activate to sort column ascending">Skill</th>
-                            <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
-                            <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
-                            <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
-                            <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
-                            <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
-                            <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
-                            <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Act</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($players as $player)
-                            @if(in_array($player->type, $search_type) AND in_array($player->role, $search_role) AND in_array($player->style, $search_style)
-                                AND in_array($player->position, $search_position) AND in_array($player->affiliation, $search_affiliation) AND in_array($player->rep_status, $search_rep_status)
-                                AND in_array($player->status_level, $search_rep_level) AND in_array($player->archetype, $search_archetype))
-                                <tr role="row" @if ($player->id & 1) class="odd" @else class="even" @endif>
-                                    <td class="hidden-sm hidden-xs font-w600">{{ $player->name }}</td>
-                                    <td class="hidden-xs">{{ $player->type }}</td>
-                                    <td class="hidden-xs">{{ $player->role }}</td>
-                                    <td class="">{{ $player->style }}</td>
-                                    <td class="center">
-                                        <h3 class="text-{{$player->team_grade_color}} table-font">{{ $player->team_grade }}</h3>
-                                    </td>
+               <div id=results>
+               </div>
 
-                                    <td class="center">
-                                        <h3 class="text-{{$player->skill_grade_color}} table-font">{{ $player->skill_grade }}</h3>
-                                    </td>
-                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->per_color}} table-num">{{ $player->per }}</td>
-                                    <td class="hidden-sm hidden-xs sorting {{$player->fg_color}} table-num">{{ $player->fg }}%</td>
-                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->apg_color}} table-num">{{ $player->apg}}</td>
-                                    <td class="hidden-sm hidden-xs sorting {{$player->apg_ppg_color}} table-num">{{ $player->apg_ppg }}</td>
-                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->ppg_color}} table-num">{{ $player->ppg }}</td>
-                                    <td class="hidden-md hidden-sm hidden-xs sorting {{$player->rpg_color}} table-num">{{ $player->rpg }}</td>
-                                    <td class="text-center">
-                                        <div class="btn-group">
-                                            <button class="btn btn-xs btn-success push-5-t" type="button" data-toggle="tooltip" title="" data-original-title="Edit Client"><i class="fa fa-plus"></i></button>
-                                            <a class="btn btn-xs btn-default push-5-t" href="/free-agency" type="button" data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    </tbody>
-                </table>
+               <div id=defaultResults>
+                   <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
+                       <thead>
+                           <tr role="row">
+                               <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
+                               <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Type: activate to sort column ascending" style="width: 250px;">Type</th>
+                               <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 150px;">Role</th>
+                               <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 350px;">Style</th>
+                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
+                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Skill Grade: activate to sort column ascending">Skill</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
+                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
+                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
+                               <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Act</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           @foreach($players as $player)
+                               @if(in_array($player->type, $search_type) AND in_array($player->role, $search_role) AND in_array($player->style, $search_style)
+                                   AND in_array($player->position, $search_position) AND in_array($player->affiliation, $search_affiliation) AND in_array($player->rep_status, $search_rep_status)
+                                   AND in_array($player->status_level, $search_rep_level) AND in_array($player->archetype, $search_archetype))
+                                   <tr role="row" @if ($player->id & 1) class="odd" @else class="even" @endif>
+                                       <td class="hidden-sm hidden-xs font-w600">{{ $player->name }}</td>
+                                       <td class="hidden-xs">{{ $player->type }}</td>
+                                       <td class="hidden-xs">{{ $player->role }}</td>
+                                       <td class="">{{ $player->style }}</td>
+                                       <td class="center sorting">
+                                           <h3 class="text-{{$player->team_grade_color}} table-font">{{ $player->team_grade }}</h3>
+                                       </td>
+                                       <td class="center sorting">
+                                           <h3 class="text-{{$player->skill_grade_color}} table-font">{{ $player->skill_grade }}</h3>
+                                       </td>
+                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->per_color}} table-num">{{ $player->per }}</td>
+                                       <td class="hidden-sm hidden-xs sorting {{$player->fg_color}} table-num">{{ $player->fg }}%</td>
+                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->apg_color}} table-num">{{ $player->apg}}</td>
+                                       <td class="hidden-sm hidden-xs sorting {{$player->apg_ppg_color}} table-num">{{ $player->apg_ppg }}</td>
+                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->ppg_color}} table-num">{{ $player->ppg }}</td>
+                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->rpg_color}} table-num">{{ $player->rpg }}</td>
+                                       <td class="text-center">
+                                           <div class="btn-group">
+                                               <button class="btn btn-xs btn-success push-5-t addButton" type="submit" data-toggle="tooltip" title="" data-original-title="Edit Client" value="{{$player->id}}"><i class="fa fa-plus"></i></button>
+                                               <a class="btn btn-xs btn-default push-5-t" href="/free-agency" type="button" data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
+                                           </div>
+                                       </td>
+                                   </tr>
+                               @endif
+                           @endforeach
+                       </tbody>
+                   </table>
+                </div>
+
             </div>
         </div>
 
@@ -267,6 +273,9 @@
 @endsection
 
 @section('page-js')
+
+    @yield('ajax-js')
+
     <script>
             /*
          *  Document   : base_tables_datatables.js
@@ -476,9 +485,12 @@
         // Initialize when page loads
         jQuery(function(){ BaseTableDatatables.init(); });
 
+
+
     </script>
     <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
     <script src="{{URL::asset('/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="/js/ajax/findplayer.js"></script>
 
     <!-- END Apps Modal -->
 

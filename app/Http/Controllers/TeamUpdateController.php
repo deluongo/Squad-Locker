@@ -23,10 +23,22 @@ class TeamUpdateController extends Controller
         $this->middleware('auth');
     }
 
-    public function show()
+    public function show($name)
     {
-        $team = Team::where('gamertag', '=', Auth::user()->name )->first();
+      $player = Player::where('name', '=', Auth::user()->name )->first();
+      $team = Team::where('name', '=', $name )->first();
 
+      foreach($player->teams as $c_team) {
+            if (($c_team->pivot->status == 1)) {
+               $authenticated_ownership[] = $c_team->name;
+            }
+         }
+
+      if(!in_array($team->name, $authenticated_ownership)) {
+         return "Error Page";
+      }
+
+      else {
         $notification = null;
 
         if($team) {
@@ -123,6 +135,7 @@ class TeamUpdateController extends Controller
                 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on
          ];
         return view('teamupdate.show')->with($data);
+     }
     }
 
 

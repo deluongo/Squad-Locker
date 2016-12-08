@@ -33,15 +33,15 @@ Route::get('/update', 'UpdateController@show')->name('update.show');
 Route::post('/update', 'UpdateController@post')->name('update.post');
 
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
-Route::post('/free-agency', 'AgencyController@post')->name('agency.show');
+Route::post('/free-agency', 'AgencyController@post2')->name('agency.post');
 
 Route::get('/free-agency/teams', 'FindTeamController@show')->name('findteam.show');
 Route::post('/free-agency/teams', 'FindTeamController@post')->name('findteam.show');
 
 Route::get('/stream', 'StreamController@show')->name('stream.show');
 
-Route::get('/teamupdate', 'TeamUpdateController@show')->name('teamupdate.show');
-Route::post('/teamupdate', 'TeamUpdateController@post')->name('teamupdate.post');
+Route::get('/teamupdate/{name}', 'TeamUpdateController@show')->name('teamupdate.show');
+Route::post('/teamupdate/{name}', 'TeamUpdateController@post')->name('teamupdate.show');
 
 Route::get('/formswizard', 'FormsWizardController@show')->name('formswizard.show');
 

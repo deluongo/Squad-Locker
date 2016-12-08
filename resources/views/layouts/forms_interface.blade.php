@@ -328,8 +328,29 @@
                             <li>
                                 <a href="/update" class={{ $update_heading }} ><i class="si si-list"></i><span class="sidebar-mini-hide">Update Player</span></a>
                             </li>
-                            <li>
+                            <li class=@if(!$team_update_heading == '') "open" @endif>
+                               <!-- Side Navigation
                                 <a href="/teamupdate" class={{ $team_update_heading }} ><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">Update Team</span></a>
+-->
+                                <a href="/teamupdate" class="{{ $team_update_heading }} nav-submenu" data-toggle="nav-submenu"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">Update Team</span></a>
+                                <ul>
+                                    @if(!$teams_owned == null)
+                                        <li class="nav-sub-header">Owned</li>
+                                        @foreach($teams_owned as $team)
+                                            <li>
+                                                <a href="/teamupdate">{{$team->name}}</a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                    @if(!$teams_on == null)
+                                        <li class="nav-sub-header">Rostered</li>
+                                        @foreach($teams_on as $team)
+                                            <li>
+                                                <a href="/teamupdate/{{$team->name}}">{{$team->name}}</a>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                </ul>
                             </li>
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">My Profile</span></li>
                             <li>
