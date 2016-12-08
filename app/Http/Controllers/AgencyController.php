@@ -71,7 +71,14 @@ class AgencyController extends Controller
             array_push($search_role, explode(' | ', $filter)[1]);
         }
 
-        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name , 'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position, 'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status, 'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name ,
+        'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position,
+        'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status,
+        'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation,
+        'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading,
+        'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
+        'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading,
+        'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
 
         return view('agency.show')->with($data);
     }
@@ -156,7 +163,14 @@ class AgencyController extends Controller
         }
 
 
-        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name , 'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position, 'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status, 'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+        $data = ['find_teams_heading' => $find_teams_heading,  'search_type_role' => $search_type_role, 'search_name' => $search_name,
+        'search_affiliation' => $search_affiliation, 'search_archetype' => $search_archetype, 'search_position' => $search_position,
+        'search_type' => $search_type, 'search_rep_level' => $search_rep_level, 'search_rep_status' => $search_rep_status,
+        'search_role' => $search_role, 'search_style' => $search_style, 'name' => $name, 'affiliation' => $affiliation,
+        'position' => $position, 'archetype' => $archetype, 'players' => $players, 'team_update_heading' => $team_update_heading,
+        'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
+        'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading,
+        'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
 
         return view('agency.show')->with($data);
     }
