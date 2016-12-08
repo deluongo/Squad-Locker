@@ -38,7 +38,7 @@ class TeamsTableSeeder extends Seeder
              'player1' => 'CaptainAwesome650',
              'player2' => 'PrettyBoiFredo',
 
-             'num_players' => 2,
+             'num_players' => 3,
              //Social
              'twitter' => 'https://www.youtube.com/user/deluongo',
              'youtube' => 'https://twitter.com/DevonLuongo',
@@ -90,7 +90,7 @@ class TeamsTableSeeder extends Seeder
              //Players
              'player1' => 'PrettyBoiFredo',
 
-             'num_players' => 1,
+             'num_players' => 2,
 
              //Social
              'twitter' => 'https://www.youtube.com/user/deluongo',
@@ -149,7 +149,7 @@ class TeamsTableSeeder extends Seeder
              'player1' => 'CaptainAwesome650',
              'player2' => 'PrettyBoiFredo',
 
-             'num_players' => 2,
+             'num_players' => 1,
              //Social
              'twitter' => 'https://www.youtube.com/user/deluongo',
              'youtube' => 'https://twitter.com/DevonLuongo',
@@ -205,7 +205,7 @@ class TeamsTableSeeder extends Seeder
              'player1' => 'CaptainAwesome650',
              'player2' => 'PrettyBoiFredo',
 
-             'num_players' => 2,
+             'num_players' => 1,
              //Social
              'twitter' => 'https://www.youtube.com/user/deluongo',
              'youtube' => 'https://twitter.com/DevonLuongo',

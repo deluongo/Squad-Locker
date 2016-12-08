@@ -86,7 +86,8 @@ class PlayerTeamTableSeeder extends Seeder
 
           //Teams that have extended offers
           $invited =[
-              'CaptainAwesome650' => ['InvitesTester'],
+              //'CaptainAwesome650' => ['InvitesTester', 'RequestsTester'],
+              'CaptainAwesome650' => ['InvitesTester']
           ];
 
           //Players that have requested an available roster spot on a team

@@ -139,9 +139,40 @@ class PlayerController extends Controller
             }
         }
 
+
+
+        foreach($invited as $team) {
+           //$id = $team->id;
+           $chart_name = 'Chart'.$team->id;
+
+           $chart_per = $team->per / 14 * 100;
+           $chart_ppg = $team->ppg / 12 * 100;
+           $chart_apg = $team->apg / 3 * 100;
+           $chart_fg = $team->fg;
+           $chart_apg_ppg = $team->apg_ppg * 100;
+           $chart_rpg = $team->rpg / 3 * 100;
+
+           //$min = min($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
+           //$max = max($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
+
+           //$chart_per = ($chart_per - $min) / ($max - $min);
+           //$chart_ppg = ($chart_ppg - $min) / ($max - $min);
+           //$chart_apg = ($chart_apg - $min) / ($max - $min);
+           //$chart_fg = ($chart_fg - $min) / ($max - $min);
+           //$chart_apg_ppg = ($chart_apg_ppg - $min) / ($max - $min);
+           //$chart_rpg = ($chart_rpg - $min) / ($max - $min);
+
+           //$$chart_name = array($team->per, $team->ppg, $team->apg, $team->fg, $team->apg_ppg, $team->rpg);
+           $$chart_name = array($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
+
+           //$Chart3 = array(1,2,3,4,5,6);
+           $chart_data[$chart_name] = $$chart_name;
+        }
+
         /* ======================================================
         Data Object
         ====================================================== */
+        $invite_accepted = 'no';
         $data = ['team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
             'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
             'name' => $name, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter,
@@ -152,8 +183,12 @@ class PlayerController extends Controller
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited,
+            'invite_accepted' => $invite_accepted,
         ];
+
+        //$chart_name => $chart_
+        $data = array_merge($data, $chart_data);
 
         return view('player.show')->with($data);
     }
@@ -161,7 +196,7 @@ class PlayerController extends Controller
     /* ======================================================
     Display on form submit
     ====================================================== */
-    public function post(Request $request)
+    public function post_extra(Request $request)
     {
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
@@ -266,6 +301,7 @@ class PlayerController extends Controller
             }
         }
 
+
         /* ======================================================
         Attatch Players to Teams
         ====================================================== */
@@ -275,14 +311,17 @@ class PlayerController extends Controller
             $owner->teams()->attach($team->id, array('status' => 1));
         }
 
-        $data = ['update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
-            'activity_stream_heading' => $activity_stream_heading, 'name' => $name, 'per' => $per, 'fg' => $fg, 'apg' => $apg,
-            'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'find_teams_heading' => $find_teams_heading];
-        return view('player.show')->with($data);
+        /* ======================================================
+        AJAX FORM DATA
+        ====================================================== */
+
+        $invite_accepted = $request->input('acceptInvite');
 
         /* ======================================================
         Data Object
         ====================================================== */
+
+
         $data = ['team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
             'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
             'name' => $name, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter,
@@ -293,10 +332,50 @@ class PlayerController extends Controller
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited,
+            'Chart3' => $Chart3, 'invite_accepted' => $invite_accepted
         ];
 
         return view('player.show')->with($data);
+
+    }
+
+    public function post(Request $request)
+    {
+      $player = Player::where('name', '=', Auth::user()->name )->first();
+
+      $invite_accepted = $request->input('acceptInvite');
+      $team_id = $request->input('inviTeam');
+
+      $team = Team::where('id', '=', $team_id)->first();
+
+      //Cleaner way? Help?
+      //if(!$player->teams()->where('id', '=', $team_id)->pivot->status == 1) {
+      //   $player->teams()->attach($team->id, array('status' => 2));
+      //   $test_status1 = 'here';
+      //
+
+      //return $this->belongsToMany('App\Role')->withPivot('additional', 'attributes', 'here');
+      //ser::find(1)->roles()->updateExistingPivot($roleId, $attributes);
+
+      foreach($team->players as $player) {
+         $test_status1 = $player->pivot->status;
+            if (!($player->pivot->status == 2)) {
+            $player->teams()->updateExistingPivot($team->id, array('status' => 2));
+         }
+
+      }
+
+      //
+      //
+
+      //$test_status2 = $player->teams()->where('id', '=', $team_id)->pivot->status;
+      $test_status2 = $team_id;
+      # Return the view with the books
+      return view('player.search-ajax')->with(
+        ['invite_accepted' => $invite_accepted]
+        //
+      );
 
     }
 }

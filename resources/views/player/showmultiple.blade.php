@@ -330,10 +330,10 @@
                                     <div class="flipper">
                                        <div class="front bg-hover-color">
                                           <!-- 1radar qwer -->
-                                          <!-- <h1>{{var_dump(${'Chart'.$team->id})}}</h1> -->
                                           {{-- This hidden field holds the data so it's available for JS --}}
-                                          <input type='hidden' name='chart_data' value='{{ json_encode(${'Chart'.$team->id}) }}'>
-                                          <canvas id="myChart" class="center-chart padding-10-v push-20 push-10-t"></canvas>
+
+                                          <input type='hidden' name={{ 'Chart'.$team->id }} value='{{ json_encode(${'Chart'.$team->id}) }}'>
+                                          <canvas id={{ 'Chart'.$team->id }} class="center-chart padding-10-v push-20 push-10-t"></canvas>
                                        </div>
                                        <div class="back">
                                           <div class="text-center bg-image fill-container parent" style="background-image: url({{$team->team_bg_pic}})">
@@ -347,20 +347,13 @@
                                  </div>
                                  <div class="text-center">
                                     <div class="row items-push">
-                                       <!-- formy -->
-                                       <form method='POST' id='acceptForm'>
-                                          {{ csrf_token() }}
-                                          <input type="hidden" name="acceptInvite" id="acceptInvite" value='yes'>
-                                          <input type="hidden" name="inviTeam" id="inviTeam" value='{{$team->id}}'>
-                                          <div class="col-xs-6 remove-margin remove-padding-r" name="acceptSubmit" id="acceptSubmit" onClick="submitOnClick('myForm')">
-                                             <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
-                                                <div class="padding-15-h padding-20-v">
-                                                   <i class="si si-check fa-2x text-success"></i>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </form>
-
+                                       <div class="col-xs-6 remove-margin remove-padding-r">
+                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
+                                             <div class="padding-15-h padding-20-v">
+                                                <i class="si si-check fa-2x text-success"></i>
+                                             </div>
+                                          </a>
+                                       </div>
                                        <div class="col-xs-6 remove-margin remove-padding-l">
                                           <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
                                              <div class="padding-15-h padding-20-v">
@@ -368,10 +361,6 @@
                                              </div>
                                           </a>
                                        </div>
-                                    </div>
-                                 </div>
-                                 <div >
-                                    <div id='testdiv'>
                                     </div>
                                  </div>
 
@@ -722,8 +711,10 @@
 
             Chart.defaults.global.legend.display = false;
 
+            @foreach($invited as $team)
             // Get the book data from the hidden form
-            var chart_data = $('input[name=chart_data]').val();
+
+            var chart_data = $('input[name={{ 'Chart'.$team->id }}]').val();
 
             // Convert the JSON string to a Object
             //book = JSON.parse(book);
@@ -747,8 +738,8 @@
 
                 ]
             };
-            var ctx = document.getElementById("myChart");
-            var Chart3 = new Chart(ctx, {
+            var ctx = document.getElementById("{{ 'Chart'.$team->id }}");
+            var {{ 'Chart'.$team->id }} = new Chart(ctx, {
                type: "radar",
                data: radar_data,
                options: {
@@ -763,63 +754,7 @@
                        }
                }
             });
-
-
-            var ctx = document.getElementById("myChart2");
-            var radar_data2 = {
-                labels: ["PER", "PPG", "APG", "FG%", "APG/PPG", "RPG", "Rep"],
-                datasets: [
-                    {
-                       label: "Player Stats",
-                       backgroundColor: "rgba(253,180,93,0.8)",
-                       borderColor: "rgba(253,180,93,1)",
-                       pointBackgroundColor: "rgba(253,180,93,1)",
-                       pointBorderColor: "#fff",
-                       pointHoverBackgroundColor: "#fff",
-                       pointHoverBorderColor: "rgba(253,180,93,1)",
-                       data: [65, 59, 90, 81, 56, 55, 40]
-                    },
-                    {
-                       label: "Skill Adjusted Stats",
-                       backgroundColor: "rgba(237,140,125,0.8)",
-                       borderColor: "rgba(237,140,125,1)",
-                       pointBackgroundColor:  "rgba(237,140,125,1)",
-                       pointBorderColor: "#fff",
-                       pointHoverBackgroundColor: "#fff",
-                       pointHoverBorderColor:  "rgba(237,140,125,1)",
-                       data: [22, 49, 30, 24, 19, 65, 42]
-                    },
-                    {
-                       label: "Teammate Adjusted Stats",
-                       backgroundColor: "rgba(117,203,207,0.8)",
-                       borderColor: "rgba(117,203,207,1)",
-                       pointBackgroundColor:  "rgba(117,203,207,1)",
-                       pointBorderColor: "#fff",
-                       pointHoverBackgroundColor: "#fff",
-                       pointHoverBorderColor:  "rgba(117,203,207,1)",
-                       data: [99, 74, 22, 7, 4, 2, 92]
-                    }
-
-                ]
-            };
-
-             var myChart2 = new Chart(ctx, {
-                type: "radar",
-                data: radar_data2,
-                options: {
-                   responsive: true
-                },
-                options: {
-                        scale: {
-                            reverse: false,
-                            ticks: {
-                                 beginAtZero: true
-                            }
-                        }
-                }
-             });
+            @endforeach
         </script>
-
-        <script src="/js/ajax/playerchart.js"></script>
 
 @endsection
