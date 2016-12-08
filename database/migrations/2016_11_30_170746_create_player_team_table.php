@@ -18,9 +18,10 @@ class CreatePlayerTeamTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            # `book_id` and `tag_id` will be foreign keys, so they have to be unsigned
-            #  Note how the field names here correspond to the tables they will connect...
-            # `book_id` will reference the `books table` and `tag_id` will reference the `tags` table.
+            # 1 is ownership
+            # 2 is on active roster
+            # 3 invited, waiting response
+            # 4 requested, waiting reponse
             $table->integer('player_id')->unsigned();
             $table->integer('team_id')->unsigned();
             $table->tinyInteger('status')->default(0)->unsigned();

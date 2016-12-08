@@ -288,44 +288,116 @@
                 </div>
             </div>
 
+            <!-- Roster Moves -->
             <div class="col-sm-7 col-lg-8">
-                <!-- Timeline -->
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
-                            </li>
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="fa fa-fw fa-pencil"></i> Scouting Report</h3>
-                    </div>
-                    <div class="block-content">
-                        <div id="disqus_thread"></div>
-                            <script>
+               <div class="block">
+                  <!-- Header -->
+                 <div class="block-header bg-gray-lighter">
+                     <ul class="block-options">
+                         <li>
+                             <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                         </li>
+                         <li>
+                             <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                         </li>
+                     </ul>
+                     <h3 class="block-title"><i class="fa fa-fw fa-pencil"></i> Scouting Report</h3>
+                 </div>
+                 <!-- Tab Nav -->
+                  <ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
+                     <li class="active">
+                        <a href="#myplayer-tabs-incoming-player-invites"><i class="fa fa-home"></i> Squad Invites</a>
+                     </li>
+                     <li class="">
+                        <a href="#myplayer-tabs-incoming-player-requests"><i class="fa fa-pencil"></i> Player Requests</a>
+                     </li>
+                     <li class="">
+                        <a href="#myplayer-tabs-scouting-report-central"><i class="fa fa-cog"></i> Scouting Report</a>
+                     </li>
+                  </ul>
+                   <!-- 3 Tabs -->
+                  <div class="block-content tab-content remove-margin remove-padding">
+                     <!-- Invite Manager Tab -->
+                     <div class="tab-pane active bg-hover-color" id="myplayer-tabs-incoming-player-invites">
+                        <div class="row push-0">
+                           @foreach($invited as $team)
+                           <div class="col-xs-12 col-lg-6">
+                              <div class="block remove-margin margin-20-t">
+                                 <div class="block-header">
+                                    <h3 class="block-title center">{{$team->name}}</h3>
+                                 </div>
+                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                    <div class="flipper">
+                                       <div class="front bg-hover-color">
+                                          <canvas id="myChart" class="center-chart padding-10-v push-20 push-10-t"></canvas>
+                                       </div>
+                                       <div class="back">
+                                          <div class="text-center bg-image fill-container parent" style="background-image: url({{$team->team_bg_pic}})">
+                                             <div class="child remove-padding full-width">
+                                                <img class="img-avatar img-avatar96 img-avatar-thumb" src={{$team->team_profile_pic}} alt="">
+                                                <h2 class="h4 text-white-op">{{ $team->affiliation }} | {{ $team->offense }} | {{ $team->defense }} </h2>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="text-center">
+                                    <div class="row items-push">
+                                       <div class="col-xs-6 remove-margin remove-padding-r">
+                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
+                                             <div class="padding-15-h padding-20-v">
+                                                <i class="si si-check fa-2x text-success"></i>
+                                             </div>
+                                          </a>
+                                       </div>
+                                       <div class="col-xs-6 remove-margin remove-padding-l">
+                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
+                                             <div class="padding-15-h padding-20-v">
+                                                <i class="si si-close fa-2x text-danger"></i>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
 
-                            /**
-                            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-                            /*
-                            var disqus_config = function () {
-                            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                            };
-                            */
-                            (function() { // DON'T EDIT BELOW THIS LINE
-                            var d = document, s = d.createElement('script');
-                            s.src = '//p4test.disqus.com/embed.js';
-                            s.setAttribute('data-timestamp', +new Date());
-                            (d.head || d.body).appendChild(s);
-                            })();
-                            </script>
-                        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                    </div>
-                </div>
-                <!-- END Timeline -->
+                              </div>
+                           </div>
+                           @endforeach
+                        </div>
+                     </div>
+                     <!-- Requests Tracker -->
+                     <div class="tab-pane" id="myplayer-tabs-incoming-player-requests">
+
+                           <canvas id="myChart2" width="400" height="400"></canvas>
+
+                     </div>
+                     <!-- Scouting Report -->
+                     <div class="tab-pane" id="myplayer-tabs-scouting-report-central">
+                        <div class="block-content">
+                           <div id="disqus_thread"></div>
+                               <script>
+
+                               /**
+                               *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                               *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                               /*
+                               var disqus_config = function () {
+                               this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                               this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                               };
+                               */
+                               (function() { // DON'T EDIT BELOW THIS LINE
+                               var d = document, s = d.createElement('script');
+                               s.src = '//p4test.disqus.com/embed.js';
+                               s.setAttribute('data-timestamp', +new Date());
+                               (d.head || d.body).appendChild(s);
+                               })();
+                               </script>
+                           <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
 
             <!-- Teammates -->
@@ -356,84 +428,6 @@
             </div>
             <!-- END Teammates -->
 
-            <!-- Roster Moves -->
-            <div class="col-sm-7 col-lg-8">
-               <div class="block">
-                  <!-- Header -->
-                  <ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
-                     <li class="active">
-                        <a href="#myplayer-tabs-incoming-player-invites"><i class="fa fa-home"></i> Squad Invites</a>
-                     </li>
-                     <li class="">
-                        <a href="#myplayer-tabs-incoming-player-requests"><i class="fa fa-pencil"></i> Player Requests</a>
-                     </li>
-                     <li class="">
-                        <a href="#myplayer-tabs-scouting-report-central"><i class="fa fa-cog"></i> Scouting Report</a>
-                     </li>
-                  </ul>
-                  <div class="block-content tab-content remove-margin remove-padding">
-                     <div class="tab-pane active bg-hover-color" id="myplayer-tabs-incoming-player-invites">
-                        <div class="row push-0">
-                           @foreach($team_members as $player)
-                           <div class="col-xs-12 col-lg-6">
-                              <div class="block remove-margin margin-20-t">
-                                 <div class="block-header">
-                                    <h3 class="block-title center">{{$player->name}}</h3>
-                                 </div>
-                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                                    <div class="flipper">
-                                       <div class="front bg-hover-color">
-                                          <canvas id="myChart" class="center-chart padding-10-v push-20 push-10-t"></canvas>
-                                       </div>
-                                       <div class="back">
-                                          <div class="text-center bg-image fill-container parent" style="background-image: url({{$player->player_bg_pic}})">
-                                             <div class="child remove-padding full-width">
-                                                <img class="img-avatar img-avatar96 img-avatar-thumb" src={{$player->player_profile_pic}} alt="">
-                                                <h2 class="h4 text-white-op">{{ $player->affiliation }} | {{ $player->position }} | {{ $player->archetype }}</h2>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-
-
-                                 <div class="text-center">
-                                    <div class="row items-push">
-                                       <div class="col-xs-6 remove-margin remove-padding-r">
-                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
-                                             <div class="padding-15-h padding-20-v">
-                                                <i class="si si-check fa-2x text-success"></i>
-                                             </div>
-                                          </a>
-                                       </div>
-                                       <div class="col-xs-6 remove-margin remove-padding-l">
-                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
-                                             <div class="padding-15-h padding-20-v">
-                                                <i class="si si-close fa-2x text-danger"></i>
-                                             </div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-
-                              </div>
-                           </div>
-                           @endforeach
-                        </div>
-                     </div>
-                     <div class="tab-pane" id="myplayer-tabs-incoming-player-requests">
-
-                           <canvas id="myChart2" width="400" height="400"></canvas>
-
-                     </div>
-                     <div class="tab-pane" id="myplayer-tabs-scouting-report-central">
-                        <h4 class="font-w300 push-15">Settings Tab</h4>
-                        <p>...</p>
-                     </div>
-                  </div>
-
-               </div>
-            </div>
 
             <!-- Teams -->
             <div class="col-sm-5 col-lg-4">
@@ -441,7 +435,7 @@
                     <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
                             <li>
-                                <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
+                                <button type="button" data-toggle="block-option" data-action="[]" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
                         <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teams</h3>
@@ -724,28 +718,9 @@
                       pointBorderColor: "#fff",
                       pointHoverBackgroundColor: "#fff",
                       pointHoverBorderColor: "rgba(253,180,93,1)",
-                      data: [65, 59, 90, 81, 56, 55, 40]
+                      data: []
                    },
-                   {
 
-                      backgroundColor: "rgba(237,140,125,0.8)",
-                      borderColor: "rgba(237,140,125,1)",
-                      pointBackgroundColor:  "rgba(237,140,125,1)",
-                      pointBorderColor: "#fff",
-                      pointHoverBackgroundColor: "#fff",
-                      pointHoverBorderColor:  "rgba(237,140,125,1)",
-                      data: [22, 49, 30, 24, 19, 65, 42]
-                   },
-                   {
-
-                      backgroundColor: "rgba(117,203,207,0.8)",
-                      borderColor: "rgba(117,203,207,1)",
-                      pointBackgroundColor:  "rgba(117,203,207,1)",
-                      pointBorderColor: "#fff",
-                      pointHoverBackgroundColor: "#fff",
-                      pointHoverBorderColor:  "rgba(117,203,207,1)",
-                      data: [99, 74, 22, 7, 4, 2, 92]
-                   }
                 ]
             };
             var ctx = document.getElementById("myChart");
@@ -764,6 +739,7 @@
                        }
                }
             });
+
 
             var ctx = document.getElementById("myChart2");
             var radar_data2 = {

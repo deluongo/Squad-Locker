@@ -122,6 +122,118 @@ class TeamsTableSeeder extends Seeder
 
          ]);
 
+         DB::table('teams')->insert([
+             //Housekeeping
+             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+             # Owner
+             'gamertag' => 'AishaCurry30',
+             # Team Settings
+             'name' => 'InvitesTester',
+             'team_bg_pic' => '/img/photos/steph2face.jpg',
+             'team_profile_pic' => '/img/avatars/rttf.jpg',
+
+             'abbreviation' => 'INVI',
+             'wins' => '11',
+             'losses' => '24',
+             'type' => 'MyPark Squad',
+             'affiliation' => 'Sunset Beach',
+             'tagline' => 'Only one spot left',
+
+             'movement' => 'Ball-Movement',
+             'tempo' => 'Uptempo',
+             'offense' => 'Motion',
+             'defense' => 'Team-D',
+
+             //Players
+             'player1' => 'CaptainAwesome650',
+             'player2' => 'PrettyBoiFredo',
+
+             'num_players' => 2,
+             //Social
+             'twitter' => 'https://www.youtube.com/user/deluongo',
+             'youtube' => 'https://twitter.com/DevonLuongo',
+             'twitch' => 'https://www.twitch.tv/deluongo',
+
+             //Stats
+             'team_grade' => 'A+',
+             'skill_grade' => 'B+',
+             'per' => 26.0,
+             'fg' => 71.6,
+             'apg' => 6.0,
+             'apg_ppg' => 0.6,
+             'ppg' => 10.2,
+             'rpg' => 6.2,
+
+             //Colors
+             'progress_chart_color' => '#abe37d',
+             'progress_bar_color' => 'success',
+             'team_grade_color' => 'success',
+             'skill_grade_color' => 'warning',
+             'per_color' => 'success',
+             'fg_color' => 'success',
+             'apg_color' => 'success',
+             'apg_ppg_color' => 'danger',
+             'ppg_color' => 'success',
+             'rpg_color' => 'success'
+         ]);
+
+         DB::table('teams')->insert([
+             //Housekeeping
+             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+             # Owner
+             'gamertag' => 'HillaryClinton',
+             # Team Settings
+             'name' => 'RequestsTester',
+             'team_bg_pic' => '/img/photos/steph2face.jpg',
+             'team_profile_pic' => '/img/avatars/rttf.jpg',
+
+             'abbreviation' => 'INVI',
+             'wins' => '33',
+             'losses' => '12',
+             'type' => 'MyPark Squad',
+             'affiliation' => 'Sunset Beach',
+             'tagline' => 'Looking for lots of new players',
+
+             'movement' => 'Ball-Movement',
+             'tempo' => 'Uptempo',
+             'offense' => 'Motion',
+             'defense' => 'Team-D',
+
+             //Players
+             'player1' => 'CaptainAwesome650',
+             'player2' => 'PrettyBoiFredo',
+
+             'num_players' => 2,
+             //Social
+             'twitter' => 'https://www.youtube.com/user/deluongo',
+             'youtube' => 'https://twitter.com/DevonLuongo',
+             'twitch' => 'https://www.twitch.tv/deluongo',
+
+             //Stats
+             'team_grade' => 'A+',
+             'skill_grade' => 'B+',
+             'per' => 26.0,
+             'fg' => 71.6,
+             'apg' => 6.0,
+             'apg_ppg' => 0.6,
+             'ppg' => 10.2,
+             'rpg' => 6.2,
+
+             //Colors
+             'progress_chart_color' => '#abe37d',
+             'progress_bar_color' => 'success',
+             'team_grade_color' => 'success',
+             'skill_grade_color' => 'warning',
+             'per_color' => 'success',
+             'fg_color' => 'success',
+             'apg_color' => 'success',
+             'apg_ppg_color' => 'danger',
+             'ppg_color' => 'success',
+             'rpg_color' => 'success'
+         ]);
+
     }
 
 }
