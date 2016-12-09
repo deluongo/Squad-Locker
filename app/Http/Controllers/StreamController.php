@@ -33,13 +33,19 @@ class StreamController extends Controller
         $activity_stream_heading = 'active';
         $find_teams_heading = '';
 
+        /* ======================================================
+        Navigation - List of teams
+        ====================================================== */
+        $teams_owned = [];
+        $teams_on = [];
+        
         $player = Player::where('name', '=', Auth::user()->name )->first();
-
+        // Passes lists of teams owned.
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }

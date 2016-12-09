@@ -39,11 +39,14 @@ class FindTeamController extends Controller
 
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
+        $teams_owned = [];
+        $teams_on = [];
+
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
@@ -88,13 +91,20 @@ class FindTeamController extends Controller
         $activity_stream_heading = '';
         $find_teams_heading = 'active';
 
-        $player = Player::where('name', '=', Auth::user()->name )->first();
+        /* ======================================================
+        Navigation - List of teams
+        ====================================================== */
 
+        $teams_owned = [];
+        $teams_on = [];
+        
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+        // Passes lists of teams owned.
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
@@ -126,7 +136,7 @@ class FindTeamController extends Controller
             'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading,
             'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
             'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
-            
+
         return view('findteam.show')->with($data);
     }
 }

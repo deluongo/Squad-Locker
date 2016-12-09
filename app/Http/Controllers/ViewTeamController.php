@@ -13,9 +13,9 @@ use p4\Player; # <--- NEW
 class ViewTeamController extends Controller
 {
 
-    public function show()
+    public function show($name)
     {
-        $team = Team::where('gamertag', '=', $name)->first();
+        $team = Team::where('name', '=', $name)->first();
 
         if($team) {
             //Account Settings
@@ -219,11 +219,14 @@ class ViewTeamController extends Controller
 
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
+        $teams_owned = [];
+        $teams_on = [];
+
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }

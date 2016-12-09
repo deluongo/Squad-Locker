@@ -334,17 +334,11 @@
 -->
                                 <a href="/teamupdate" class="{{ $team_update_heading }} nav-submenu" data-toggle="nav-submenu"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">Update Team</span></a>
                                 <ul>
+                                   <li>
+                                      <a href="/newteam">New Team</a>
+                                   </li>
                                     @if(!$teams_owned == null)
-                                        <li class="nav-sub-header">Owned</li>
                                         @foreach($teams_owned as $team)
-                                            <li>
-                                                <a href="/teamupdate">{{$team->name}}</a>
-                                            </li>
-                                        @endforeach
-                                    @endif
-                                    @if(!$teams_on == null)
-                                        <li class="nav-sub-header">Rostered</li>
-                                        @foreach($teams_on as $team)
                                             <li>
                                                 <a href="/teamupdate/{{$team->name}}">{{$team->name}}</a>
                                             </li>

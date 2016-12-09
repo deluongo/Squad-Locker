@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/update';
+    protected $redirectTo = '/newplayer';
 
     /**
      * Create a new controller instance.

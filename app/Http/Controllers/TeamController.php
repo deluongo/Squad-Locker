@@ -1,7 +1,5 @@
 <?php
-
 namespace p4\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use p4\Http\Requests;
@@ -9,7 +7,6 @@ use DB;
 use Carbon;
 use p4\Team; # <--- NEW
 use p4\Player; # <--- NEW
-
 class TeamController extends Controller
 {
     /**
@@ -21,20 +18,16 @@ class TeamController extends Controller
     {
         $this->middleware('auth');
     }
-
     public function show($name)
     {
-
         #$player = Player::where('name', '=', Auth::user()->name )->first();
         $team = Team::where('name', '=', $name)->first();
         #->where(($player->pivot->status == 2) || ($player->pivot->status == 1));
-
         if($team) {
             //Account Settings
             $name = $team->name;
             $team_bg_pic = $team->team_bg_pic;
             $team_profile_pic = $team->team_profile_pic;
-
             $abbreviation = $team->abbreviation;
             $wins = $team->wins;
             $losses = $team->losses;
@@ -42,15 +35,12 @@ class TeamController extends Controller
             $affiliation = $team->affiliation;
             $type = $team->type;
             $tagline = $team->tagline;
-
             $team_grade = $team->team_grade;
             $skill_grade = $team->skill_grade;
-
             $movement = $team->movement;
             $tempo = $team->tempo;
             $offense =$team->offense;
             $defense =$team->defense;
-
             $player1 = $team->player1;
             $player2 = $team->player2;
             $player3 = $team->player3;
@@ -61,7 +51,6 @@ class TeamController extends Controller
             $player8 = $team->player8;
             $player9 = $team->player9;
             $player10 = $team->player10;
-
             //Social
             $twitter = $team->twitter;
             $youtube = $team->youtube;
@@ -70,7 +59,6 @@ class TeamController extends Controller
         else {
             return 'Team data not found.';
         }
-
         $per = 0;
         $fg = 0;
         $apg = 0;
@@ -78,7 +66,6 @@ class TeamController extends Controller
         $ppg = 0;
         $rpg = 0;
         $num_players = 0;
-
         for ($i = 1; $i <= 10; $i++) {
             if (${'player'.$i} != '') {
                 $player = Player::where('name', '=', ${'player'.$i})->first();
@@ -88,18 +75,14 @@ class TeamController extends Controller
                     $apg += $player->apg;
                     $ppg += $player->ppg;
                     $rpg +=$player->rpg;
-
                     $num_players += 1;
-
                     ${'player'.$i.'_name'} = $player->name;
                     ${'player'.$i.'_per'} = $player->per;
                     ${'player'.$i.'_team_grade'} = $player->team_grade;
                     ${'player'.$i.'_skill_grade'} = $player->skill_grade;
                 }
-
             }
         }
-
         # Team Stats
         $per = number_format(round($per / $num_players, 1), 1, '.', '');
         $fg = number_format(round($fg / $num_players, 1), 1, '.', '');
@@ -107,10 +90,8 @@ class TeamController extends Controller
         $ppg = number_format(round($ppg * 3 / $num_players, 1), 1, '.', '');
         $rpg = number_format(round($rpg * 3 / $num_players, 1), 1, '.', '');
         $apg_ppg = number_format(round($apg/$ppg, 1), 1, '.', '');
-
         # Progress Bar
         $progress_bar = ( 1 / ( 1 + pow( ($losses/$wins), 2 ) ) ) * 100;
-
         /* ======================================================
         Context Colors
         ====================================================== */
@@ -207,11 +188,8 @@ class TeamController extends Controller
             $progress_chart_color ="#FAAE7E";
             $progress_bar_color = "danger";
         }
-
-
         $team_members = [];
         $owner = '';
-
         foreach($team->players as $player) {
             if ($player->pivot->status == 2) {
                 $team_members[] = $player;
@@ -220,8 +198,6 @@ class TeamController extends Controller
                 $owner = $player;
             }
         }
-
-
         //Navigation Active
         $my_player_heading = '';
         $update_heading = '';
@@ -230,21 +206,17 @@ class TeamController extends Controller
         $free_agency_heading = '';
         $activity_stream_heading = '';
         $find_teams_heading = '';
-
         $teams_owned = [];
         $teams_on = [];
-
         $player = Player::where('name', '=', Auth::user()->name )->first();
-
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
-
         $data = ['num_players' => $num_players, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'abbreviation' => $abbreviation,
                 'team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'type' => $type,
                 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
@@ -255,8 +227,6 @@ class TeamController extends Controller
                 'progress_bar' => $progress_bar, 'progress_bar_color' => $progress_bar_color, 'progress_chart_color' => $progress_chart_color, 'find_teams_heading' => $find_teams_heading,
                 'team_members' => $team_members, 'owner' => $owner, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'team_profile_pic' => $team_profile_pic, 'team_bg_pic' => $team_bg_pic
             ];
-
         return view('team.show')->with($data);
-
     }
 }

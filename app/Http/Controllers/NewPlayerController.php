@@ -6,7 +6,7 @@ use p4\Http\Requests;
 use DB;
 use Carbon;
 use p4\Player; # <--- NEW
-class UpdateController extends Controller
+class NewPlayerController extends Controller
 {
     /**
      * Create a new controller instance.

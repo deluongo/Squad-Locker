@@ -92,10 +92,10 @@ class ViewPlayerController extends Controller
         $teams_on = [];
 
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
@@ -204,10 +204,10 @@ class ViewPlayerController extends Controller
       $teams_on = [];
 
       foreach($player->teams as $team) {
-          if ($team->pivot->status == 2) {
+          if ($team->pivot->status == 1) {
               $teams_owned[] = $team;
           }
-          elseif($team->pivot->status == 1) {
+          elseif($team->pivot->status == 2) {
               $teams_on[] = $team;
           }
       }

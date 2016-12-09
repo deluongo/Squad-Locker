@@ -40,11 +40,14 @@ class AgencyController extends Controller
 
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
+        $teams_owned = [];
+        $teams_on = [];
+
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
@@ -100,11 +103,14 @@ class AgencyController extends Controller
 
         $player = Player::where('name', '=', Auth::user()->name )->first();
 
+        $teams_owned = [];
+        $teams_on = [];
+        
         foreach($player->teams as $team) {
-            if ($team->pivot->status == 2) {
+            if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
-            elseif($team->pivot->status == 1) {
+            elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
@@ -192,7 +198,6 @@ class AgencyController extends Controller
                  'Defensive-Anchor', 'Boards-N-Outlets', 'Putback-King','Shot-Creator', 'Ankle-Breaking-Driver', 'Blow-By-Dunker', 'Isolation-Specialist',
                  'Post-Move-Master', 'Fast-Break-Finisher', 'Pick-N-Roll-Big', 'Second-Chance-Only', 'Backdoor-Posterizer', 'Catch-N-Shoot', 'Slash-N-Shoot'];
      $search_role = [];
-     
       $search_name = $request->input('search_name');
 
       if ($request->input('search_position') != null) {

@@ -22,8 +22,8 @@
                     <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="">
                 </div>
                 <div class="push-30 animated fadeInUp">
-                    <h2 class="h4 font-w600 text-white push-5">{{ $name }} ({{ $abbreviation }})</h2>
-                    <h3 class="h5 text-white-op">{{ $affiliation }} | {{ $type }} </h3>
+                    <h2 class="h4 font-w600 text-white push-5">@if($new_team == 'no' ) {{ $name }} ({{ $abbreviation }}) @endif</h2>
+                    <h3 class="h5 text-white-op">@if($new_team == 'no' ) {{ $affiliation }} | {{ $type }} @endif</h3>
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                 <div class="push-10 animated fadeInUp">
                     <h1 class="h3 font-w600 text-white push-5">Success</h2>
                     <h2 class="h5 text-white-op">{{ $notification }}</h3>
-                    <form action="/team">
+                    <form action="/myteam/{{$name}}">
                         <button class="btn btn-sm bg-primary push-10-t" type="submit"><i class="si si-game-controller push-5-r"></i>  View Myteam</button>
                     </form>
                 </div>
@@ -79,7 +79,7 @@
     @endif
 
     <!-- Main Content -->
-    <form action="/teamupdate" method="post">
+    <form action="/teamupdate/{{$name}}" method="post">
         {{ csrf_field() }}
         <div class="block">
             <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
@@ -334,6 +334,9 @@
             <div class="block-content bg-gray-lighter text-center margin-10">
                 <button class="btn btn-sm btn-primary margin-10" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
                 <button class="btn btn-sm btn-warning margin-10" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
+                @if($new_team == 'no')
+                <button class="btn btn-sm btn-danger margin-10" type="submit" name="delete" id="delete" value="yes"><i class="fa fa-refresh push-5-r"></i> Delete</button>
+                @endif
             </div>
         </div>
     </form>

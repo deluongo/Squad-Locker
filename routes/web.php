@@ -32,6 +32,9 @@ Route::post('/register', 'RegisterController@submit')->name('register.showv2');
 Route::get('/update', 'UpdateController@show')->name('update.show');
 Route::post('/update', 'UpdateController@post')->name('update.post');
 
+Route::get('/newplayer', 'NewPlayerController@show')->name('newplayer.show');
+Route::post('/newplayer', 'NewPlayerController@post')->name('newplayer.post');
+
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
 Route::post('/free-agency', 'AgencyController@post2')->name('agency.post');
 
@@ -42,6 +45,9 @@ Route::get('/stream', 'StreamController@show')->name('stream.show');
 
 Route::get('/teamupdate/{name}', 'TeamUpdateController@show')->name('teamupdate.show');
 Route::post('/teamupdate/{name}', 'TeamUpdateController@post')->name('teamupdate.show');
+
+Route::get('/newteam', 'NewTeamController@show')->name('teamupdate.show');
+Route::post('/newteam', 'NewTeamController@post')->name('teamupdate.show');
 
 Route::get('/formswizard', 'FormsWizardController@show')->name('formswizard.show');
 
