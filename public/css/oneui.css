@@ -8320,7 +8320,7 @@ button.text-city-lighter:focus {
 }
 
 .bg-orange-theme {
-  background-color: #252C36;
+  background-color: #002640;
 }
 a.bg-orange-theme:hover,
 a.bg-orange-theme:focus {
@@ -8332,7 +8332,7 @@ a.bg-orange-theme:focus {
   background-color: #182430;
 }
 a.bg-yellow-theme:hover,
-a.bg-orange-theme:focus {
+a.bg-yellow-theme:focus {
   background-color: #91BED4;
 }
 

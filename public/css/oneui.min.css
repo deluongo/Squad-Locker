@@ -9272,6 +9272,15 @@ a.bg-smooth-lighter:hover, a.bg-smooth-lighter:focus {
     background-color: #ff86ae
 }
 
+.bg-yellow-theme {
+  background-color: #182430;
+}
+a.bg-yellow-theme:hover,
+a.bg-yellow-theme:focus {
+  background-color: #ff3838;
+  background-color: #002036;
+}
+
 @media print {
     #page-container, #main-container {
         padding: 0 !important
