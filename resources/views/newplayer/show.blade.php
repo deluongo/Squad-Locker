@@ -5,7 +5,7 @@
     Update {{$name}}
 @endsection
 
-@section('main')
+@section('content')
 <!-- Page Content -->
 <div class="content content-boxed">
     <!-- User Header -->
@@ -96,7 +96,7 @@
             <div class="block-content tab-content">
                 <!-- Account Settings Tab -->
                 <div class="tab-pane fade in active" id="tab-profile-personal">
-                    <div class="row items-push">
+                    <div class="row items-push push-15-t">
                         <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                             <div class="form-group">
                                 <div class="col-xs-12 form-material">
@@ -350,7 +350,7 @@
 
                 <!-- Privacy Tab -->
                 <div class="tab-pane fade" id="tab-profile-privacy">
-                    <div class="row items-push">
+                    <div class="row items-push push-15-t">
                         <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                             <div class="form-group">
                                 <div class="col-xs-4 form-material">
@@ -392,9 +392,9 @@
                 </div>
                 <!-- END Privacy Tab -->
             </div>
-            <div class="block-content bg-gray-lighter text-center margin-10">
-                <button class="btn btn-sm btn-primary margin-10" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
-                <button class="btn btn-sm btn-warning margin-10" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
+            <div class="block-content bg-gray-lighter text-center">
+                <button class="btn btn-sm btn-primary margin-30" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                <button class="btn btn-sm btn-warning margin-30" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
             </div>
         </div>
     </form>

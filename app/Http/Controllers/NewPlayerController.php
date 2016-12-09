@@ -82,7 +82,7 @@ class NewPlayerController extends Controller
             }
         }
         $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
-        return view('update.show')->with($data);
+        return view('newplayer.show')->with($data);
     }
         /* ======================================================
         Display on form submit
@@ -159,11 +159,28 @@ class NewPlayerController extends Controller
                 'username' => "required|alpha_dash{$uni_name}",
                 'name' => "required|alpha_dash{$uni_name}",
                 // Player Profile
-                'twitter' => 'active_url',
-                'youtube' => 'active_url',
-                'twitch' => 'active_url',
+                'twitter' => 'required|active_url',
+                'youtube' => 'required|active_url',
+                'twitch' => 'required|active_url',
                 // Player Stats
-                'fg' => 'numeric|max:100|min:0'
+                'fg' => 'required|numeric|max:100|min:0',
+                //Page 1
+                'tagline' => 'required|alpha_dash',
+                //Page 2
+                'poston' => 'required',
+                'archetype' => 'required',
+                'affiliation' => 'required',
+                'rep_status' => 'required',
+                'status_level' => 'required',
+                'rep_progress' => 'required',
+                'style' => 'required',
+                //Page 3
+                'per' => 'required',
+                'ppg' => 'required',
+                'apg' => 'required',
+                'apg_ppg' => 'required',
+                'fg' => 'required',
+                'rpg' => 'required',
             ]);
             /* ======================================================
             Store Form Results
@@ -483,6 +500,6 @@ class NewPlayerController extends Controller
                 }
             }
             $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
-            return view('update.show')->with($data);
+            return view('newplayer.show')->with($data);
         }
 }
