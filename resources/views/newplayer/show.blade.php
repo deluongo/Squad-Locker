@@ -1,9 +1,10 @@
-@extends('layouts.structure')
-
+@extends('layouts.forms_structure')
 
 @section('title')
-    Update {{$name}}
+    {{-- Yield the title if it exists, otherwise default to 'Squad Locker' --}}
+    @yield('title','Squad Locker')
 @endsection
+
 
 @section('content')
 <!-- Page Content -->
@@ -23,53 +24,32 @@
                 </div>
                 <div class="push-30 animated fadeInUp">
                     <h2 class="h4 font-w600 text-white push-5">{{ $name }}</h2>
-                    <h3 class="h5 text-white-op">{{ $affiliation }} | {{ $position }} | {{ $archetype }}</h3>
+                    <h3 class="h5 text-white-op">{{ $affiliation }}  {{ $position }}  {{ $archetype }}</h3>
                 </div>
             </div>
         </div>
         <!-- END Basic Info -->
 
-        <!-- Stats -->
-        <div class="block-content text-center">
-            <div class="row items-push text-uppercase">
-                <div class="col-xs-6 col-sm-3">
-                    <div class="font-w700 text-gray-darker animated fadeIn">Teammate Grade</div>
-                    <a class="h2 font-w300 text-success animated flipInX" href="javascript:void(0)">{{$team_grade}}</a>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="font-w700 text-gray-darker animated fadeIn">Ability Grade</div>
-                    <a class="h2 font-w300 text-warning animated flipInX" href="javascript:void(0)">{{$skill_grade}}</a>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="font-w700 text-gray-darker animated fadeIn">Followers</div>
-                    <a class="h2 font-w300 text-primary animated flipInX" href="javascript:void(0)">2600</a>
-                </div>
-                <div class="col-xs-6 col-sm-3">
-                    <div class="font-w700 text-gray-darker animated fadeIn">24 Ratings</div>
-                    <div class="text-warning push-10-t animated flipInX">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END Stats -->
+
     </div>
     <!-- END User Header -->
 
-    <!-- Notification Block -->
     @if(!$notification == null)
     <div class="block">
         <!-- Basic Info -->
-            <div class="block-content bg-success text-center overflow-hidden">
+            <div class="block-content @if($new_player == 'no') bg-success @elseif($new_player=='added') bg-success @else bg-warning @endif text-center overflow-hidden">
                 <div class="push-10 animated fadeInUp">
-                    <h1 class="h3 font-w600 text-white push-5">Success</h2>
+                    <h1 class="h3 font-w600 text-white push-5">@if($new_player == 'no') Success @elseif($new_player == 'added') Player Created @else Register @endif</h2>
                     <h2 class="h5 text-white-op">{{ $notification }}</h3>
                     <form action="/player">
-                        <button class="btn btn-sm bg-primary push-10-t" type="submit"><i class="si si-game-controller push-5-r"></i>  View MyPlayer</button>
+                       @if( $new_player == 'no')
+                           <button class="btn btn-sm bg-primary push-10-t" type="submit"><i class="si si-game-controller push-5-r"></i>  View MyPlayer</button>
+                       @elseif( $new_player == 'added') Player Created
+                           <button class="btn btn-sm bg-primary push-10-t" type="submit"><i class="si si-game-controller push-5-r"></i>  Enter SquadLocker</button>
+                       @else
+
+                       @endif
+
                     </form>
                 </div>
             </div>
@@ -79,7 +59,7 @@
     @endif
 
     <!-- Main Content -->
-    <form action="/update" method="post">
+    <form action="/newplayer" method="post">
         {{ csrf_field() }}
         <div class="block">
             <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
@@ -98,29 +78,6 @@
                 <div class="tab-pane fade in active" id="tab-profile-personal">
                     <div class="row items-push push-15-t">
                         <div class="col-sm-6 col-sm-offset-3 form-horizontal">
-                            <div class="form-group">
-                                <div class="col-xs-12 form-material">
-                                    <label for="profile-email">Email Address</label>
-                                    <input class="form-control valid input-lg" type="email" id="profile-email" name="email" placeholder="Enter your email.." value="{{ $email }}" aria-required="true" aria-describedby="val-email2-error" aria-invalid="false">
-                                    @if($errors->get('email'))
-                                      <ul class="errors">
-                                      @foreach($errors->get('email') as $error)
-                                        <li>{{ $error }}</li>
-                                      @endforeach
-                                      </ul>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-6 form-material">
-                                    <label for="profile-firstname">Username</label>
-                                    <input class="form-control input-lg" type="text" id="username" name="username" placeholder="Update your username.." value="{{ $username }}">
-                                </div>
-                                <div class="col-xs-6 form-material">
-                                    <label for="profile-lastname">Password</label>
-                                    <input class="form-control input-lg" type="text" id="password" name="password" placeholder="Update your password..">
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <div class="col-xs-4 form-material">
                                     <label for="profile-password">GamerTag</label>

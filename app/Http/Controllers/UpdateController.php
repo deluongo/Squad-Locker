@@ -89,7 +89,7 @@ class UpdateController extends Controller
         ====================================================== */
         public function post(Request $request)
         {
-            $player = Player::where('name', '=', 'CaptainAwesome650')->first();
+            $player = Player::where('name', '=', Auth::user()->name )->first();
             /* ======================================================
             Retrieve Default/Stored DB Values
             ====================================================== */
@@ -470,7 +470,7 @@ class UpdateController extends Controller
             $free_agency_heading = '';
             $activity_stream_heading = '';
             $find_teams_heading = '';
-            $player = Player::where('name', '=', Auth::user()->name )->first();
+
 
             $teams_on = [];
             $teams_owned = [];

@@ -17,15 +17,47 @@ class NewPlayerController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function show()
     {
         $player = Player::where('name', '=', Auth::user()->name )->first();
+
         $notification = null;
-        if($player) {
+
+       //Account Settings
+       //Profile
+       $name = null;
+       $affiliation = null;
+       $archetype = null;
+       $position = null;
+       $tagline = null;
+       //$bg_image = $player->bg_image;
+       //$profile_pic = $player->profile_pic;
+       //Park
+       $rep_level = null;
+       $rep_progress = null;
+       $rep_status = null;
+       $status_level = null;
+       //Social
+       $twitter = null;
+       $youtube = null;
+       $twitch = null;
+       //Playstyle
+       $type = null;
+       $role = null;
+       $style = null;
+       //Stats
+       $team_grade = null;
+       $skill_grade = null;
+       $per = null;
+       $fg = null;
+       $apg = null;
+       $apg_ppg = null;
+       $ppg = null;
+       $rpg = null;
+       if($player) {
             //Account Settings
-            $email = $player->email;
-            $username = $player->username;
-            $password = $player->password;
+
             //Profile
             $name = $player->name;
             $affiliation = $player->affiliation;
@@ -56,9 +88,14 @@ class NewPlayerController extends Controller
             $apg_ppg = $player->apg_ppg;
             $ppg = $player->ppg;
             $rpg = $player->rpg;
+
+            $new_player = 'no';
         }
         else {
             $notification = 'Player data not found.';
+            $new_player = 'yes';
+
+            $name = Auth::user()->name;
         }
         //Navigation Active
         $my_player_heading = '';
@@ -68,36 +105,34 @@ class NewPlayerController extends Controller
         $activity_stream_heading = '';
         $team_update_heading = '';
         $find_teams_heading = '';
-        $player = Player::where('name', '=', Auth::user()->name )->first();
+
+
+
 
         $teams_on = [];
         $teams_owned = [];
 
-        foreach($player->teams as $team) {
-            if ($team->pivot->status == 1) {
-                $teams_owned[] = $team;
-            }
-            elseif($team->pivot->status == 2) {
-                $teams_on[] = $team;
-            }
-        }
-        $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+        $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player];
         return view('newplayer.show')->with($data);
     }
+
+
         /* ======================================================
         Display on form submit
         ====================================================== */
         public function post(Request $request)
         {
-            $player = Player::where('name', '=', 'CaptainAwesome650')->first();
+
+           echo 'WTF';
+
+            $player = Player::where('name', '=', Auth::user()->name )->first();
+            $name = null;
+
             /* ======================================================
             Retrieve Default/Stored DB Values
             ====================================================== */
             if($player) {
                 //Account Settings
-                $email = $player->email;
-                $username = $player->username;
-                $password = $player->password;
                 //Profile
                 $name = $player->name;
                 $affiliation = $player->affiliation;
@@ -128,6 +163,12 @@ class NewPlayerController extends Controller
                 $apg_ppg = $player->apg_ppg;
                 $ppg = $player->ppg;
                 $rpg = $player->rpg;
+
+                $new_player = 'no';
+            }
+
+            else {
+               $new_player = 'yes';
             }
             /* ======================================================
             Server Side Validation
@@ -135,18 +176,6 @@ class NewPlayerController extends Controller
             //if (!$request->input('email') == $email){'unique:players'};
             //if (!$request->input('username') == $username){'username' => 'unique:players'};
             // Ensure Unique Inputs
-            if ($request->input('email') != $email){
-                $uni_email = "|unique:players";
-            }
-            else {
-                $uni_email = '';
-            }
-            if ($request->input('username') != $username){
-                $uni_username = "|unique:players";
-            }
-            else {
-                $uni_username = '';
-            }
             if ($request->input('name') != $name){
                 $uni_name = "|unique:players";
             }
@@ -155,8 +184,6 @@ class NewPlayerController extends Controller
             }
             $this->validate($request, [
                 // Account Settings
-                'email' => "required|email{$uni_name}",
-                'username' => "required|alpha_dash{$uni_name}",
                 'name' => "required|alpha_dash{$uni_name}",
                 // Player Profile
                 'twitter' => 'required|active_url',
@@ -186,15 +213,6 @@ class NewPlayerController extends Controller
             Store Form Results
             ====================================================== */
             //Account Settings
-            if (!$request->input('email') == null) {
-                $email = $request->input('email');
-            }
-            if (!$request->input('username') == null) {
-                $username = $request->input('username');
-            }
-            if (!$request->input('password') == null) {
-                $password = $request->input('password');
-            }
             //Profile
             if (!$request->input('name') == null) {
                 $name = $request->input('name');
@@ -375,9 +393,6 @@ class NewPlayerController extends Controller
             ====================================================== */
             if($player) {
                 //Account Settings
-                $player->email = $email;
-                $player->username = $username;
-                $player->password = $password;
                 //Profile
                 $player->name = $name;
                 $player->affiliation = $affiliation;
@@ -424,14 +439,13 @@ class NewPlayerController extends Controller
                 # Save the changes
                 $player->save();
                 $notification = "Update for $name is complete. Check your profile to view changes.";
+
+                $new_player = 'no';
             }
             else {
                 # Instantiate a new Book Model object
                 $player = new Player();
                 //Account Settings
-                $player->email = $email;
-                $player->username = $username;
-                $player->password = $password;
                 //Profile
                 $player->name = $name;
                 $player->affiliation = $affiliation;
@@ -477,7 +491,10 @@ class NewPlayerController extends Controller
                 $player->rpg_color = $rpg_color;
                 # Save the changes
                 $player->save();
+
                 $notification = "Player details for $name have been uploaded. Check your profile to view changes.";
+
+                $new_player = 'added';
             }
             //Navigation Active
             $my_player_heading = '';
@@ -487,19 +504,11 @@ class NewPlayerController extends Controller
             $free_agency_heading = '';
             $activity_stream_heading = '';
             $find_teams_heading = '';
-            $player = Player::where('name', '=', Auth::user()->name )->first();
 
             $teams_on = [];
             $teams_owned = [];
-            foreach($player->teams as $team) {
-                if ($team->pivot->status == 1) {
-                    $teams_owned[] = $team;
-                }
-                elseif($team->pivot->status == 2) {
-                    $teams_on[] = $team;
-                }
-            }
-            $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+
+            $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player];
             return view('newplayer.show')->with($data);
         }
 }

@@ -179,7 +179,7 @@ class NewTeamController extends Controller
                }
            }
 
-            $team = Team::where('name', '=', 'StraightFundamental')->first();
+            $team = Team::where('name', '=', $request->input('name'))->first();
 
             if($team) {
 

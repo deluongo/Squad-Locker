@@ -33,7 +33,7 @@ Route::get('/update', 'UpdateController@show')->name('update.show');
 Route::post('/update', 'UpdateController@post')->name('update.post');
 
 Route::get('/newplayer', 'NewPlayerController@show')->name('newplayer.show');
-Route::post('/newplayer', 'NewPlayerController@post')->name('newplayer.post');
+Route::post('/newplayer', 'NewPlayerController@post')->name('newplayer.show');
 
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
 Route::post('/free-agency', 'AgencyController@post2')->name('agency.post');

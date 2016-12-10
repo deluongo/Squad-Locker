@@ -246,7 +246,7 @@
                 <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
                 <div class="sidebar-content">
                     <!-- Side Header -->
-                    <div class="side-header side-content bg-image" style="background-image: url({{ asset('/img/yellow.png') }})">
+                    <div class="side-header side-content bg-image" style="background-image: url({{ asset('/img/yellow-logo.png') }})">
                         <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
                         <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
                             <i class="fa fa-times"></i>
