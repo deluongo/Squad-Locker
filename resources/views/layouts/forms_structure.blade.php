@@ -56,7 +56,7 @@
           @yield('content')
 
         <!-- Footer -->
-        <footer id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix">
+        <footer id="page-footer" class="content-mini content-mini-full font-s12 bg-gray-lighter clearfix push-30-t">
             <div class="pull-right">
                 Crafted with <i class="fa fa-heart text-city"></i> by <a class="font-w600" href="" target="_blank">Devon Luongo</a>
             </div>
@@ -64,7 +64,7 @@
         <!-- END Footer -->
 
 
-        <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->>
+        <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
         <script src="{{ URL::asset('js/oneui.min.js') }}"></script>
 
         <!-- Page JS Plugins + Page JS Code -->

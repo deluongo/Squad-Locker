@@ -15,42 +15,64 @@ Route::get('/', function () {
     return view('landing');
 });
 
+
+/* ======================================================
+Manage Profile
+====================================================== */
+### MyPlayer ###
 Route::get('/player', 'PlayerController@show')->name('player.show');
 Route::post('/player', 'PlayerController@post');
-#Route::get('/player-nav-js', 'PlayerController@show2')->name('player.player-nav-js');
-
-Route::get('player/{name}', 'ViewPlayerController@show')->name('viewplayer.show');
-
-
+### MyTeam ###
 Route::get('/myteam/{name}', 'TeamController@show')->name('team.show');
 
+/* ======================================================
+View Profile
+====================================================== */
+### Player ###
+Route::get('player/{name}', 'ViewPlayerController@show')->name('viewplayer.show');
+### Team ###
 Route::get('team/{name}', 'ViewTeamController@show')->name('viewteam.show');
 
-Route::get('/register', 'RegisterController@showv2')->name('register.showv2');
-Route::post('/register', 'RegisterController@submit')->name('register.showv2');
-
+/* ======================================================
+Update Existing
+====================================================== */
+### Player ###
 Route::get('/update', 'UpdateController@show')->name('update.show');
-Route::post('/update', 'UpdateController@post')->name('update.post');
-
-Route::get('/newplayer', 'NewPlayerController@show')->name('newplayer.show');
-Route::post('/newplayer', 'NewPlayerController@post')->name('newplayer.show');
-
-Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
-Route::post('/free-agency', 'AgencyController@post2')->name('agency.post');
-
-Route::get('/free-agency/teams', 'FindTeamController@show')->name('findteam.show');
-Route::post('/free-agency/teams', 'FindTeamController@post')->name('findteam.show');
-
-Route::get('/stream', 'StreamController@show')->name('stream.show');
-
+Route::post('/update', 'UpdateController@post')->name('update.show');
+### Team ###
 Route::get('/teamupdate/{name}', 'TeamUpdateController@show')->name('teamupdate.show');
 Route::post('/teamupdate/{name}', 'TeamUpdateController@post')->name('teamupdate.show');
 
-Route::get('/newteam', 'NewTeamController@show')->name('teamupdate.show');
-Route::post('/newteam', 'NewTeamController@post')->name('teamupdate.show');
 
-Route::get('/formswizard', 'FormsWizardController@show')->name('formswizard.show');
+/* ======================================================
+Create New
+====================================================== */
+### Player ###
+Route::get('/newplayer', 'NewPlayerController@show')->name('newplayer.show');
+Route::post('/newplayer', 'NewPlayerController@post')->name('newplayer.show');
+### Team ###
+Route::get('/newteam', 'NewTeamController@show')->name('newteam.show');
+Route::post('/newteam', 'NewTeamController@post')->name('newteam.show');
 
+/* ======================================================
+Free Agency
+====================================================== */
+### Find Players ###
+Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
+Route::post('/free-agency', 'AgencyController@post2')->name('agency.show');
+### Find Teams ###
+Route::get('/free-agency/teams', 'FindTeamController@show')->name('findteam.show');
+Route::post('/free-agency/teams', 'FindTeamController@post')->name('findteam.show');
+
+/* ======================================================
+Extras
+====================================================== */
+### Stream ###
+Route::get('/stream', 'StreamController@show')->name('stream.show');
+
+/* ======================================================
+Messaging
+====================================================== */
 Route::group(['prefix' => 'messages'], function () {
     Route::get('/', ['as' => 'messages', 'uses' => 'MessagesController@index']);
     Route::get('create', ['as' => 'messages.create', 'uses' => 'MessagesController@create']);
@@ -59,9 +81,10 @@ Route::group(['prefix' => 'messages'], function () {
     Route::put('{id}', ['as' => 'messages.update', 'uses' => 'MessagesController@update']);
 });
 
-#Route::get('/login', 'LoginController@show')->name('login.show');
-#Route::post('/login', 'LoginController@post')->name('login.post');
-
+/* ======================================================
+Debuging
+====================================================== */
+### Database ###
 Route::get('/debug', function() {
 
     echo '<pre>';
@@ -97,6 +120,10 @@ Route::get('/debug', function() {
 
 });
 
+/* ======================================================
+Auth Routes
+====================================================== */
+### Login/Registration ###
 Auth::routes();
-
+### Home ###
 Route::get('/home', 'HomeController@index');

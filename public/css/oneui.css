@@ -61,6 +61,14 @@ a.inactive {
 a.inactive:focus {
   background-color: transparent !important;
 }
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+   color: #335166;
+}
+#disabled {
+    color: #335166;
+}
 h1,
 h2,
 h3,

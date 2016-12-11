@@ -13,41 +13,57 @@ class UpdateController extends Controller
      *
      * @return void
      */
+
+    /* ======================================================
+    Authorize User
+    ====================================================== */
     public function __construct()
     {
         $this->middleware('auth');
     }
+
+    /* ======================================================
+    Show Form
+    ====================================================== */
     public function show()
     {
+        /* ======================================================
+        Database Query - Get Players Associated w/ Active User
+        ====================================================== */
         $player = Player::where('name', '=', Auth::user()->name )->first();
+
+        /* ======================================================
+        Default Variables - Ensure Page Load
+        ====================================================== */
         $notification = null;
+        ### Player Profile ###
         if($player) {
-            //Account Settings
+            ### Account Settings ###
             $email = $player->email;
-            $username = $player->username;
             $password = $player->password;
-            //Profile
+            ### Profile ###
             $name = $player->name;
             $affiliation = $player->affiliation;
             $archetype = $player->archetype;
             $position = $player->position;
             $tagline = $player->tagline;
-            //$bg_image = $player->bg_image;
-            //$profile_pic = $player->profile_pic;
-            //Park
+            ### Images ###
+            $background_pic = $player->player_profile_pic;
+            $profile_pic = $player->player_bg_pic;
+            ### Park ###
             $rep_level = $player->rep_level;
             $rep_progress = $player->rep_progress;
             $rep_status = $player->rep_status;
             $status_level = $player->status_level;
-            //Social
+            ### Social ###
             $twitter = $player->twitter;
             $youtube = $player->youtube;
             $twitch = $player->twitch;
-            //Playstyle
+            ### Playstyle ###
             $type = $player->type;
             $role = $player->role;
             $style = $player->style;
-            //Stats
+            ### Stats ###
             $team_grade = $player->team_grade;
             $skill_grade = $player->skill_grade;
             $per = $player->per;
@@ -58,9 +74,14 @@ class UpdateController extends Controller
             $rpg = $player->rpg;
         }
         else {
+            ### Notification ###
             $notification = 'Player data not found.';
         }
-        //Navigation Active
+
+        /* ======================================================
+        Navigation Vars - Remember Active Page
+        ====================================================== */
+        ### For Highlighting ###
         $my_player_heading = '';
         $update_heading = 'active';
         $my_team_heading = '';
@@ -69,19 +90,25 @@ class UpdateController extends Controller
         $team_update_heading = '';
         $find_teams_heading = '';
         $player = Player::where('name', '=', Auth::user()->name )->first();
-
+        ### For Teams Dropdown ###
         $teams_on = [];
         $teams_owned = [];
-
+        ### Ownership Filter ###
         foreach($player->teams as $team) {
+            ### Owned ###
             if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
+            ### Rostered ###
             elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
-        $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+
+        /* ======================================================
+        Show Form
+        ====================================================== */
+        $data = ['profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
         return view('update.show')->with($data);
     }
         /* ======================================================
@@ -89,37 +116,43 @@ class UpdateController extends Controller
         ====================================================== */
         public function post(Request $request)
         {
-            $player = Player::where('name', '=', Auth::user()->name )->first();
+
             /* ======================================================
-            Retrieve Default/Stored DB Values
+            Database Query - Get Players Associated w/ Active User
+            ====================================================== */
+            $player = Player::where('name', '=', Auth::user()->name )->first();
+
+
+            /* ======================================================
+            Player Data - Load From Database
             ====================================================== */
             if($player) {
-                //Account Settings
-                $email = $player->email;
-                $username = $player->username;
-                $password = $player->password;
-                //Profile
+                ### Account Settings ###
                 $name = $player->name;
+                $email = $player->email;
+                $password = $player->password;
+                ### Profile ###
                 $affiliation = $player->affiliation;
                 $archetype = $player->archetype;
                 $position = $player->position;
                 $tagline = $player->tagline;
-                //$bg_image = $player->bg_image;
-                //$profile_pic = $player->profile_pic;
-                //Park
+                ### Social ###
+                $twitter = $player->twitter;
+                $youtube = $player->youtube;
+                $twitch = $player->twitch;
+                ### Images ###
+                $background_pic = $player->player_profile_pic;
+                $profile_pic = $player->player_bg_pic;
+                ### Park Rank ###
                 $rep_level = $player->rep_level;
                 $rep_progress = $player->rep_progress;
                 $rep_status = $player->rep_status;
                 $status_level = $player->status_level;
-                //Social
-                $twitter = $player->twitter;
-                $youtube = $player->youtube;
-                $twitch = $player->twitch;
-                //Playstyle
+                ### Playstyle ###
                 $type = $player->type;
                 $role = $player->role;
                 $style = $player->style;
-                //Stats
+                ### Stats ###
                 $team_grade = $player->team_grade;
                 $skill_grade = $player->skill_grade;
                 $per = $player->per;
@@ -129,23 +162,16 @@ class UpdateController extends Controller
                 $ppg = $player->ppg;
                 $rpg = $player->rpg;
             }
+
             /* ======================================================
             Server Side Validation
             ====================================================== */
-            //if (!$request->input('email') == $email){'unique:players'};
-            //if (!$request->input('username') == $username){'username' => 'unique:players'};
-            // Ensure Unique Inputs
+            ### Only Apply When Replacing Current Value ###
             if ($request->input('email') != $email){
                 $uni_email = "|unique:players";
             }
             else {
                 $uni_email = '';
-            }
-            if ($request->input('username') != $username){
-                $uni_username = "|unique:players";
-            }
-            else {
-                $uni_username = '';
             }
             if ($request->input('name') != $name){
                 $uni_name = "|unique:players";
@@ -153,35 +179,63 @@ class UpdateController extends Controller
             else {
                 $uni_name = '';
             }
+
+            ### Validation Rules ###
             $this->validate($request, [
-                // Account Settings
-                'email' => "required|email{$uni_name}",
-                'username' => "required|alpha_dash{$uni_name}",
+
+                /* ======================================================
+                Page 1
+                ====================================================== */
+                ### Account Settings ###
                 'name' => "required|alpha_dash{$uni_name}",
-                // Player Profile
-                'twitter' => 'active_url',
-                'youtube' => 'active_url',
-                'twitch' => 'active_url',
-                // Player Stats
-                'fg' => 'numeric|max:100|min:0'
+                                'email' => "required|email{$uni_name}",
+                ### Social ###
+                'twitter' => 'required|active_url',
+                'youtube' => 'required|active_url',
+                'twitch' => 'required|active_url',
+                ### Images ###
+                //'background_pic' => 'active_url',
+                //'profile_pic' => 'active_url',
+                /* ======================================================
+                Page 2
+                ====================================================== */
+                ### Profile ###
+                'position' => 'required',
+                'archetype' => 'required',
+                'affiliation' => 'required',
+                'tagline' => 'required|alpha_dash',
+                ### Park Rank ###
+                'rep_status' => 'required',
+                'status_level' => 'required',
+                'rep_progress' => 'required',
+                'style' => 'required',
+                /* ======================================================
+                Page 3
+                ====================================================== */
+                'per' => 'required',
+                'ppg' => 'required',
+                'apg' => 'required',
+                'apg_ppg' => 'required',
+                'fg' => 'required|numeric|max:100|min:0',
+                'rpg' => 'required',
+
             ]);
+
+
             /* ======================================================
             Store Form Results
             ====================================================== */
-            //Account Settings
+            ### Account Settings ###
             if (!$request->input('email') == null) {
                 $email = $request->input('email');
-            }
-            if (!$request->input('username') == null) {
-                $username = $request->input('username');
             }
             if (!$request->input('password') == null) {
                 $password = $request->input('password');
             }
-            //Profile
             if (!$request->input('name') == null) {
                 $name = $request->input('name');
             }
+            ### Profile ###
             if (!$request->input('affiliation') == null) {
                 $affiliation = $request->input('affiliation');
             }
@@ -194,18 +248,23 @@ class UpdateController extends Controller
             if (!$request->input('tagline') == null) {
                 $tagline = $request->input('tagline');
             }
-            //$bg_image = $player->bg_image;
-            //$profile_pic = $player->profile_pic;
-            //Park
+            ### Images ###
+            if (!$request->input('background_pic') == null) {
+                $background_pic = $request->input('background_pic');
+            }
+            if (!$request->input('profile_pic') == null) {
+                $profile_pic = $request->input('profile_pic');
+            }
+            ### Park ###
             $rep_progress = $request->input('rep_progress');
             $rep_status = $request->input('rep_status');
             $status_level = $request->input('status_level');
             $rep_level = "{$rep_status} {$status_level}";
-            //Social
+            ### Social ###
             $twitter = $request->input('twitter');
             $youtube = $request->input('youtube');
             $twitch = $request->input('twitch');
-            //Playstyle
+            ### Playstyle ###
             if (!$request->input('type') == null) {
                 $type = $request->input('type');
             }
@@ -215,7 +274,7 @@ class UpdateController extends Controller
             if (!$request->input('style') == null) {
                 $style = $request->input('style');
             }
-            //Stats
+            ### Stats ###
             $per = $request->input('per');
             $fg = $request->input('fg');
             $apg = $request->input('apg');
@@ -223,6 +282,10 @@ class UpdateController extends Controller
             $ppg = $request->input('ppg');
             $rpg = $request->input('rpg');
             $overall_talent_score = (int) round( ( 100 * (($fg/100)*$ppg + $apg_ppg*$apg/1.5 + 2*$rpg ) / 20 ) );
+            //Default Team Grade
+
+            //$id = Auth::user()->id;
+
             /* ======================================================
             Context Colors
             ====================================================== */
@@ -329,6 +392,7 @@ class UpdateController extends Controller
             else {
                 $progress_bar_color = "danger";
             }
+
             /* ======================================================
             Player Type | Role
             ====================================================== */
@@ -357,32 +421,32 @@ class UpdateController extends Controller
             Update Database
             ====================================================== */
             if($player) {
-                //Account Settings
+                ### Account Settings ###
                 $player->email = $email;
-                $player->username = $username;
                 $player->password = $password;
-                //Profile
                 $player->name = $name;
+                ### Profile ###
                 $player->affiliation = $affiliation;
                 $player->archetype = $archetype;
                 $player->position = $position;
                 $player->tagline = $tagline;
-                //$bg_image = $player->bg_image;
-                //$profile_pic = $player->profile_pic;
-                //Park
+                ### Images ###
+                $player->player_bg_pic = $background_pic;
+                $player->player_profile_pic = $profile_pic;
+                ### Park Rank ###
                 $player->rep_level = $rep_level;
                 $player->rep_progress = $rep_progress;
                 $player->rep_status = $rep_status;
                 $player->status_level = $status_level;
-                //Social
+                ### Social ###
                 $player->twitter = $twitter;
                 $player->youtube = $youtube;
                 $player->twitch = $twitch;
-                //Playstyle
+                ### Playstyle ###
                 $player->type = $type;
                 $player->role = $role;
                 $player->style = $style;
-                //Stats
+                ### Stats ###
                 $player->overall_talent_score = $overall_talent_score;
                 $player->team_grade = $team_grade;
                 $player->skill_grade = $skill_grade;
@@ -392,7 +456,7 @@ class UpdateController extends Controller
                 $player->apg_ppg = $apg_ppg;
                 $player->ppg = $ppg;
                 $player->rpg = $rpg;
-                // Colors
+                ### Colors ###
                 $player->profile_pic_color = $profile_pic_color;
                 $player->progress_chart_color = $progress_chart_color;
                 $player->progress_bar_color = $progress_bar_color;
@@ -404,39 +468,39 @@ class UpdateController extends Controller
                 $player->apg_ppg_color = $apg_ppg_color;
                 $player->ppg_color = $ppg_color;
                 $player->rpg_color = $rpg_color;
-                # Save the changes
+                ### Save The Changes ###
                 $player->save();
                 $notification = "Update for $name is complete. Check your profile to view changes.";
             }
             else {
                 # Instantiate a new Book Model object
                 $player = new Player();
-                //Account Settings
+                ### Account Settings ###
                 $player->email = $email;
-                $player->username = $username;
                 $player->password = $password;
-                //Profile
                 $player->name = $name;
+                ### Profile ###
                 $player->affiliation = $affiliation;
                 $player->archetype = $archetype;
                 $player->position = $position;
                 $player->tagline = $tagline;
-                //$bg_image = $player->bg_image;
-                //$profile_pic = $player->profile_pic;
-                //Park
+                ### Images ###
+                $player->player_bg_pic = $background_pic;
+                $player->player_profile_pic = $profile_pic;
+                ### Park Rank ###
                 $player->rep_level = $rep_level;
                 $player->rep_progress = $rep_progress;
                 $player->rep_status = $rep_status;
                 $player->status_level = $status_level;
-                //Social
+                ### Social ###
                 $player->twitter = $twitter;
                 $player->youtube = $youtube;
                 $player->twitch = $twitch;
-                //Playstyle
+                ### Playstyle ###
                 $player->type = $type;
                 $player->role = $role;
                 $player->style = $style;
-                //Stats
+                ### Stats ###
                 $player->overall_talent_score = $overall_talent_score;
                 $player->team_grade = $team_grade;
                 $player->skill_grade = $skill_grade;
@@ -446,7 +510,7 @@ class UpdateController extends Controller
                 $player->apg_ppg = $apg_ppg;
                 $player->ppg = $ppg;
                 $player->rpg = $rpg;
-                // Colors
+                ### Colors ###
                 $player->profile_pic_color = $profile_pic_color;
                 $player->progress_chart_color = $progress_chart_color;
                 $player->progress_bar_color = $progress_bar_color;
@@ -458,11 +522,15 @@ class UpdateController extends Controller
                 $player->apg_ppg_color = $apg_ppg_color;
                 $player->ppg_color = $ppg_color;
                 $player->rpg_color = $rpg_color;
-                # Save the changes
+                ### Save The Changes ###
                 $player->save();
                 $notification = "Player details for $name have been uploaded. Check your profile to view changes.";
             }
-            //Navigation Active
+
+            /* ======================================================
+            Navigation Vars - Remember Active Page
+            ====================================================== */
+            ### Highlighting Variables ###
             $my_player_heading = '';
             $update_heading = 'active';
             $my_team_heading = '';
@@ -470,19 +538,25 @@ class UpdateController extends Controller
             $free_agency_heading = '';
             $activity_stream_heading = '';
             $find_teams_heading = '';
-
-
+            ### Teams Tab Variables ###
             $teams_on = [];
             $teams_owned = [];
+            ### Ownership Filter ###
             foreach($player->teams as $team) {
+                ### Owned ###
                 if ($team->pivot->status == 1) {
                     $teams_owned[] = $team;
                 }
+                ### Rostered ###
                 elseif($team->pivot->status == 2) {
                     $teams_on[] = $team;
                 }
             }
-            $data = ['find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'username' => $username, 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+
+            /* ======================================================
+            Show Form
+            ====================================================== */
+            $data = ['profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
             return view('update.show')->with($data);
         }
 }

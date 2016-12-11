@@ -56,7 +56,13 @@ a:hover.link-effect:before, a:focus.link-effect:before {
     -ms-transform: scaleX(1);
     transform: scaleX(1)
 }
-
+.padding-20 {
+   padding: 20px;
+}
+.margin-30 {
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
 a:active {
     color: #5c90d2
 }
@@ -67,6 +73,14 @@ a.inactive {
 
 a.inactive:focus {
     background-color: transparent !important
+}
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+   color: black;
+}
+#disabled {
+    color: #335166;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {

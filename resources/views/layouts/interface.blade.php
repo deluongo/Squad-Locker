@@ -302,6 +302,11 @@
                             <li>
                                 <a href="/player" class={{ $my_player_heading }}><i class="si si-game-controller"></i><span class="sidebar-mini-hide">My Player</span></a>
                             </li>
+                            @if(($teams_owned == null) && ($teams_on == null))
+                            <li>
+                                <a href="#" class="disabled {{ $my_team_heading }}"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide disabled" id="disabled">My Team</span></a>
+                            </li>
+                            @else
                             <li class=@if(!$my_team_heading == '') "open" @endif>
                                 <a href="/team" class="{{ $my_team_heading }} nav-submenu" data-toggle="nav-submenu"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">My Teams</span></a>
                                 <ul>
@@ -323,10 +328,16 @@
                                     @endif
                                 </ul>
                             </li>
+                            @endif
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">Edit</span></li>
                             <li>
                                 <a href="/update" class={{ $update_heading }} ><i class="si si-list"></i><span class="sidebar-mini-hide">Update Player</span></a>
                             </li>
+                            @if(($teams_owned == null) && ($teams_on == null))
+                            <li>
+                                <a href="/newteam" class="{{ $my_team_heading }} text-black-op"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">New Team</span></a>
+                            </li>
+                            @else
                             <li class=@if(!$team_update_heading == '') "open" @endif>
                                <!-- Side Navigation
                                 <a href="/teamupdate" class={{ $team_update_heading }} ><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">Update Team</span></a>
@@ -346,7 +357,8 @@
                                     @endif
                                 </ul>
 
-
+                            </li>
+                            @endif
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">My Profile</span></li>
                             <li>
                                 <a href="/free-agency" class={{ $free_agency_heading }} ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Find Players</span></a>

@@ -140,7 +140,7 @@ class PlayerController extends Controller
         }
 
 
-
+        $chart_data = [];
         foreach($invited as $team) {
            //$id = $team->id;
            $chart_name = 'Chart'.$team->id;

@@ -11,7 +11,6 @@ use p4\Player;
 class HomeController extends Controller
 {
 
-    protected $redirectTo = '/home';
     /**
      * Create a new controller instance.
      *

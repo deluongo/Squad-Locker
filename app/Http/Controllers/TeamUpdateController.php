@@ -25,72 +25,72 @@ class TeamUpdateController extends Controller
 
     public function show($name)
     {
-      $player = Player::where('name', '=', Auth::user()->name )->first();
-      $team = Team::where('name', '=', $name )->first();
+        /* ======================================================
+        Database Query - Get Players/Teams Associated w/ Active User
+        ====================================================== */
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+        $team = Team::where('name', '=', $name )->first();
 
-      foreach($player->teams as $c_team) {
+        /* ======================================================
+        Authenticate User - Confirm Active User Has Ownership Privledges
+        ====================================================== */
+        ### Compile List Of Active Users' Teams ###
+        foreach($player->teams as $c_team) {
             if (($c_team->pivot->status == 1)) {
                $authenticated_ownership[] = $c_team->name;
             }
          }
-
-      if(!in_array($team->name, $authenticated_ownership)) {
-         return "Error Page";
-      }
-
-      else {
+        ### Return Error Page - IF Unauthorized ###
+        if(!in_array($team->name, $authenticated_ownership)) {
+         return "You do not have the authority to edit this team.";
+        }
+        ### Placeholder ###
+        else {
         $notification = null;
 
+
+        /* ======================================================
+        If Team Exists - Retrieve Current Data
+        ====================================================== */
         if($team) {
-
-            //Owner
+            ### Owner ###
             $gamertag = $team->gamertag;
-
-            //Account Settings
+            ### Team  Name ###
             $name = $team->name;
             $abbreviation = $team->abbreviation;
+            ### Record ###
             $wins = $team->wins;
             $losses = $team->losses;
-            $type = $team->type;
+            ### Profile ###
             $affiliation = $team->affiliation;
-            $type = $team->type;
             $tagline = $team->tagline;
-
+            ### Social ###
+            $twitter = $team->twitter;
+            $youtube = $team->youtube;
+            $twitch = $team->twitch;
+            ### Play Style ###
+            $type = $team->type;
             $movement = $team->movement;
             $tempo = $team->tempo;
             $offense =$team->offense;
             $defense =$team->defense;
-
+            ### Default Grade ###
             $team_grade = $team->team_grade;
             $skill_grade = $team->skill_grade;
-
+            ### Empty -  Used In Post Method ###
             $num_players = $team->num_players;
-            //Social
-            $twitter = $team->twitter;
-            $youtube = $team->youtube;
-            $twitch = $team->twitch;
-
-
-
+            ### Notification Filter ###
+            $new_team = 'no';
         }
         else {
             $notification = 'Team data not found.';
         }
 
-        $player1 = $gamertag;
-        $player2 = '';
-        $player3 = '';
-        $player4 = '';
-        $player5 = '';
-        $player6 = '';
-        $player7 = '';
-        $player8 = '';
-        $player9 = '';
-        $player10 = '';
-
-        //Team Members
+        /* ======================================================
+        Default Variables - Players
+        ====================================================== */
         $team_members = [];
-
+        $player1 = $gamertag;
         $i = 2;
         foreach($team->players as $player) {
             if ($player->pivot->status == 2) {
@@ -99,14 +99,12 @@ class TeamUpdateController extends Controller
                 $i += 1;
             }
         }
-
         $num_players = count($team_members);
-
-
 
         /* ======================================================
         Navigation Variables
         ====================================================== */
+        ### LH Menu Tabs - Illuminate Current Page ###
         $my_player_heading = '';
         $update_heading = '';
         $my_team_heading = '';
@@ -114,22 +112,22 @@ class TeamUpdateController extends Controller
         $free_agency_heading = '';
         $activity_stream_heading = '';
         $find_teams_heading = '';
-
-        /* ======================================================
-        Navigation - List of teams
-        ====================================================== */
+        ### MyTeams Tab - Get list of Active Users' teams ###
         $player = Player::where('name', '=', Auth::user()->name )->first();
-        // Passes lists of teams owned.
         foreach($player->teams as $team) {
+            ### Teams Owned ###
             if ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
             }
+            ### Teams Owned ###
             elseif($team->pivot->status == 2) {
                 $teams_on[] = $team;
             }
         }
-        $new_team = 'no';
 
+        /* ======================================================
+        Show Form
+        ====================================================== */
         $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo,
                 'offense' => $offense, 'defense' => $defense, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading,
                 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
@@ -141,37 +139,15 @@ class TeamUpdateController extends Controller
                 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_team' => $new_team
          ];
         return view('teamupdate.show')->with($data);
-     }
+        }
     }
 
 
-        /* ======================================================
-        Display on form submit
-        ====================================================== */
-        public function post(Request $request)
-        {
-           //Navigation Active
-           $my_player_heading = '';
-           $update_heading = '';
-           $team_update_heading = 'active';
-           $my_team_heading = '';
-           $free_agency_heading = '';
-           $activity_stream_heading = '';
-           $find_teams_heading = '';
-
-           /* ======================================================
-           Navigation - List of teams
-           ====================================================== */
-           $player = Player::where('name', '=', Auth::user()->name )->first();
-           // Passes lists of teams owned.
-           foreach($player->teams as $team) {
-               if ($team->pivot->status == 1) {
-                   $teams_owned[] = $team;
-               }
-               elseif($team->pivot->status == 2) {
-                   $teams_on[] = $team;
-               }
-           }
+    /* ======================================================
+    Display on form submit
+    ====================================================== */
+    public function post(Request $request)
+    {
 
             $team = Team::where('name', '=', $request->input('name'))->first();
 
@@ -216,19 +192,35 @@ class TeamUpdateController extends Controller
             }
 
             $this->validate($request, [
-                // Account Settings
-
+                ### Account Settings ###
                 'name' => "required|alpha_dash",
                 'gamertag' => "required|alpha_dash{$uni_tag}",
+                ### Team Details ###
+                'name' => "required|alpha_dash",
                 'tagline' => "required",
-
                 'abbreviation' => "required|alpha_dash",
                 'wins' => "required|numeric",
                 'losses' => "required|numeric",
-                // Player Profile
+                'type' => "required",
+                ### Social ###
                 'twitter' => 'active_url',
                 'youtube' => 'active_url',
                 'twitch' => 'active_url',
+                ### Style ###
+                'movement' => "required",
+                'tempo' => "required",
+                'offense' => "required",
+                'defense' =>"required",
+                ### Players ###
+                'player1' => 'exists:players,name',
+                'player2' => 'exists:players,name',
+                'player3' => 'exists:players,name',
+                'player4' => 'exists:players,name',
+                'player5' => 'exists:players,name',
+                'player6' => 'exists:players,name',
+                'player7' => 'exists:players,name',
+                'player8' => 'exists:players,name',
+                'player9' => 'exists:players,name'
 
             ]);
 
@@ -488,11 +480,37 @@ class TeamUpdateController extends Controller
                 $progress_bar_color = "danger";
             }
 
-            if($request->input('delete') == 'yes') {
 
-               /* ======================================================
-               Attatch Players to Teams
-               ====================================================== */
+            /* ======================================================
+            Navigation Variables
+            ====================================================== */
+            ### LH Menu Tabs - Illuminate Current Page ###
+            $my_player_heading = '';
+            $update_heading = '';
+            $my_team_heading = '';
+            $team_update_heading = 'active';
+            $free_agency_heading = '';
+            $activity_stream_heading = '';
+            $find_teams_heading = '';
+            ### MyTeams Tab - Get list of Active Users' teams ###
+            $player = Player::where('name', '=', Auth::user()->name )->first();
+            $teams_on = [];
+            $teams_owned = [];
+            foreach($player->teams as $team) {
+                ### Teams Owned ###
+                if ($team->pivot->status == 1) {
+                    $teams_owned[] = $team;
+                }
+                ### Teams Owned ###
+                elseif($team->pivot->status == 2) {
+                    $teams_on[] = $team;
+                }
+            }
+
+            /* ======================================================
+            Remove Players from Teams
+            ====================================================== */
+            if($request->input('delete') == 'yes') {
 
                //Attatch authenticated user as team owner (Status = 1)
                if($player->teams->contains($id)) {
