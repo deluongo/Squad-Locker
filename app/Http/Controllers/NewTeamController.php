@@ -582,6 +582,8 @@ class NewTeamController extends Controller
             ### Contextual Colors ###
             $team->progress_chart_color = $progress_chart_color;
             $team->progress_bar_color = $progress_bar_color;
+            $team->team_grade_color = $team_grade_color;
+            $team->skill_grade_color = $skill_grade_color;
             $team->per_color = $per_color;
             $team->fg_color = $fg_color;
             $team->apg_color = $apg_color;

@@ -6,6 +6,7 @@ use p4\Http\Requests;
 use DB;
 use Carbon;
 use p4\Player; # <--- NEW
+use p4\User;
 class UpdateController extends Controller
 {
     /**
@@ -35,12 +36,13 @@ class UpdateController extends Controller
         /* ======================================================
         Default Variables - Ensure Page Load
         ====================================================== */
+
         $notification = null;
         ### Player Profile ###
         if($player) {
             ### Account Settings ###
-            $email = $player->email;
-            $password = $player->password;
+            $email = Auth::user()->email;
+            $password = Auth::user()->password;
             ### Profile ###
             $name = $player->name;
             $affiliation = $player->affiliation;
@@ -111,6 +113,7 @@ class UpdateController extends Controller
         $data = ['profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
         return view('update.show')->with($data);
     }
+
         /* ======================================================
         Display on form submit
         ====================================================== */
@@ -120,8 +123,9 @@ class UpdateController extends Controller
             /* ======================================================
             Database Query - Get Players Associated w/ Active User
             ====================================================== */
-            $player = Player::where('name', '=', Auth::user()->name )->first();
-
+            $name = Auth::user()->name;
+            $player = Player::where('name', '=', $name )->first();
+            $user = User::where('name', '=', $name)->first();
 
             /* ======================================================
             Player Data - Load From Database
@@ -129,8 +133,9 @@ class UpdateController extends Controller
             if($player) {
                 ### Account Settings ###
                 $name = $player->name;
-                $email = $player->email;
-                $password = $player->password;
+                ### Account Settings ###
+                $email = Auth::user()->email;
+                $password = Auth::user()->password;
                 ### Profile ###
                 $affiliation = $player->affiliation;
                 $archetype = $player->archetype;
@@ -188,7 +193,7 @@ class UpdateController extends Controller
                 ====================================================== */
                 ### Account Settings ###
                 'name' => "required|alpha_dash{$uni_name}",
-                                'email' => "required|email{$uni_name}",
+                'email' => "required|email{$uni_name}",
                 ### Social ###
                 'twitter' => 'required|active_url',
                 'youtube' => 'required|active_url',
@@ -422,8 +427,9 @@ class UpdateController extends Controller
             ====================================================== */
             if($player) {
                 ### Account Settings ###
-                $player->email = $email;
-                $player->password = $password;
+                $user->email = $email;
+                $user->password = $password;
+                $user->name = $name;
                 $player->name = $name;
                 ### Profile ###
                 $player->affiliation = $affiliation;
@@ -470,14 +476,17 @@ class UpdateController extends Controller
                 $player->rpg_color = $rpg_color;
                 ### Save The Changes ###
                 $player->save();
+                $user->save();
+
                 $notification = "Update for $name is complete. Check your profile to view changes.";
             }
             else {
                 # Instantiate a new Book Model object
                 $player = new Player();
                 ### Account Settings ###
-                $player->email = $email;
-                $player->password = $password;
+                $user->email = $email;
+                $user->password = $password;
+                $user->name = $name;
                 $player->name = $name;
                 ### Profile ###
                 $player->affiliation = $affiliation;
@@ -524,6 +533,8 @@ class UpdateController extends Controller
                 $player->rpg_color = $rpg_color;
                 ### Save The Changes ###
                 $player->save();
+                $user->save();
+
                 $notification = "Player details for $name have been uploaded. Check your profile to view changes.";
             }
 

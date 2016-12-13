@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6 form-material">
                                         <label for="profile-email">Email Address</label>
-                                        <input class="form-control valid input-lg" type="email" id="profile-email" name="email" placeholder="Enter your email.." value="{{ $email }}" aria-required="true" aria-describedby="val-email2-error" aria-invalid="false">
+                                        <input class="form-control valid input-lg" type="email" id="profile-email" name="email" placeholder="Enter your email.." value="{{ old('email', $email) }}" aria-required="true" aria-describedby="val-email2-error" aria-invalid="false">
                                         @if($errors->get('email'))
                                           <ul class="errors">
                                           @foreach($errors->get('email') as $error)

@@ -141,32 +141,48 @@ class PlayerController extends Controller
 
 
         $chart_data = [];
-        foreach($invited as $team) {
-           //$id = $team->id;
-           $chart_name = 'Chart'.$team->id;
+        if($invited) {
+            foreach($invited as $team) {
+               //$id = $team->id;
+               $chart_name = 'Chart'.$team->id;
 
-           $chart_per = $team->per / 14 * 100;
-           $chart_ppg = $team->ppg / 12 * 100;
-           $chart_apg = $team->apg / 3 * 100;
-           $chart_fg = $team->fg;
-           $chart_apg_ppg = $team->apg_ppg * 100;
-           $chart_rpg = $team->rpg / 3 * 100;
+               $chart_per = $team->per / 14 * 100;
+               $chart_ppg = $team->ppg / 12 * 100;
+               $chart_apg = $team->apg / 3 * 100;
+               $chart_fg = $team->fg;
+               $chart_apg_ppg = $team->apg_ppg * 100;
+               $chart_rpg = $team->rpg / 3 * 100;
 
-           //$min = min($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
-           //$max = max($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
+               //$min = min($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
+               //$max = max($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
 
-           //$chart_per = ($chart_per - $min) / ($max - $min);
-           //$chart_ppg = ($chart_ppg - $min) / ($max - $min);
-           //$chart_apg = ($chart_apg - $min) / ($max - $min);
-           //$chart_fg = ($chart_fg - $min) / ($max - $min);
-           //$chart_apg_ppg = ($chart_apg_ppg - $min) / ($max - $min);
-           //$chart_rpg = ($chart_rpg - $min) / ($max - $min);
+               //$chart_per = ($chart_per - $min) / ($max - $min);
+               //$chart_ppg = ($chart_ppg - $min) / ($max - $min);
+               //$chart_apg = ($chart_apg - $min) / ($max - $min);
+               //$chart_fg = ($chart_fg - $min) / ($max - $min);
+               //$chart_apg_ppg = ($chart_apg_ppg - $min) / ($max - $min);
+               //$chart_rpg = ($chart_rpg - $min) / ($max - $min);
 
-           //$$chart_name = array($team->per, $team->ppg, $team->apg, $team->fg, $team->apg_ppg, $team->rpg);
-           $$chart_name = array($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
+               //$$chart_name = array($team->per, $team->ppg, $team->apg, $team->fg, $team->apg_ppg, $team->rpg);
+               $$chart_name = array($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
 
-           //$Chart3 = array(1,2,3,4,5,6);
-           $chart_data[$chart_name] = $$chart_name;
+               //$Chart3 = array(1,2,3,4,5,6);
+               $chart_data[$chart_name] = $$chart_name;
+            }
+        }
+        else {
+            $invited = [Team::where('name', '=', 'StraightFundamental')->first()];
+            foreach($invited as $team) {
+                $chart_name = 'Chart'.$team->id;
+                $chart_per = $team->per / 14;
+                $chart_ppg = $team->ppg / 12;
+                $chart_apg = $team->apg / 10;
+                $chart_fg = $team->fg / 100;
+                $chart_apg_ppg = $team->apg_ppg / 2;
+                $chart_rpg = $team->rpg /15;
+                $$chart_name = array($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
+                $chart_data[$chart_name] = $$chart_name;
+            }
         }
 
         /* ======================================================

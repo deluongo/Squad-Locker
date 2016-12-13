@@ -1,5 +1,9 @@
 @extends('layouts.forms_structure')
 
+@section('head')
+    @yield('css')
+@endsection
+
 @section('title')
     {{-- Yield the title if it exists, otherwise default to 'Squad Locker' --}}
     @yield('title','Squad Locker')
@@ -241,7 +245,7 @@
         <!-- Sidebar -->
         <nav id="sidebar">
             <!-- Sidebar Scroll Container -->
-            <div id="sidebar-scroll" class="bg-yellow-theme">
+            <div id="sidebar-scroll" class="bg-orange-theme">
                 <!-- Sidebar Content -->
                 <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
                 <div class="sidebar-content">

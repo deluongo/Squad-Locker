@@ -115,7 +115,7 @@
                                 <div class="col-xs-6">
                                     <div class= "form-material ">
                                         <label for="gamertag">GamerTag</label>
-                                        <input class="form-control input-lg" type="text" id="gamertag" name="gamertag" value="{{$gamertag}}">
+                                        <input class="form-control input-lg" type="text" id="gamertag" name="gamertag" value="{{$gamertag}}" disabled>
                                         @if($errors->get('gamertag'))
                                           <ul class="errors">
                                           @foreach($errors->get('gamertag') as $error)
@@ -264,8 +264,8 @@
                                     <select class="form-control" id="movement" name="movement" size="5" multiple="no">
                                         <option value="Ball-Movement" @if($movement == 'Ball-Movement') selected @endif>Ball-Movement</option>
                                         <option value="Isolation" @if($movement == 'Isolation') selected @endif>Isolation</option>
-                                        <option value="Quick Shots" @if($movement == '7 Seconds') selected @endif>7 Seconds</option>
-                                        <option value="Fast Break" @if($movement == 'Run & Gun') selected @endif>Run & Gun</option>
+                                        <option value="7 Seconds" @if($movement == '7 Seconds') selected @endif>7 Seconds</option>
+                                        <option value="Run & Gun" @if($movement == 'Run & Gun') selected @endif>Run & Gun</option>
                                         <option value="Player Movement" @if($movement == 'Player Movement') selected @endif>Player Movement</option>
                                     </select>
                                 </div>

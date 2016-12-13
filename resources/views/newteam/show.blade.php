@@ -5,6 +5,10 @@
     Update {{$name}}
 @endsection
 
+@section('css')
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+@endsection
+
 @section('main')
 <!-- Page Content -->
 <div class="content content-boxed">
@@ -82,14 +86,14 @@
     <form action="/newteam" method="post">
         {{ csrf_field() }}
         <div class="block">
-            <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
-                <li class="active">
+            <ul class="nav nav-tabs nav-justified push-20" id="tabs" data-toggle="tabs">
+                <li class="active" id="tabs-1" data-tab-index="0">
                     <a href="#tab-profile-personal"><i class="fa fa-fw fa-lock"></i> Details</a>
                 </li>
-                <li>
+                <li id="tabs-2" data-tab-index="1">
                     <a href="#tab-profile-password"><i class="si si-social-dribbble"></i> Team Profile</a>
                 </li>
-                <li>
+                <li id="tabs-3" data-tab-index="2">
                     <a href="#tab-profile-players"><i class="si si-social-dribbble"></i> Players</a>
                 </li>
             </ul>
@@ -171,7 +175,7 @@
                                 <div class="col-xs-12">
                                     <div class= "form-material ">
                                         <label for="profile-password">Tagline</label>
-                                        <input class="form-control input-lg" type="text" id="tagline" name="tagline" value="{{old('tagline', $tagline)}}">
+                                        <input class="form-control input-lg" type="text" id="tagline" name="tagline" placeholder="Enter a tagline for your profile.."value="{{old('tagline', $tagline)}}">
                                         @if($errors->get('tagline'))
                                           <ul class="errors">
                                           @foreach($errors->get('tagline') as $error)
@@ -455,5 +459,9 @@
     <!-- END Main Content -->
 </div>
 <!-- END Page Content -->
+
+@endsection
+
+@section('page-js')
 
 @endsection

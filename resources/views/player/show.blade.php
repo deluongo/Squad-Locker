@@ -328,28 +328,28 @@
                                  </div>
                                  <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
                                     <div class="flipper">
-                                       <div class="front bg-hover-color">
+                                        <div class="front">
+                                           <div class="text-center bg-image fill-container parent" style="background-image: url({{$team->team_bg_pic}})">
+                                              <div class="child remove-padding full-width">
+                                                 <img class="img-avatar img-avatar96 img-avatar-thumb" src={{$team->team_profile_pic}} alt="">
+                                                 <h2 class="h4 text-white-op">{{ $team->affiliation }} | {{ $team->offense }} | {{ $team->defense }} </h2>
+                                              </div>
+                                           </div>
+                                        </div>
+                                       <div class="back bg-hover-color">
                                           <!-- 1radar qwer -->
                                           <!-- <h1>{{var_dump(${'Chart'.$team->id})}}</h1> -->
                                           {{-- This hidden field holds the data so it's available for JS --}}
                                           <input type='hidden' name='chart_data' value='{{ json_encode(${'Chart'.$team->id}) }}'>
                                           <canvas id="myChart" class="center-chart padding-10-v push-20 push-10-t"></canvas>
                                        </div>
-                                       <div class="back">
-                                          <div class="text-center bg-image fill-container parent" style="background-image: url({{$team->team_bg_pic}})">
-                                             <div class="child remove-padding full-width">
-                                                <img class="img-avatar img-avatar96 img-avatar-thumb" src={{$team->team_profile_pic}} alt="">
-                                                <h2 class="h4 text-white-op">{{ $team->affiliation }} | {{ $team->offense }} | {{ $team->defense }} </h2>
-                                             </div>
-                                          </div>
-                                       </div>
+
                                     </div>
                                  </div>
                                  <div class="text-center">
                                     <div class="row items-push">
                                        <!-- formy -->
                                        <form method='POST' id='acceptForm'>
-                                          {{ csrf_token() }}
                                           <input type="hidden" name="acceptInvite" id="acceptInvite" value='yes'>
                                           <input type="hidden" name="inviTeam" id="inviTeam" value='{{$team->id}}'>
                                           <div class="col-xs-6 remove-margin remove-padding-r" name="acceptSubmit" id="acceptSubmit" onClick="submitOnClick('myForm')">
@@ -459,7 +459,6 @@
                         <h5>Owned</h5>
                         <ul class="nav-users push">
                             @foreach($teams_owned as $team)
-
                                 <li>
                                     <a href="/team/{{$team->name}}">
                                         <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
@@ -472,7 +471,6 @@
                         <h5>Signed</h5>
                         <ul class="nav-users push">
                             @foreach($teams_on as $team)
-
                                 <li>
                                     <a href="/team/{{$team->name}}">
                                         <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
