@@ -50,8 +50,8 @@ class UpdateController extends Controller
             $position = $player->position;
             $tagline = $player->tagline;
             ### Images ###
-            $background_pic = $player->player_profile_pic;
-            $profile_pic = $player->player_bg_pic;
+            $background_pic = $player->player_bg_pic;
+            $profile_pic = $player->player_profile_pic;
             ### Park ###
             $rep_level = $player->rep_level;
             $rep_progress = $player->rep_progress;
