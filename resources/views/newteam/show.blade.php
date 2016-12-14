@@ -15,7 +15,7 @@
     <!-- User Header -->
     <div class="block">
         <!-- Basic Info -->
-        <div class="bg-image" style="background-image: url({{asset('/img/branding/banners/banner3.png')}})">
+        <div class="bg-image" style="background-image: url({{asset('/img/branding/banners/Banner3.png')}})">
             <div class="block-content @if(!$notification == null) bg-black-op @else bg-primary-op @endif text-center overflow-hidden">
                 <ul class="block-options">
                     <li>

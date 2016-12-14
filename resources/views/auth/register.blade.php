@@ -24,7 +24,7 @@
                                       <label for="name" class="control-label">Gamertag</label>
                                       <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Please enter your gamertag" required autofocus>
                                       @if ($errors->has('name'))
-                                          <span class="help-block">
+                                          <span class="errors">
                                               <strong>{{ $errors->first('name') }}</strong>
                                           </span>
                                       @endif
@@ -37,7 +37,7 @@
                                       <label for="email" class="control-label">E-Mail Address</label>
                                       <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Please enter your e-mail address" required>
                                       @if ($errors->has('email'))
-                                          <span class="help-block">
+                                          <span class="errors">
                                               <strong>{{ $errors->first('email') }}</strong>
                                           </span>
                                       @endif
@@ -50,7 +50,7 @@
                                       <label for="password" class="control-label">Password</label>
                                       <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Please enter your e-mail password" required>
                                       @if ($errors->has('password'))
-                                          <span class="help-block">
+                                          <span class="errors">
                                               <strong>{{ $errors->first('password') }}</strong>
                                           </span>
                                       @endif
@@ -62,6 +62,11 @@
                                   <div class="form-material form-material-success">
                                       <input class="form-control" type="password" id="password-confirm" name="password_confirmation" placeholder="..and confirm it" required>
                                       <label for="register-password2">Confirm Password</label>
+                                      @if ($errors->has('password_confirmation'))
+                                          <span class="errors">
+                                              <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                          </span>
+                                      @endif
                                   </div>
                               </div>
                           </div>
@@ -71,7 +76,7 @@
                                       <input type="checkbox" id="register-terms" name="register-terms"><span></span> I agree with terms &amp; conditions
                                   </label>
                                   @if ($errors->has('register-terms'))
-                                      <span class="help-block">
+                                      <span class="errors">
                                           <strong>{{ $errors->first('register-terms') }}</strong>
                                       </span>
                                   @endif
