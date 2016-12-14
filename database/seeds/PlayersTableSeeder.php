@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use p4\User;
 
 class PlayersTableSeeder extends Seeder
 {
@@ -22,11 +23,6 @@ class PlayersTableSeeder extends Seeder
          //Housekeeping
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-
-         //Account Settings
-         'email' => 'deluongo@gmail.com',
-         'username' => 'deluongo',
-         'password' => 'bluebear',
 
 
          //Profile
@@ -91,12 +87,6 @@ class PlayersTableSeeder extends Seeder
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 
-         //Account Settings
-         'email' => 'susan@buck.com',
-         'username' => 'susan',
-         'password' => 'laravel',
-
-
          //Profile
          'name' => 'Susan',
          'style' => 'Assist-King',
@@ -149,15 +139,15 @@ class PlayersTableSeeder extends Seeder
          'rpg_color' => 'success'
      ]);
 
+     $user_id = User::where('name','=','PrettyBoiFredo')->pluck('id')->first();
+
      DB::table('players')->insert([
+
+         'user_id' => $user_id,
+
          //Housekeeping
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-
-         //Account Settings
-         'email' => 'prettyboifredo@gmail.com',
-         'username' => 'prettyboifredo',
-         'password' => 'toopretty',
 
          //Profile
          'name' => 'PrettyBoiFredo',
@@ -210,15 +200,15 @@ class PlayersTableSeeder extends Seeder
          'rpg_color' => 'warning'
      ]);
 
+     $user_id = User::where('name','=','HillaryClinton')->pluck('id')->first();
+
      DB::table('players')->insert([
+
+         'user_id' => $user_id,
+
          //Housekeeping
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-
-         //Account Settings
-         'email' => 'HillaryClinton@gmail.com',
-         'username' => 'HillaryClinton',
-         'password' => 'toopretty',
 
          //Profile
          'name' => 'HillaryClinton',
@@ -269,16 +259,15 @@ class PlayersTableSeeder extends Seeder
          'rpg_color' => 'warning'
      ]);
 
+     $user_id = User::where('name','=','AishaCurry30')->pluck('id')->first();
+
      DB::table('players')->insert([
+
+         'user_id' => $user_id,
 
          //Housekeeping
          'created_at' => Carbon\Carbon::now()->toDateTimeString(),
          'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-
-         //Account Settings
-         'email' => 'AishaCurry30@gmail.com',
-         'username' => 'AishaCurry30',
-         'password' => 'toopretty',
 
          //Profile
          'name' => 'AishaCurry30',
