@@ -221,7 +221,7 @@
                                     </div>
                                     <!-- END Stats -->
                                     <div class="twitter-scroll">
-                                        <a class="twitter-timeline" data-theme="light" data-link-color="#2B7BB9" href="https://twitter.com/DevonLuongo">Tweets by DevonLuongo</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                        <a class="twitter-timeline" data-theme="light" data-link-color="#2B7BB9" href="{{Auth::user()->players->first()->twitter}}">Tweets by {{Auth::user()->name}}</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
                                     </div>
 
                                     <!-- More -->

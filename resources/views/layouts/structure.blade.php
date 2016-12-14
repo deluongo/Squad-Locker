@@ -17,7 +17,7 @@
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
 
-        <link rel="shortcut icon" href="{{ asset('/img/favicons/l.png') }}">
+        <link rel="shortcut icon" href="{{ asset('/img/branding/logos/l_icon.png') }}">
 
         <link rel="icon" type="image/jpg" href="{{ asset('/img/favicons/logo-16x16.jpg') }}" sizes="16x16">
         <link rel="icon" type="image/jpg" href="{{ asset('/img/favicons/logo-32x32.jpg') }}" sizes="32x32">
@@ -66,7 +66,7 @@
         <!-- END Footer -->
 
 
-        <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->>
+        <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
         <script src="{{ URL::asset('js/oneui.min.js') }}"></script>
 
         <!-- Page JS Plugins + Page JS Code -->

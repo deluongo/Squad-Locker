@@ -26,13 +26,13 @@
             <!-- Main Container -->
             <main id="main-container">
                 <!-- Hero Content -->
-                <div class="bg-video" data-vide-bg="{{ asset('/img/videos/hero_sunrise.jpg') }}" data-vide-options="posterType: jpg, position: 50% 75%">
+                <div class="bg-image" style="background-image: url({{asset('/img/branding/banners/Banner3.png')}})">
                     <div class="bg-primary-dark-op">
                         <section class="content content-full content-boxed">
                             <!-- Section Content -->
                             <div class="text-center push-30-t visibility-hidden" data-toggle="appear" data-class="animated fadeIn">
-                                <a class="fa-2x text-white" href="">
-                                    Squad L<i class="fa fa-circle-o-notch text-primary push-5-r"></i>cker
+                                <a class="fa-2x text-white" href="/player">
+                                    <img class="" src="{{ asset('/img/branding/extras/SquadLocker_Text Logo_No_Keyhole Flipped.png') }}" alt="">
                                 </a>
                             </div>
                             <div class="push-100-t push-50 text-center">
@@ -68,33 +68,31 @@
                 <!-- END Content -->
 
                 <!-- Content 2 -->
+                <!-- END Hero Content
                 <div class="bg-gray-lighter">
                     <section class="content content-boxed">
-                        <!-- Section Content -->
                         <h2 class="push-50-t push-50 text-center">Content #2.</h2>
-                        <!-- END Section Content -->
                     </section>
                 </div>
+
                 <!-- END Content 2 -->
 
                 <!-- Content 3 -->
+                <!-- END Hero Content
                 <div class="bg-white">
                     <section class="content content-boxed">
-                        <!-- Section Content -->
-                        <h2 class="push-50-t push-50 text-center">Content #3.</h2>
-                        <!-- END Section Content -->
                     </section>
                 </div>
                 <!-- END Content 3 -->
 
                 <!-- Content 4 -->
+                <!-- END Hero Content
                 <div class="bg-gray-lighter">
                     <section class="content content-boxed">
-                        <!-- Section Content -->
                         <h2 class="push-50-t push-50 text-center">Content #4.</h2>
-                        <!-- END Section Content -->
                     </section>
                 </div>
+                -->
                 <!-- END Content 4 -->
             </main>
             <!-- END Main Container -->
@@ -103,17 +101,6 @@
 @endsection
 
 @section('js')
-    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
-    <script src="{{ asset('/js/core/jquery.min.js') }}"></script>
-    <script src="{{ asset('/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/js/core/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('/js/core/jquery.scrollLock.min.js') }}"></script>
-    <script src="{{ asset('/js/core/jquery.appear.min.js') }}"></script>
-    <script src="{{ asset('/js/core/jquery.countTo.min.js') }}"></script>
-    <script src="{{ asset('/js/core/jquery.placeholder.min.js') }}"></script>
-    <script src="{{ asset('/js/core/js.cookie.min.js') }}"></script>
-    <script src="{{ asset('/js/app.js.min.js') }}"></script>
-
     <!-- Page JS Code -->
     <script src="{{ asset('/js/plugins/jquery-vide/jquery.vide.min.js"></script>
     <script>

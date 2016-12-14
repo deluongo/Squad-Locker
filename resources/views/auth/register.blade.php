@@ -1,5 +1,6 @@
 @extends('layouts.structure')
 
+@section('content')
 <!-- Register Content -->
   <div class="bg-white pulldown">
       <div class="content content-boxed overflow-hidden">
@@ -8,7 +9,7 @@
                   <div class="push-30-t push-20 animated fadeIn">
                       <!-- Register Title -->
                       <div class="text-center">
-                          <i class="fa fa-2x fa-circle-o-notch text-primary"></i>
+                          <img class="img-logo" src="{{ asset('/img/branding/extras/Locker_icon_Original.png') }}" alt="">
                           <h1 class="h3 push-10-t">Create Account</h1>
                       </div>
                       <!-- END Register Title -->
@@ -20,66 +21,61 @@
                           {{ csrf_field() }}
                           <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                               <div class="col-xs-12">
-                                  <div class="form-material form-material-success">
-                                      <label for="name" class="control-label">Gamertag</label>
+                                  <div class="form-material form-material-info">
                                       <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Please enter your gamertag" required autofocus>
-                                      @if ($errors->has('name'))
-                                          <span class="errors">
-                                              <strong>{{ $errors->first('name') }}</strong>
-                                          </span>
-                                      @endif
+                                      <label for="name" class="control-label">Gamertag</label>
                                   </div>
+                                  @if ($errors->has('name'))
+                                      <span class="errors">
+                                          <strong>{{ $errors->first('name') }}</strong>
+                                      </span>
+                                  @endif
                               </div>
                           </div>
                           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                               <div class="col-xs-12">
-                                  <div class="form-material form-material-success">
-                                      <label for="email" class="control-label">E-Mail Address</label>
+                                  <div class="form-material form-material-info">
                                       <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Please enter your e-mail address" required>
-                                      @if ($errors->has('email'))
-                                          <span class="errors">
-                                              <strong>{{ $errors->first('email') }}</strong>
-                                          </span>
-                                      @endif
+                                      <label for="email" class="control-label">E-Mail Address</label>
                                   </div>
+                                  @if ($errors->has('email'))
+                                      <span class="errors">
+                                          <strong>{{ $errors->first('email') }}</strong>
+                                      </span>
+                                  @endif
                               </div>
                           </div>
                           <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                               <div class="col-xs-12">
-                                  <div class="form-material form-material-success">
-                                      <label for="password" class="control-label">Password</label>
+                                  <div class="form-material form-material-info">
                                       <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}" placeholder="Please enter your e-mail password" required>
-                                      @if ($errors->has('password'))
-                                          <span class="errors">
-                                              <strong>{{ $errors->first('password') }}</strong>
-                                          </span>
-                                      @endif
+                                      <label for="password" class="control-label">Password</label>
                                   </div>
+                                  @if ($errors->has('password'))
+                                      <span class="errors">
+                                          <strong>{{ $errors->first('password') }}</strong>
+                                      </span>
+                                  @endif
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-xs-12">
-                                  <div class="form-material form-material-success">
+                                  <div class="form-material form-material-info">
                                       <input class="form-control" type="password" id="password-confirm" name="password_confirmation" placeholder="..and confirm it" required>
                                       <label for="register-password2">Confirm Password</label>
-                                      @if ($errors->has('password_confirmation'))
-                                          <span class="errors">
-                                              <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                          </span>
-                                      @endif
                                   </div>
+                                  @if ($errors->has('password_confirmation'))
+                                      <span class="errors">
+                                          <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                      </span>
+                                  @endif
                               </div>
                           </div>
                           <div class="form-group">
                               <div class="col-xs-7 col-sm-8">
-                                  <label class="css-input switch switch-sm switch-success">
+                                  <label class="css-input switch switch-sm switch-info">
                                       <input type="checkbox" id="register-terms" name="register-terms"><span></span> I agree with terms &amp; conditions
                                   </label>
-                                  @if ($errors->has('register-terms'))
-                                      <span class="errors">
-                                          <strong>{{ $errors->first('register-terms') }}</strong>
-                                      </span>
-                                  @endif
                               </div>
                               <div class="col-xs-5 col-sm-4">
                                   <div class="font-s13 text-right push-5-t">
@@ -87,9 +83,14 @@
                                   </div>
                               </div>
                           </div>
-                          <div class="form-group">
+                          @if ($errors->has('register-terms'))
+                              <span class="errors">
+                                  <strong>{{ $errors->first('register-terms') }}</strong>
+                              </span>
+                          @endif
+                          <div class="form-group @if ($errors->has('register-terms')) push-25-t @endif">
                               <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                                  <button class="btn btn-sm btn-block btn-success" type="submit">Create Account</button>
+                                  <button class="btn btn-sm btn-block btn-info" type="submit">Create Account</button>
                               </div>
                           </div>
                       </form>
@@ -103,7 +104,7 @@
 
   <!-- Register Footer -->
   <div class="pulldown push-30-t text-center animated fadeInUp">
-      <small class="text-muted"><span class="js-year-copy"></span> &copy; OneUI 3.0</small>
+      <small class="text-muted"><span class="js-year-copy"></span> &copy; SquadLocker Inc.</small>
   </div>
   <!-- END Register Footer -->
 
@@ -136,12 +137,12 @@
       </div>
   </div>
   <!-- END Terms Modal -->
-
+@endsection
 
 @section('js')
 <!-- Page JS Plugins -->
-<script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+<script src="{{ asset('/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 
 <!-- Page JS Code -->
-<script src="assets/js/pages/base_pages_register.js"></script>
+<script src="{{ asset('/js/pages/base_pages_register.js') }}"></script>
 @endsection

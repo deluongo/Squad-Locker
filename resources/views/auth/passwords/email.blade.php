@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.structure')
 
 <!-- Main Content -->
 @section('content')
@@ -44,4 +44,12 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<!-- Page JS Plugins -->
+<script src="{{ asset('/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+
+<!-- Page JS Code -->
+<script src="{{ asset('/js/pages/base_pages_reminder.js') }}"></script>
 @endsection
