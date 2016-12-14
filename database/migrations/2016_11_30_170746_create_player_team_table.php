@@ -27,8 +27,8 @@ class CreatePlayerTeamTable extends Migration
             $table->tinyInteger('status')->default(0)->unsigned();
 
             # Make foreign keys
-            $table->foreign('player_id')->references('id')->on('players');
-            $table->foreign('team_id')->references('id')->on('teams');
+            $table->foreign('player_id')->references('id')->on('players')->onDelete('cascade');
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
         });
     }
 

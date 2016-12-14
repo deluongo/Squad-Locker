@@ -12,12 +12,12 @@
 @section('main')
 
     <!-- Page Header -->
-    <div class="content bg-image" style="background-image: url({{asset('/img/photos/steph2face.jpg')}})">
+    <div class="content bg-image" style="background-image: url({{ $team_bg_pic}})">
         <div class="push-100-t push-15 clearfix">
             <div class="push-15-r pull-left animated zoomInRight">
                 <div class="js-pie-chart pie-chart" data-percent="{{$progress_bar}}" data-line-width="3" data-size="100" data-bar-color="{{$progress_chart_color}}" data-track-color="#eeeeee" data-scale-color="#dddddd">
                     <span>
-                        <img class="img-avatar" src="{{asset('/img/avatars/rttf.jpg')}}" alt="">
+                        <img class="img-avatar" src="{{ $team_profile_pic }}" alt="">
                     </span>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 @extends('layouts.forms_interface')
 
-
 @section('title')
     Update {{$name}}
 @endsection
@@ -11,7 +10,7 @@
     <!-- User Header -->
     <div class="block">
         <!-- Basic Info -->
-        <div class="bg-image" style="background-image: url({{asset('/img/photos/pg2k.jpg')}})">
+        <div class="bg-image" style="background-image: url({{ $background_pic}})">
             <div class="block-content bg-primary-op @if(!$notification == null) bg-black-op @endif text-center overflow-hidden">
                 <ul class="block-options">
                     <li>
@@ -19,7 +18,7 @@
                     </li>
                 </ul>
                 <div class="push-30-t push animated fadeInDown">
-                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="">
+                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{ $profile_pic }}" alt="">
                 </div>
                 <div class="push-30 animated fadeInUp">
                     <h2 class="h4 font-w600 text-white push-5">{{ $name }}</h2>

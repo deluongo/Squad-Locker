@@ -43,8 +43,8 @@
                         <i class="fa fa-times"></i>
                     </button>
                     <span>
-                        <img class="img-avatar img-avatar32" src="{{ asset('/img/avatars/prettyboyfredo.jpg') }}" alt="">
-                        <span class="font-w600 push-10-l">CaptainAwesom650</span>
+                        <img class="img-avatar img-avatar32" src="{{$profile_pic}}" alt="">
+                        <span class="font-w600 push-10-l">{{Auth::user()->name}}</span>
                     </span>
                 </div>
                 <!-- END Side Header -->
@@ -250,7 +250,7 @@
                 <!-- Adding .sidebar-mini-hide to an element will hide it when the sidebar is in mini mode -->
                 <div class="sidebar-content">
                     <!-- Side Header -->
-                    <div class="side-header side-content bg-image" style="background-image: url({{ asset('/img/yellow-logo.png') }})">
+                    <div class="side-header side-content bg-image" style="background-image: url({{ asset('/img/o-wide.png') }})">
                         <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
                         <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
                             <i class="fa fa-times"></i>
@@ -389,7 +389,7 @@
                 <li data-brackets-id='607'>
                       <div data-brackets-id='608' class="btn-group">
                           <button data-brackets-id='609' class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
-                              <img data-brackets-id='610' src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="Avatar">
+                              <img data-brackets-id='610' src="{{$profile_pic}}" alt="Avatar">
                               <span data-brackets-id='611' class="caret"></span>
                           </button>
                           <ul data-brackets-id='612' class="dropdown-menu dropdown-menu-right">

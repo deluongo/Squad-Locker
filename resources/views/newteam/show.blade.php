@@ -15,15 +15,15 @@
     <!-- User Header -->
     <div class="block">
         <!-- Basic Info -->
-        <div class="bg-image" style="background-image: url({{asset('/img/photos/pg2k.jpg')}})">
-            <div class="block-content @if(!$notification == null) bg-black-op @else bg-city-op @endif text-center overflow-hidden">
+        <div class="bg-image" style="background-image: url({{asset('/img/branding/banners/banner3.png')}})">
+            <div class="block-content @if(!$notification == null) bg-black-op @else bg-primary-op @endif text-center overflow-hidden">
                 <ul class="block-options">
                     <li>
                         <button type="button"><i class="si si-settings"></i></button>
                     </li>
                 </ul>
                 <div class="push-30-t push animated fadeInDown">
-                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="Profile Picture">
+                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset('/img/branding/extras/Baby_Dark_Hood White_Outline.png')}}" alt="Profile Picture">
                 </div>
                 <div class="push-30 animated fadeInUp">
                     <h2 class="h4 font-w600 text-white push-5">@if($new_team == 'no' ) {{ $name }} ({{ $abbreviation }}) @endif</h2>
@@ -164,6 +164,34 @@
                                         @if($errors->get('losses'))
                                           <ul class="errors">
                                           @foreach($errors->get('losses') as $error)
+                                            <li>{{ $error }}</li>
+                                          @endforeach
+                                          </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6">
+                                    <div class="form-material">
+                                        <label for="team_profile_pic">Profile Picture </label>
+                                        <input class="form-control input-lg" type="text" id="team_profile_pic" name="team_profile_pic" placeholder="Profile Picture URL.." value="{{old('team_profile_pic', $team_profile_pic) }}">
+                                        @if($errors->get('team_profile_pic'))
+                                          <ul class="errors">
+                                          @foreach($errors->get('team_profile_pic') as $error)
+                                            <li>{{ $error }}</li>
+                                          @endforeach
+                                          </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-material">
+                                        <label for="team_background_pic">Background Image </label>
+                                        <input class="form-control input-lg" type="text" id="team_background_pic" name="team_background_pic" placeholder="Background Image URL.." value="{{old('team_background_pic', $team_background_pic) }}">
+                                        @if($errors->get('team_background_pic'))
+                                          <ul class="errors">
+                                          @foreach($errors->get('team_background_pic') as $error)
                                             <li>{{ $error }}</li>
                                           @endforeach
                                           </ul>

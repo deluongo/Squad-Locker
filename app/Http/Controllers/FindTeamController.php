@@ -64,13 +64,16 @@ class FindTeamController extends Controller
         $search_members = [1,2,3,4,5,6,7,8];
         $search_type = ['MyPark Squad', 'Pro-Am Team'];
 
+        $player_profile_pic = $player->player_profile_pic;
         $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement,
                'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type,
                'search_offense' => $search_offense, 'search_defense' => $search_defense, 'find_teams_heading' => $find_teams_heading,
                'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'teams' => $teams,
                'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading,
                'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
-               'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+               'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on,
+               'player_profile_pic' => $player_profile_pic,
+           ];
 
         return view('findteam.show')->with($data);
     }
@@ -97,7 +100,7 @@ class FindTeamController extends Controller
 
         $teams_owned = [];
         $teams_on = [];
-        
+
         $player = Player::where('name', '=', Auth::user()->name )->first();
         // Passes lists of teams owned.
         foreach($player->teams as $team) {
@@ -129,13 +132,16 @@ class FindTeamController extends Controller
             array_push($search_type, 'MyPark Squad');
         }
 
+        $player_profile_pic = $player->player_profile_pic;
         $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement,
             'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type,
             'search_offense' => $search_offense, 'search_defense' => $search_defense, 'find_teams_heading' => $find_teams_heading,
             'name' => $name, 'affiliation' => $affiliation, 'position' => $position, 'archetype' => $archetype, 'teams' => $teams,
             'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading,
             'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
-            'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+            'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on,
+            'player_profile_pic' => $player_profile_pic
+        ];
 
         return view('findteam.show')->with($data);
     }

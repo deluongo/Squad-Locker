@@ -91,7 +91,7 @@ class UpdateController extends Controller
         $activity_stream_heading = '';
         $team_update_heading = '';
         $find_teams_heading = '';
-        $player = Player::where('name', '=', Auth::user()->name )->first();
+        //$player = Player::where('name', '=', Auth::user()->name )->first();
         ### For Teams Dropdown ###
         $teams_on = [];
         $teams_owned = [];
@@ -208,7 +208,7 @@ class UpdateController extends Controller
                 'position' => 'required',
                 'archetype' => 'required',
                 'affiliation' => 'required',
-                'tagline' => 'required|alpha_dash',
+                'tagline' => 'required',
                 ### Park Rank ###
                 'rep_status' => 'required',
                 'status_level' => 'required',

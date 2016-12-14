@@ -56,15 +56,19 @@ class NewTeamController extends Controller
         $losses = '';
         ### Profile ###
         $tagline = '';
-        $affiliation = $player->affiliation;
+        $team_background_pic = 'https://goo.gl/VjZLRG';
+        $team_profile_pic = 'https://goo.gl/eySC0g';
         ### Social ###
         $twitter = $player->twitter;
         $youtube = $player->youtube;
         $twitch = $player->twitch;
+        ### Type ###
+        $type = '';
+        $affiliation = $player->affiliation;
         ### Play Style ###
         $movement = '';
         $tempo = '';
-        $type = '';
+
         $offense = '';
         $defense = '';
         ### Players ###
@@ -92,7 +96,6 @@ class NewTeamController extends Controller
         Database Values - Replace Default Values w/ Team Data
         ====================================================== */
         if($team) {
-            ### Owner ###
             $gamertag = $team->gamertag;
             ### Team  Name ###
             $name = $team->name;
@@ -101,14 +104,17 @@ class NewTeamController extends Controller
             $wins = $team->wins;
             $losses = $team->losses;
             ### Profile ###
-            $affiliation = $team->affiliation;
             $tagline = $team->tagline;
+            $team_background_pic = $team->team_bg_pic;
+            $team_profile_pic = $team->team_profile_pic;
             ### Social ###
             $twitter = $team->twitter;
             $youtube = $team->youtube;
             $twitch = $team->twitch;
-            ### Play Style ###
+            ### Type ###
             $type = $team->type;
+            $affiliation = $team->affiliation;
+            ### Play Style ###
             $movement = $team->movement;
             $tempo = $team->tempo;
             $offense =$team->offense;
@@ -118,6 +124,8 @@ class NewTeamController extends Controller
             $skill_grade = $team->skill_grade;
             ### Empty -  Used In Post Method ###
             $num_players = $team->num_players;
+            ### Notification Filter ###
+            $new_team = 'no';
         }
         else {
                ### Notification ###
@@ -151,6 +159,12 @@ class NewTeamController extends Controller
         }
 
         /* ======================================================
+        Interface Variables
+        ====================================================== */
+        $profile_pic = $player->player_profile_pic;
+        $background_pic =  $player->player_bg_pic;
+
+        /* ======================================================
         Show Form
         ====================================================== */
         $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'movement' => $movement, 'tempo' => $tempo,
@@ -162,7 +176,7 @@ class NewTeamController extends Controller
                 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6,
                 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10, 'team_members' => $team_members,
                 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'gamertag'=> $gamertag,
-                'new_team' => $new_team
+                'new_team' => $new_team, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'team_profile_pic' => $team_profile_pic, 'team_background_pic' => $team_background_pic
          ];
         return view('newteam.show')->with($data);
     }
@@ -192,15 +206,18 @@ class NewTeamController extends Controller
         $losses = '';
         ### Profile ###
         $tagline = '';
-        $affiliation = $player->affiliation;
+        $team_background_pic = 'https://goo.gl/VjZLRG';
+        $team_profile_pic = 'https://goo.gl/eySC0g';
         ### Social ###
         $twitter = $player->twitter;
         $youtube = $player->youtube;
         $twitch = $player->twitch;
+        ### Type ###
+        $type = '';
+        $affiliation = $player->affiliation;
         ### Play Style ###
         $movement = '';
         $tempo = '';
-        $type = '';
         $offense = '';
         $defense = '';
         ### Players ###
@@ -244,6 +261,8 @@ class NewTeamController extends Controller
             ### Profile ###
             'affiliation' => "required",
             'tagline' => "required",
+            'team_profile_pic' => "active_url",
+            'player_profile_pic' => "active_url",
             ### Social ###
             'twitter' => 'active_url',
             'youtube' => 'active_url',
@@ -273,6 +292,7 @@ class NewTeamController extends Controller
         ### Team  Name ###
         $name = $request->input('name');
         $abbreviation = $request->input('abbreviation');
+        //$gamertag = $request->input('gamertag');
         ### Record ###
         $wins = $request->input('wins');
         $losses = $request->input('losses');
@@ -281,10 +301,13 @@ class NewTeamController extends Controller
         $youtube = $request->input('youtube');
         $twitch = $request->input('twitch');
         ### Profile ###
-        $affiliation = $request->input('affiliation');
         $tagline = $request->input('tagline');
-        ### Play Style ###
+        $team_profile_pic = $request->input('team_profile_pic');
+        $team_background_pic= $request->input('team_background_pic');
+        ### Type ###
         $type = $request->input('type');
+        $affiliation = $request->input('affiliation');
+        ### Play Style ###
         $movement = $request->input('movement');
         $tempo = $request->input('tempo');
         $offense = $request->input('offense');
@@ -556,10 +579,13 @@ class NewTeamController extends Controller
             $team->youtube = $youtube;
             $team->twitch = $twitch;
             ### Profile ###
-            $team->affiliation = $affiliation;
             $team->tagline = $tagline;
-            ### Play Style ###
+            $team->team_bg_pic = $team_background_pic;
+            $team->team_profile_pic = $team_profile_pic;
+            ### Type ###
             $team->type = $type;
+            $team->affiliation = $affiliation;
+            ### Play Style ###
             $team->tempo = $tempo;
             $team->movement = $movement;
             $team->offense = $offense;
@@ -601,9 +627,8 @@ class NewTeamController extends Controller
             $team->save();
             ### Notification Details###
             $notification = "Team $team->name has been successfully updated. Check your team's profile to view changes.";
-            $new_team ='not';
+            $new_team ='no';
         }
-
         /* ======================================================
         Navigation Variables
         ====================================================== */
@@ -631,6 +656,12 @@ class NewTeamController extends Controller
         }
 
         /* ======================================================
+        Interface Variables
+        ====================================================== */
+        $profile_pic = $player->player_profile_pic;
+        $background_pic = $player->player_bg_pic;
+
+        /* ======================================================
         Submit Form
         ====================================================== */
         $data = ['num_players' => $num_players, 'find_teams_heading' => $find_teams_heading, 'gamertag' => $gamertag, 'movement' => $movement, 'tempo' => $tempo,
@@ -641,7 +672,10 @@ class NewTeamController extends Controller
                 'abbreviation' => $abbreviation, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'wins' => $wins, 'losses' => $losses,
                 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6,
                 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10, 'team_members' => $team_members,
-                'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_team' => $new_team];
+                'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_team' => $new_team,
+                'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'team_profile_pic' => $team_profile_pic,
+                'team_background_pic' => $team_background_pic
+            ];
 
         return view('newteam.show')->with($data);
 

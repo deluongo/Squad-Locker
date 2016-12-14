@@ -11,7 +11,7 @@
     <!-- User Header -->
     <div class="block">
         <!-- Basic Info -->
-        <div class="bg-image" style="background-image: url({{asset('/img/photos/pg2k.jpg')}})">
+        <div class="bg-image" style="background-image: url({{ $team_background_pic }})">
             <div class="block-content @if(!$notification == null) bg-black-op @else bg-city-op @endif text-center overflow-hidden">
                 <ul class="block-options">
                     <li>
@@ -19,7 +19,7 @@
                     </li>
                 </ul>
                 <div class="push-30-t push animated fadeInDown">
-                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="">
+                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset( $team_profile_pic )}}" alt="">
                 </div>
                 <div class="push-30 animated fadeInUp">
                     <h2 class="h4 font-w600 text-white push-5">@if($new_team == 'no' ) {{ $name }} ({{ $abbreviation }}) @endif</h2>
@@ -102,7 +102,7 @@
                                 <div class="col-xs-6">
                                     <div class= "form-material ">
                                         <label for="name">Team Name</label>
-                                        <input class="form-control input-lg" type="text" id="name" name="name" placeholder="Enter your Team Name.." value="{{ $name }}">
+                                        <input class="form-control input-lg" type="text" id="name" name="name" placeholder="Enter your Team Name.." value="{{ old('name', $name) }}">
                                         @if($errors->get('name'))
                                           <ul class="errors">
                                           @foreach($errors->get('name') as $error)
@@ -130,7 +130,7 @@
                                 <div class="col-xs-4">
                                     <div class= "form-material ">
                                         <label for="abbreviation">Abbreviation</label>
-                                        <input class="form-control input-lg" type="text" id="abbreviation" name="abbreviation" placeholder="Update your teams Abbreviation.." value="{{ $abbreviation }}">
+                                        <input class="form-control input-lg" type="text" id="abbreviation" name="abbreviation" placeholder="Update your teams Abbreviation.." value="{{ old('abbreviation', $abbreviation) }}">
                                         @if($errors->get('abbreviation'))
                                           <ul class="errors">
                                           @foreach($errors->get('abbreviation') as $error)
@@ -143,7 +143,7 @@
                                 <div class="col-xs-4">
                                     <div class= "form-material ">
                                         <label for="wins">Wins</label>
-                                        <input class="form-control input-lg" type="text" id="wins" name="wins" placeholder="Update your wins.." value="{{ $wins }}">
+                                        <input class="form-control input-lg" type="text" id="wins" name="wins" placeholder="Update your wins.." value="{{ old('wins', $wins) }}">
                                         @if($errors->get('wins'))
                                           <ul class="errors">
                                           @foreach($errors->get('wins') as $error)
@@ -156,7 +156,7 @@
                                 <div class="col-xs-4">
                                     <div class= "form-material ">
                                         <label for="losses">Losses</label>
-                                        <input class="form-control input-lg" type="text" id="looses" name="losses" placeholder="Update your losses.." value="{{ $losses }}">
+                                        <input class="form-control input-lg" type="text" id="looses" name="losses" placeholder="Update your losses.." value="{{ old('losses', $losses) }}">
                                         @if($errors->get('losses'))
                                           <ul class="errors">
                                           @foreach($errors->get('losses') as $error)
@@ -168,10 +168,38 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <div class="col-xs-6">
+                                    <div class="form-material">
+                                        <label for="team_profile_pic">Profile Picture </label>
+                                        <input class="form-control input-lg" type="text" id="team_profile_pic" name="team_profile_pic" placeholder="Profile Picture URL.." value="{{old('team_profile_pic', $team_profile_pic) }}">
+                                        @if($errors->get('team_profile_pic'))
+                                          <ul class="errors">
+                                          @foreach($errors->get('team_profile_pic') as $error)
+                                            <li>{{ $error }}</li>
+                                          @endforeach
+                                          </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="form-material">
+                                        <label for="team_background_pic">Background Image </label>
+                                        <input class="form-control input-lg" type="text" id="team_background_pic" name="team_background_pic" placeholder="Background Image URL.." value="{{old('team_background_pic', $team_background_pic) }}">
+                                        @if($errors->get('team_background_pic'))
+                                          <ul class="errors">
+                                          @foreach($errors->get('team_background_pic') as $error)
+                                            <li>{{ $error }}</li>
+                                          @endforeach
+                                          </ul>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class= "form-material ">
                                         <label for="profile-password">Tagline</label>
-                                        <input class="form-control input-lg" type="text" id="tagline" name="tagline" value="{{$tagline}}">
+                                        <input class="form-control input-lg" type="text" id="tagline" name="tagline" value="{{old('tagline', $tagline)}}">
                                         @if($errors->get('tagline'))
                                           <ul class="errors">
                                           @foreach($errors->get('tagline') as $error)

@@ -67,7 +67,7 @@ a.disabled {
    color: #335166;
 }
 #disabled {
-    color: #335166;
+    color: #333333;
 }
 h1,
 h2,
@@ -8332,7 +8332,7 @@ button.text-city-lighter:focus {
 }
 
 .bg-orange-theme {
-  background-color: #0F0F0F;
+  background-color: #0B0B0B;
 }
 a.bg-orange-theme:hover,
 a.bg-orange-theme:focus {

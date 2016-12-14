@@ -42,8 +42,8 @@
                         <i class="fa fa-times"></i>
                     </button>
                     <span>
-                        <img class="img-avatar img-avatar32" src="{{ asset('/img/avatars/prettyboyfredo.jpg') }}" alt="">
-                        <span class="font-w600 push-10-l">CaptainAwesom650</span>
+                        <img class="img-avatar img-avatar32" src="{{ $player_profile_pic }}" alt="">
+                        <span class="font-w600 push-10-l">{{Auth::user()->name}}</span>
                     </span>
                 </div>
                 <!-- END Side Header -->
@@ -390,7 +390,7 @@
                 <li data-brackets-id='607'>
                       <div data-brackets-id='608' class="btn-group">
                           <button data-brackets-id='609' class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
-                              <img data-brackets-id='610' src="{{asset('/img/avatars/prettyboyfredo.jpg')}}" alt="Avatar">
+                              <img data-brackets-id='610' src="{{ $player_profile_pic }}" alt="Avatar">
                               <span data-brackets-id='611' class="caret"></span>
                           </button>
                           <ul data-brackets-id='612' class="dropdown-menu dropdown-menu-right">

@@ -20,8 +20,9 @@ class TeamController extends Controller
     }
     public function show($name)
     {
-        #$player = Player::where('name', '=', Auth::user()->name )->first();
         $team = Team::where('name', '=', $name)->first();
+        $player = Player::where('name', '=', Auth::user()->name )->first();
+        $player_profile_pic = $player->player_profile_pic;
         #->where(($player->pivot->status == 2) || ($player->pivot->status == 1));
         if($team) {
             //Account Settings
@@ -225,7 +226,8 @@ class TeamController extends Controller
                 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'team_grade_color' => $team_grade_color, 'skill_grade_color' => $skill_grade_color, 'per_color' => $per_color,
                 'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color, 'apg_ppg_color' => $apg_ppg_color,
                 'progress_bar' => $progress_bar, 'progress_bar_color' => $progress_bar_color, 'progress_chart_color' => $progress_chart_color, 'find_teams_heading' => $find_teams_heading,
-                'team_members' => $team_members, 'owner' => $owner, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'team_profile_pic' => $team_profile_pic, 'team_bg_pic' => $team_bg_pic
+                'team_members' => $team_members, 'owner' => $owner, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'team_profile_pic' => $team_profile_pic,
+                'team_bg_pic' => $team_bg_pic, 'player_profile_pic' => $player_profile_pic
             ];
         return view('team.show')->with($data);
     }

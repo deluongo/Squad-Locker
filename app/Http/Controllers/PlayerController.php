@@ -122,6 +122,14 @@ class PlayerController extends Controller
             }
         }
 
+        $sample_team = Team::where('name', '=', 'StraightFundamental')->first();
+        if(($sample_team) && ($invited == [])) {
+            $invited[] = $sample_team;
+        }
+        else {
+            $invited = [];
+        }
+
         //All active teams
         $all_teams = array_merge($teams_owned, $teams_on);
         //All teammembers as objects
@@ -141,6 +149,7 @@ class PlayerController extends Controller
 
 
         $chart_data = [];
+
         if($invited) {
             foreach($invited as $team) {
                //$id = $team->id;
@@ -170,21 +179,6 @@ class PlayerController extends Controller
                $chart_data[$chart_name] = $$chart_name;
             }
         }
-        else {
-            $invited = [Team::where('name', '=', 'StraightFundamental')->first()];
-            foreach($invited as $team) {
-                $chart_name = 'Chart'.$team->id;
-                $chart_per = $team->per / 14;
-                $chart_ppg = $team->ppg / 12;
-                $chart_apg = $team->apg / 10;
-                $chart_fg = $team->fg / 100;
-                $chart_apg_ppg = $team->apg_ppg / 2;
-                $chart_rpg = $team->rpg /15;
-                $$chart_name = array($chart_per, $chart_ppg, $chart_apg, $chart_fg, $chart_apg_ppg, $chart_rpg);
-                $chart_data[$chart_name] = $$chart_name;
-            }
-        }
-
         /* ======================================================
         Data Object
         ====================================================== */

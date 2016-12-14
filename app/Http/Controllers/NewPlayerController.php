@@ -42,8 +42,8 @@ class NewPlayerController extends Controller
         $archetype = null;
         $position = null;
         $tagline = null;
-        $background_pic = 'https://s3.amazonaws.com/thinkific/courses/course_card_image_000/004/5921439502331.original.jpg?1439502331';
-        $profile_pic = 'http://cdn.idigitaltimes.com/sites/idigitaltimes.com/files/2016/06/01/nba-2k16-champs-tournament.JPG';
+        $background_pic = 'https://goo.gl/EG2pDv';
+        $profile_pic = 'https://goo.gl/PBXnP5';
         ### Park ###
         $rep_level = null;
         $rep_progress = null;
@@ -79,8 +79,8 @@ class NewPlayerController extends Controller
             $position = $player->position;
             $tagline = $player->tagline;
             ### Images ###
-            $background_pic = $player->player_profile_pic;
-            $profile_pic = $player->player_bg_pic;
+            $background_pic = $player->player_bg_pic;
+            $profile_pic = $player->player_profile_pic;
             ### Park ###
             $rep_level = $player->rep_level;
             $rep_progress = $player->rep_progress;
@@ -225,7 +225,7 @@ class NewPlayerController extends Controller
             'position' => 'required',
             'archetype' => 'required',
             'affiliation' => 'required',
-            'tagline' => 'required|alpha_dash',
+            'tagline' => 'required',
             ### Park Rank ###
             'rep_status' => 'required',
             'status_level' => 'required',

@@ -80,7 +80,7 @@ a.disabled {
    color: black;
 }
 #disabled {
-    color: #335166;
+    color: #333333;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -8928,7 +8928,7 @@ a.text-city-lighter:hover, a.text-city-lighter:active, a.text-city-lighter:focus
 }
 
 .bg-orange-theme {
-  background-color: #0F0F0F;
+  background-color: #060606;
 }
 a.bg-orange-theme:hover,
 a.bg-orange-theme:focus {
