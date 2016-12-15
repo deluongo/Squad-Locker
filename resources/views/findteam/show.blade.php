@@ -201,7 +201,7 @@
                                         AND in_array($team->offense, $search_offense) AND in_array($team->movement, $search_movement) AND in_array($team->defense, $search_defense)
                                         AND in_array($team->num_players, $search_members))
                                         <tr role="row" @if ($team->id & 1) class="odd" @else class="even" @endif>
-                                            <td class="hidden-sm hidden-xs font-w600">{{ $team->name }}</td>
+                                            <td class="hidden-sm hidden-xs font-w600"><a href="/team/{{$team->name}}">{{ $team->name }}</a></td>
                                             <td class="hidden-xs">{{ $team->movement }}</td>
                                             <td class="hidden-xs">{{ $team->tempo}}</td>
                                             <td class="">{{ $team->offense }}</td>

@@ -233,7 +233,7 @@
                                    AND in_array($player->position, $search_position) AND in_array($player->affiliation, $search_affiliation) AND in_array($player->rep_status, $search_rep_status)
                                    AND in_array($player->status_level, $search_rep_level) AND in_array($player->archetype, $search_archetype))
                                    <tr role="row" @if ($player->id & 1) class="odd" @else class="even" @endif>
-                                       <td class="hidden-sm hidden-xs font-w600">{{ $player->name }}</td>
+                                       <td class="hidden-sm hidden-xs font-w600"><a href="/player/{{ $player->name}}">{{ $player->name }}</a></td>
                                        <td class="hidden-xs">{{ $player->type }}</td>
                                        <td class="hidden-xs">{{ $player->role }}</td>
                                        <td class="">{{ $player->style }}</td>
