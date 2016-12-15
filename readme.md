@@ -11,10 +11,21 @@ Description:
         - Competitive reviews/grades
     In addition, the site will offer Twitter and Disqus integrations to enable communication, networking, and trash talking amongst users.
 
-Screencast Demo:
+Screencast Demo: https://youtu.be/q93Uge6L2Qk
 
 Non-Functioning JS Features:
-    A number of features that have been built into the site UI require JS, which was out of scope for this project. Susan asked that I point out these features so that you can navigate around them. My understanding is that these features will not negatively impact my grade.
+    A number of features that have been built into the site UI require JS, which was out of scope for this project. Susan asked that I point out these features so that you can navigate around them. My understanding is that these features will not negatively impact my grade. Listed:
+    - Certain JS options widgets usually found on the block title
+    - Sending/receiving squad invitations
+        The Database is set up with a pivot table to accommodate this feature, but the execution requires JS which was out of scope for this project.
+    - Global Search
+    - Instant messaging
+
+Bugs:
+    - Double clicking during form submission will create multiple submissions.
+        - I will add a JS onclick() method to prevent this client side later
+    - Twitter scrolling and loading on page resize. 
+
 
 Outside Code:
     The HTML & CSS leveraged the OneUI Framework, but was heavily customized. Disqus and Twitter integrations was installed in accordance with their respective site guidelines
