@@ -43,7 +43,7 @@ class NewPlayerController extends Controller
         $position = null;
         $tagline = null;
         $background_pic = 'https://s23.postimg.org/s8md8kd3f/Player_Banner.jpg';
-        $profile_pic = 'https://s29.postimg.org/5aty3twrb/Player_Profile.jpg';
+        $profile_pic = 'https://s30.postimg.org/td1wyddf5/Baby_Face_Assasin.png';
         ### Park ###
         $rep_level = null;
         $rep_progress = null;
