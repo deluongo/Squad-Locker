@@ -31,7 +31,7 @@ class NewPlayerController extends Controller
         Database Query - Get Players Associated w/ Active User
         ====================================================== */
         $player = Player::where('name', '=', Auth::user()->name )->first();
-
+        var_dump($player);
         /* ======================================================
         Default Variables - Ensure Page Load
         ====================================================== */
@@ -42,8 +42,8 @@ class NewPlayerController extends Controller
         $archetype = null;
         $position = null;
         $tagline = null;
-        $background_pic = 'https://goo.gl/EG2pDv';
-        $profile_pic = 'https://goo.gl/PBXnP5';
+        $background_pic = 'https://s23.postimg.org/s8md8kd3f/Player_Banner.jpg';
+        $profile_pic = 'https://s27.postimg.org/wog1qbzyb/Player_Profile.jpg';
         ### Park ###
         $rep_level = null;
         $rep_progress = null;

@@ -56,8 +56,8 @@ class NewTeamController extends Controller
         $losses = '';
         ### Profile ###
         $tagline = '';
-        $team_background_pic = 'https://goo.gl/VjZLRG';
-        $team_profile_pic = 'https://goo.gl/eySC0g';
+        $team_background_pic = 'https://s24.postimg.org/y4buaoxjp/Team_Banner.jpg';
+        $team_profile_pic = 'https://s29.postimg.org/8c0h81293/Team_Profile.jpg';
         ### Social ###
         $twitter = $player->twitter;
         $youtube = $player->youtube;
@@ -206,8 +206,8 @@ class NewTeamController extends Controller
         $losses = '';
         ### Profile ###
         $tagline = '';
-        $team_background_pic = 'https://goo.gl/VjZLRG';
-        $team_profile_pic = 'https://goo.gl/eySC0g';
+        $team_background_pic = 'https://s24.postimg.org/y4buaoxjp/Team_Banner.jpg';
+        $team_profile_pic = 'https://s29.postimg.org/8c0h81293/Team_Profile.jpg';
         ### Social ###
         $twitter = $player->twitter;
         $youtube = $player->youtube;

@@ -16,11 +16,14 @@ Screencast Demo:
 Non-Functioning JS Features:
     A number of features that have been built into the site UI require JS, which was out of scope for this project. Susan asked that I point out these features so that you can navigate around them. My understanding is that these features will not negatively impact my grade.
 
-Note:
+Outside Code:
     The HTML & CSS leveraged the OneUI Framework, but was heavily customized. Disqus and Twitter integrations was installed in accordance with their respective site guidelines
 
-OneUI:
-    https://themeforest.net/item/oneui-bootstrap-admin-dashboard-template-ui-framework-angularjs/11820082
+Page Loading:
+    You may notice that the images load more slowly than the rest of the site. This is because the files are hi-res. I chose to do it this way, because that typical user will frequent this site regularly and spent a good deal of time there. The images get cached fairly quickly.
+
+    Furthermore, for the finished product I plan to replace the URL image loading, by giving users the ability to upload files.
 
 Plugins/Libraries:
     JQuery
+    OneUI - https://themeforest.net/item/oneui-bootstrap-admin-dashboard-template-ui-framework-angularjs/11820082

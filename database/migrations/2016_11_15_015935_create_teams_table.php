@@ -25,8 +25,8 @@ class CreateTeamsTable extends Migration
 
               # Owner
               $table->string('gamertag');
-              $table->string('team_profile_pic')->default('https://goo.gl/eySC0g');
-              $table->string('team_bg_pic')->default('https://goo.gl/VjZLRG');
+              $table->string('team_profile_pic')->default('https://s29.postimg.org/8c0h81293/Team_Profile.jpg');
+              $table->string('team_bg_pic')->default('https://s24.postimg.org/y4buaoxjp/Team_Banner.jpg');
 
               # Team Settings
               $table->string('name');
