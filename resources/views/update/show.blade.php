@@ -243,7 +243,7 @@
                                     <select class="form-control" id="archetype" name="archetype" size="5" multiple="no">
                                         <option value="Playmaker" @if(old('archetype', $archetype) == 'Playmaker') selected @endif>Playmaker</option>
                                         <option value="Lockdown Defender" @if(old('archetype', $archetype) == 'Lockdown Defender') selected @endif>Lockdown Defender</option>
-                                        <option value="Sharp Shooter" @if(old('archetype', $archetype) == 'Sharp Shooter') selected @endif>Sniper</option>
+                                        <option value="Sharp Shooter" @if(old('archetype', $archetype) == 'Sharp Shooter') selected @endif>Sharp Shooter</option>
                                         <option value="Slasher" @if(old('archetype', $archetype) == 'Slasher') selected @endif>Slasher</option>
                                         <option value="Athletic Finisher" @if(old('archetype', $archetype) == 'Athletic Finisher') selected @endif>Athletic Finisher</option>
                                         <option value="Stretch Big" @if(old('archetype', $archetype) == 'Stretch Big') selected @endif>Stretch Big</option>
@@ -327,7 +327,6 @@
                                     @endif
                                 </div>
                            </div>
-                           <label>Play Style</label>
                            <label>Play Style</label>
                            <div class="form-group">
                               <div class="col-md-4 col-sm-6 col-xs-12">

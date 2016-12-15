@@ -35,8 +35,8 @@ class CreatePlayersTable extends Migration
               $table->integer('status_level');
 
               # Player profile fields
-              $table->string('player_profile_pic')->default('https://s27.postimg.org/wog1qbzyb/Player_Profile.jpg');
-              $table->string('player_bg_pic')->default('https://goo.gl/EG2pDvhttps://s23.postimg.org/s8md8kd3f/Player_Banner.jpg');
+              $table->string('player_profile_pic')->default('https://s29.postimg.org/5aty3twrb/Player_Profile.jpg');
+              $table->string('player_bg_pic')->default('https://s23.postimg.org/s8md8kd3f/Player_Banner.jpg');
               $table->string('name')->unique();
               $table->string('archetype');
               $table->string('position');

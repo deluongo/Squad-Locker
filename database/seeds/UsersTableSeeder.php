@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use p4\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,54 +12,30 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('users')->insert([
+            # Define the users you want to add
+        $users = [
+            ['jill@harvard.edu','jill','helloworld'], # <-- Required for P4
+            ['jamal@harvard.edu','jamal','helloworld'], # <-- Required for P4
+            ['deluongo@gmail.com','CaptainAwesome650','squadlocker'], # <-- Update with your own info, or remove
+            ['susan@buck.com', 'Susan', 'laravel'],
+            ['HillaryClinton@gmail.com', 'HillaryClinton', 'fuckDonaldTrump'],
+            ['AishaCurry30@gmail.com', 'AishaCurry30', 'stephshot'],
+            ['Fredo0@gmail.com', 'PrettyBoiFredo', 'Mirrors'],
+        ];
 
-         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-          'name' => 'Susan',
-          'email' => 'susan@buck.com',
-          'password' => 'laravel',
-          'notify' => 'n'
-      ]);
+        # Get existing users to prevent duplicates
+        $existingUsers = User::all()->keyBy('email')->toArray();
 
-      DB::table('users')->insert([
+        foreach($users as $user) {
 
-         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-          'name' => 'CaptainAwesome650',
-          'email' => 'deluongo@gmail.com',
-          'password' => 'squadlocker',
-          'notify' => 'n'
-      ]);
-
-      DB::table('users')->insert([
-
-         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-          'name' => 'HillaryClinton',
-          'email' => 'HillaryClinton@gmail.com',
-          'password' => 'fuckDonaldTrump',
-          'notify' => 'n'
-      ]);
-
-      DB::table('users')->insert([
-
-         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-          'name' => 'AishaCurry30',
-          'email' => 'AishaCurry30@gmail.com',
-          'password' => 'stephshot',
-          'notify' => 'n'
-      ]);
-
-      DB::table('users')->insert([
-
-         'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-         'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-          'name' => 'PrettyBoiFredo',
-          'email' => 'Fredo0@gmail.com',
-          'password' => 'Mirrors',
-          'notify' => 'n'
-      ]);
+            # If the user does not already exist, add them
+            if(!array_key_exists($user[0],$existingUsers)) {
+                $user = User::create([
+                    'email' => $user[0],
+                    'name' => $user[1],
+                    'password' => Hash::make($user[2]),
+                ]);
+            }
+        }
     }
 }

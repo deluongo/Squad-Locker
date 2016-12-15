@@ -99,7 +99,13 @@ class ViewTeamController extends Controller
         $apg_ppg = number_format(round($apg/$ppg, 1), 1, '.', '');
 
         # Progress Bar
-        $progress_bar = ( 1 / ( 1 + pow( ($losses/$wins), 2 ) ) ) * 100;
+        if($wins > 0) {
+            $winning_percentage  = ($losses/$wins);
+        }
+        else{
+            $winning_percentage  = .01;
+        }
+        $progress_bar = ( 1 / ( 1 + pow( ($winning_percentage), 2 ) ) ) * 100;
 
         /* ======================================================
         Context Colors

@@ -56,7 +56,7 @@ class FindTeamController extends Controller
         $position = $player->position;
         $archetype = $player->archetype;
 
-        $search_movement = ['Ball-Movement', 'Isolation', '7 Seconds', 'Run & Gun', 'Player Movement'];
+        $search_movement = ['Ball-Movement', 'Isolation', '7 Seconds', 'Run N Gun', 'Player Movement'];
         $search_tempo  = ['Fast', 'Uptempo', 'Deliberate', 'Patient', 'Slow'];
         $search_affiliation_type = ['Pro-Am Team', 'Rivit City', 'Sunset Beach', 'Old Town', 'Cross Park Squad'];
         $search_offense = ['Motion', 'Triangle', 'Free Lance', 'Inside Out', '7 Seconds'];

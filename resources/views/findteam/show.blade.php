@@ -12,7 +12,7 @@
 
 @section('main')
     <!-- Page Header -->
-    <div class="content bg-charcoal">
+    <div class="content bg-black">
         <div class="row items-push">
             <div class="col-sm-7 clearfix">
                 <div class="push-15-r pull-left">
@@ -100,7 +100,7 @@
                                             <option value="Ball-Movement" @if(in_array('Ball-Movement', $search_movement)) selected @endif>Ball-Movement</option>
                                             <option value="Isolation" @if(in_array('Isolation', $search_movement)) selected @endif>Isolation</option>
                                             <option value="7 Seconds" @if(in_array('7 Seconds', $search_movement)) selected @endif>7 Seconds</option>
-                                            <option value="Run & Gun" @if(in_array('Run & Gun', $search_movement)) selected @endif>Run & Gun</option>
+                                            <option value="Run N Gun" @if(in_array('Run N Gun', $search_movement)) selected @endif>Run & Gun</option>
                                             <option value="Player Movement" @if(in_array('Player Movement', $search_movement)) selected @endif>Player Movement</option>
                                         </select>
                                     </div>
@@ -197,8 +197,8 @@
                             </thead>
                             <tbody>
                                 @foreach($teams as $team)
-                                    @if(in_array($team->type, $search_type) AND in_array($team->movement, $search_movement) AND in_array($team->tempo, $search_tempo)
-                                        AND in_array($team->offense, $search_offense) AND in_array($team->affiliation, $search_affiliation_type) AND in_array($team->defense, $search_defense)
+                                    @if( (($team->type == 'Pro-Am Team') OR in_array($team->affiliation, $search_affiliation_type)) AND in_array($team->type, $search_type) AND in_array($team->tempo, $search_tempo)
+                                        AND in_array($team->offense, $search_offense) AND in_array($team->movement, $search_movement) AND in_array($team->defense, $search_defense)
                                         AND in_array($team->num_players, $search_members))
                                         <tr role="row" @if ($team->id & 1) class="odd" @else class="even" @endif>
                                             <td class="hidden-sm hidden-xs font-w600">{{ $team->name }}</td>
@@ -209,7 +209,6 @@
                                             <td class="center">
                                                 <h3 class="text-{{$team->team_grade_color}} table-font">{{ $team->team_grade }}</h3>
                                             </td>
-
                                             <td class="center">
                                                 <h3 class="text-{{$team->skill_grade_color}} table-font">{{ $team->skill_grade }}</h3>
                                             </td>
@@ -255,7 +254,7 @@
             // Init full DataTable, for more examples you can check out https://www.datatables.net/
             var initDataTableFull = function() {
                 jQuery('.js-dataTable-full').dataTable({
-                    columnDefs: [ { orderable: true, targets: [ 9 ] } ],
+                    columnDefs: [ { orderable: true, targets: [ 10 ] } ],
                     pageLength: 10,
                     lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]]
                 });
@@ -265,7 +264,7 @@
             var initDataTableFullPagination = function() {
                 jQuery('.js-dataTable-full-pagination').dataTable({
                     pagingType: "full_numbers",
-                    columnDefs: [ { orderable: true, targets: [ 9 ] } ],
+                    columnDefs: [ { orderable: true, targets: [ 10 ] } ],
                     pageLength: 10,
                     lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]]
                 });
@@ -274,7 +273,7 @@
             // Init simple DataTable, for more examples you can check out https://www.datatables.net/
             var initDataTableSimple = function() {
                 jQuery('.js-dataTable-simple').dataTable({
-                    columnDefs: [ { orderable: true, targets: [ 9 ] } ],
+                    columnDefs: [ { orderable: true, targets: [ 10 ] } ],
                     pageLength: 10,
                     lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
                     searching: false,

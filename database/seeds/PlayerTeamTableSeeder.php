@@ -14,12 +14,15 @@ class PlayerTeamTableSeeder extends Seeder
      public function run()
      {
 
-         # First, create an array of all the books we want to associate tags with
-         # The *key* will be the book title, and the *value* will be an array of tags.
+         # On Team AS PLAYER
          $players =[
-             'CaptainAwesome650' => ['Drewkerbockers'],
-             'HillaryClinton' => ['StraightFundamental'],
-             'PrettyBoiFredo' => ['StraightFundamental'],
+             'CaptainAwesome650' => ['Drewkerbockers', 'The Students', 'MVP Crew', 'American Political Disaster'],
+             'HillaryClinton' => ['StraightFundamental', 'The Professors'],
+             'PrettyBoiFredo' => ['StraightFundamental', 'MVP Crew', 'American Political Disaster'],
+             'jamal' => ['The Students', 'MVP Crew', 'American Political Disaster', 'American Political Disaster'],
+             'jill' => ['The Professors', 'American Political Disaster', 'American Political Disaster'],
+             'AishaCurry30' => ['American Political Disaster'],
+             'Susan' => ['American Political Disaster'],
          ];
 
          # Now loop through the above array, creating a new pivot for each book to tag
@@ -46,13 +49,15 @@ class PlayerTeamTableSeeder extends Seeder
          }
 
 
-          # First, create an array of all the books we want to associate tags with
-          # The *key* will be the book title, and the *value* will be an array of tags.
+           # On Team AS OWNER
           $owners =[
+
               'CaptainAwesome650' => ['StraightFundamental'],
+              'HillaryClinton' => ['American Political Disaster'],
               'PrettyBoiFredo' => ['Drewkerbockers'],
-              'HillaryClinton' => ['InvitesTester'],
-              'AishaCurry30' => ['RequestsTester'],
+              'jamal' => ['The Professors'],
+              'jill' => ['The Students'],
+              'AishaCurry30' => ['MVP Crew'],
           ];
 
           # Now loop through the above array, creating a new pivot for each book to tag
@@ -83,11 +88,11 @@ class PlayerTeamTableSeeder extends Seeder
           # 3 invited, waiting response
           # 4 requested, waiting reponse
           # 5 = blocked ??
-
+/*
           //Teams that have extended offers
           $invited =[
               //'CaptainAwesome650' => ['InvitesTester', 'RequestsTester'],
-              'CaptainAwesome650' => ['InvitesTester']
+              'CaptainAwesome650' => ['The Professors']
           ];
 
           //Players that have requested an available roster spot on a team
@@ -103,6 +108,7 @@ class PlayerTeamTableSeeder extends Seeder
                   $player->teams()->save($team, ['status' => 3]);
               }
           }
+
 
           //Teams that have extended offers
           $requested =[
@@ -129,7 +135,7 @@ class PlayerTeamTableSeeder extends Seeder
                   # 5 = blocked
                   $player->teams()->save($team, ['status' => 4]);
               }
-          }
+          } */
 
      }
 }

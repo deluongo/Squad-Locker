@@ -311,7 +311,7 @@
                                         <option value="Ball-Movement" @if(old('movement', $movement) == 'Ball-Movement')) selected @endif>Ball-Movement</option>
                                         <option value="Isolation" @if(old('movement', $movement) == 'Isolation')) selected @endif>Isolation</option>
                                         <option value="7 Seconds" @if(old('movement', $movement) == '7 Seconds')) selected @endif>7 Seconds</option>
-                                        <option value="Run & Gun" @if(old('movement', $movement) == 'Run & Gun')) selected @endif>Run & Gun</option>
+                                        <option value="Run N Gun" @if(old('movement', $movement) == 'Run N Gun')) selected @endif>Run & Gun</option>
                                         <option value="Player Movement" @if(old('movement', $movement) == 'Player Movement')) selected @endif>Player Movement</option>
                                     </select>
                                     @if($errors->get('movement'))

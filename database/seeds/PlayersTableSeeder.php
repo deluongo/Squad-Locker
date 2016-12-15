@@ -13,6 +13,137 @@ class PlayersTableSeeder extends Seeder
      public function run()
     {
 
+        $user_id = User::where('name','=','jamal')->pluck('id')->first();
+
+        DB::table('players')->insert([
+
+            //User Table Key
+            'user_id' => $user_id,
+
+            //Housekeeping
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+
+            //Profile
+            'name' => 'jamal',
+            'style' => 'Assist-King',
+            'position' => 'PF',
+            'affiliation' => 'Rivit City',
+            'tagline' => 'Im totally giving this kid an A+',
+            'player_profile_pic' => 'http://wp-images.emusic.com/assets/2012/02/ahmad-jamal-its-magic.jpg',
+            'player_bg_pic' => 'https://ae01.alicdn.com/kf/HTB1SHJsIVXXXXa8aXXXq6xXFXXXL/-font-b-Harvard-b-font-University-Crimson-Flag-NCAA-3ft-x-5ft-Polyester-Banner-Flying.jpg',
+
+
+            //'bg_image' => 'asset("/img/photos/pg2k.jpg")',
+            //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
+
+            //Social
+            'twitter' => 'https://www.youtube.com/user/deluongo',
+            'youtube' => 'https://twitter.com/DevonLuongo',
+            'twitch' => 'https://www.twitch.tv/deluongo',
+
+            //Park
+            'rep_level' => 'Rookie 1',
+            'rep_progress' => 0,
+            'rep_status' => 'Rookie',
+            'status_level' => 1,
+
+
+            //Playstyle
+            'type' => 'On-Ball',
+            'role' => 'Shot-Creator',
+            'archetype' => 'Shot Creator',
+
+            //Stats
+            'overall_talent_score' => 29,
+            'team_grade' => 'A+',
+            'skill_grade' => 'A+',
+            'per' => 12.8,
+            'fg' => 45,
+            'apg' => 1.0,
+            'apg_ppg' => 0.5,
+            'ppg' => 2.0,
+            'rpg' => 3.1,
+
+            //Colors
+            'progress_chart_color' => '#abe37d',
+            'progress_bar_color' => 'success',
+            'profile_pic_color' => 'danger',
+            'team_grade_color' => 'success',
+            'skill_grade_color' => 'success',
+            'per_color' => 'warning',
+            'fg_color' => 'warning',
+            'apg_color' => 'warning',
+            'apg_ppg_color' => 'danger',
+            'ppg_color' => 'warning',
+            'rpg_color' => 'success'
+        ]);
+
+        $user_id = User::where('name','=','jill')->pluck('id')->first();
+
+        DB::table('players')->insert([
+
+            //User Table Key
+            'user_id' => $user_id,
+
+            //Housekeeping
+            'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+
+
+            //Profile
+            'name' => 'jill',
+            'style' => 'Assist-King',
+            'position' => 'PF',
+            'affiliation' => 'Sunset Beach',
+            'tagline' => 'Jamal, we should give him special desitinction, huh?',
+            'player_profile_pic' => 'https://s24.postimg.org/qvlf2nrb9/TF_Player_Profile.jpg',
+            'player_bg_pic' => 'https://s24.postimg.org/e9ax0negl/arun.jpg',
+            //'bg_image' => 'asset("/img/photos/pg2k.jpg")',
+            //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
+
+            //Social
+            'twitter' => 'https://www.youtube.com/user/jamal',
+            'youtube' => 'https://twitter.com/jamal',
+            'twitch' => 'https://www.twitch.tv/jamal',
+
+            //Park
+            'rep_level' => 'Pro 2',
+            'rep_progress' => 40,
+            'rep_status' => 'Pro',
+            'status_level' => 2,
+
+
+            //Playstyle
+            'type' => 'Off-Ball',
+            'role' => 'Facilitator',
+            'archetype' => 'Glass Cleaner',
+
+            //Stats
+            'overall_talent_score' => 20,
+            'team_grade' => 'B-',
+            'skill_grade' => 'A-',
+            'per' => 12.1,
+            'fg' => 34,
+            'apg' => 4.1,
+            'apg_ppg' => 4.3,
+            'ppg' => 0.9,
+            'rpg' => 6.4,
+
+            //Colors
+            'progress_chart_color' => '#FADB7D',
+            'progress_bar_color' => 'warning',
+            'profile_pic_color' => 'danger',
+            'team_grade_color' => 'warning',
+            'skill_grade_color' => 'success',
+            'per_color' => 'warning',
+            'fg_color' => 'danger',
+            'apg_color' => 'success',
+            'apg_ppg_color' => 'success',
+            'ppg_color' => 'danger',
+            'rpg_color' => 'success'
+        ]);
+
      $user_id = User::where('name','=','CaptainAwesome650')->pluck('id')->first();
 
      DB::table('players')->insert([
@@ -27,24 +158,22 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'CaptainAwesome650',
-         'style' => 'Assist-King',
-         'position' => 'PG',
+         'style' => 'Ball-Movement-Coach',
+         'position' => 'SG',
          'affiliation' => 'Rivit City',
          'tagline' => '"Bro...play defense..." *THROWS MOUTHPIRECE*',
-         'player_profile_pic' => 'https://yt3.ggpht.com/-8DWfe0gZvK0/AAAAAAAAAAI/AAAAAAAAAAA/H2FyH-fiPwg/s900-c-k-no-mo-rj-c0xffffff/photo.jpg',
-         'player_bg_pic' => '/img/photos/pg2k.jpg',
          //'bg_image' => 'asset("/img/photos/pg2k.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/deluongo',
+         'twitter' => 'https://www.youtube.com/user/devonluongo',
          'youtube' => 'https://twitter.com/DevonLuongo',
-         'twitch' => 'https://www.twitch.tv/deluongo',
+         'twitch' => 'https://www.twitch.tv/devonluongo',
 
          //Park
-         'rep_level' => 'All-Star 4',
+         'rep_level' => 'Legend 4',
          'rep_progress' => 60,
-         'rep_status' => 'All-Star',
+         'rep_status' => 'Legend',
          'status_level' => 4,
 
 
@@ -54,9 +183,9 @@ class PlayersTableSeeder extends Seeder
          'archetype' => 'Playmaker',
 
          //Stats
-         'overall_talent_score' => 0,
+         'overall_talent_score' => 85,
          'team_grade' => 'A+',
-         'skill_grade' => 'B+',
+         'skill_grade' => 'A+',
          'per' => 28.2,
          'fg' => 75,
          'apg' => 2.5,
@@ -66,14 +195,15 @@ class PlayersTableSeeder extends Seeder
 
          //Colors
          'progress_chart_color' => '#abe37d',
-         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
+         'progress_bar_color' => 'success',
+         'profile_pic_color' => 'success',
          'team_grade_color' => 'success',
-         'skill_grade_color' => 'danger',
+         'skill_grade_color' => 'success',
          'per_color' => 'success',
          'fg_color' => 'success',
-         'apg_color' => 'danger',
+         'apg_color' => 'success',
          'apg_ppg_color' => 'warning',
-         'ppg_color' => 'warning',
+         'ppg_color' => 'success',
          'rpg_color' => 'success'
      ]);
 
@@ -89,54 +219,53 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'Susan',
-         'style' => 'Assist-King',
-         'position' => 'PG',
+         'style' => 'Blow-By-Dunker',
+         'position' => 'SF',
          'affiliation' => 'Rivit City',
          'tagline' => 'The Professor',
-         'player_profile_pic' => 'https://yt3.ggpht.com/-8DWfe0gZvK0/AAAAAAAAAAI/AAAAAAAAAAA/H2FyH-fiPwg/s900-c-k-no-mo-rj-c0xffffff/photo.jpg',
-         'player_bg_pic' => '/img/photos/pg2k.jpg',
          //'bg_image' => 'asset("/img/photos/pg2k.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/deluongo',
-         'youtube' => 'https://twitter.com/DevonLuongo',
-         'twitch' => 'https://www.twitch.tv/deluongo',
+         'twitter' => 'https://www.youtube.com/user/susanbuck',
+         'youtube' => 'https://twitter.com/susanbuck',
+         'twitch' => 'https://www.twitch.tv/susanbuck',
 
          //Park
-         'rep_level' => 'All-Star 4',
+         'rep_level' => 'Superstar 3',
          'rep_progress' => 60,
-         'rep_status' => 'All-Star',
-         'status_level' => 4,
+         'rep_status' => 'Superstar',
+         'status_level' => 3,
 
 
          //Playstyle
-         'type' => 'Off-Ball',
-         'role' => 'Facilitator',
-         'archetype' => 'Playmaker',
+         'type' => 'On-Ball',
+         'role' => 'Scorer',
+         'archetype' => 'Slasher',
 
          //Stats
-         'overall_talent_score' => 0,
-         'team_grade' => 'A+',
-         'skill_grade' => 'B+',
-         'per' => 28.2,
-         'fg' => 75,
-         'apg' => 2.5,
-         'apg_ppg' => 1.2,
-         'ppg' => 4.6,
-         'rpg' => 3.1,
+         'overall_talent_score' => 73,
+         'team_grade' => 'B-',
+         'skill_grade' => 'A',
+         'per' => 11.1,
+         'fg' => 34,
+         'apg' => 1.1,
+         'apg_ppg' => 0.3,
+         'ppg' => 3.3,
+         'rpg' => 1.1,
 
          //Colors
          'progress_chart_color' => '#abe37d',
-         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
-         'team_grade_color' => 'success',
-         'skill_grade_color' => 'danger',
-         'per_color' => 'success',
-         'fg_color' => 'success',
+         'progress_bar_color' => 'success',
+         'profile_pic_color' => 'success',
+         'team_grade_color' => 'warning',
+         'skill_grade_color' => 'success',
+         'per_color' => 'warning',
+         'fg_color' => 'danger',
          'apg_color' => 'danger',
-         'apg_ppg_color' => 'warning',
+         'apg_ppg_color' => 'danger',
          'ppg_color' => 'warning',
-         'rpg_color' => 'success'
+         'rpg_color' => 'warning'
      ]);
 
      $user_id = User::where('name','=','PrettyBoiFredo')->pluck('id')->first();
@@ -177,26 +306,27 @@ class PlayersTableSeeder extends Seeder
          'archetype' => 'Sharp Shooter',
 
          //Stats
-         'overall_talent_score' => 0,
+         'overall_talent_score' => 50,
          'team_grade' => 'B+',
          'skill_grade' => 'A-',
-         'per' => 23.8,
+         'per' => 13.8,
          'fg' => 68.2,
          'apg' => 1.5,
-         'apg_ppg' => 2.1,
+         'apg_ppg' => 0.6,
          'ppg' => 2.2,
          'rpg' => 1.0,
 
          //Colors
-         'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
+         'progress_chart_color' => '#FAAE7E',
+         'progress_bar_color' => 'danger',
+         'profile_pic_color' => 'warning',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
-         'fg_color' => 'danger',
+         'fg_color' => 'success',
          'apg_color' => 'warning',
          'apg_ppg_color' => 'danger',
-         'ppg_color' => 'success',
+         'ppg_color' => 'warning',
          'rpg_color' => 'warning'
      ]);
 
@@ -212,7 +342,7 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'HillaryClinton',
-         'style' => 'Run-The-Break',
+         'style' => 'Backdoor-Posterizer',
          'position' => 'SF',
          'affiliation' => 'Sunset Beach',
          'tagline' => 'Too pretty for my shirt BOI!',
@@ -220,15 +350,15 @@ class PlayersTableSeeder extends Seeder
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Park
-         'rep_level' => 'Superstar 2',
-         'rep_progress' => 20,
-         'rep_status' => 'Superstar',
-         'status_level' => 2,
+         'rep_level' => 'Rookie 5',
+         'rep_progress' => 40,
+         'rep_status' => 'Rookie',
+         'status_level' => 5,
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/prettyboyfredo',
-         'youtube' => 'https://twitter.com/Prettyboyfredo',
-         'twitch' => 'https://www.twitch.tv/prettyboyfredo',
+         'twitter' => 'https://www.youtube.com/user/HillaryClinton',
+         'youtube' => 'https://twitter.com/HillaryClinton',
+         'twitch' => 'https://www.twitch.tv/HillaryClinton',
 
          //Playstyle
          'type' => 'Off-Ball',
@@ -237,26 +367,27 @@ class PlayersTableSeeder extends Seeder
 
          //Stats
          'overall_talent_score' => 0,
-         'team_grade' => 'B+',
-         'skill_grade' => 'A-',
-         'per' => 16.8,
-         'fg' => 27.5,
-         'apg' => 1.9,
-         'apg_ppg' => 2.1,
-         'ppg' => 6.8,
-         'rpg' => 5.3,
+         'team_grade' => 'F',
+         'skill_grade' => 'F',
+         'per' => 0.0,
+         'fg' => 0.0,
+         'apg' => 20.0,
+         'apg_ppg' => 99.9,
+         'ppg' => 0.0,
+         'rpg' => 0.0,
 
          //Colors
-         'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'danger', 'profile_pic_color' => 'danger',
-         'team_grade_color' => 'warning',
-         'skill_grade_color' => 'success',
-         'per_color' => 'warning',
+         'progress_chart_color' => '#FAAE7E',
+         'progress_bar_color' => 'danger',
+         'profile_pic_color' => 'danger',
+         'team_grade_color' => 'danger',
+         'skill_grade_color' => 'danger',
+         'per_color' => 'danger',
          'fg_color' => 'danger',
-         'apg_color' => 'warning',
-         'apg_ppg_color' => 'danger',
-         'ppg_color' => 'success',
-         'rpg_color' => 'warning'
+         'apg_color' => 'danger',
+         'apg_ppg_color' => 'success',
+         'ppg_color' => 'danger',
+         'rpg_color' => 'danger'
      ]);
 
      $user_id = User::where('name','=','AishaCurry30')->pluck('id')->first();
@@ -271,16 +402,16 @@ class PlayersTableSeeder extends Seeder
 
          //Profile
          'name' => 'AishaCurry30',
-         'style' => 'Inside-Out-Big',
+         'style' => 'Catch-N-Shoot',
          'position' => 'SF',
          'affiliation' => 'Sunset Beach',
-         'tagline' => 'Too pretty for my shirt BOI!',
+         'tagline' => 'My husbad is the man #SC30 #Top10',
          //'bg_image' => 'asset("/img/photos/steph2face.jpg")',
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Park
          'rep_level' => 'Superstar 2',
-         'rep_progress' => 20,
+         'rep_progress' => 40,
          'rep_status' => 'Superstar',
          'status_level' => 2,
 
@@ -291,27 +422,28 @@ class PlayersTableSeeder extends Seeder
 
          //Playstyle
          'type' => 'Off-Ball',
-         'role' => 'Facilitator',
-         'archetype' => 'Slasher',
+         'role' => 'Scorer',
+         'archetype' => 'Sniper',
 
          //Stats
-         'overall_talent_score' => 0,
+         'overall_talent_score' => 54,
          'team_grade' => 'B+',
          'skill_grade' => 'A-',
          'per' => 14.8,
-         'fg' => 39.2,
+         'fg' => 79.2,
          'apg' => 2.7,
-         'apg_ppg' => 4.1,
+         'apg_ppg' => 0.5,
          'ppg' => 5.9,
-         'rpg' => 1.8,
+         'rpg' => 0.8,
 
          //Colors
          'progress_chart_color' => '#FADB7D',
-         'progress_bar_color' => 'success', 'profile_pic_color' => 'danger',
+         'progress_bar_color' => 'warning',
+         'profile_pic_color' => 'success',
          'team_grade_color' => 'warning',
          'skill_grade_color' => 'success',
          'per_color' => 'warning',
-         'fg_color' => 'danger',
+         'fg_color' => 'success',
          'apg_color' => 'warning',
          'apg_ppg_color' => 'danger',
          'ppg_color' => 'success',

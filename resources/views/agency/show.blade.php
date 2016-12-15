@@ -13,7 +13,7 @@
 @section('main')
     <!-- Page Header -->
     <div class="background-white-op">
-        <div class="content bg-charcoal">
+        <div class="content bg-black">
             <div class="row items-push">
                 <div class="col-sm-7 clearfix">
                     <div class="push-15-r pull-left">
@@ -287,7 +287,7 @@
             // Init full DataTable, for more examples you can check out https://www.datatables.net/
             var initDataTableFull = function() {
                 jQuery('.js-dataTable-full').dataTable({
-                    columnDefs: [ { orderable: false, targets: [ 4 ] } ],
+                    columnDefs: [ { orderable: false, targets: [ 12 ] } ],
                     pageLength: 10,
                     lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]]
                 });
@@ -297,7 +297,7 @@
             var initDataTableFullPagination = function() {
                 jQuery('.js-dataTable-full-pagination').dataTable({
                     pagingType: "full_numbers",
-                    columnDefs: [ { orderable: false, targets: [ 4 ] } ],
+                    columnDefs: [ { orderable: false, targets: [ 12 ] } ],
                     pageLength: 10,
                     lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]]
                 });
@@ -306,7 +306,7 @@
             // Init simple DataTable, for more examples you can check out https://www.datatables.net/
             var initDataTableSimple = function() {
                 jQuery('.js-dataTable-simple').dataTable({
-                    columnDefs: [ { orderable: false, targets: [ 4 ] } ],
+                    columnDefs: [ { orderable: false, targets: [ 12 ] } ],
                     pageLength: 10,
                     lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
                     searching: false,

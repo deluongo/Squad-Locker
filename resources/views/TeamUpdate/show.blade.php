@@ -293,7 +293,7 @@
                                         <option value="Ball-Movement" @if($movement == 'Ball-Movement') selected @endif>Ball-Movement</option>
                                         <option value="Isolation" @if($movement == 'Isolation') selected @endif>Isolation</option>
                                         <option value="7 Seconds" @if($movement == '7 Seconds') selected @endif>7 Seconds</option>
-                                        <option value="Run & Gun" @if($movement == 'Run & Gun') selected @endif>Run & Gun</option>
+                                        <option value="Run N Gun" @if($movement == 'Run N Gun') selected @endif>Run & Gun</option>
                                         <option value="Player Movement" @if($movement == 'Player Movement') selected @endif>Player Movement</option>
                                     </select>
                                 </div>
