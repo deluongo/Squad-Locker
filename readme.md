@@ -26,6 +26,21 @@ HTML Validation Samples:
     - https://github.com/deluongo/p4/blob/master/resources/views/update/show.blade.php
     - https://github.com/deluongo/p4/blob/master/resources/views/TeamUpdate/show.blade.php
 
+CRUD
+    - Create
+        -Players
+        -Teams
+        -Connect with pivot to track status of player team relationship
+    - Read
+        -View Player Data
+        -View Team Data
+    - Update
+        -Update Team
+        -Update Player
+        -Change player team relationship status (disabled)
+    - Delete
+        - Remove teams
+
 
 Non-Functioning JS Features:
     A number of features that have been built into the site UI require JS, which was out of scope for this project. Susan asked that I point out these features so that you can navigate around them. My understanding is that these features will not negatively impact my grade. Listed:
