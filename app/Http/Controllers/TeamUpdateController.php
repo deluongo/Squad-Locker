@@ -706,7 +706,7 @@ class TeamUpdateController extends Controller
                    'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'affiliation' => $affiliation, 'type' => $type,
                    'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade,
                    'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'profile_pic' => $profile_pic,
-                   'team_profile_pic' => $team_profile_pic, 'team_background_pic' => $team_background_pic
+                   'team_profile_pic' => $team_profile_pic, 'team_background_pic' => $team_background_pic, 'player' => $player, 'player_profile_pic' => $player_profile_pic
            ]);
         }
 
