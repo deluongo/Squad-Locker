@@ -114,6 +114,8 @@ class ViewPlayerController extends Controller
             }
         }
 
+        $user_avatar = Player::where('name', '=', Auth::user()->name)->first()->player_profile_pic;
+
         $data = ['team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
             'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
             'name' => $name, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter,
@@ -122,9 +124,9 @@ class ViewPlayerController extends Controller
             'ppg' => $ppg, 'rpg' => $rpg, 'team_grade_color' => $team_grade_color, 'skill_grade_color' => $skill_grade_color, 'per_color' => $per_color,
             'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color,
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
-            'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
+            'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color, 'user_avatar' => $user_avatar,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams,
         ];
 
         return view('viewplayer.show')->with($data);

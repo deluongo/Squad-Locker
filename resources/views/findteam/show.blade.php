@@ -25,13 +25,11 @@
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li><a class="larger text-white-op" href="/free-agency/teams">
-                        Find Teams
-                    </a></li>
-                    <i class="fa fa-angle-right push-5-r push-5-l"></i>
-                    <li><a class="link-effect larger" href="/free-agency">
-                        Find Players
-                    </a></li>
+                    <li>
+                        <a class="larger text-white-op" href="/free-agency/teams">Find Teams</a>
+                        <i class="fa fa-angle-right push-5-r push-5-l"></i>
+                        <a class="link-effect larger" href="/free-agency">Find Players</a>
+                    </li>
                 </ol>
             </div>
         </div>
@@ -45,13 +43,13 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button"><i class="si si-settings"></i></button>
+                        <button><i class="si si-settings"></i></button>
                     </li>
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                        <button  data-toggle="block-option" data-action="fullscreen_toggle"></button>
                     </li>
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                        <button  data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
                     </li>
                 </ul>
             </div>
@@ -96,7 +94,7 @@
                                 <div class="form-horizontal push-20-l push-20-r">
                                     <div class="col-xs-6 col-sm-4 col-lg-2">
                                         <label for="search_movement">Movement</label>
-                                        <select class="form-control" id="search_movement" name="search_movement[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_movement" name="search_movement[]" size="5" multiple>
                                             <option value="Ball-Movement" @if(in_array('Ball-Movement', $search_movement)) selected @endif>Ball-Movement</option>
                                             <option value="Isolation" @if(in_array('Isolation', $search_movement)) selected @endif>Isolation</option>
                                             <option value="7 Seconds" @if(in_array('7 Seconds', $search_movement)) selected @endif>7 Seconds</option>
@@ -106,7 +104,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-4 col-lg-2">
                                         <label for="search_affiliation_type">Affiliation | Type</label>
-                                        <select class="form-control" id="search_affiliation_type" name="search_affiliation_type[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_affiliation_type" name="search_affiliation_type[]" size="5" multiple>
                                             <option value="Pro-Am Team" @if(in_array('Pro-Am Team', $search_affiliation_type)) selected @endif>Pro-Am Team</option>
                                             <option value="Rivit City" @if(in_array('Rivit City', $search_affiliation_type)) selected @endif>Rivit City</option>
                                             <option value="Sunset Beach" @if(in_array('Sunset Beach', $search_affiliation_type)) selected @endif>Sunset Beach</option>
@@ -116,7 +114,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-4 col-lg-2">
                                         <label for="search_tempo">Tempo</label>
-                                        <select class="form-control" id="search_tempo" name="search_tempo[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_tempo" name="search_tempo[]" size="5" multiple>
                                             <option value="Fast" @if(in_array('Fast', $search_tempo)) selected @endif>Fast</option>
                                             <option value="Uptempo" @if(in_array('Uptempo', $search_tempo)) selected @endif>Uptempo</option>
                                             <option value="Deliberate" @if(in_array('Deliberate', $search_tempo)) selected @endif>Deliberate</option>
@@ -126,7 +124,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-4 col-lg-2">
                                         <label for="search_offense">Offense</label>
-                                        <select class="form-control" id="search_offense" name="search_offense[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_offense" name="search_offense[]" size="5" multiple>
                                             <option value="Motion" @if(in_array('Motion', $search_offense)) selected @endif>Motion</option>
                                             <option value="Triangle" @if(in_array('Triangle', $search_offense)) selected @endif>Triangle</option>
                                             <option value="Free Lance" @if(in_array('Free Lance', $search_offense)) selected @endif>Free Lance</option>
@@ -136,7 +134,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-4 col-lg-2">
                                         <label for="search_defense">Defense</label>
-                                        <select class="form-control" id="search_defense" name="search_defense[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_defense" name="search_defense[]" size="5" multiple>
                                             <option value="Team-D" @if(in_array('Team-D', $search_defense)) selected @endif>Team-D</option>
                                             <option value="Man" @if(in_array('Man', $search_defense)) selected @endif>Man</option>
                                             <option value="No-Help" @if(in_array("No-Help", $search_defense)) selected @endif>No-Help</option>
@@ -146,7 +144,7 @@
                                     </div>
                                     <div class="col-xs-6 col-sm-4 col-lg-2">
                                         <label for="search_members">Team Members</label>
-                                        <select class="form-control" id="search_members" name="search_members[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_members" name="search_members[]" size="5" multiple>
                                             <option value=1 @if(in_array(1, $search_members)) selected @endif>1</option>
                                             <option value=2 @if(in_array(2, $search_members)) selected @endif>2</option>
                                             <option value=3 @if(in_array(3, $search_members)) selected @endif>3</option>
@@ -176,7 +174,7 @@
             <div class="block-content">
                 <div class="block">
                     <div class="block-content">
-                        <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
+                        <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid">
                             <thead>
                                 <tr role="row">
                                     <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 100px;">Name</th>
@@ -184,14 +182,14 @@
                                     <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 100px;">Tempo</th>
                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 100px;">Off</th>
                                     <th class="hidden-md sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 50px;">Def</th>
-                                    <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
-                                    <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Skill Grade: activate to sort column ascending">Skill</th>
-                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
-                                    <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
-                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
-                                    <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
-                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
-                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
+                                    <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
+                                    <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Skill Grade: activate to sort column ascending">Skill</th>
+                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
+                                    <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
+                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
+                                    <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
+                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
+                                    <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
                                     <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Act</th>
                                 </tr>
                             </thead>
@@ -220,8 +218,8 @@
                                             <td class="hidden-md hidden-sm hidden-xs sorting {{$team->rpg_color}} table-num">{{ $team->rpg }}</td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <button class="btn btn-xs btn-success push-5-t" type="button" data-toggle="tooltip" title="" data-original-title="Edit Client"><i class="fa fa-plus"></i></button>
-                                                    <a class="btn btn-xs btn-default push-5-t" href="/free-agency" type="button" data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
+                                                    <button class="btn btn-xs btn-success push-5-t"  data-toggle="tooltip" title="" data-original-title="Edit Client"><i class="fa fa-plus"></i></button>
+                                                    <a class="btn btn-xs btn-default push-5-t" href="/free-agency"  data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

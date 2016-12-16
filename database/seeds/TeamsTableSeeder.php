@@ -19,8 +19,8 @@ class TeamsTableSeeder extends Seeder
              'gamertag' => 'CaptainAwesome650',
              # Team Settings
              'name' => 'StraightFundamental',
-             'team_bg_pic' => '/img/photos/steph2face.jpg',
-             'team_profile_pic' => '/img/avatars/rttf.jpg',
+             'team_bg_pic' => 'https://s24.postimg.org/heanx1cxh/steph2face.jpg',
+             'team_profile_pic' => 'https://s27.postimg.org/vef3ooldf/rttf.jpg',
 
              'abbreviation' => 'SFTU',
              'wins' => '110',
@@ -74,7 +74,7 @@ class TeamsTableSeeder extends Seeder
              # Owner
              'gamertag' => 'jill',
              # Team Settings
-             'name' => 'The Students',
+             'name' => 'TheStudents',
              'team_bg_pic' => 'https://s27.postimg.org/fj0n78llv/Walking_To_School_On_Monday_Walking_Home_From_Sc.jpg',
              'team_profile_pic' => 'https://s-media-cache-ak0.pinimg.com/736x/00/0f/de/000fde75bdb773af7d8191145b614504.jpg',
 
@@ -132,7 +132,7 @@ class TeamsTableSeeder extends Seeder
              # Owner
              'gamertag' => 'jamal',
              # Team Settings
-             'name' => 'The Professors',
+             'name' => 'TheProfessors',
              'team_bg_pic' => 'https://s27.postimg.org/bwbmw0dtf/remember.jpg',
              'team_profile_pic' => 'http://www.takepart.com/sites/default/files/styles/tp_gallery_slide/public/teacher11.jpg?itok=oPHV2BNS',
 
@@ -245,7 +245,7 @@ class TeamsTableSeeder extends Seeder
              # Owner
              'gamertag' => 'AishaCurry30',
              # Team Settings
-             'name' => 'MVP Crew',
+             'name' => 'MVPCrew',
              'team_bg_pic' => '/img/photos/steph2face.jpg',
 
              'abbreviation' => 'MVP',
@@ -301,7 +301,7 @@ class TeamsTableSeeder extends Seeder
              # Owner
              'gamertag' => 'HillaryClinton',
              # Team Settings
-             'name' => 'American Political Disaster',
+             'name' => 'AmericanPoliticalDisaster',
              'team_bg_pic' => 'https://cdn.thefederalist.com/wp-content/uploads/2016/12/Hillary-Two-Thumbs-Up.jpg',
              'team_profile_pic' => 'http://www.slate.com/content/dam/slate/articles/news_and_politics/politics/2015/11/151114-democratic-debate/151114-debate-cbs-clinton6.jpg.CROP.promo-xlarge2.jpg',
 

@@ -339,8 +339,8 @@
                         <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Roster</h3>
                     </div>
                     <div class="block-content">
+                        <h5>Owner</h5>
                         <ul class="nav-users push">
-                            <h5>Owner</h5>
                             <li>
                                 <a href="/player/{{$owner->name}}">
                                     <img class="img-avatar" src="{{$owner->player_profile_pic}}" alt="Profile Picture">
@@ -348,13 +348,15 @@
                                     <div class="font-w400 text-muted h5"><span class="text-{{$owner->team_grade_color}}"> {{ $owner->team_grade }} </span> | <span class="text-{{$owner->skill_grade_color}}"> {{  $owner->skill_grade }}</span> | <span class="text-{{$owner->per_color}}"> {{ $owner->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$owner->ppg_color}}"> {{ $owner->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$owner->apg_color}}"> {{ $owner->apg }} <small><small><small>APG</small></small></small></span></div>
                                 </a>
                             </li>
-                            <h5>Players</h5>
+                        </ul>
+                        <h5>Players</h5>
+                        <ul class="nav-users push">
                             @foreach($team_members as $player)
                                 <li>
                                     <a href="/player/{{$player->name}}">
                                         <img class="img-avatar" src="{{$player->player_profile_pic}}" alt="Profile Picture">
                                         <i class="fa fa-circle text-{{$player->profile_pic_color}}"></i> <div class="font-18px font-w400">{{ $player->name }}</div>
-                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $player->team_grade }} </span> | <span class="text-{{$player->skill_grade_color}}"> {{  $player->skill_grade }}</span> | <span class="text-{{$player->per_color}}"> {{ $player->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$player->ppg_color}}"> {{ $player->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$player->apg_color}}"> {{ $player->apg }} <small><small><small>APG</small></small></span></small></div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $player->team_grade }} </span> | <span class="text-{{$player->skill_grade_color}}"> {{  $player->skill_grade }}</span> | <span class="text-{{$player->per_color}}"> {{ $player->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$player->ppg_color}}"> {{ $player->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$player->apg_color}}"> {{ $player->apg }} <small><small><small>APG</small></small></small></span></div>
                                     </a>
                                 </li>
                             @endforeach
@@ -469,8 +471,7 @@
                     </div>
                 </div>
                 <!-- END Products -->
-              </div>
-            </div>
+             </div>
         </div>
     <!-- END Page Content -->
 

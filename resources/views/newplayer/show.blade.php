@@ -41,8 +41,8 @@
         <!-- Basic Info -->
             <div class="block-content @if(count($errors) > 0) bg-danger @elseif($new_player == 'no') bg-success @elseif($new_player=='added') bg-success @else bg-primary @endif text-center overflow-hidden">
                 <div class="push-10 animated fadeInUp">
-                    <h1 class="h3 font-w600 text-white push-5">@if(count($errors) > 0) Error @elseif($new_player == 'no') Success @elseif($new_player == 'added') Player Created @else Register @endif</h2>
-                    <h2 class="h5 text-white-op">@if(count($errors) > 0) The form you entered has errors. All fields are required. Each field with an error how an error message below. @else {{ $notification }} @endif</h3>
+                    <h1 class="h3 font-w600 text-white push-5">@if(count($errors) > 0) Error @elseif($new_player == 'no') Success @elseif($new_player == 'added') Player Created @else Register @endif</h1>
+                    <h2 class="h5 text-white-op">@if(count($errors) > 0) The form you entered has errors. All fields are required. Each field with an error how an error message below. @else {{ $notification }} @endif</h2>
                     <form action="/player">
                        @if(count($errors) > 0)
 

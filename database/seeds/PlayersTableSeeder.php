@@ -38,8 +38,8 @@ class PlayersTableSeeder extends Seeder
             //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
             //Social
-            'twitter' => 'https://www.youtube.com/user/deluongo',
-            'youtube' => 'https://twitter.com/DevonLuongo',
+            'twitter' => 'https://twitter.com/DevonLuongo',
+            'youtube' => 'https://www.youtube.com/user/deluongo',
             'twitch' => 'https://www.twitch.tv/deluongo',
 
             //Park
@@ -103,8 +103,8 @@ class PlayersTableSeeder extends Seeder
             //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
             //Social
-            'twitter' => 'https://www.youtube.com/user/jamal',
-            'youtube' => 'https://twitter.com/jamal',
+            'youtube' => 'https://www.youtube.com/user/jamal',
+            'twitter' => 'https://twitter.com/jamal',
             'twitch' => 'https://www.twitch.tv/jamal',
 
             //Park
@@ -166,8 +166,8 @@ class PlayersTableSeeder extends Seeder
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/devonluongo',
-         'youtube' => 'https://twitter.com/DevonLuongo',
+         'youtube' => 'https://www.youtube.com/user/devonluongo',
+         'twitter' => 'https://twitter.com/DevonLuongo',
          'twitch' => 'https://www.twitch.tv/devonluongo',
 
          //Park
@@ -227,8 +227,8 @@ class PlayersTableSeeder extends Seeder
          //'profile_pic' => 'asset("/img/avatars/prettyboyfredo.jpg")',
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/susanbuck',
-         'youtube' => 'https://twitter.com/susanbuck',
+         'youtube' => 'https://www.youtube.com/user/susanbuck',
+         'twitter' => 'https://twitter.com/susanbuck',
          'twitch' => 'https://www.twitch.tv/susanbuck',
 
          //Park
@@ -296,8 +296,8 @@ class PlayersTableSeeder extends Seeder
          'status_level' => 2,
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/prettyboyfredo',
-         'youtube' => 'https://twitter.com/Prettyboyfredo',
+         'youtube' => 'https://www.youtube.com/user/prettyboyfredo',
+         'twitter' => 'https://twitter.com/Prettyboyfredo',
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle
@@ -356,8 +356,8 @@ class PlayersTableSeeder extends Seeder
          'status_level' => 5,
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/HillaryClinton',
-         'youtube' => 'https://twitter.com/HillaryClinton',
+         'youtube' => 'https://www.youtube.com/user/HillaryClinton',
+         'twitter' => 'https://twitter.com/HillaryClinton',
          'twitch' => 'https://www.twitch.tv/HillaryClinton',
 
          //Playstyle
@@ -416,8 +416,8 @@ class PlayersTableSeeder extends Seeder
          'status_level' => 2,
 
          //Social
-         'twitter' => 'https://www.youtube.com/user/prettyboyfredo',
-         'youtube' => 'https://twitter.com/Prettyboyfredo',
+         'youtube' => 'https://www.youtube.com/user/prettyboyfredo',
+         'twitter' => 'https://twitter.com/Prettyboyfredo',
          'twitch' => 'https://www.twitch.tv/prettyboyfredo',
 
          //Playstyle

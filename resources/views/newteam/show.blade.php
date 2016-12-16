@@ -23,7 +23,7 @@
                     </li>
                 </ul>
                 <div class="push-30-t push animated fadeInDown">
-                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset('/img/branding/extras/Baby_Dark_Hood White_Outline.png')}}" alt="Profile Picture">
+                    <img class="img-avatar img-avatar96 img-avatar-thumb" src="{{asset('/img/branding/extras/Baby_Dark_Hood_White_Outline.png')}}" alt="Profile Picture">
                 </div>
                 <div class="push-30 animated fadeInUp">
                     <h2 class="h4 font-w600 text-white push-5">@if($new_team == 'no' ) {{ $name }} ({{ $abbreviation }}) @endif</h2>
@@ -70,8 +70,8 @@
         <!-- Basic Info -->
             <div class="block-content bg-success text-center overflow-hidden">
                 <div class="push-10 animated fadeInUp">
-                    <h1 class="h3 font-w600 text-white push-5">Success</h2>
-                    <h2 class="h5 text-white-op">{{ $notification }}</h3>
+                    <h1 class="h3 font-w600 text-white push-5">Success</h1>
+                    <h2 class="h5 text-white-op">{{ $notification }}</h1>
                     <form action="/myteam/{{$name}}">
                         <button class="btn btn-sm bg-primary push-10-t" type="submit"><i class="si si-game-controller push-5-r"></i>  View Myteam</button>
                     </form>
@@ -159,7 +159,7 @@
                                 </div>
                                 <div class="col-xs-4">
                                     <div class= "form-material ">
-                                        <label for="losses">Losses</label>
+                                        <label>Losses</label>
                                         <input class="form-control input-lg" type="text" id="losses" name="losses" placeholder="Update your losses.." value="{{ old('losses', $losses) }}">
                                         @if($errors->get('losses'))
                                           <ul class="errors">
@@ -202,8 +202,8 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class= "form-material ">
-                                        <label for="profile-password">Tagline</label>
-                                        <input class="form-control input-lg" type="text" id="tagline" name="tagline" placeholder="Enter a tagline for your profile.."value="{{old('tagline', $tagline)}}">
+                                        <label>Tagline</label>
+                                        <input class="form-control input-lg" type="text" id="tagline" name="tagline" placeholder="Enter a tagline for your profile.." value="{{old('tagline', $tagline)}}">
                                         @if($errors->get('tagline'))
                                           <ul class="errors">
                                           @foreach($errors->get('tagline') as $error)
@@ -259,10 +259,10 @@
                                 <div class="col-xs-6 push-20-t">
                                     <label>Type</label><br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="type" name="type" value='MyPark Squad' @if(old('type', $type) == 'MyPark Squad') checked @endif><span></span> MyPark Squad
+                                        <input class="radio" type="radio" name="type" value='MyPark Squad' @if(old('type', $type) == 'MyPark Squad') checked @endif><span></span> MyPark Squad
                                     </label>
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="type" name="type" value='ProAm Team' @if(old('type', $type) == 'ProAm Team') checked @endif><span></span> Pro-Am Team
+                                        <input class="radio" type="radio" name="type" value='ProAm Team' @if(old('type', $type) == 'ProAm Team') checked @endif><span></span> Pro-Am Team
                                     </label>
                                     @if($errors->get('type'))
                                       <ul class="errors">
@@ -275,15 +275,15 @@
                                 <div class="col-xs-6 push-20-t">
                                     <label>Affiliation</label><br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="affiliation" name="affiliation" value='Rivit City' @if(old('affiliation', $affiliation) == 'Rivit City') checked @endif><span></span> Rivit City
+                                        <input class="radio" type="radio" name="affiliation" value='Rivit City' @if(old('affiliation', $affiliation) == 'Rivit City') checked @endif><span></span> Rivit City
                                     </label>
                                     <br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="affiliation" name="affiliation" value='Sunset Beach' @if(old('affiliation', $affiliation) == 'Sunset Beach') checked @endif><span></span> Sunset Beach
+                                        <input class="radio" type="radio" name="affiliation" value='Sunset Beach' @if(old('affiliation', $affiliation) == 'Sunset Beach') checked @endif><span></span> Sunset Beach
                                     </label>
                                     <br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="affiliation" name="affiliation" value='Old Town' @if(old('affiliation', $affiliation) == 'Old Town') checked @endif><span></span> Old Town
+                                        <input class="radio" type="radio" name="affiliation" value='Old Town' @if(old('affiliation', $affiliation) == 'Old Town') checked @endif><span></span> Old Town
                                     </label>
                                     @if($errors->get('affiliation'))
                                       <ul class="errors">
@@ -307,11 +307,11 @@
                             <div class="form-group">
                                 <div class="col-md-3 col-xs-6">
                                     <label for="movement">Movement</label>
-                                    <select class="form-control" id="movement" name="movement" size="5" multiple="no">
-                                        <option value="Ball-Movement" @if(old('movement', $movement) == 'Ball-Movement')) selected @endif>Ball-Movement</option>
-                                        <option value="Isolation" @if(old('movement', $movement) == 'Isolation')) selected @endif>Isolation</option>
-                                        <option value="7 Seconds" @if(old('movement', $movement) == '7 Seconds')) selected @endif>7 Seconds</option>
-                                        <option value="Run N Gun" @if(old('movement', $movement) == 'Run N Gun')) selected @endif>Run & Gun</option>
+                                    <select class="form-control" id="movement" name="movement" size="5" multiple>
+                                        <option value="Ball-Movement" @if(old('movement', $movement) == 'Ball-Movement') selected @endif>Ball-Movement</option>
+                                        <option value="Isolation" @if(old('movement', $movement) == 'Isolation') selected @endif>Isolation</option>
+                                        <option value="7 Seconds" @if(old('movement', $movement) == '7 Seconds') selected @endif>7 Seconds</option>
+                                        <option value="Run N Gun" @if(old('movement', $movement) == 'Run N Gun') selected @endif>Run & Gun</option>
                                         <option value="Player Movement" @if(old('movement', $movement) == 'Player Movement')) selected @endif>Player Movement</option>
                                     </select>
                                     @if($errors->get('movement'))
@@ -324,12 +324,12 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6">
                                     <label for="tempo">Tempo</label>
-                                    <select class="form-control" id="tempo" name="tempo" size="5" multiple="no">
-                                        <option value="Fast" @if(old('tempo', $tempo) == 'Fast')) selected @endif>Fast</option>
-                                        <option value="Uptempo" @if(old('tempo', $tempo) == 'Uptempo')) selected @endif>Uptempo</option>
-                                        <option value="Deliberate" @if(old('tempo', $tempo) == 'Deliberate')) selected @endif>Deliberate</option>
-                                        <option value="Patient" @if(old('tempo', $tempo) == 'Patient')) selected @endif>Patient</option>
-                                        <option value="Slow" @if(old('tempo', $tempo) == 'Slow')) selected @endif>Slow</option>
+                                    <select class="form-control" id="tempo" name="tempo" size="5" multiple>
+                                        <option value="Fast" @if(old('tempo', $tempo) == 'Fast') selected @endif>Fast</option>
+                                        <option value="Uptempo" @if(old('tempo', $tempo) == 'Uptempo') selected @endif>Uptempo</option>
+                                        <option value="Deliberate" @if(old('tempo', $tempo) == 'Deliberate') selected @endif>Deliberate</option>
+                                        <option value="Patient" @if(old('tempo', $tempo) == 'Patient') selected @endif>Patient</option>
+                                        <option value="Slow" @if(old('tempo', $tempo) == 'Slow') selected @endif>Slow</option>
                                     </select>
                                     @if($errors->get('tempo'))
                                         <ul class="errors">
@@ -341,12 +341,12 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6">
                                     <label for="offense">Offense</label>
-                                    <select class="form-control" id="offense" name="offense" size="5" multiple="no">
-                                        <option value="Motion" @if(old('offense', $offense) == 'Motion')) selected @endif>Motion</option>
-                                        <option value="Triangle" @if(old('offense', $offense) == 'Triangle')) selected @endif>Triangle</option>
-                                        <option value="Free Lance" @if(old('offense', $offense) == 'Free Lance')) selected @endif>Free Lance</option>
-                                        <option value="Inside Out" @if(old('offense', $offense) == 'Inside Out')) selected @endif>Inside Out</option>
-                                        <option value="7 Seconds" @if(old('offense', $offense) == '7 Seconds')) selected @endif>7 Seconds</option>
+                                    <select class="form-control" id="offense" name="offense" size="5" multiple>
+                                        <option value="Motion" @if(old('offense', $offense) == 'Motion') selected @endif>Motion</option>
+                                        <option value="Triangle" @if(old('offense', $offense) == 'Triangle') selected @endif>Triangle</option>
+                                        <option value="Free Lance" @if(old('offense', $offense) == 'Free Lance') selected @endif>Free Lance</option>
+                                        <option value="Inside Out" @if(old('offense', $offense) == 'Inside Out') selected @endif>Inside Out</option>
+                                        <option value="7 Seconds" @if(old('offense', $offense) == '7 Seconds') selected @endif>7 Seconds</option>
                                     </select>
                                     @if($errors->get('offense'))
                                         <ul class="errors">
@@ -358,12 +358,12 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6">
                                     <label for="defense">Defense</label>
-                                    <select class="form-control" id="defense" name="defense" size="5" multiple="no">
-                                        <option value="Team-D" @if(old('defense', $defense) == 'Team-D')) selected @endif>Team-D</option>
-                                        <option value="Man" @if(old('defense', $defense) == 'Man')) selected @endif>Man</option>
-                                        <option value="No-Help" @if(old('defense', $defense) == 'No-Help')) selected @endif>No-Help</option>
-                                        <option value="Zone" @if(old('defense', $defense) == 'Zone')) selected @endif>Zone</option>
-                                        <option value="Cross-Match" @if(old('defense', $defense) == 'Cross-Match')) selected @endif>Cross-Match</option>
+                                    <select class="form-control" id="defense" name="defense" size="5" multiple>
+                                        <option value="Team-D" @if(old('defense', $defense) == 'Team-D') selected @endif>Team-D</option>
+                                        <option value="Man" @if(old('defense', $defense) == 'Man') selected @endif>Man</option>
+                                        <option value="No-Help" @if(old('defense', $defense) == 'No-Help') selected @endif>No-Help</option>
+                                        <option value="Zone" @if(old('defense', $defense) == 'Zone') selected @endif>Zone</option>
+                                        <option value="Cross-Match" @if(old('defense', $defense) == 'Cross-Match') selected @endif>Cross-Match</option>
                                     </select>
                                     @if($errors->get('defense'))
                                         <ul class="errors">
@@ -386,7 +386,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class= "form-material">
-                                        <label for="Roster">Team Members</label>
+                                        <label>Team Members</label>
                                         <input class="form-control input-lg" type="text" id="player1" name="player1" placeholder="This field autofills with Team Owners gamertag" value="{{old('gamertag', $gamertag)}}" disabled>
                                         @if($errors->get('player1'))
                                             <ul class="errors">

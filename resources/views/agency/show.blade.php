@@ -25,15 +25,13 @@
                     <h2 class="h5 text-white-op">{{$affiliation}} | {{$position}} | {{$archetype}} </h2>
                 </div>
                 <div class="col-sm-5 text-right hidden-xs">
-                    <ol class="breadcrumb push-10-t">
-                        <li><a class="link-effect larger" href="/free-agency/teams">
-                            Find Teams
-                        </a></li>
-                        <i class="fa fa-angle-left push-5-r push-5-l"></i>
-                        <li><a class="larger text-white-op" href="/free-agency">
-                             Find Players
-                        </a></li>
-                    </ol>
+                    <ul class="breadcrumb push-10-t">
+                        <li>
+                            <a class="link-effect larger" href="/free-agency/teams">Find Teams</a>
+                            <i class="fa fa-angle-left push-5-r push-5-l"></i>
+                            <a class="larger text-white-op" href="/free-agency">Find Players</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -47,13 +45,13 @@
             <div class="block-header bg-gray-light">
                 <ul class="block-options">
                     <li>
-                        <button type="button"><i class="si si-settings"></i></button>
+                        <button ><i class="si si-settings"></i></button>
                     </li>
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                        <button  data-toggle="block-option" data-action="fullscreen_toggle"></button>
                     </li>
                     <li>
-                        <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                        <button  data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
                     </li>
                 </ul>
             </div>
@@ -97,7 +95,7 @@
                                 <div class="form-horizontal push-20-l push-20-r">
                                     <div class="col-xs-3 col-sm-2 col-lg-1">
                                         <label for="search_position">Position</label>
-                                        <select class="form-control" id="search_position" name="search_position[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_position" name="search_position[]" size="5" multiple>
                                             <option value="PG" @if(in_array('PG', $search_position)) selected @endif>PG</option>
                                             <option value="SG" @if(in_array('SG', $search_position)) selected @endif>SG</option>
                                             <option value="SF" @if(in_array('SF', $search_position)) selected @endif>SF</option>
@@ -107,7 +105,7 @@
                                     </div>
                                     <div class="col-xs-5 col-sm-4 col-lg-2">
                                         <label for="search_affiliation">Affiliation</label>
-                                        <select class="form-control" id="search_affiliation" name="search_affiliation[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_affiliation" name="search_affiliation[]" size="5" multiple>
                                             <option value="Pro-Am Team" @if(in_array('Pro-Am Team', $search_affiliation)) selected @endif>Pro-Am Team</option>
                                             <option value="Rivit City" @if(in_array('Rivit City', $search_affiliation)) selected @endif>Rivit City</option>
                                             <option value="Sunset Beach" @if(in_array('Sunset Beach', $search_affiliation)) selected @endif>Sunset Beach</option>
@@ -117,7 +115,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-lg-2">
                                         <label for="search_rep_status">Park Rep</label>
-                                        <select class="form-control" id="search_rep_status" name="search_rep_status[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_rep_status" name="search_rep_status[]" size="5" multiple>
                                             <option value="Rookie" @if(in_array('Rookie', $search_rep_status)) selected @endif>Rookie</option>
                                             <option value="Pro" @if(in_array('Pro', $search_rep_status)) selected @endif>Pro</option>
                                             <option value="All-Star" @if(in_array('All-Star', $search_rep_status)) selected @endif>All-Star</option>
@@ -127,7 +125,7 @@
                                     </div>
                                     <div class="col-xs-3 col-sm-2 col-lg-1">
                                         <label for="search_rep_level">Level</label>
-                                        <select class="form-control" id="search_rep_level" name="search_rep_level[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_rep_level" name="search_rep_level[]" size="5" multiple>
                                             <option value=1 @if(in_array(1, $search_rep_level)) selected @endif>1</option>
                                             <option value=2 @if(in_array(2, $search_rep_level)) selected @endif>2</option>
                                             <option value=3 @if(in_array(3, $search_rep_level)) selected @endif>3</option>
@@ -136,8 +134,8 @@
                                         </select>
                                     </div>
                                     <div class="col-xs-5 col-sm-4 col-lg-2">
-                                        <label for="search_type_role">Type | Role</label>
-                                        <select class="form-control" id="search_type" name="search_type[]" size="5" multiple="true">
+                                        <label for="search_type">Type | Role</label>
+                                        <select class="form-control" id="search_type" name="search_type[]" size="5" multiple>
                                             <option value="On-Ball | Facilitator" @if(in_array('On-Ball | Facilitator', $search_type_role)) selected @endif>On-Ball | Facilitator</option>
                                             <option value="On-Ball | Scorer" @if(in_array('On-Ball | Scorer', $search_type_role)) selected @endif>On-Ball | Scorer</option>
                                             <option value="Off-Ball | Facilitator" @if(in_array('Off-Ball | Facilitator', $search_type_role)) selected @endif>Off-Ball | Facilitator</option>
@@ -146,7 +144,7 @@
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-lg-2">
                                         <label for="search_archetype">Archetype</label>
-                                        <select class="form-control" id="search_archetype" name="search_archetype[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_archetype" name="search_archetype[]" size="5" multiple>
                                             <option value="Playmaker" @if(in_array('Playmaker', $search_archetype))  selected @endif>Playmaker</option>
                                             <option value="Lockdown Defender" @if(in_array('Lockdown Defender', $search_archetype)) selected @endif>Lockdown Defender</option>
                                             <option value="Sharp Shooter" @if(in_array('Sharp Shooter', $search_archetype)) selected @endif>Sharp Shooter</option>
@@ -161,7 +159,7 @@
                                     </div>
                                     <div class="col-sm-4 col-lg-2">
                                         <label for="search_style">Style</label>
-                                        <select class="form-control" id="search_style" name="search_style[]" size="5" multiple="true">
+                                        <select class="form-control" id="search_style" name="search_style[]" size="5" multiple>
                                             <option value="Dribble-N-Dime" @if(in_array('Drible-N-Dime', $search_style)) selected @endif>Dribble-N-Dime</option>
                                             <option value="Run-The-Break"  @if(in_array('Run-The-Break', $search_style)) selected @endif>Run-The-Break</option>
                                             <option value="Pass-To-Assist-King" @if(in_array('Pass-To-Assist-King', $search_style)) selected @endif>Pass-To-Assist-King</option>
@@ -209,21 +207,21 @@
                </div>
 
                <div id=defaultResults>
-                   <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid" aria-describedby="DataTables_Table_1_info">
+                   <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid"> <!--aria-describedby="DataTables_Table_1_info"-->
                        <thead>
                            <tr role="row">
                                <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
                                <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Type: activate to sort column ascending" style="width: 250px;">Type</th>
                                <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 150px;">Role</th>
                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 350px;">Style</th>
-                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
-                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Skill Grade: activate to sort column ascending">Skill</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
-                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
-                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1"colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
+                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
+                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Skill Grade: activate to sort column ascending">Skill</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
+                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
+                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
+                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
                                <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Act</th>
                            </tr>
                        </thead>
@@ -252,7 +250,7 @@
                                        <td class="text-center">
                                            <div class="btn-group">
                                                <button class="btn btn-xs btn-success push-5-t addButton" type="submit" data-toggle="tooltip" title="" data-original-title="Edit Client" value="{{$player->id}}"><i class="fa fa-plus"></i></button>
-                                               <a class="btn btn-xs btn-default push-5-t" href="/free-agency" type="button" data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
+                                               <a class="btn btn-xs btn-default push-5-t" href="/free-agency"  data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
                                            </div>
                                        </td>
                                    </tr>

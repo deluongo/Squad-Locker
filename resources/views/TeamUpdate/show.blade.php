@@ -66,8 +66,8 @@
         <!-- Basic Info -->
             <div class="block-content bg-success text-center overflow-hidden">
                 <div class="push-10 animated fadeInUp">
-                    <h1 class="h3 font-w600 text-white push-5">Success</h2>
-                    <h2 class="h5 text-white-op">{{ $notification }}</h3>
+                    <h1 class="h3 font-w600 text-white push-5">Success</h1>
+                    <h2 class="h5 text-white-op">{{ $notification }}</h2>
                     <form action="/myteam/{{$name}}">
                         <button class="btn btn-sm bg-primary push-10-t" type="submit"><i class="si si-game-controller push-5-r"></i>  View Myteam</button>
                     </form>
@@ -155,7 +155,7 @@
                                 </div>
                                 <div class="col-xs-4">
                                     <div class= "form-material ">
-                                        <label for="losses">Losses</label>
+                                        <label>Losses</label>
                                         <input class="form-control input-lg" type="text" id="looses" name="losses" placeholder="Update your losses.." value="{{ old('losses', $losses) }}">
                                         @if($errors->get('losses'))
                                           <ul class="errors">
@@ -198,7 +198,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class= "form-material ">
-                                        <label for="profile-password">Tagline</label>
+                                        <label>Tagline</label>
                                         <input class="form-control input-lg" type="text" id="tagline" name="tagline" value="{{old('tagline', $tagline)}}">
                                         @if($errors->get('tagline'))
                                           <ul class="errors">
@@ -255,24 +255,24 @@
                                 <div class="col-xs-6 push-20-t">
                                     <label>Type</label><br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="type" name="type" value='MyPark Squad' @if($type == 'MyPark Squad') checked @endif><span></span> MyPark Squad
+                                        <input value='MyPark Squad' class="radio" type="radio" name="type" @if($type == 'MyPark Squad') checked @endif><span></span> MyPark Squad
                                     </label>
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="type" name="type" value='ProAm Team' @if($type == 'ProAm Team') checked @endif><span></span> Pro-Am Team
+                                        <input class="radio" type="radio" name="type" value='ProAm Team' @if($type == 'ProAm Team') checked @endif><span></span> Pro-Am Team
                                     </label>
                                 </div>
                                 <div class="col-xs-6 push-20-t">
                                     <label>Affiliation</label><br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="affiliation" name="affiliation" value='Rivit City' @if($affiliation == 'Rivit City') checked @endif><span></span> Rivit City
+                                        <input class="radio" type="radio"  name="affiliation" value='Rivit City' @if($affiliation == 'Rivit City') checked @endif><span></span> Rivit City
                                     </label>
                                     <br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="affiliation" name="affiliation" value='Sunset Beach' @if($affiliation == 'Sunset Beach') checked @endif><span></span> Sunset Beach
+                                        <input class="radio" type="radio"  name="affiliation" value='Sunset Beach' @if($affiliation == 'Sunset Beach') checked @endif><span></span> Sunset Beach
                                     </label>
                                     <br />
                                     <label class="css-input css-radio css-radio-primary push-10-r">
-                                        <input class="radio" type="radio" id="affiliation" name="affiliation" value='Old Town' @if($affiliation == 'Old Town') checked @endif><span></span> Old Town
+                                        <input class="radio" type="radio"  name="affiliation" value='Old Town' @if($affiliation == 'Old Town') checked @endif><span></span> Old Town
                                     </label>
                                 </div>
                             </div>
@@ -289,7 +289,7 @@
                             <div class="form-group">
                                 <div class="col-md-3 col-xs-6">
                                     <label for="movement">Movement</label>
-                                    <select class="form-control" id="movement" name="movement" size="5" multiple="no">
+                                    <select class="form-control" id="movement" name="movement" size="5" multiple>
                                         <option value="Ball-Movement" @if($movement == 'Ball-Movement') selected @endif>Ball-Movement</option>
                                         <option value="Isolation" @if($movement == 'Isolation') selected @endif>Isolation</option>
                                         <option value="7 Seconds" @if($movement == '7 Seconds') selected @endif>7 Seconds</option>
@@ -299,7 +299,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6">
                                     <label for="tempo">Tempo</label>
-                                    <select class="form-control" id="tempo" name="tempo" size="5" multiple="no">
+                                    <select class="form-control" id="tempo" name="tempo" size="5" multiple>
                                         <option value="Fast" @if($tempo == 'Fast') selected @endif>Fast</option>
                                         <option value="Uptempo" @if($tempo == 'Uptempo') selected @endif>Uptempo</option>
                                         <option value="Deliberate" @if($tempo == 'Deliberate') selected @endif>Deliberate</option>
@@ -309,7 +309,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6">
                                     <label for="offense">Offense</label>
-                                    <select class="form-control" id="offense" name="offense" size="5" multiple="no">
+                                    <select class="form-control" id="offense" name="offense" size="5" multiple>
                                         <option value="Motion" @if($offense == 'Motion') selected @endif>Motion</option>
                                         <option value="Triangle" @if($offense == 'Triangle') selected @endif>Triangle</option>
                                         <option value="Free Lance" @if($offense == 'Free Lance') selected @endif>Free Lance</option>
@@ -319,7 +319,7 @@
                                 </div>
                                 <div class="col-md-3 col-xs-6">
                                     <label for="defense">Defense</label>
-                                    <select class="form-control" id="defense" name="defense" size="5" multiple="no">
+                                    <select class="form-control" id="defense" name="defense" size="5" multiple>
                                         <option value="Team-D" @if($defense == 'Team-D') selected @endif>Team-D</option>
                                         <option value="Man" @if($defense == 'Man') selected @endif>Man</option>
                                         <option value="No-Help" @if($defense == 'No-Help') selected @endif>No-Help</option>
@@ -340,7 +340,7 @@
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <div class= "form-material">
-                                        <label for="position">Team Members</label>
+                                        <label>Team Members</label>
                                         <input class="form-control input-lg" type="text" id="player1" name="player1" placeholder="This field autofills with Team Owners gamertag" value="{{$gamertag}}" disabled>
                                         <input class="form-control input-lg" type="text" id="player2" name="player2" placeholder="Enter player 2's gamertag" value="{{$player2}}">
                                         <input class="form-control input-lg" type="text" id="player3" name="player3" placeholder="Enter player 3's gamertag" value="{{$player3}}">

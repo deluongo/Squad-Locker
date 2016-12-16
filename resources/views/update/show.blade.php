@@ -101,7 +101,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-6 form-material">
                                         <label for="profile-email">Email Address</label>
-                                        <input class="form-control valid input-lg" type="email" id="profile-email" name="email" placeholder="Enter your email.." value="{{ old('email', $email) }}" aria-required="true" aria-describedby="val-email2-error" aria-invalid="false">
+                                        <input class="form-control valid input-lg" type="email" id="profile-email" name="email" placeholder="Enter your email.." value="{{ old('email', $email) }}" aria-required="true" aria-invalid="false">
                                         @if($errors->get('email'))
                                           <ul class="errors">
                                           @foreach($errors->get('email') as $error)
@@ -111,7 +111,7 @@
                                         @endif
                                     </div>
                                     <div class="col-xs-6 form-material">
-                                        <label for="profile-lastname">Password</label>
+                                        <label>Password</label>
                                         <input class="form-control input-lg" type="text" id="password" name="password" placeholder="Update your password..">
                                         @if($errors->get('password'))
                                           <ul class="errors">
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6 form-material">
-                                        <label for="profile-password">GamerTag</label>
+                                        <label>GamerTag</label>
                                         <input class="form-control input-lg" type="text" id="name" name="name" value="{{$name}}">
                                         @if($errors->get('name'))
                                           <ul class="errors">
@@ -135,7 +135,7 @@
                                         @endif
                                     </div>
                                     <div class="col-xs-6 form-material">
-                                        <label for="profile-password">Tagline</label>
+                                        <label>Tagline</label>
                                         <input class="form-control input-lg" type="text" id="tagline" name="tagline" placeholder="Enter your tagline.." value="{{old('tagline', $tagline) }}">
                                         @if($errors->get('tagline'))
                                           <ul class="errors">
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-6 form-material">
-                                        <label for="profile-password">Profile Picture</label>
+                                        <label >Profile Picture</label>
                                         <input class="form-control input-lg" type="text" id="profile_pic" name="profile_pic" placeholder="Profile Picture URL.." value="{{old('profile_pic', $profile_pic) }}">
                                         @if($errors->get('profile_pic'))
                                           <ul class="errors">
@@ -159,7 +159,7 @@
                                         @endif
                                     </div>
                                     <div class="col-xs-6 form-material">
-                                        <label for="profile-password">Background Image</label>
+                                        <label >Background Image</label>
                                         <input class="form-control input-lg" type="text" id="background_pic" name="background_pic" placeholder="Background Image URL.." value="{{old('background_pic', $background_pic) }}">
                                         @if($errors->get('background_pic'))
                                           <ul class="errors">
@@ -223,7 +223,7 @@
                            <div class="form-group">
                                 <div class="col-md-4 col-xs-6">
                                     <label for="position">Position</label>
-                                    <select class="form-control" id="position" name="position" size="5" multiple="no">
+                                    <select class="form-control" id="position" name="position" size="5" multiple>
                                         <option value="PG"  @if(old('position', $position) == 'PG') selected @endif>Point Guard</option>
                                         <option value="SG" @if(old('position', $position) == 'SG') selected @endif>Shooting Guard</option>
                                         <option value="SF" @if(old('position', $position) == 'SF') selected @endif>Small Forward</option>
@@ -240,7 +240,7 @@
                                 </div>
                                 <div class="col-md-4 col-xs-6">
                                     <label for="archetype">Archetype</label>
-                                    <select class="form-control" id="archetype" name="archetype" size="5" multiple="no">
+                                    <select class="form-control" id="archetype" name="archetype" size="5" multiple>
                                         <option value="Playmaker" @if(old('archetype', $archetype) == 'Playmaker') selected @endif>Playmaker</option>
                                         <option value="Lockdown Defender" @if(old('archetype', $archetype) == 'Lockdown Defender') selected @endif>Lockdown Defender</option>
                                         <option value="Sharp Shooter" @if(old('archetype', $archetype) == 'Sharp Shooter') selected @endif>Sharp Shooter</option>
@@ -262,7 +262,7 @@
                                 </div>
                                 <div class="col-md-4 col-xs-6">
                                     <label for="affiliation">Affiliation</label>
-                                    <select class="form-control" id="affiliation" name="affiliation" size="5" multiple="no">
+                                    <select class="form-control" id="affiliation" name="affiliation" size="5" multiple>
                                         <option value="Rivit City" @if(old('affiliation', $affiliation) == 'Rivit City') selected @endif>Rivit City</option>
                                         <option value="Sunset Beach" @if(old('affiliation', $affiliation) == 'Sunset Beach') selected @endif>Sunset Beach</option>
                                         <option value="Old Town" @if(old('affiliation', $affiliation) == 'Old Town') selected @endif>Old Town</option>
@@ -277,7 +277,7 @@
                                 </div>
                                 <div class="col-md-4 col-xs-6">
                                     <label for="rep_status">Rep Status</label>
-                                    <select class="form-control" id="rep_status" name="rep_status" size="5" multiple="no">
+                                    <select class="form-control" id="rep_status" name="rep_status" size="5" multiple>
                                         <option value="Rookie" @if(old('rep_status', $rep_status) == 'Rookie') selected @endif>Rookie</option>
                                         <option value="Pro" @if($rep_status == 'Pro') selected @endif>Pro</option>
                                         <option value="All-Star" @if(old('rep_status', $rep_status) == 'All-Star') selected @endif>All-Star</option>
@@ -294,7 +294,7 @@
                                 </div>
                                 <div class="col-md-4 col-xs-6">
                                     <label for="status_level">Status Level</label>
-                                    <select class="form-control" id="status_level" name="status_level" size="5" multiple="no">
+                                    <select class="form-control" id="status_level" name="status_level" size="5" multiple>
                                         <option value="1" @if(old('status_level', $status_level) == 1) selected @endif>1</option>
                                         <option value="2" @if(old('status_level', $status_level) == 2) selected @endif>2</option>
                                         <option value="3" @if(old('status_level', $status_level) == 3) selected @endif>3</option>
@@ -311,7 +311,7 @@
                                 </div>
                                 <div class="col-md-4 col-xs-6">
                                     <label for="rep_progress">Level Progress</label>
-                                    <select class="form-control" id="rep_progress" name="rep_progress" size="5" multiple="no">
+                                    <select class="form-control" id="rep_progress" name="rep_progress" size="5" multiple>
                                         <option value="0" @if(old('rep_progress', $rep_progress) == 0) selected @endif>0%</option>
                                         <option value="20" @if(old('rep_progress', $rep_progress) == 20) selected @endif>20%</option>
                                         <option value="40" @if(old('rep_progress', $rep_progress) == 40) selected @endif>40%</option>

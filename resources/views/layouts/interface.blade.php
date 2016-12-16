@@ -42,7 +42,7 @@
                         <i class="fa fa-times"></i>
                     </button>
                     <span>
-                        <img class="img-avatar img-avatar32" src="{{ $player_profile_pic }}" alt="">
+                        <img class="img-avatar img-avatar32" src="@if($player->name == Auth::user()->name) {{ $player_profile_pic }} @else {{$user_avatar}} @endif" alt="">
                         <span class="font-w600 push-10-l">{{Auth::user()->name}}</span>
                     </span>
                 </div>
@@ -300,18 +300,18 @@
                         <ul class="nav-main">
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">My Profile</span></li>
                             <li>
-                                <a href="/player" class={{ $my_player_heading }}><i class="si si-game-controller"></i><span class="sidebar-mini-hide">My Player</span></a>
+                                <a href="/player" class="{{ $my_player_heading }}"><i class="si si-game-controller"></i><span class="sidebar-mini-hide">My Player</span></a>
                             </li>
                             @if(($teams_owned == null) && ($teams_on == null))
                             <li>
                                 <a href="#" class="disabled {{ $my_team_heading }}"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide disabled" id="disabled">My Team</span></a>
                             </li>
                             @else
-                            <li class=@if(!$my_team_heading == '') "open" @endif>
+                            <li class=@if(!$my_team_heading == '') "open" @else "" @endif>
                                 <a href="/team" class="{{ $my_team_heading }} nav-submenu" data-toggle="nav-submenu"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">My Teams</span></a>
                                 <ul>
                                     @if(!$teams_owned == null)
-                                        <li class="nav-sub-header">Owned</li>
+                                        <li class="nav-sub-header text-gray">Owned</li>
                                         @foreach($teams_owned as $team)
                                             <li>
                                                 <a href="/myteam/{{$team->name}}">{{$team->name}}</a>
@@ -319,7 +319,7 @@
                                         @endforeach
                                     @endif
                                     @if(!$teams_on == null)
-                                        <li class="nav-sub-header">Rostered</li>
+                                        <li class="nav-sub-header text-gray">Rostered</li>
                                         @foreach($teams_on as $team)
                                             <li>
                                                 <a href="/myteam/{{$team->name}}">{{$team->name}}</a>
@@ -331,14 +331,14 @@
                             @endif
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">Edit</span></li>
                             <li>
-                                <a href="/update" class={{ $update_heading }} ><i class="si si-list"></i><span class="sidebar-mini-hide">Update Player</span></a>
+                                <a href="/update" class="{{ $update_heading }}" ><i class="si si-list"></i><span class="sidebar-mini-hide">Update Player</span></a>
                             </li>
                             @if(($teams_owned == null) && ($teams_on == null))
                             <li>
                                 <a href="/newteam" class="{{ $my_team_heading }} text-black-op"><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">New Team</span></a>
                             </li>
                             @else
-                            <li class=@if(!$team_update_heading == '') "open" @endif>
+                            <li class=@if(!$team_update_heading == '') "open" @else "" @endif >
                                <!-- Side Navigation
                                 <a href="/teamupdate" class={{ $team_update_heading }} ><i class="si si-social-dribbble"></i><span class="sidebar-mini-hide">Update Team</span></a>
 -->
@@ -361,14 +361,14 @@
                             @endif
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">My Profile</span></li>
                             <li>
-                                <a href="/free-agency" class={{ $free_agency_heading }} ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Find Players</span></a>
+                                <a href="/free-agency" class="{{ $free_agency_heading }}" ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Find Players</span></a>
                             </li>
                             <li>
-                                <a href="/free-agency/teams" class={{ $find_teams_heading }} ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Find Teams</span></a>
+                                <a href="/free-agency/teams" class="{{ $find_teams_heading }}" ><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Find Teams</span></a>
                             </li>
                             <li class="nav-main-heading"><span class="sidebar-mini-hide">Connect</span></li>
                             <li>
-                                <a href="/stream" class={{ $activity_stream_heading }}  ><i class="si si-list"></i><span class="sidebar-mini-hide">Activity Stream</span></a>
+                                <a href="/stream" class="{{ $activity_stream_heading }}"  ><i class="si si-list"></i><span class="sidebar-mini-hide">Activity Stream</span></a>
                             </li>
                         </ul>
                     </div>
@@ -390,7 +390,7 @@
                 <li data-brackets-id='607'>
                       <div data-brackets-id='608' class="btn-group">
                           <button data-brackets-id='609' class="btn btn-default btn-image dropdown-toggle" data-toggle="dropdown" type="button">
-                              <img data-brackets-id='610' src="{{ $player_profile_pic }}" alt="Avatar">
+                              <img data-brackets-id='610' src="@if($player->name == Auth::user()->name) {{ $player_profile_pic }} @else {{$user_avatar}} @endif" alt="Avatar">
                               <span data-brackets-id='611' class="caret"></span>
                           </button>
                           <ul data-brackets-id='612' class="dropdown-menu dropdown-menu-right">

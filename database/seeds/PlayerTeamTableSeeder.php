@@ -16,13 +16,13 @@ class PlayerTeamTableSeeder extends Seeder
 
          # On Team AS PLAYER
          $players =[
-             'CaptainAwesome650' => ['Drewkerbockers', 'The Students', 'MVP Crew', 'American Political Disaster'],
-             'HillaryClinton' => ['StraightFundamental', 'The Professors'],
-             'PrettyBoiFredo' => ['StraightFundamental', 'MVP Crew', 'American Political Disaster'],
-             'jamal' => ['The Students', 'MVP Crew', 'American Political Disaster', 'American Political Disaster'],
-             'jill' => ['The Professors', 'American Political Disaster', 'American Political Disaster'],
-             'AishaCurry30' => ['American Political Disaster'],
-             'Susan' => ['American Political Disaster'],
+             'CaptainAwesome650' => ['Drewkerbockers', 'TheStudents', 'MVPCrew', 'AmericanPoliticalDisaster'],
+             'HillaryClinton' => ['StraightFundamental', 'TheProfessors'],
+             'PrettyBoiFredo' => ['StraightFundamental', 'MVPCrew', 'AmericanPoliticalDisaster'],
+             'jamal' => ['TheStudents', 'MVPCrew', 'AmericanPoliticalDisaster', 'AmericanPoliticalDisaster'],
+             'jill' => ['TheProfessors', 'AmericanPoliticalDisaster', 'AmericanPoliticalDisaster'],
+             'AishaCurry30' => ['AmericanPoliticalDisaster'],
+             'Susan' => ['AmericanPoliticalDisaster'],
          ];
 
          # Now loop through the above array, creating a new pivot for each book to tag
@@ -53,11 +53,11 @@ class PlayerTeamTableSeeder extends Seeder
           $owners =[
 
               'CaptainAwesome650' => ['StraightFundamental'],
-              'HillaryClinton' => ['American Political Disaster'],
+              'HillaryClinton' => ['AmericanPoliticalDisaster'],
               'PrettyBoiFredo' => ['Drewkerbockers'],
-              'jamal' => ['The Professors'],
-              'jill' => ['The Students'],
-              'AishaCurry30' => ['MVP Crew'],
+              'jamal' => ['TheProfessors'],
+              'jill' => ['TheStudents'],
+              'AishaCurry30' => ['MVPCrew'],
           ];
 
           # Now loop through the above array, creating a new pivot for each book to tag

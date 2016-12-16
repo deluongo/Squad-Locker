@@ -149,6 +149,7 @@ class TeamUpdateController extends Controller
         ====================================================== */
         $profile_pic = $player->player_profile_pic;
         $background_pic = $player->player_bg_pic;
+        $player_profile_pic = $player->player_profile_pic;
 
         /* ======================================================
         Show Form
@@ -162,7 +163,8 @@ class TeamUpdateController extends Controller
                 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6,
                 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10, 'team_members' => $team_members,
                 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_team' => $new_team,
-                'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'team_profile_pic' => $team_profile_pic, 'team_background_pic' => $team_background_pic
+                'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'team_profile_pic' => $team_profile_pic, 'team_background_pic' => $team_background_pic,
+                'player' => $player, 'player_profile_pic' => $player_profile_pic
          ];
 
         return view('teamupdate.show')->with($data);
@@ -232,7 +234,7 @@ class TeamUpdateController extends Controller
         Validation - Server Side
         ====================================================== */
         ### Only Apply When Replacing Current Value ###
-        if (!$player->teams->contains($player->id)) {
+        if ($request->input('name') != $team->name) {
             $uni_name = "|unique:teams";
         }
         else {
@@ -687,6 +689,7 @@ class TeamUpdateController extends Controller
         Interface Variables
         ====================================================== */
         $profile_pic = $player->player_profile_pic;
+        $player_profile_pic = $player->player_profile_pic;
 
         /* ======================================================
         Remove Players from Teams
@@ -720,7 +723,8 @@ class TeamUpdateController extends Controller
                 'player1' => $player1, 'player2' => $player2, 'player3' => $player3, 'player4' => $player4, 'player5' => $player5, 'player6' => $player6,
                 'player7' => $player7, 'player8' => $player8, 'player9' => $player9, 'player10' => $player10, 'team_members' => $team_members,
                 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on,  'new_team' => $new_team,
-                'profile_pic' => $profile_pic, 'team_profile_pic' => $team_profile_pic, 'team_background_pic' => $team_background_pic
+                'profile_pic' => $profile_pic, 'team_profile_pic' => $team_profile_pic, 'team_background_pic' => $team_background_pic,
+                'player' => $player, 'player_profile_pic' => $player_profile_pic
             ];
 
         return view('teamupdate.show')->with($data);

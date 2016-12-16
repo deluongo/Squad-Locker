@@ -224,6 +224,8 @@ class TeamController extends Controller
                 $teams_on[] = $team;
             }
         }
+        $user_avatar = $player->player_profile_pic;
+
         $data = ['num_players' => $num_players, 'movement' => $movement, 'tempo' => $tempo, 'offense' => $offense, 'defense' => $defense, 'abbreviation' => $abbreviation,
                 'team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'type' => $type,
                 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
@@ -233,7 +235,7 @@ class TeamController extends Controller
                 'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color, 'apg_ppg_color' => $apg_ppg_color,
                 'progress_bar' => $progress_bar, 'progress_bar_color' => $progress_bar_color, 'progress_chart_color' => $progress_chart_color, 'find_teams_heading' => $find_teams_heading,
                 'team_members' => $team_members, 'owner' => $owner, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'team_profile_pic' => $team_profile_pic,
-                'team_bg_pic' => $team_bg_pic, 'player_profile_pic' => $player_profile_pic
+                'team_bg_pic' => $team_bg_pic, 'player_profile_pic' => $player_profile_pic,  'user_avatar' => $user_avatar, 'player' => $player
             ];
         return view('team.show')->with($data);
     }

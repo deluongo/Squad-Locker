@@ -26,8 +26,6 @@ class FindTeamController extends Controller
     {
         $teams = Team::all();
 
-        $player = Player::where('name', '=', 'CaptainAwesome650')->first();
-
         //Navigation Active
         $my_player_heading = '';
         $update_heading = '';
@@ -64,6 +62,9 @@ class FindTeamController extends Controller
         $search_members = [1,2,3,4,5,6,7,8];
         $search_type = ['MyPark Squad', 'Pro-Am Team'];
 
+        $user_avatar = $player->player_profile_pic;
+        $player_profile_pic = $user_avatar;
+
         $player_profile_pic = $player->player_profile_pic;
         $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement,
                'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type,
@@ -72,7 +73,7 @@ class FindTeamController extends Controller
                'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading,
                'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
                'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on,
-               'player_profile_pic' => $player_profile_pic,
+               'player_profile_pic' => $player_profile_pic, 'user_avatar' => $user_avatar, 'player' => $player
            ];
 
         return view('findteam.show')->with($data);
@@ -140,7 +141,7 @@ class FindTeamController extends Controller
             'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading,
             'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading,
             'activity_stream_heading' => $activity_stream_heading, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on,
-            'player_profile_pic' => $player_profile_pic
+            'player_profile_pic' => $player_profile_pic, 'player' => $player
         ];
 
         return view('findteam.show')->with($data);
