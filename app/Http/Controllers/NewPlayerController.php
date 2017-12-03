@@ -45,11 +45,13 @@ class NewPlayerController extends Controller
         $name = null;
         $affiliation = null;
         $archetype = null;
+        $archetype2 = null;
         $position = null;
         $tagline = "I'm new to new to Squad Locker!";
         $background_pic = 'https://s23.postimg.org/s8md8kd3f/Player_Banner.jpg';
         $profile_pic = 'https://s30.postimg.org/td1wyddf5/Baby_Face_Assasin.png';
         ### Park ###
+        $overall = null;
         $rep_level = null;
         $rep_progress = null;
         $rep_status = null;
@@ -85,6 +87,8 @@ class NewPlayerController extends Controller
             ### Profile ###
             $affiliation = $player->affiliation;
             $archetype = $player->archetype;
+            $archetype2 = $player->archetype2;
+            $overall = $player->overall;
             $position = $player->position;
             $tagline = $player->tagline;
             ### Images ###
@@ -144,7 +148,7 @@ class NewPlayerController extends Controller
         /* ======================================================
         Show Form
         ====================================================== */
-        $data = ['player' => $player, 'player_profile_pic' => $player_profile_pic, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player, 'system' => $system, 'system_username' => $system_username, 'system_password' => $system_password];
+        $data = ['player' => $player, 'player_profile_pic' => $player_profile_pic, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player, 'system' => $system, 'system_username' => $system_username, 'system_password' => $system_password, 'archetype2' => $archetype2, 'overall' => $overall];
         return view('newplayer.show')->with($data);
 
     }
@@ -179,6 +183,7 @@ class NewPlayerController extends Controller
             ### Profile ###
             $affiliation = $player->affiliation;
             $archetype = $player->archetype;
+            $archetype2 = $player->archetype2;
             $position = $player->position;
             $tagline = $player->tagline;
             ### Social ###
@@ -193,6 +198,8 @@ class NewPlayerController extends Controller
             $rep_progress = $player->rep_progress;
             $rep_status = $player->rep_status;
             $status_level = $player->status_level;
+
+            $overall = $player->overall;
             ### Playstyle ###
             $type = $player->type;
             $role = $player->role;
@@ -245,13 +252,11 @@ class NewPlayerController extends Controller
             ### Profile ###
             'position' => 'required',
             'archetype' => 'required',
-            'affiliation' => 'required',
+            'archetype2' => 'required',
             'tagline' => 'required',
             ### Park Rank ###
-            'rep_status' => 'required',
-            'status_level' => 'required',
-            'rep_progress' => 'required',
             'style' => 'required',
+            'overall' => 'required',
             /* ======================================================
             Page 3
             ====================================================== */
@@ -274,16 +279,23 @@ class NewPlayerController extends Controller
         if (!$request->input('system_username') == null) {
             $system_username = $request->input('system_username');
         }
+        else {
+            $system_username = '';
+        }
         if (!$request->input('system_password') == null) {
             $system_password = $request->input('system_password');
         }
+        else {
+            $system_password = '';
+        }
 
         ### Profile ###
-        if (!$request->input('affiliation') == null) {
-            $affiliation = $request->input('affiliation');
-        }
+
         if (!$request->input('archetype') == null) {
             $archetype = $request->input('archetype');
+        }
+        if (!$request->input('archetype2') == null) {
+            $archetype2 = $request->input('archetype2');
         }
         if (!$request->input('position') == null) {
             $position = $request->input('position');
@@ -299,10 +311,9 @@ class NewPlayerController extends Controller
             $profile_pic = $request->input('profile_pic');
         }
         ### Park ###
-        $rep_progress = $request->input('rep_progress');
-        $rep_status = $request->input('rep_status');
-        $status_level = $request->input('status_level');
-        $rep_level = "{$rep_status} {$status_level}";
+        $overall = $request->input('overall');
+        $rep_level = "{$overall} OVR";
+        $rep_progress = $overall;
         ### Social ###
         $twitter = $request->input('twitter');
         $youtube = $request->input('youtube');
@@ -432,10 +443,10 @@ class NewPlayerController extends Controller
             $profile_pic_color = "danger";
         }
         ### Progress Bar ###
-        if ($rep_progress >= 66) {
+        if ($rep_progress >= 90) {
             $progress_bar_color = "success";
         }
-        elseif (66 > $rep_progress && $rep_progress> 33) {
+        elseif (80 > $rep_progress && $rep_progress> 70) {
             $progress_bar_color = "warning";
         }
         else {
@@ -481,18 +492,16 @@ class NewPlayerController extends Controller
             ### Account Settings ###
             $player->name = $name;
             ### Profile ###
-            $player->affiliation = $affiliation;
             $player->archetype = $archetype;
+            $player->archetype2 = $archetype2;
             $player->position = $position;
             $player->tagline = $tagline;
             ### Images ###
             $player->player_bg_pic = $background_pic;
             $player->player_profile_pic = $profile_pic;
             ### Park Rank ###
+            $player->overall = $overall;
             $player->rep_level = $rep_level;
-            $player->rep_progress = $rep_progress;
-            $player->rep_status = $rep_status;
-            $player->status_level = $status_level;
             ### Social ###
             $player->twitter = $twitter;
             $player->youtube = $youtube;
@@ -541,18 +550,16 @@ class NewPlayerController extends Controller
             ### Account Settings ###
             $player->name = $name;
             ### Profile ###
-            $player->affiliation = $affiliation;
             $player->archetype = $archetype;
+            $player->archetype2 = $archetype2;
             $player->position = $position;
             $player->tagline = $tagline;
             ### Images ###
             $player->player_bg_pic = $background_pic;
             $player->player_profile_pic = $profile_pic;
             ### Park Status ###
+            $player->overall = $overall;
             $player->rep_level = $rep_level;
-            $player->rep_progress = $rep_progress;
-            $player->rep_status = $rep_status;
-            $player->status_level = $status_level;
             ### Social ###
             $player->twitter = $twitter;
             $player->youtube = $youtube;
@@ -610,7 +617,6 @@ class NewPlayerController extends Controller
         /* ======================================================
         Show Form
         ====================================================== */
-        $data = ['player' => $player, 'player_profile_pic' => $player_profile_pic, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player, 'system' => $system, 'system_username' => $system_username, 'system_password' => $system_password];
         //return view('newplayer.show')->with($data);
         return redirect('player')->with('status', 'Profile updated!');
     }

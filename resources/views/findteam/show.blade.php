@@ -36,8 +36,10 @@
     </div>
     <!-- END Page Header -->
 
+
     <!-- Page Content -->
     <div class="content">
+
         <!-- My Block -->
         <div class="block">
             <div class="block-header bg-gray-light">
@@ -84,8 +86,19 @@
                 </div>
             </div>
 
+            @if(Session::has('flash_message'))
+
+                <div class="block-content">
+                    <div class="alert alert-success">
+                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                      {{ Session::get('flash_message')}}
+                    </div>
+                </div>
+
+            @endif
+
             <!-- Filter Forms -->
-            <form action="/findteam/getTeams" id="#filter-teams-form" method="post">
+            <form action="/free-agency/teams" id="#filter-teams-form" method="post">
                 {{ csrf_field() }}
                 <div class="block h5">
                     <div class="block-content">
@@ -160,12 +173,11 @@
                         </div>
                     </div>
                     <div class="push-20-t text-center margin-10">
-                        <button class="btn btn-sm btn-primary push-15" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                        <button class="btn btn-sm btn-primary push-15" name="submit_type" value="filter" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
                         <button class="btn btn-sm btn-warning push-15" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
                     </div>
                 </div>
-            </form>
-        </div>
+
 
 
                 <div class="block" id="data-table-div">
@@ -219,7 +231,7 @@
                                                     <td class="hidden-md hidden-sm hidden-xs sorting {{$team->rpg_color}} table-num">{{ $team->rpg }}</td>
                                                     <td class="text-center">
                                                         <div class="btn-group">
-                                                            <button class="btn btn-xs btn-success push-5-t"  data-toggle="tooltip" title="" data-original-title="Edit Client"><i class="fa fa-plus"></i></button>
+                                                            <button class="btn btn-xs btn-success push-5-t"  name="submit_type" value="{{$team->id}}" type="submit"><i class="fa fa-plus"></i></button>
                                                             <a class="btn btn-xs btn-default push-5-t" href="/free-agency"  data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
                                                         </div>
                                                     </td>
@@ -232,7 +244,8 @@
                         </div>
                     </div>
                 </div>
-
+              </form>
+          </div>
     </div>
 
 

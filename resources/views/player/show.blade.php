@@ -22,7 +22,7 @@
                 </div>
             </div>
             <h1 class="h2 text-white push-10-t animated zoomIn">{{ $name }}</h1>
-            <h2 class="h4 text-white-op animated zoomIn">{{ $affiliation }} | {{ $position }} | {{ $archetype }}</h2>
+            <h2 class="h4 text-white-op animated zoomIn">{{ $position }} | {{ $archetype }} | {{ $archetype2}}  </h2>
             <p class="font-w300 text-muted text-white-op animated zoomIn"><em>{{ $tagline }}</em></p>
         </div>
     </div>

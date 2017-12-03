@@ -282,66 +282,37 @@
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-xs-6">
-                                    <label for="affiliation">Affiliation</label>
-                                    <select class="form-control" id="affiliation" name="affiliation" size="5" multiple="no">
-                                        <option value="Rivit City" @if(old('affiliation', $affiliation) == 'Rivit City') selected @endif>Rivit City</option>
-                                        <option value="Sunset Beach" @if(old('affiliation', $affiliation) == 'Sunset Beach') selected @endif>Sunset Beach</option>
-                                        <option value="Old Town" @if(old('affiliation', $affiliation) == 'Old Town') selected @endif>Old Town</option>
+                                    <label for="archetype2">Secondary Archetype</label>
+                                    <select class="form-control" id="archetype2" name="archetype2" size="5" multiple="no">
+                                        <option value="Playmaker" @if(old('archetype', $archetype) == 'Playmaker') selected @endif>Playmaker</option>
+                                        <option value="Lockdown Defender" @if(old('archetype', $archetype) == 'Lockdown Defender') selected @endif>Lockdown Defender</option>
+                                        <option value="Sharp Shooter" @if(old('archetype', $archetype) == 'Sharp Shooter') selected @endif>Sharp Shooter</option>
+                                        <option value="Slasher" @if(old('archetype', $archetype) == 'Slasher') selected @endif>Slasher</option>
+                                        <option value="Athletic Finisher" @if(old('archetype', $archetype) == 'Athletic Finisher') selected @endif>Athletic Finisher</option>
+                                        <option value="Stretch Big" @if(old('archetype', $archetype) == 'Stretch Big') selected @endif>Stretch Big</option>
+                                        <option value="Post Scorer" @if(old('archetype', $archetype) == 'Post Scorer') selected @endif>Post Scorer</option>
+                                        <option value="Glass Cleaner" @if(old('archetype', $archetype) == 'Glass Cleaner') selected @endif>Glass Cleaner</option>
+                                        <option value="Point Forward" @if(old('archetype', $archetype) == 'Point Forward') selected @endif>Point Forward</option>
+                                        <option value="Shot Creator" @if(old('archetype', $archetype) == 'Shot Creator') selected @endif>Shot Creator</option>
                                     </select>
-                                    @if($errors->get('affiliation'))
+                                    @if($errors->get('archetype2'))
                                       <ul class="errors">
-                                      @foreach($errors->get('affiliation') as $error)
+                                      @foreach($errors->get('archetype2') as $error)
                                         <li>{{ $error }}</li>
                                       @endforeach
                                       </ul>
                                     @endif
                                 </div>
                                 <div class="col-md-4 col-xs-6">
-                                    <label for="rep_status">Rep Status</label>
-                                    <select class="form-control" id="rep_status" name="rep_status" size="5" multiple="no">
-                                        <option value="Rookie" @if(old('rep_status', $rep_status) == 'Rookie') selected @endif>Rookie</option>
-                                        <option value="Pro" @if($rep_status == 'Pro') selected @endif>Pro</option>
-                                        <option value="All-Star" @if(old('rep_status', $rep_status) == 'All-Star') selected @endif>All-Star</option>
-                                        <option value="Superstar" @if(old('rep_status', $rep_status) == 'Superstar') selected @endif>Supertar</option>
-                                        <option value="Legend" @if(old('rep_status', $rep_status) == 'Legend') selected @endif>Legend</option>
+                                    <label for="overall">Overall</label>
+                                    <select class="form-control" id="overall" name="overall" size="5" multiple="no">
+                                      @for($i=60; $i<=100; $i++)
+                                        <option value="{{$i}}" @if(old('overall', $overall) == $i) selected @endif>{{$i}}</option>
+                                      @endfor
                                     </select>
-                                    @if($errors->get('rep_status'))
+                                    @if($errors->get('overall'))
                                       <ul class="errors">
-                                      @foreach($errors->get('rep_status') as $error)
-                                        <li>{{ $error }}</li>
-                                      @endforeach
-                                      </ul>
-                                    @endif
-                                </div>
-                                <div class="col-md-4 col-xs-6">
-                                    <label for="status_level">Status Level</label>
-                                    <select class="form-control" id="status_level" name="status_level" size="5" multiple="no">
-                                        <option value="1" @if(old('status_level', $status_level) == 1) selected @endif>1</option>
-                                        <option value="2" @if(old('status_level', $status_level) == 2) selected @endif>2</option>
-                                        <option value="3" @if(old('status_level', $status_level) == 3) selected @endif>3</option>
-                                        <option value="4" @if(old('status_level', $status_level) == 4) selected @endif>4</option>
-                                        <option value="5" @if(old('status_level', $status_level) == 5) selected @endif>5</option>
-                                    </select>
-                                    @if($errors->get('status_level'))
-                                      <ul class="errors">
-                                      @foreach($errors->get('status_level') as $error)
-                                        <li>{{ $error }}</li>
-                                      @endforeach
-                                      </ul>
-                                    @endif
-                                </div>
-                                <div class="col-md-4 col-xs-6">
-                                    <label for="rep_progress">Level Progress</label>
-                                    <select class="form-control" id="rep_progress" name="rep_progress" size="5" multiple="no">
-                                        <option value="0" @if(old('rep_progress', $rep_progress) == 0) selected @endif>0%</option>
-                                        <option value="20" @if(old('rep_progress', $rep_progress) == 20) selected @endif>20%</option>
-                                        <option value="40" @if(old('rep_progress', $rep_progress) == 40) selected @endif>40%</option>
-                                        <option value="60" @if(old('rep_progress', $rep_progress) == 60) selected @endif>60%</option>
-                                        <option value="80" @if(old('rep_progress', $rep_progress) == 80) selected @endif>80%</option>
-                                    </select>
-                                    @if($errors->get('status_level'))
-                                      <ul class="errors">
-                                      @foreach($errors->get('status_level') as $error)
+                                      @foreach($errors->get('overall') as $error)
                                         <li>{{ $error }}</li>
                                       @endforeach
                                       </ul>

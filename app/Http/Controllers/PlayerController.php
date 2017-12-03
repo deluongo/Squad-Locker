@@ -41,6 +41,7 @@ class PlayerController extends Controller
             $name = $player->name;
             $affiliation = $player->affiliation;
             $archetype = $player->archetype;
+            $archetype2 = $player->archetype2;
             $position = $player->position;
             $tagline = $player->tagline;
             $player_bg_pic = $player->player_bg_pic;
@@ -197,7 +198,7 @@ class PlayerController extends Controller
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
             'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited,
-            'invite_accepted' => $invite_accepted, 'user_avatar' => $user_avatar, 'player' => $player
+            'invite_accepted' => $invite_accepted, 'user_avatar' => $user_avatar, 'player' => $player, 'archetype2' => $archetype2
         ];
 
         //$chart_name => $chart_

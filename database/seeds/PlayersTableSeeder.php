@@ -16,6 +16,9 @@ class PlayersTableSeeder extends Seeder
         $user_id = User::where('name','=','jamal')->pluck('id')->first();
 
         DB::table('players')->insert([
+            //2K18
+            'archetype2' => 'Shot Creator',
+            'overall' => 60,
 
             //User Table Key
             'user_id' => $user_id,
@@ -82,6 +85,9 @@ class PlayersTableSeeder extends Seeder
         $user_id = User::where('name','=','jill')->pluck('id')->first();
 
         DB::table('players')->insert([
+            //2K18
+            'archetype2' => 'Shot Creator',
+            'overall' => 60,
 
             //User Table Key
             'user_id' => $user_id,
@@ -147,7 +153,9 @@ class PlayersTableSeeder extends Seeder
      $user_id = User::where('name','=','CaptainAwesome650')->pluck('id')->first();
 
      DB::table('players')->insert([
-
+         //2K18
+         'archetype2' => 'Shot Creator',
+         'overall' => 60,
          //User Table Key
          'user_id' => $user_id,
 
@@ -210,7 +218,9 @@ class PlayersTableSeeder extends Seeder
      $user_id = User::where('name','=','Susan')->pluck('id')->first();
 
      DB::table('players')->insert([
-
+         //2K18
+         'archetype2' => 'Shot Creator',
+         'overall' => 60,
          'user_id' => $user_id,
 
          //Housekeeping
@@ -271,7 +281,9 @@ class PlayersTableSeeder extends Seeder
      $user_id = User::where('name','=','PrettyBoiFredo')->pluck('id')->first();
 
      DB::table('players')->insert([
-
+         //2K18
+         'archetype2' => 'Shot Creator',
+         'overall' => 60,
          'user_id' => $user_id,
 
          //Housekeeping
@@ -333,7 +345,9 @@ class PlayersTableSeeder extends Seeder
      $user_id = User::where('name','=','HillaryClinton')->pluck('id')->first();
 
      DB::table('players')->insert([
-
+         //2K18
+         'archetype2' => 'Shot Creator',
+         'overall' => 60,
          'user_id' => $user_id,
 
          //Housekeeping
@@ -393,7 +407,9 @@ class PlayersTableSeeder extends Seeder
      $user_id = User::where('name','=','AishaCurry30')->pluck('id')->first();
 
      DB::table('players')->insert([
-
+         //2K18
+         'archetype2' => 'Shot Creator',
+         'overall' => 60,
          'user_id' => $user_id,
 
          //Housekeeping
