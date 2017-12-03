@@ -67,7 +67,10 @@
         <div class="block">
             <ul class="nav nav-tabs nav-justified push-20" id="new-player-tabs" data-toggle="tabs">
                 <li class="active">
-                    <a href="#tab-account-settings"><i class="fa fa-fw fa-lock"></i> Account Settings</a>
+                    <a href="#tab-account-settings"><i class="fa fa-fw fa-gear"></i> Account Settings</a>
+                </li>
+                <li>
+                    <a href="#tab-integration-settings"><i class="fa fa-fw fa-lock"></i> 2K Integration</a>
                 </li>
                 <li>
                     <a href="#tab-player-profile"><i class="si si-social-dribbble"></i> Player Profile</a>
@@ -82,18 +85,7 @@
                     <div class="row items-push push-15-t">
                         <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                             <div class="form-group">
-                                <div class="col-xs-4 form-material">
-                                    <label for="profile-password">GamerTag</label>
-                                    <input class="form-control input-lg" type="text" id="name" name="name" value="{{$name}}">
-                                    @if($errors->get('name'))
-                                      <ul class="errors">
-                                      @foreach($errors->get('name') as $error)
-                                        <li>{{ $error }}</li>
-                                      @endforeach
-                                      </ul>
-                                    @endif
-                                </div>
-                                <div class="col-xs-8 form-material">
+                                <div class="col-xs-12 form-material">
                                     <label for="profile-password">Tagline</label>
                                     <input class="form-control input-lg" type="text" id="tagline" name="tagline" placeholder="Enter your tagline.." value="{{old('tagline', $tagline) }}">
                                     @if($errors->get('tagline'))
@@ -171,12 +163,79 @@
                     </div>
                     <div class="block-content text-center remove-padding">
                         <button class="btn btn-sm btn-default margin-30 disabled hidden"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
-                        <button class="btn btn-sm btn-success margin-30" id="select-player-profile-tab-btn"> Advance <i class="fa fa-arrow-right push-5-l"></i></button>
+                        <button class="btn btn-sm btn-success margin-30" id="select-integrations-tab-btn"> Advance <i class="fa fa-arrow-right push-5-l"></i></button>
                     </div>
                 </div>
                 <!-- END Account Settings Tab -->
 
 
+                <!-- 2K Integration Tab -->
+                <div class="tab-pane fade in" id="tab-integration-settings">
+                    <div class="row items-push push-15-t">
+                        <div class="col-sm-6 col-sm-offset-3 form-horizontal">
+                            <div class="form-group">
+                                <div class="col-xs-6 form-material">
+                                    <label for="profile-password">System</label>
+                                    <select class="form-control input-lg" size="1" id="system" name="system" placeholder="PS4" value="{{old('system', $system) }}">
+                                        <option value="ps4">PS4</option>
+                                        <option value="xbox">XBOX</option>
+                                    </select>
+                                    @if($errors->get('system'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('system') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
+                                </div>
+                                <div class="col-xs-6 form-material">
+                                    <label for="profile-password">GamerTag</label>
+                                    <input class="form-control input-lg" type="text" id="name" name="name" value="{{$name}}">
+                                    @if($errors->get('name'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('name') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-6 form-material">
+                                    <label for="system-username">System Username </label>
+                                    <input class="form-control input-lg" type="text" id="system_username" name="system_username" placeholder="System Username.." value="{{old('system_username', $system_username) }}">
+                                    @if($errors->get('profile_pic'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('profile_pic') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
+                                </div>
+                                <div class="col-xs-6 form-material">
+                                    <label for="system-password">System Password </label>
+                                    <input class="form-control input-lg" type="text" id="system_password" name="system_password" placeholder="System Password.." value="{{old('system_password', $system_password) }}">
+                                    @if($errors->get('system_password'))
+                                      <ul class="errors">
+                                      @foreach($errors->get('system_password') as $error)
+                                        <li>{{ $error }}</li>
+                                      @endforeach
+                                      </ul>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center text-black-op push-20">
+                       <span>Note: Please enter truthful data, all accounts found to have fraudulent data will be banned.</span>
+                    </div>
+                    <div class="block-content text-center remove-padding">
+                      <button class="btn btn-sm btn-default margin-30" id="back-account-settings-tab-btn"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
+                      <button class="btn btn-sm btn-success margin-30" id="select-player-profile-tab-btn"> Advance <i class="fa fa-arrow-right push-5-l"></i></button>
+                  </div>
+                </div>
+                <!-- END 2K Integration Tab -->
 
                 <!-- Player Profile Tab -->
                 <div class="tab-pane fade" id="tab-player-profile">
@@ -395,7 +454,7 @@
                        <span>Note: Please enter truthful data, all accounts found to have fraudulent data will be banned.</span>
                     </div>
                     <div class="block-content text-center remove-padding">
-                        <button class="btn btn-sm btn-default margin-30" id="back-account-settings-tab-btn"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
+                        <button class="btn btn-sm btn-default margin-30" id="back-integration-tab-btn"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
                         <button class="btn btn-sm btn-success margin-30" id="select-stats-tab-btn"> Advance <i class="fa fa-arrow-right push-5-l"></i></button>
                     </div>
                 </div>
@@ -407,7 +466,7 @@
                     <div class="row items-push push-15-t">
                         <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                             <div class="form-group">
-                                <div class="col-xs-4 form-material">
+                                <div class="col-xs-6 form-material">
                                     <label for="per">PER</label>
                                     <input class="form-control input-lg" type="text" id="per" name="per" placeholder="Update your player efficiency rating.." value="{{old('per', $per)}}">
                                     @if($errors->get('per'))
@@ -418,7 +477,7 @@
                                      </ul>
                                     @endif
                                 </div>
-                                <div class="col-xs-4 form-material">
+                                <div class="col-xs-6 form-material">
                                     <label for="fg">FG%</label>
                                     <input class="form-control input-lg" type="text" id="fg" name="fg" placeholder="Update your gield goal percentage.." value="{{old('fg', $fg)}}">
                                     @if($errors->get('fg'))
@@ -429,6 +488,8 @@
                                       </ul>
                                     @endif
                                 </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-xs-4 form-material">
                                     <label for="apg">APG</label>
                                     <input class="form-control input-lg" type="text" id="apg" name="apg" placeholder="Update your assists per game.." value="{{old('apg', $apg)}}">
@@ -440,19 +501,6 @@
                                       </ul>
                                     @endif
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-xs-4 form-material">
-                                    <label for="apg_ppg">APG/PPG</label>
-                                    <input class="form-control input-lg" type="text" id="apg_ppg" name="apg_ppg" placeholder="Update your apg/ppg rating.." value="{{old('apg_ppg', $apg_ppg)}}">
-                                    @if($errors->get('apg_ppg'))
-                                     <ul class="errors">
-                                     @foreach($errors->get('apg_ppg') as $error)
-                                       <li>{{ $error }}</li>
-                                     @endforeach
-                                     </ul>
-                                    @endif
-                               </div>
                                 <div class="col-xs-4 form-material">
                                     <label for="ppg">PPG</label>
                                     <input class="form-control input-lg" type="text" id="ppg" name="ppg" placeholder="Update your points per game..." value="{{old('ppg', $ppg)}}">
@@ -508,17 +556,26 @@
         e.preventDefault();
         $('#new-player-tabs a[href="#tab-player-profile"]').tab('show');
     })
-    $('#back-player-profile-tab-btn').click(function(e){
+    $('#select-integrations-tab-btn').click(function(e){
         e.preventDefault();
-        $('#new-player-tabs a[href="#tab-player-profile"]').tab('show');
-    })
-    $('#back-account-settings-tab-btn').click(function(e){
-        e.preventDefault();
-        $('#new-player-tabs a[href="#tab-account-settings"]').tab('show');
+        $('#new-player-tabs a[href="#tab-integration-settings"]').tab('show');
     })
     $('#select-stats-tab-btn').click(function(e){
         e.preventDefault();
         $('#new-player-tabs a[href="#tab-stats"]').tab('show');
     })
+    $('#back-player-profile-tab-btn').click(function(e){
+        e.preventDefault();
+        $('#new-player-tabs a[href="#tab-player-profile"]').tab('show');
+    })
+    $('#back-integration-tab-btn').click(function(e){
+        e.preventDefault();
+        $('#new-player-tabs a[href="#tab-integration-settings"]').tab('show');
+    })
+    $('#back-account-settings-tab-btn').click(function(e){
+        e.preventDefault();
+        $('#new-player-tabs a[href="#tab-account-settings"]').tab('show');
+    })
+
 </script>
 @endsection

@@ -30,17 +30,17 @@ class NewPlayerController extends Controller
         /* ======================================================
         Database Query - Get Players Associated w/ Active User
         ====================================================== */
-        if(Player::where('name', '=', Auth::user()->name)){
-            $player = Player::where('name', '=', Auth::user()->name )->first();
-        }
-        else {
-            $player = '';
-        }
+        $player = Player::where('user_id', '=', Auth::user()->id )->first();
+
 
         /* ======================================================
         Default Variables - Ensure Page Load
         ====================================================== */
         $notification = null;
+        ### 2K Integration ###
+        $system = "ps4";
+        $system_username = null;
+        $system_password = null;
         ### Player Profile ###
         $name = null;
         $affiliation = null;
@@ -78,6 +78,10 @@ class NewPlayerController extends Controller
         if($player) {
             ### Account Settings ###
             $name = $player->name;
+            ### 2K Integration ###
+            $system = $player->system;
+            $system_username = $player->system_username;
+            $system_password = $player->system_password;
             ### Profile ###
             $affiliation = $player->affiliation;
             $archetype = $player->archetype;
@@ -140,8 +144,9 @@ class NewPlayerController extends Controller
         /* ======================================================
         Show Form
         ====================================================== */
-        $data = ['player' => $player, 'player_profile_pic' => $player_profile_pic, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player];
+        $data = ['player' => $player, 'player_profile_pic' => $player_profile_pic, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player, 'system' => $system, 'system_username' => $system_username, 'system_password' => $system_password];
         return view('newplayer.show')->with($data);
+
     }
 
 
@@ -156,8 +161,10 @@ class NewPlayerController extends Controller
         /* ======================================================
         Database Query - Get Players Associated w/ Active User
         ====================================================== */
-        $player = Player::where('name', '=', Auth::user()->name )->first();
-        $name = null;
+        $player = Player::where('user_id', '=', Auth::user()->id )->first();
+        $name = Auth::user()->name;
+
+
 
         /* ======================================================
         Player Data - Load From Database
@@ -165,6 +172,10 @@ class NewPlayerController extends Controller
         if($player) {
             ### Account Settings ###
             $name = $player->name;
+            ### 2K Integration ###
+            $system = $player->system;
+            $system_username = $player->system_username;
+            $system_password = $player->system_password;
             ### Profile ###
             $affiliation = $player->affiliation;
             $archetype = $player->archetype;
@@ -247,7 +258,6 @@ class NewPlayerController extends Controller
             'per' => 'required',
             'ppg' => 'required',
             'apg' => 'required',
-            'apg_ppg' => 'required',
             'fg' => 'required|numeric|max:100|min:0',
             'rpg' => 'required',
         ]);
@@ -259,6 +269,15 @@ class NewPlayerController extends Controller
         if (!$request->input('name') == null) {
             $name = $request->input('name');
         }
+        ### 2K Integration ###
+        $system = $request->input('system');
+        if (!$request->input('system_username') == null) {
+            $system_username = $request->input('system_username');
+        }
+        if (!$request->input('system_password') == null) {
+            $system_password = $request->input('system_password');
+        }
+
         ### Profile ###
         if (!$request->input('affiliation') == null) {
             $affiliation = $request->input('affiliation');
@@ -302,9 +321,9 @@ class NewPlayerController extends Controller
         $per = $request->input('per');
         $fg = $request->input('fg');
         $apg = $request->input('apg');
-        $apg_ppg = $request->input('apg_ppg');
         $ppg = $request->input('ppg');
         $rpg = $request->input('rpg');
+        $apg_ppg = round($apg/$ppg, 2);
         $overall_talent_score = (int) round( ( 100 * (($fg/100)*$ppg + $apg_ppg*$apg/1.5 + 2*$rpg ) / 20 ) );
         //Default Team Grade
 
@@ -451,9 +470,14 @@ class NewPlayerController extends Controller
         /* ======================================================
         Update Database
         ====================================================== */
+        Auth::user()->$name = $name;
         if($player) {
             ### Key ###
             $player->user_id = $user_id;
+            ### 2K Integration ###
+            $player->system =$system;
+            $player->system_username = $system_username;
+            $player->system_password = $system_password;
             ### Account Settings ###
             $player->name = $name;
             ### Profile ###
@@ -510,6 +534,10 @@ class NewPlayerController extends Controller
             $player = new Player();
             ### Key ###
             $player->user_id = $user_id;
+            ### 2K Integration ###
+            $player->system =$system;
+            $player->system_username = $system_username;
+            $player->system_password = $system_password;
             ### Account Settings ###
             $player->name = $name;
             ### Profile ###
@@ -582,7 +610,7 @@ class NewPlayerController extends Controller
         /* ======================================================
         Show Form
         ====================================================== */
-        $data = ['player' => $player, 'player_profile_pic' => $player_profile_pic, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player];
+        $data = ['player' => $player, 'player_profile_pic' => $player_profile_pic, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'new_player' => $new_player, 'system' => $system, 'system_username' => $system_username, 'system_password' => $system_password];
         //return view('newplayer.show')->with($data);
         return redirect('player')->with('status', 'Profile updated!');
     }

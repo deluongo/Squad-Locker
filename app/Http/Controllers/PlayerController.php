@@ -34,7 +34,7 @@ class PlayerController extends Controller
     ====================================================== */
     public function show()
     {
-        $player = Player::where('name', '=', Auth::user()->name )->first();
+        $player = Player::where('user_id', '=', Auth::user()->id )->first();
 
         if($player) {
             //Profile
@@ -197,7 +197,7 @@ class PlayerController extends Controller
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
             'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited,
-            'invite_accepted' => $invite_accepted, 'user_avatar' => $user_avatar
+            'invite_accepted' => $invite_accepted, 'user_avatar' => $user_avatar, 'player' => $player
         ];
 
         //$chart_name => $chart_

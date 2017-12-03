@@ -28,11 +28,16 @@ class CreatePlayersTable extends Migration
               //$table->string('username');
               //$table->string('password');
 
-              # Paek fields
-              $table->string('rep_level');
-              $table->integer('rep_progress');
-              $table->string('rep_status');
-              $table->integer('status_level');
+              # System Fields
+              $table->string('system')->default('ps4');
+              $table->string('system_username')->default('');
+              $table->string('system_password')->default('');
+              # Park fields
+              $table->string('rep_level')->default('');
+              $table->integer('rep_progress')->default(0);
+              $table->string('rep_status')->default('');
+              $table->integer('status_level')->default(0);
+              $table->integer('overall')->default(60);
 
               # Player profile fields
               $table->string('player_profile_pic')->default('https://s30.postimg.org/td1wyddf5/Baby_Face_Assasin.png');
