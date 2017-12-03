@@ -74,7 +74,7 @@
                           <div class="form-group">
                               <div class="col-xs-7 col-sm-8">
                                   <label class="css-input switch switch-sm switch-info">
-                                      <input type="checkbox" id="register-terms" name="register-terms"><span></span> I agree with terms &amp; conditions
+                                      <input type="checkbox" id="register-terms" name="agree-to-terms"><span></span> I agree with terms &amp; conditions
                                   </label>
                               </div>
                               <div class="col-xs-5 col-sm-4">
@@ -83,12 +83,12 @@
                                   </div>
                               </div>
                           </div>
-                          @if ($errors->has('register-terms'))
+                          @if ($errors->has('agree-to-terms'))
                               <span class="errors">
-                                  <strong>{{ $errors->first('register-terms') }}</strong>
+                                  <strong>{{ $errors->first('agree-to-terms') }}</strong>
                               </span>
                           @endif
-                          <div class="form-group @if ($errors->has('register-terms')) push-25-t @endif">
+                          <div class="form-group @if ($errors->has('agree-to-terms')) push-55-t @endif">
                               <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                                   <button class="btn btn-sm btn-block btn-info" type="submit">Create Account</button>
                               </div>

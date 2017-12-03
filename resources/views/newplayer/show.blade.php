@@ -65,20 +65,20 @@
     <form action="/newplayer" method="post">
         {{ csrf_field() }}
         <div class="block">
-            <ul class="nav nav-tabs nav-justified push-20" data-toggle="tabs">
+            <ul class="nav nav-tabs nav-justified push-20" id="new-player-tabs" data-toggle="tabs">
                 <li class="active">
-                    <a href="#tab-profile-personal"><i class="fa fa-fw fa-lock"></i> Account Settings</a>
+                    <a href="#tab-account-settings"><i class="fa fa-fw fa-lock"></i> Account Settings</a>
                 </li>
                 <li>
-                    <a href="#tab-profile-password"><i class="si si-social-dribbble"></i> Player Profile</a>
+                    <a href="#tab-player-profile"><i class="si si-social-dribbble"></i> Player Profile</a>
                 </li>
                 <li>
-                    <a href="#tab-profile-privacy"><i class="si si-list"></i> Stats</a>
+                    <a href="#tab-stats"><i class="si si-list"></i> Stats</a>
                 </li>
             </ul>
             <div class="block-content tab-content">
                 <!-- Account Settings Tab -->
-                <div class="tab-pane fade in active" id="tab-profile-personal">
+                <div class="tab-pane fade in active" id="tab-account-settings">
                     <div class="row items-push push-15-t">
                         <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                             <div class="form-group">
@@ -169,13 +169,17 @@
                     <div class="text-center text-black-op push-20">
                        <span>Note: Please enter truthful data, all accounts found to have fraudulent data will be banned.</span>
                     </div>
+                    <div class="block-content text-center remove-padding">
+                        <button class="btn btn-sm btn-default margin-30 disabled hidden" id="back-account-settings-tab-btn"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
+                        <button class="btn btn-sm btn-success margin-30" id="select-player-profile-tab-btn"> Advance <i class="fa fa-arrow-right push-5-l"></i></button>
+                    </div>
                 </div>
                 <!-- END Account Settings Tab -->
 
 
 
                 <!-- Player Profile Tab -->
-                <div class="tab-pane fade" id="tab-profile-password">
+                <div class="tab-pane fade" id="tab-player-profile">
                     <div class="row items-push">
                         <div class="col-sm-10 col-sm-offset-1 form-horizontal">
                             <div class="form-group">
@@ -390,12 +394,16 @@
                     <div class="text-center text-black-op push-20">
                        <span>Note: Please enter truthful data, all accounts found to have fraudulent data will be banned.</span>
                     </div>
+                    <div class="block-content text-center remove-padding">
+                        <button class="btn btn-sm btn-default margin-30" id="back-account-settings-tab-btn"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
+                        <button class="btn btn-sm btn-success margin-30" id="select-stats-tab-btn"> Advance <i class="fa fa-arrow-right push-5-l"></i></button>
+                    </div>
                 </div>
                 <!-- END Player Profile Tab -->
 
 
                 <!-- Privacy Tab -->
-                <div class="tab-pane fade" id="tab-profile-privacy">
+                <div class="tab-pane fade" id="tab-stats">
                     <div class="row items-push push-15-t">
                         <div class="col-sm-6 col-sm-offset-3 form-horizontal">
                             <div class="form-group">
@@ -473,12 +481,15 @@
                     <div class="text-center text-black-op push-20">
                         <span>Note: Please enter truthful data, all accounts found to have fraudulent data will be banned.</span>
                     </div>
+                    <div class="block-content text-center remove-padding">
 
+                        <button class="btn btn-sm btn-default margin-30" id="back-player-profile-tab-btn"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
+                        <button class="btn btn-sm btn-primary margin-30" type="submit"><i class="fa fa-check push-5-r"></i> Create Player</button>
+                    </div>
                 </div>
                 <!-- END Privacy Tab -->
             </div>
             <div class="block-content bg-gray-lighter text-center remove-padding">
-                <button class="btn btn-sm btn-primary margin-30" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
                 <button class="btn btn-sm btn-warning margin-30" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
             </div>
         </div>
@@ -489,4 +500,25 @@
 </div>
 <!-- END Page Content -->
 
+@endsection
+
+@section('page-js')
+<script>
+    $('#select-player-profile-tab-btn').click(function(e){
+        e.preventDefault();
+        $('#new-player-tabs a[href="#tab-player-profile"]').tab('show');
+    })
+    $('#back-player-profile-tab-btn').click(function(e){
+        e.preventDefault();
+        $('#new-player-tabs a[href="#tab-player-profile"]').tab('show');
+    })
+    $('#back-account-settings-tab-btn').click(function(e){
+        e.preventDefault();
+        $('#new-player-tabs a[href="#tab-account-settings"]').tab('show');
+    })
+    $('#select-stats-tab-btn').click(function(e){
+        e.preventDefault();
+        $('#new-player-tabs a[href="#tab-stats"]').tab('show');
+    })
+</script>
 @endsection

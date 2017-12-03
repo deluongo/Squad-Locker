@@ -43,7 +43,7 @@
                         <i class="fa fa-times"></i>
                     </button>
                     <span>
-                        <img class="img-avatar img-avatar32" src="@if($player->name == Auth::user()->name) {{ $player_profile_pic }} @else {{$user_avatar}} @endif" alt="">
+                        <img class="img-avatar img-avatar32" src="{{ $player_profile_pic }} " alt="">
                         <span class="font-w600 push-10-l">{{Auth::user()->name}}</span>
                     </span>
                 </div>

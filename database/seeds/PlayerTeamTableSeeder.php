@@ -25,13 +25,13 @@ class PlayerTeamTableSeeder extends Seeder
              'Susan' => ['AmericanPoliticalDisaster'],
          ];
 
-         # Now loop through the above array, creating a new pivot for each book to tag
+         # Now loop through the above array list of teams each player belongs to, creating a new pivot for each book to tag
          foreach($players as $name => $teams) {
 
-             # First get the book
+             # First get the player
              $player = Player::where('name','like', $name)->first();
 
-             # Now loop through each tag for this book, adding the pivot
+             # Now loop through each team for this player, adding the pivot
              foreach($teams as $teamName) {
                  $team = Team::where('name','LIKE',$teamName)->first();
 

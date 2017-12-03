@@ -30,7 +30,12 @@ class NewPlayerController extends Controller
         /* ======================================================
         Database Query - Get Players Associated w/ Active User
         ====================================================== */
-        $player = Player::where('name', '=', Auth::user()->name )->first();
+        if(Player::where('name', '=', Auth::user()->name)){
+            $player = Player::where('name', '=', Auth::user()->name )->first();
+        }
+        else {
+            $player = '';
+        }
 
         /* ======================================================
         Default Variables - Ensure Page Load
@@ -41,7 +46,7 @@ class NewPlayerController extends Controller
         $affiliation = null;
         $archetype = null;
         $position = null;
-        $tagline = null;
+        $tagline = "I'm new to new to Squad Locker!";
         $background_pic = 'https://s23.postimg.org/s8md8kd3f/Player_Banner.jpg';
         $profile_pic = 'https://s30.postimg.org/td1wyddf5/Baby_Face_Assasin.png';
         ### Park ###
@@ -50,9 +55,9 @@ class NewPlayerController extends Controller
         $rep_status = null;
         $status_level = null;
         ### Social ###
-        $twitter = 'http://';
-        $youtube = 'http://';
-        $twitch = 'http://';
+        $twitter = 'http://www.twitter.com/';
+        $youtube = 'http://www.youtube.com/user/';
+        $twitch = 'http://www.twitch.tv/';
         ### Playstyle ###
         $type = null;
         $role = null;
@@ -126,8 +131,12 @@ class NewPlayerController extends Controller
         ### For Teams Dropdown ###
         $teams_on = [];
         $teams_owned = [];
-
-        $player_profile_pic = $player->player_profile_pic;
+        if($player != ''){
+            $player_profile_pic = $player->player_profile_pic;
+        }
+        else{
+            $player_profile_pic = $profile_pic;
+        }
         /* ======================================================
         Show Form
         ====================================================== */
