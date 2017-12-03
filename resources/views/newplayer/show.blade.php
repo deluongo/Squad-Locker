@@ -170,7 +170,7 @@
                        <span>Note: Please enter truthful data, all accounts found to have fraudulent data will be banned.</span>
                     </div>
                     <div class="block-content text-center remove-padding">
-                        <button class="btn btn-sm btn-default margin-30 disabled hidden" id="back-account-settings-tab-btn"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
+                        <button class="btn btn-sm btn-default margin-30 disabled hidden"><i class="fa fa-arrow-left push-5-r"></i> Back </button>
                         <button class="btn btn-sm btn-success margin-30" id="select-player-profile-tab-btn"> Advance <i class="fa fa-arrow-right push-5-l"></i></button>
                     </div>
                 </div>
