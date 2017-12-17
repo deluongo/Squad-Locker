@@ -13,7 +13,7 @@
 
     <!-- Page Header -->
     <div class="content bg-image" style="background-image: url({{$player_bg_pic}})">
-        <div class="push-100-t push-15 clearfix">
+        <div class="push-20-t push-15 clearfix">
             <div class="push-15-r pull-left animated zoomInRight">
                 <div class="js-pie-chart pie-chart" data-percent="{{$overall_talent_score}}" data-line-width="3" data-size="100" data-bar-color="{{$progress_chart_color}}" data-track-color="#eeeeee" data-scale-color="#dddddd">
                     <span>
@@ -45,7 +45,7 @@
                         <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Play Style</h3>
                     </div>
                     <div class="block-content">
-                        <div class="bg-image play-style-height play-style-margin" style="background-image: url({{asset('/img/favicons/slasher.jpg')}})">
+                        <div class="bg-image play-style-height play-style-margin" style="background-image: url({{asset('/img/player_types/ball-movement-coach.png')}})">
                             <div class="bg-black-op play-style-height">
                                 <div class="block block-themed block-transparent play-style-margin">
                                     <div class="block-header" id="bg-block-header">
