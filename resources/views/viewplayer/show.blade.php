@@ -79,7 +79,7 @@
                         <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Play Style</h3>
                     </div>
                     <div class="block-content">
-                        <div class="bg-image play-style-height play-style-margin" style="background-image: url({{asset('/img/favicons/slasher.jpg')}})">
+                        <div class="bg-image play-style-height play-style-margin" style="background-image: url({{asset('/img/player_types/catch_n_shoot2.png')}})">
                             <div class="bg-black-op play-style-height">
                                 <div class="block block-themed block-transparent play-style-margin">
                                     <div class="block-header" id="bg-block-header">

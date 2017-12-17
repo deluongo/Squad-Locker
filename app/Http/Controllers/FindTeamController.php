@@ -36,7 +36,7 @@ class FindTeamController extends Controller
         $activity_stream_heading = '';
         $find_teams_heading = 'active';
 
-        $player = Player::where('name', '=', Auth::user()->name )->first();
+        $player = Player::where('id', '=', Auth::user()->id )->first();
 
         $teams_owned = [];
         $teams_on = [];
@@ -156,12 +156,13 @@ class FindTeamController extends Controller
 
 
   }
+
   public function store(Request $request)
   {
 
       $teams = Team::all();
 
-      $player = Player::where('name', '=', 'CaptainAwesome650')->first();
+      $player = Player::where('id', '=', Auth::user()->id )->first();
 
       //Navigation Active
       $my_player_heading = '';
@@ -179,7 +180,6 @@ class FindTeamController extends Controller
       $teams_owned = [];
       $teams_on = [];
 
-      $player = Player::where('name', '=', Auth::user()->name )->first();
       // Passes lists of teams owned.
       foreach($player->teams as $team) {
           if ($team->pivot->status == 1) {
@@ -211,6 +211,22 @@ class FindTeamController extends Controller
       }
 
       $player_profile_pic = $player->player_profile_pic;
+      $submit_val = $request->input('submit_type');
+      if($submit_val!="filter"){
+        $submit_val = intval($submit_val);
+        $team = Team::where('id','=', $submit_val)->first();
+
+        # Connect this tag to this book
+        # Status reference
+        # 0 = no relationship
+        # 1 = own
+        # 2 = member
+        # 3 = expressed interest
+        # 4 = rejected
+        # 5 = blocked
+        $player->teams()->save($team, ['status' => 3]);
+        \Session::flash('flash_message', 'Team Invite sent successfully!');
+      }
 
       $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement,
           'search_tempo' => $search_tempo, 'search_affiliation_type' => $search_affiliation_type,
@@ -222,7 +238,7 @@ class FindTeamController extends Controller
           'player_profile_pic' => $player_profile_pic, 'player' => $player
       ];
 
-
+      return view('findteam.show')->with($data);
 
       //return view('findteam.show')->with($data);
       //return View::make("findteam.tablediv")->with($data)->render();

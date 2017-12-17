@@ -13,7 +13,7 @@
 
     <!-- Page Header -->
     <div class="content bg-image" style="background-image: url({{ $team_bg_pic}})">
-        <div class="push-100-t push-15 clearfix">
+        <div class="push-20-t push-15 clearfix">
             <div class="push-15-r pull-left animated zoomInRight">
                 <div class="js-pie-chart pie-chart" data-percent="{{$progress_bar}}" data-line-width="3" data-size="100" data-bar-color="{{$progress_chart_color}}" data-track-color="#eeeeee" data-scale-color="#dddddd">
                     <span>
