@@ -26,7 +26,12 @@ class ViewPlayerController extends Controller
     public function show($name)
     {
         $player = Player::where('name', '=', $name )->first();
+        $active_user_player = Player::where('user_id', '=', Auth::user()->id )->first();
+        $active_user_player_id = $active_user_player->id;
 
+        /* ======================================================
+        Load Display Values
+        ====================================================== */
         if($player) {
             //Profile
             $name = $player->name;
@@ -79,7 +84,10 @@ class ViewPlayerController extends Controller
             return 'Player data not found.';
         }
 
-        //Navigation Active
+        /* ======================================================
+        Navigation Variables
+        ====================================================== */
+        $user_avatar = Player::where('user_id', '=', Auth::user()->id )->first()->player_profile_pic;
         $my_player_heading = 'active';
         $update_heading = '';
         $my_team_heading = '';
@@ -88,33 +96,103 @@ class ViewPlayerController extends Controller
         $activity_stream_heading = '';
         $find_teams_heading = '';
 
-        $teams_owned = [];
-        $teams_on = [];
+        /* ======================================================
+        View Player | Teams & Teammates
+        ====================================================== */
 
+        //team array instantiation
+        $view_player_teams_owned = [];
+        $view_player_teams_on = [];
+        $disable_invites_for_these_team_ids = [];
+        $teams_view_player_requested_to_join = [];
+
+        // check pivot table -> status
         foreach($player->teams as $team) {
             if ($team->pivot->status == 1) {
-                $teams_owned[] = $team;
+                //List of Teams View Player owns
+                $view_player_teams_owned[] = $team;
             }
             elseif($team->pivot->status == 2) {
-                $teams_on[] = $team;
+                //List of Teams View Player is rostered on
+                $view_player_teams_on[] = $team;
+                //Disable "send invite" if player is rostered
+                $disable_invites_for_these_team_ids[] = $team->id;
+            }
+            elseif($team->pivot->status == 3) {
+                //Disable "send invite" if invite was already sent
+                $disable_invites_for_these_team_ids[] = $team->id;
+            }
+            elseif($team->pivot->status == 4) {
+                //List of teams this view user has requested to join
+                $teams_view_player_requested_to_join[] = $team->id;
             }
         }
 
-        $all_teams = array_merge($teams_owned, $teams_on);
+        //merge team arrays | used to find list of teammates
+        $all_teams = array_merge($view_player_teams_owned, $view_player_teams_on);
 
+        //teammate array instantiation
         $team_members = [];
         $player_names = [];
 
+        //search all teams
         foreach($all_teams as $team) {
+            //search all players
             foreach($team->players as $player) {
+                //If teammate is not alreaady in the teammate list, add them as a teammate
                 if (!in_array($player->name, $player_names)) {
+                    //Used for reference
                     $player_names[] = $player->name;
+                    //Used to display teammate list on front end
                     $team_members[] = $player;
                 }
             }
         }
 
-        $user_avatar = Player::where('name', '=', Auth::user()->name)->first()->player_profile_pic;
+        /* ======================================================
+        Active User | Teams & Teammates
+        ====================================================== */
+
+        //team array instantiation
+        $teams_owned_by_active_user = [];
+        $teams_owned = [];
+        $teams_on = [];
+
+        // check pivot table -> status
+        foreach($active_user_player->teams as $team) {
+            if ($team->pivot->status == 1) {
+                //List of Teams Active User owns
+                $teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 2) {
+                //List of Teams Active User is rostered on
+                $teams_on[] = $team;
+            }
+        }
+
+        //Identify the list of teams an invite can be sent from
+        $send_invite_from_one_of_these_teams = [];
+        $trigger_accept_request_button_for_these_teams = [];
+
+        //Iterate Active User's Team List
+        foreach($teams_owned as $team) {
+            //If team is not diabled
+            if(!in_array($team->id, $disable_invites_for_these_team_ids)) {
+                //and team has not received an incoming request
+                if(!in_array($team->id, $teams_view_player_requested_to_join)){
+                    //Add to SEND INVITE Button's team list
+                    $send_invite_from_one_of_these_teams[] = $team;
+                }
+                //if team has received an incoming request
+                else {
+                    //Add to ACCEPT REQUEST Button's team list
+                    $trigger_accept_request_button_for_these_teams[] = $team;
+                }
+            }
+        }
+
+
+
 
         $data = ['team_update_heading' => $team_update_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
             'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'my_player_heading' => $my_player_heading,
@@ -126,7 +204,12 @@ class ViewPlayerController extends Controller
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color, 'user_avatar' => $user_avatar,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams,
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'active_user_player' => $active_user_player,
+            'teams_owned_by_active_user' => $teams_owned_by_active_user, 'disable_invites_for_these_team_ids' => $disable_invites_for_these_team_ids,
+            'send_invite_from_one_of_these_teams' => $send_invite_from_one_of_these_teams, 'trigger_accept_request_button_for_these_teams' => $trigger_accept_request_button_for_these_teams,
+            'view_player_teams_owned' => $view_player_teams_owned, 'view_player_teams_on' => $view_player_teams_on, 'active_user_player_id' => $active_user_player_id,
+            'player' => $player
+
         ];
 
         return view('viewplayer.show')->with($data);

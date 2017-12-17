@@ -13,7 +13,41 @@
 
     <!-- Page Header -->
     <div class="content bg-image" style="background-image: url({{$player_bg_pic}})">
+
         <div class="push-100-t push-15 clearfix">
+            @if($name == Auth::user()->name)
+            <a href="/player">
+                <div class="btn-group pull-right">
+                    <div class="btn btn-primary btn-lg push-50-t push-5-r pull-right" type="button"><i class="fa fa-plus"></i> My Portal</div>
+                </div>
+            </a>
+            @elseif(sizeof($send_invite_from_one_of_these_teams) == 0)
+            <button class="btn btn-info pull-right push-50-t push-5-r btn-lg" disabled><i class="fa fa-plus"></i> Send Invite</button>
+
+            @elseif(sizeof($send_invite_from_one_of_these_teams) == 1)
+            <a href="/player">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-info pull-right push-50-t push-5-r btn-lg" type="button" ><i class="fa fa-plus"></i> Invite to {{$send_invite_from_one_of_these_teams[0]->name}}</button>
+                </div>
+            </a>
+
+
+            @else
+            <div class="btn-group pull-right push-50-t push-5-r">
+                <button class="btn btn-info dropdown-toggle btn-lg" data-toggle="dropdown"><i class="fa fa-plus"></i> Send Invite</button>
+                <ul class="dropdown-menu dropdown-menu-right nav-users push">
+                    <li class="dropdown-header">From</li>
+                    @foreach($send_invite_from_one_of_these_teams as $team)
+                            <li>
+                                <a tabindex="-1" href="/team/{{$team->name}}">
+                                    <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
+                                    <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
+                                </a>
+                            </li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="push-15-r pull-left animated zoomInRight">
                 <div class="js-pie-chart pie-chart" data-percent="{{$overall_talent_score}}" data-line-width="3" data-size="100" data-bar-color="{{$progress_chart_color}}" data-track-color="#eeeeee" data-scale-color="#dddddd">
                     <span>
@@ -534,12 +568,12 @@
                     <div class="block-content">
                         <h5>Owned</h5>
                         <ul class="nav-users push">
-                            @foreach($teams_owned as $team)
+                            @foreach($view_player_teams_owned as $team)
                                 <li>
                                     <a href="/team/{{$team->name}}">
                                         <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
                                         <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span></div>
-                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
                                     </a>
                                 </li>
                             @endforeach
@@ -551,7 +585,7 @@
                                     <a href="/team/{{$team->name}}">
                                         <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
                                         <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
-                                        <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
+                                        <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
                                     </a>
                                 </li>
                             @endforeach
