@@ -6152,7 +6152,7 @@ fieldset[disabled] .form-material.floating > label {
      padding-top:5px;
  }
  .grade-margin {
-     margin-top: -5px;
+     margin-top: -2px;
      padding-top: -20px;
  }
 
@@ -6178,11 +6178,11 @@ fieldset[disabled] .form-material.floating > label {
 }
 
 .play-style-margin {
-    margin-bottom: 15px !important;
+    margin-bottom: 0px !important;
 }
 
 .play-style-height {
-    min-height: 240px;
+    min-height: 230px;
 }
 
 .label-shrink {
@@ -6231,7 +6231,7 @@ fieldset[disabled] .form-material.floating > label {
 }
 
 #bg-block-content-two {
-  padding: 20px 20px;
+  padding: 18px 20px;
 }
 #bg-block-content-three {
   padding: 20px 15px;
@@ -12054,4 +12054,10 @@ legend.scheduler-border {
     text-align: left !important;
     border:none;
     width:100px;
+}
+
+#invite-request {
+    background-color: #EB630D;
+    color: #fff;
+
 }

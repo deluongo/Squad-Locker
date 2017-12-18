@@ -44,9 +44,9 @@ class CreatePlayersTable extends Migration
               $table->string('player_bg_pic')->default('https://s23.postimg.org/s8md8kd3f/Player_Banner.jpg');
               $table->string('name')->unique();
               $table->string('archetype');
-              $table->string('archetype2');
+              $table->string('archetype2')->default('Shot Creator');
               $table->string('position');
-              $table->string('affiliation');
+              $table->string('affiliation')->default('2K18');
               $table->text('tagline');
               //$table->string('bg_image');
               //$table->string('profile_pic');

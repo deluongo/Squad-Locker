@@ -35,8 +35,142 @@
 
     <!-- Page Content -->
     <div class="content content-boxed">
+
+
+
         <div class="row">
-            <div class="col-sm-4 col-sm-4 push-15 clearfix">
+
+            <!-- Roster Moves -->
+            <div class="col-xs-12">
+               <div class="block">
+                  <!-- Header -->
+                 <div class="block-header bg-gray-lighter">
+                     <ul class="block-options">
+                         <li>
+                             <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                         </li>
+                         <li>
+                             <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
+                         </li>
+                     </ul>
+                     <h3 class="block-title"> <span class="badge @if(sizeof($teams_that_send_you_a_squad_invite)>0 || sizeof($teams_that_send_you_a_squad_invite)>0) badge-danger @endif "><i class="fa fa-fw fa-exclamation-triangle"></i></span>  Scouting Report </h3>
+                 </div>
+                 <!-- Tab Nav -->
+                  <ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
+                     <li class="@if(sizeof($teams_that_send_you_a_squad_invite)>0) active @endif">
+                        <a href="#myplayer-tabs-incoming-player-invites"><i class="fa fa-home"></i> Squad Invites @if(sizeof($teams_that_send_you_a_squad_invite)>0)<span id="invite-request" class="label h6 label-info pull-right push-25-r">{{sizeof($teams_that_send_you_a_squad_invite)}} New</span>@endif</a>
+                     </li>
+                     <li class="@if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)>0) active @endif">
+                        <a href="#myplayer-tabs-incoming-player-requests"><i class="fa fa-pencil"></i> Player Requests</a>
+                     </li>
+                     <li class="@if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)==0) active @endif">
+                        <a href="#myplayer-tabs-scouting-report-central"><i class="fa fa-cog"></i> Scouting Report</a>
+                     </li>
+                  </ul>
+                   <!-- 3 Tabs -->
+                  <div class="block-content tab-content remove-margin remove-padding">
+                     <!-- Invite Manager Tab -->
+                     <div class="tab-pane @if(sizeof($teams_that_send_you_a_squad_invite)>0) active @endif bg-hover-color" id="myplayer-tabs-incoming-player-invites">
+                        <div class="row push-0">
+                           @foreach($teams_that_send_you_a_squad_invite as $team)
+                           <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                              <div class="block remove-margin margin-20-t">
+                                 <div class="block-header">
+                                    <h3 class="block-title center">{{$team->name}}</h3>
+                                 </div>
+                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+                                    <div class="flipper">
+                                        <div class="front">
+                                           <div class="text-center bg-image fill-container parent" style="background-image: url({{$team->team_bg_pic}})">
+                                              <div class="child remove-padding full-width">
+                                                 <img class="img-avatar img-avatar96 img-avatar-thumb" src={{$team->team_profile_pic}} alt="">
+                                                 <h2 class="h4 text-white-op">{{ $team->affiliation }} | {{ $team->offense }} | {{ $team->defense }} </h2>
+                                              </div>
+                                           </div>
+                                        </div>
+                                       <div class="back bg-hover-color">
+                                          <!-- 1radar qwer -->
+                                          <!-- <h1>{{var_dump(${'Chart'.$team->id})}}</h1> -->
+                                          {{-- This hidden field holds the data so it's available for JS --}}
+                                          <input type='hidden' name='chart_data' value='{{ json_encode(${'Chart'.$team->id}) }}'>
+                                          <canvas id="myChart" class="center-chart padding-10-v push-20 push-10-t"></canvas>
+                                       </div>
+
+                                    </div>
+                                 </div>
+                                 <div class="text-center">
+                                    <div class="row items-push">
+                                       <!-- formy -->
+                                       <form method='POST' id='acceptForm'>
+                                          <input type="hidden" name="acceptInvite" id="acceptInvite" value='yes'>
+                                          <input type="hidden" name="inviTeam" id="inviTeam" value='{{$team->id}}'>
+                                          <div class="col-xs-6 remove-margin remove-padding-r" name="acceptSubmit" id="acceptSubmit" onClick="submitOnClick('myForm')">
+                                             <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
+                                                <div class="padding-15-h padding-20-v">
+                                                   <i class="si si-check fa-2x text-success"></i>
+                                                </div>
+                                             </a>
+                                          </div>
+                                       </form>
+
+                                       <div class="col-xs-6 remove-margin remove-padding-l">
+                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
+                                             <div class="padding-15-h padding-20-v">
+                                                <i class="si si-close fa-2x text-danger"></i>
+                                             </div>
+                                          </a>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div >
+                                    <div id='testdiv'>
+                                    </div>
+                                 </div>
+
+                              </div>
+                           </div>
+                           @endforeach
+                        </div>
+                     </div>
+                     <!-- Requests Tracker -->
+                     <div class="tab-pane @if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)>0) active @endif" id="myplayer-tabs-incoming-player-requests">
+
+                           <canvas id="myChart2" width="400" height="400"></canvas>
+
+                     </div>
+                     <!-- Scouting Report -->
+                     <div class="tab-pane @if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)==0) active @endif" id="myplayer-tabs-scouting-report-central">
+                        <div class="block-content">
+                           <div id="disqus_thread"></div>
+                               <script>
+
+                               /**
+                               *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                               *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+                               /*
+                               var disqus_config = function () {
+                               this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                               this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                               };
+                               */
+                               (function() { // DON'T EDIT BELOW THIS LINE
+                               var d = document, s = d.createElement('script');
+                               s.src = '//p4test.disqus.com/embed.js';
+                               s.setAttribute('data-timestamp', +new Date());
+                               (d.head || d.body).appendChild(s);
+                               })();
+                               </script>
+                           <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-lg-4">
                 <div class="block">
                     <div class="block-header bg-gray-lighter">
                         <ul class="block-options">
@@ -47,11 +181,11 @@
                                 <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
                             </li>
                         </ul>
-                        <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Play Style</h3>
+                        <h3 class="block-title"><i class="fa fa-binoculars"></i> Play Style</h3>
                     </div>
                     <div class="block-content">
-                        <div class="bg-image play-style-height play-style-margin" style="background-image: url({{asset('/img/player_types/catch_n_shoot2.png')}})">
-                            <div class="bg-black-op play-style-height">
+                        <div class="bg-image" style="background-image: url({{asset('/img/player_types/catch_n_shoot2.png')}})">
+                            <div class="bg-black-op">
                                 <div class="block block-themed block-transparent play-style-margin">
                                     <div class="block-header" id="bg-block-header">
                                         <ul class="block-options">
@@ -92,7 +226,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8 col-xs-12 clearfix">
+            <div class="col-xs-12 col-lg-8 clearfix">
               <div class="block">
                   <div class="block-header bg-gray-lighter">
                       <ul class="block-options">
@@ -103,7 +237,7 @@
                               <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
                           </li>
                       </ul>
-                      <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Stats</h3>
+                      <h3 class="block-title"><i class="fa fa-bar-chart"></i> Stats</h3>
                   </div>
                   <div class="block-content remove-margin-b">
                       <div class="content-grid">
@@ -293,410 +427,79 @@
                 </div>
             </div>
 
-            <!-- Roster Moves -->
-            <div class="col-sm-7 col-lg-8">
-               <div class="block">
-                  <!-- Header -->
-                 <div class="block-header bg-gray-lighter">
-                     <ul class="block-options">
-                         <li>
-                             <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
-                         </li>
-                         <li>
-                             <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
-                         </li>
-                     </ul>
-                     <h3 class="block-title"><i class="fa fa-fw fa-pencil"></i> Scouting Report</h3>
-                 </div>
-                 <!-- Tab Nav -->
-                  <ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
-                     <li class="active">
-                        <a href="#myplayer-tabs-incoming-player-invites"><i class="fa fa-home"></i> Squad Invites</a>
-                     </li>
-                     <li class="">
-                        <a href="#myplayer-tabs-incoming-player-requests"><i class="fa fa-pencil"></i> Player Requests</a>
-                     </li>
-                     <li class="">
-                        <a href="#myplayer-tabs-scouting-report-central"><i class="fa fa-cog"></i> Scouting Report</a>
-                     </li>
-                  </ul>
-                   <!-- 3 Tabs -->
-                  <div class="block-content tab-content remove-margin remove-padding">
-                     <!-- Invite Manager Tab -->
-                     <div class="tab-pane active bg-hover-color" id="myplayer-tabs-incoming-player-invites">
-                        <div class="row push-0">
-                           @foreach($invited as $team)
-                           <div class="col-xs-12 col-lg-6">
-                              <div class="block remove-margin margin-20-t">
-                                 <div class="block-header">
-                                    <h3 class="block-title center">{{$team->name}}</h3>
-                                 </div>
-                                 <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-                                    <div class="flipper">
-                                        <div class="front">
-                                           <div class="text-center bg-image fill-container parent" style="background-image: url({{$team->team_bg_pic}})">
-                                              <div class="child remove-padding full-width">
-                                                 <img class="img-avatar img-avatar96 img-avatar-thumb" src={{$team->team_profile_pic}} alt="">
-                                                 <h2 class="h4 text-white-op">{{ $team->affiliation }} | {{ $team->offense }} | {{ $team->defense }} </h2>
-                                              </div>
-                                           </div>
-                                        </div>
-                                       <div class="back bg-hover-color">
-                                          <!-- 1radar qwer -->
-                                          <!-- <h1>{{var_dump(${'Chart'.$team->id})}}</h1> -->
-                                          {{-- This hidden field holds the data so it's available for JS --}}
-                                          <input type='hidden' name='chart_data' value='{{ json_encode(${'Chart'.$team->id}) }}'>
-                                          <canvas id="myChart" class="center-chart padding-10-v push-20 push-10-t"></canvas>
-                                       </div>
-
-                                    </div>
-                                 </div>
-                                 <div class="text-center">
-                                    <div class="row items-push">
-                                       <!-- formy -->
-                                       <form method='POST' id='acceptForm'>
-                                          <input type="hidden" name="acceptInvite" id="acceptInvite" value='yes'>
-                                          <input type="hidden" name="inviTeam" id="inviTeam" value='{{$team->id}}'>
-                                          <div class="col-xs-6 remove-margin remove-padding-r" name="acceptSubmit" id="acceptSubmit" onClick="submitOnClick('myForm')">
-                                             <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
-                                                <div class="padding-15-h padding-20-v">
-                                                   <i class="si si-check fa-2x text-success"></i>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </form>
-
-                                       <div class="col-xs-6 remove-margin remove-padding-l">
-                                          <a class="block block-link-hover2 text-center remove-margin" href="javascript:void(0)">
-                                             <div class="padding-15-h padding-20-v">
-                                                <i class="si si-close fa-2x text-danger"></i>
-                                             </div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div >
-                                    <div id='testdiv'>
-                                    </div>
-                                 </div>
-
-                              </div>
-                           </div>
-                           @endforeach
-                        </div>
-                     </div>
-                     <!-- Requests Tracker -->
-                     <div class="tab-pane" id="myplayer-tabs-incoming-player-requests">
-
-                           <canvas id="myChart2" width="400" height="400"></canvas>
-
-                     </div>
-                     <!-- Scouting Report -->
-                     <div class="tab-pane" id="myplayer-tabs-scouting-report-central">
-                        <div class="block-content">
-                           <div id="disqus_thread"></div>
-                               <script>
-
-                               /**
-                               *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                               *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-                               /*
-                               var disqus_config = function () {
-                               this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-                               this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                               };
-                               */
-                               (function() { // DON'T EDIT BELOW THIS LINE
-                               var d = document, s = d.createElement('script');
-                               s.src = '//p4test.disqus.com/embed.js';
-                               s.setAttribute('data-timestamp', +new Date());
-                               (d.head || d.body).appendChild(s);
-                               })();
-                               </script>
-                           <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Teammates -->
-            <div class="col-sm-5 col-lg-4">
-               <div class="block">
-                  <div class="block-header bg-gray-lighter">
-                     <ul class="block-options">
-                        <li>
-                           <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
-                        </li>
-                     </ul>
-                     <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teammates</h3>
-                  </div>
-                  <div class="block-content">
-                     <ul class="nav-users push">
-                        @foreach($team_members as $player)
-                        <li>
-                           <a href="/player/{{$player->name}}">
-                              <img class="img-avatar" src="{{$player->player_profile_pic}}" alt="Profile Picture">
-                              <i class="fa fa-circle text-{{$player->profile_pic_color}}"></i> <div class="font-18px font-w400">{{ $player->name }}</div>
-                              <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $player->team_grade }} </span> | <span class="text-{{$player->skill_grade_color}}"> {{  $player->skill_grade }}</span> | <span class="text-{{$player->per_color}}"> {{ $player->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$player->ppg_color}}"> {{ $player->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$player->apg_color}}"> {{ $player->apg }} <small><small><small>APG</small></small></small></span></div>
-                           </a>
-                        </li>
-                        @endforeach
-                     </ul>
-                  </div>
-               </div>
-            </div>
-            <!-- END Teammates -->
-
-            <!-- Timeline -->
-            <div class="col-sm-7 col-lg-8">
-               <div class="block">
-                   <div class="block-header bg-gray-lighter">
-                       <ul class="block-options">
-                           <li>
-                               <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
-                           </li>
-                           <li>
-                               <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
-                           </li>
-                       </ul>
-                       <h3 class="block-title"><i class="fa fa-newspaper-o"></i> Updates</h3>
+            <div class="row">
+                <!-- Teammates -->
+                <div class="col-xs-12 col-md-6">
+                   <div class="block">
+                      <div class="block-header bg-gray-lighter">
+                         <ul class="block-options">
+                            <li>
+                               <button type="button" data-toggle="block-option" data-action="" data-action-mode="demo"><i class="si si-plus"></i></button>
+                            </li>
+                         </ul>
+                         <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teammates</h3>
+                      </div>
+                      <div class="block-content">
+                         <ul class="nav-users push">
+                            @foreach($team_members as $player)
+                            <li>
+                               <a href="/player/{{$player->name}}">
+                                  <img class="img-avatar" src="{{$player->player_profile_pic}}" alt="Profile Picture">
+                                  <i class="fa fa-circle text-{{$player->profile_pic_color}}"></i> <div class="font-18px font-w400">{{ $player->name }}</div>
+                                  <div class="font-w400 text-muted h5"> <span class="text-{{$player->team_grade_color}}"> {{ $player->team_grade }} </span> | <span class="text-{{$player->skill_grade_color}}"> {{  $player->skill_grade }}</span> | <span class="text-{{$player->per_color}}"> {{ $player->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$player->ppg_color}}"> {{ $player->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$player->apg_color}}"> {{ $player->apg }} <small><small><small>APG</small></small></small></span></div>
+                               </a>
+                            </li>
+                            @endforeach
+                         </ul>
+                      </div>
                    </div>
-                   <div class="block-content">
-                       <ul class="list list-timeline pull-t">
-                           <!-- Facebook Notification -->
-                           <li>
-                               <div class="list-timeline-time">3 hrs ago</div>
-                               <i class="fa fa-youtube list-timeline-icon bg-city"></i>
-                               <div class="list-timeline-content clearfix">
-                                   <ul class="nav-users push-10-t push">
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-success"></i> Dennis Ross
-                                               <div class="font-w400 text-muted"><small>Web Developer</small></div>
-                                           </a>
-                                       </li>
-                                   </ul>
-                                   <button class="btn btn-success push-5-r push-10" type="button">
-                                       <i class="fa fa-plus"></i> Add &nbsp;
-                                   </button>
-                                   <button class="btn btn-danger push-5-r push-10" type="button">
-                                       <i class="fa fa-times"></i> Deny
-                                   </button>
-                               </div>
-
-
-
-                           </li>
-                           <!-- END Facebook Notification -->
-
-                           <!-- Generic Notification -->
-                           <li>
-                               <div class="list-timeline-time">4 hrs ago</div>
-                               <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">3 New Badges were added!</p>
-                                   <div class="push-10-t">
-                                       <a class="item item-rounded push-10-r bg-info" data-toggle="tooltip" title="MyPanel" href="javascript:void(0)">
-                                           <i class="si si-rocket text-white-op"></i>
-                                       </a>
-                                       <a class="item item-rounded push-10-r bg-amethyst" data-toggle="tooltip" title="Project Time" href="javascript:void(0)">
-                                           <i class="si si-calendar text-white-op"></i>
-                                       </a>
-                                       <a class="item item-rounded push-10-r bg-city" data-toggle="tooltip" title="iDashboard" href="javascript:void(0)">
-                                           <i class="si si-speedometer text-white-op"></i>
-                                       </a>
-                                   </div>
-                               </div>
-                           </li>
-                           <!-- END Generic Notification -->
-
-                           <!-- Twitter Notification -->
-                           <li>
-                               <div class="list-timeline-time">12 hrs ago</div>
-                               <i class="fa fa-twitter list-timeline-icon bg-info"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">+ 1150 Followers</p>
-                                   <p class="font-s13">You’re getting more and more followers, keep it up!</p>
-                               </div>
-                           </li>
-                           <!-- END Twitter Notification -->
-
-                           <!-- Social Notification -->
-                           <li>
-                               <div class="list-timeline-time">2 days ago</div>
-                               <i class="fa fa-user-plus list-timeline-icon bg-success"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">+ 5 Friend Requests</p>
-                                   <ul class="nav-users push-10-t push">
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar4.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-success"></i> Amanda Powell
-                                               <div class="font-w400 text-muted"><small>Web Designer</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar11.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-success"></i> Eric Lawson
-                                               <div class="font-w400 text-muted"><small>Graphic Designer</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar1.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-warning"></i> Emma Cooper
-                                               <div class="font-w400 text-muted"><small>Photographer</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-warning"></i> Eugene Burke
-                                               <div class="font-w400 text-muted"><small>Copywriter</small></div>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <a href="base_pages_profile.html">
-                                               <img class="img-avatar" src="{{asset('/img/avatars/avatar15.jpg')}}" alt="">
-                                               <i class="fa fa-circle text-danger"></i> Ethan Howard
-                                               <div class="font-w400 text-muted"><small>UI Designer</small></div>
-                                           </a>
-                                       </li>
-                                   </ul>
-                               </div>
-                           </li>
-                           <!-- END Social Notification -->
-
-                           <!-- System Notification -->
-                           <li>
-                               <div class="list-timeline-time">1 week ago</div>
-                               <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">System updated to v2.02</p>
-                                   <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
-                               </div>
-                           </li>
-                           <!-- END System Notification -->
-
-                           <!-- Generic Notification -->
-                           <li>
-                               <div class="list-timeline-time">2 weeks ago</div>
-                               <i class="fa fa-briefcase list-timeline-icon bg-modern"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">1 New Product was added!</p>
-                                   <div class="push-10-t">
-                                       <a class="item item-rounded push-10-r bg-modern" data-toggle="tooltip" title="eSettings" href="javascript:void(0)">
-                                           <i class="si si-settings text-white-op"></i>
-                                       </a>
-                                   </div>
-                               </div>
-                           </li>
-                           <!-- END Generic Notification -->
-
-                           <!-- System Notification -->
-                           <li>
-                               <div class="list-timeline-time">2 months ago</div>
-                               <i class="fa fa-cog list-timeline-icon bg-primary-dark"></i>
-                               <div class="list-timeline-content">
-                                   <p class="font-w600">System updated to v2.01</p>
-                                   <p class="font-s13">Check the complete changelog at the <a href="javascript:void(0)">activity page</a>.</p>
-                               </div>
-                           </li>
-                           <!-- END System Notification -->
-                       </ul>
-                    </div>
                 </div>
-            </div>
-            <!-- END Timeline -->
+                <!-- END Teammates -->
 
-            <!-- Teams -->
-            <div class="col-sm-5 col-lg-4">
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="[]" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="fa fa-fw fa-share-alt"></i> Teams</h3>
-                    </div>
-                    <div class="block-content">
-                        <h5>Owned</h5>
-                        <ul class="nav-users push">
-                            @foreach($teams_owned as $team)
+                <!-- Teams -->
+                <div class="col-xs-12 col-md-6">
+                    <div class="block">
+                        <div class="block-header bg-gray-lighter">
+                            <ul class="block-options">
                                 <li>
-                                    <a href="/team/{{$team->name}}">
-                                        <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
-                                        <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span></div>
-                                        <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
-                                    </a>
+                                    <button type="button" data-toggle="block-option" data-action="[]" data-action-mode="demo"><i class="si si-plus"></i></button>
                                 </li>
-                            @endforeach
-                        </ul>
-                        <h5>Signed</h5>
-                        <ul class="nav-users push">
-                            @foreach($teams_on as $team)
-                                <li>
-                                    <a href="/team/{{$team->name}}">
-                                        <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
-                                        <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
-                                        <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Badges -->
-            <div class="col-sm-5 col-lg-4">
-                <div class="block">
-                    <div class="block-header bg-gray-lighter">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
-                            </li>
-                        </ul>
-                        <h3 class="block-title"><i class="si si-badge"></i> Badges</h3>
-                    </div>
-                    <div class="block-content">
-                        <ul class="list list-simple list-li-clearfix">
-                            <li>
-                                <a class="item item-rounded pull-left push-10-r bg-info" href="javascript:void(0)">
-                                    <i class="si si-rocket text-white-op"></i>
-                                </a>
-                                <h5 class="push-10-t">MyPanel</h5>
-                                <div class="font-s13">Responsive App Template</div>
-                            </li>
-                            <li>
-                                <a class="item item-rounded pull-left push-10-r bg-amethyst" href="javascript:void(0)">
-                                    <i class="si si-calendar text-white-op"></i>
-                                </a>
-                                <h5 class="push-10-t">Project Time</h5>
-                                <div class="font-s13">Web application</div>
-                            </li>
-                            <li>
-                                <a class="item item-rounded pull-left push-10-r bg-danger" href="javascript:void(0)">
-                                    <i class="si si-speedometer text-white-op"></i>
-                                </a>
-                                <h5 class="push-10-t">iDashboard</h5>
-                                <div class="font-s13">Bootstrap Admin Template</div>
-                            </li>
-                        </ul>
-                        <div class="text-center push">
-                            <small><a href="javascript:void(0)">View More..</a></small>
+                            </ul>
+                            <h3 class="block-title"><i class="fa fa-fw fa-dribbble"></i> Teams</h3>
+                        </div>
+                        <div class="block-content">
+                            <h5>Owned</h5>
+                            <ul class="nav-users push">
+                                @foreach($teams_owned as $team)
+                                    <li>
+                                        <a href="/team/{{$team->name}}">
+                                            <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
+                                            <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span></div>
+                                            <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <h5>Signed</h5>
+                            <ul class="nav-users push">
+                                @foreach($teams_on as $team)
+                                    <li>
+                                        <a href="/team/{{$team->name}}">
+                                            <img class="img-avatar" src="{{$team->team_profile_pic}}" alt="Profile Picture">
+                                            <i class="fa fa-circle text-{{$team->progress_bar_color}}"></i> <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
+                                            <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
+                    <!-- END Teamms -->
                 </div>
             </div>
-        <!-- END Badges -->
+
         </div>
-    <!-- END Page Content -->
+<!-- END Page Content -->
 
 @endsection
 

@@ -595,7 +595,7 @@ class NewPlayerController extends Controller
 
             $notification = "Player details for $name have been uploaded. Check your profile to view changes.";
 
-            $new_player = 'added';
+            $new_player = 'yes';
         }
 
         /* ======================================================

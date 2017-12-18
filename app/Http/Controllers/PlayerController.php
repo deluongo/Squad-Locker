@@ -108,28 +108,39 @@ class PlayerController extends Controller
         //Team relatinship arrays
         $teams_owned = [];
         $teams_on = [];
-        $invited = [];
-
+        $teams_that_send_you_a_squad_invite = [];
+        $players_that_requested_to_join_your_team = [];
         //Fill arrays
         foreach($player->teams as $team) {
-           if ($team->pivot->status == 3) {
-               $invited[] = $team;
+           if ($team->pivot->status == 4) {
+               $teams_that_send_you_a_squad_invite[] = $team;
            }
-            elseif ($team->pivot->status == 1) {
-                $teams_owned[] = $team;
-            }
-            elseif($team->pivot->status == 2) {
-                $teams_on[] = $team;
-            }
-        }
+           elseif ($team->pivot->status == 3) {
+               foreach($team->players as $plyr) {
+                   if ($plyr->pivot->status == 1) {
+                       $players_that_requested_to_join_your_team[] = $plyr;
+                   }
+               }
+           }
+           elseif ($team->pivot->status == 1) {
+               $teams_owned[] = $team;
+           }
+           elseif($team->pivot->status == 2) {
+               $teams_on[] = $team;
+           }
+       }
 
+
+
+        /*
         $sample_team = Team::where('name', '=', 'StraightFundamental')->first();
-        if(($sample_team) && ($invited == [])) {
-            $invited[] = $sample_team;
+        if(($sample_team) && ($teams_that_send_you_a_squad_invite == [])) {
+            $teams_that_send_you_a_squad_invite[] = $sample_team;
         }
         else {
-            $invited = [];
+            $teams_that_send_you_a_squad_invite = [];
         }
+        */
 
         //All active teams
         $all_teams = array_merge($teams_owned, $teams_on);
@@ -151,8 +162,8 @@ class PlayerController extends Controller
 
         $chart_data = [];
 
-        if($invited) {
-            foreach($invited as $team) {
+        if($teams_that_send_you_a_squad_invite) {
+            foreach($teams_that_send_you_a_squad_invite as $team) {
                //$id = $team->id;
                $chart_name = 'Chart'.$team->id;
 
@@ -195,9 +206,9 @@ class PlayerController extends Controller
             'ppg' => $ppg, 'rpg' => $rpg, 'team_grade_color' => $team_grade_color, 'skill_grade_color' => $skill_grade_color, 'per_color' => $per_color,
             'per_color' => $per_color, 'fg_color' => $fg_color, 'apg_color' => $apg_color, 'ppg_color' => $ppg_color, 'rpg_color' => $rpg_color,
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
-            'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
+            'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color, 'players_that_requested_to_join_your_team'=>$players_that_requested_to_join_your_team,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited,
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'teams_that_send_you_a_squad_invite' => $teams_that_send_you_a_squad_invite,
             'invite_accepted' => $invite_accepted, 'user_avatar' => $user_avatar, 'player' => $player, 'archetype2' => $archetype2
         ];
 
@@ -283,14 +294,14 @@ class PlayerController extends Controller
         //Team relatinship arrays
         $teams_owned = [];
         $teams_on = [];
-        $invited = [];
+        $teams_that_send_you_a_squad_invite = [];
 
         /* ======================================================
         Navigation - List of teams
         ====================================================== */
         foreach($player->teams as $team) {
            if ($team->pivot->status == 3) {
-               $invited[] = $team;
+               $teams_that_send_you_a_squad_invite[] = $team;
            }
             elseif ($team->pivot->status == 1) {
                 $teams_owned[] = $team;
@@ -350,7 +361,7 @@ class PlayerController extends Controller
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'invited' => $invited,
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'teams_that_send_you_a_squad_invite' => $teams_that_send_you_a_squad_invite,
             'Chart3' => $Chart3, 'invite_accepted' => $invite_accepted
         ];
 

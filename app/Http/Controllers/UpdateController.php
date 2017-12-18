@@ -43,10 +43,17 @@ class UpdateController extends Controller
             ### Account Settings ###
             $email = Auth::user()->email;
             $password = Auth::user()->password;
-            ### Profile ###
+
+            ### Account Settings ###
             $name = $player->name;
-            $affiliation = $player->affiliation;
+            ### 2K Integration ###
+            $system = $player->system;
+            $system_username = $player->system_username;
+            $system_password = $player->system_password;
+            ### Profile ###
             $archetype = $player->archetype;
+            $archetype2 = $player->archetype2;
+            $overall = $player->overall;
             $position = $player->position;
             $tagline = $player->tagline;
             ### Images ###
@@ -74,6 +81,7 @@ class UpdateController extends Controller
             $apg_ppg = $player->apg_ppg;
             $ppg = $player->ppg;
             $rpg = $player->rpg;
+
         }
         else {
             ### Notification ###
@@ -106,11 +114,12 @@ class UpdateController extends Controller
                 $teams_on[] = $team;
             }
         }
-        $player_profile_pic = $player->player_team;
+        $player_profile_pic = $profile_pic;
         /* ======================================================
         Show Form
         ====================================================== */
-        $data = ['player_profile_pic' => $player_profile_pic, 'player' => $player, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+        $data = ['player_profile_pic' => $player_profile_pic, 'player' => $player, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'system' => $system, 'system_username' => $system_username, 'system_password' => $system_password, 'archetype2' => $archetype2, 'overall' => $overall];
+
         return view('update.show')->with($data);
     }
 
@@ -132,27 +141,32 @@ class UpdateController extends Controller
             ====================================================== */
             if($player) {
                 ### Account Settings ###
-                $name = $player->name;
-                ### Account Settings ###
                 $email = Auth::user()->email;
                 $password = Auth::user()->password;
+                ### Account Settings ###
+                $name = $player->name;
+                ### 2K Integration ###
+                $system = $player->system;
+                $system_username = $player->system_username;
+                $system_password = $player->system_password;
                 ### Profile ###
-                $affiliation = $player->affiliation;
                 $archetype = $player->archetype;
+                $archetype2 = $player->archetype2;
+                $overall = $player->overall;
                 $position = $player->position;
                 $tagline = $player->tagline;
-                ### Social ###
-                $twitter = $player->twitter;
-                $youtube = $player->youtube;
-                $twitch = $player->twitch;
                 ### Images ###
-                $background_pic = $player->player_background_pic;
+                $background_pic = $player->player_bg_pic;
                 $profile_pic = $player->player_profile_pic;
-                ### Park Rank ###
+                ### Park ###
                 $rep_level = $player->rep_level;
                 $rep_progress = $player->rep_progress;
                 $rep_status = $player->rep_status;
                 $status_level = $player->status_level;
+                ### Social ###
+                $twitter = $player->twitter;
+                $youtube = $player->youtube;
+                $twitch = $player->twitch;
                 ### Playstyle ###
                 $type = $player->type;
                 $role = $player->role;
@@ -199,28 +213,25 @@ class UpdateController extends Controller
                 'youtube' => 'required|active_url',
                 'twitch' => 'required|active_url',
                 ### Images ###
-                //'background_pic' => 'active_url',
-                //'profile_pic' => 'active_url',
+                'background_pic' => 'active_url',
+                'profile_pic' => 'active_url',
                 /* ======================================================
                 Page 2
                 ====================================================== */
                 ### Profile ###
                 'position' => 'required',
                 'archetype' => 'required',
-                'affiliation' => 'required',
+                'archetype2' => 'required',
                 'tagline' => 'required',
                 ### Park Rank ###
-                'rep_status' => 'required',
-                'status_level' => 'required',
-                'rep_progress' => 'required',
                 'style' => 'required',
+                'overall' => 'required',
                 /* ======================================================
                 Page 3
                 ====================================================== */
                 'per' => 'required',
                 'ppg' => 'required',
                 'apg' => 'required',
-                'apg_ppg' => 'required',
                 'fg' => 'required|numeric|max:100|min:0',
                 'rpg' => 'required',
 
@@ -237,15 +248,30 @@ class UpdateController extends Controller
             if (!$request->input('password') == null) {
                 $password = $request->input('password');
             }
+            ### Account Settings ###
             if (!$request->input('name') == null) {
                 $name = $request->input('name');
             }
-            ### Profile ###
-            if (!$request->input('affiliation') == null) {
-                $affiliation = $request->input('affiliation');
+            ### 2K Integration ###
+            $system = $request->input('system');
+            if (!$request->input('system_username') == null) {
+                $system_username = $request->input('system_username');
             }
+            else {
+                $system_username = '';
+            }
+            if (!$request->input('system_password') == null) {
+                $system_password = $request->input('system_password');
+            }
+            else {
+                $system_password = '';
+            }
+            ### Profile ###
             if (!$request->input('archetype') == null) {
                 $archetype = $request->input('archetype');
+            }
+            if (!$request->input('archetype2') == null) {
+                $archetype2 = $request->input('archetype2');
             }
             if (!$request->input('position') == null) {
                 $position = $request->input('position');
@@ -261,10 +287,9 @@ class UpdateController extends Controller
                 $profile_pic = $request->input('profile_pic');
             }
             ### Park ###
-            $rep_progress = $request->input('rep_progress');
-            $rep_status = $request->input('rep_status');
-            $status_level = $request->input('status_level');
-            $rep_level = "{$rep_status} {$status_level}";
+            $overall = $request->input('overall');
+            $rep_level = "{$overall} OVR";
+            $rep_progress = $overall;
             ### Social ###
             $twitter = $request->input('twitter');
             $youtube = $request->input('youtube');
@@ -283,13 +308,20 @@ class UpdateController extends Controller
             $per = $request->input('per');
             $fg = $request->input('fg');
             $apg = $request->input('apg');
-            $apg_ppg = $request->input('apg_ppg');
             $ppg = $request->input('ppg');
             $rpg = $request->input('rpg');
+            $apg_ppg = round($apg/$ppg, 2);
             $overall_talent_score = (int) round( ( 100 * (($fg/100)*$ppg + $apg_ppg*$apg/1.5 + 2*$rpg ) / 20 ) );
             //Default Team Grade
 
-            //$id = Auth::user()->id;
+            ##### TEMPORARY #####
+            $team_grade = 'C';
+            $skill_grade = 'C';
+            //$email = Auth::user()->email;
+            //$password = Auth::user()->email;
+            $user_id = Auth::user()->id;
+
+
 
             /* ======================================================
             Context Colors
@@ -388,10 +420,10 @@ class UpdateController extends Controller
                 $profile_pic_color = "danger";
             }
             ### Progress Bar ###
-            if ($rep_progress >= 66) {
+            if ($rep_progress >= 90) {
                 $progress_bar_color = "success";
             }
-            elseif (66 > $rep_progress && $rep_progress> 33) {
+            elseif (80 > $rep_progress && $rep_progress> 70) {
                 $progress_bar_color = "warning";
             }
             else {
@@ -422,6 +454,7 @@ class UpdateController extends Controller
             else {
                 $type = "Off-Ball";
             }
+
             /* ======================================================
             Update Database
             ====================================================== */
@@ -430,20 +463,25 @@ class UpdateController extends Controller
                 $user->email = $email;
                 $user->password = $password;
                 $user->name = $name;
+                ### Key ###
+                $player->user_id = $user_id;
+                ### 2K Integration ###
+                $player->system =$system;
+                $player->system_username = $system_username;
+                $player->system_password = $system_password;
+                ### Account Settings ###
                 $player->name = $name;
                 ### Profile ###
-                $player->affiliation = $affiliation;
                 $player->archetype = $archetype;
+                $player->archetype2 = $archetype2;
                 $player->position = $position;
                 $player->tagline = $tagline;
                 ### Images ###
                 $player->player_bg_pic = $background_pic;
                 $player->player_profile_pic = $profile_pic;
                 ### Park Rank ###
+                $player->overall = $overall;
                 $player->rep_level = $rep_level;
-                $player->rep_progress = $rep_progress;
-                $player->rep_status = $rep_status;
-                $player->status_level = $status_level;
                 ### Social ###
                 $player->twitter = $twitter;
                 $player->youtube = $youtube;
@@ -487,20 +525,25 @@ class UpdateController extends Controller
                 $user->email = $email;
                 $user->password = $password;
                 $user->name = $name;
+                ### Key ###
+                $player->user_id = $user_id;
+                ### 2K Integration ###
+                $player->system =$system;
+                $player->system_username = $system_username;
+                $player->system_password = $system_password;
+                ### Account Settings ###
                 $player->name = $name;
                 ### Profile ###
-                $player->affiliation = $affiliation;
                 $player->archetype = $archetype;
+                $player->archetype2 = $archetype2;
                 $player->position = $position;
                 $player->tagline = $tagline;
                 ### Images ###
                 $player->player_bg_pic = $background_pic;
                 $player->player_profile_pic = $profile_pic;
-                ### Park Rank ###
+                ### Park Status ###
+                $player->overall = $overall;
                 $player->rep_level = $rep_level;
-                $player->rep_progress = $rep_progress;
-                $player->rep_status = $rep_status;
-                $player->status_level = $status_level;
                 ### Social ###
                 $player->twitter = $twitter;
                 $player->youtube = $youtube;
@@ -531,10 +574,9 @@ class UpdateController extends Controller
                 $player->apg_ppg_color = $apg_ppg_color;
                 $player->ppg_color = $ppg_color;
                 $player->rpg_color = $rpg_color;
-                ### Save The Changes ###
+                ### Save Changes ###
                 $player->save();
                 $user->save();
-
                 $notification = "Player details for $name have been uploaded. Check your profile to view changes.";
             }
 
@@ -568,7 +610,8 @@ class UpdateController extends Controller
             Show Form
             ====================================================== */
             $player_profile_pic = $profile_pic;
-            $data = ['player_profile_pic' => $player_profile_pic, 'player' => $player, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'affiliation' => $affiliation, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on];
+            $data = ['player_profile_pic' => $player_profile_pic, 'player' => $player, 'profile_pic' => $profile_pic, 'background_pic' => $background_pic, 'find_teams_heading' => $find_teams_heading, 'team_update_heading' => $team_update_heading, 'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading, 'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading, 'notification' => $notification, 'email' => $email , 'passowrd' => $password, 'name' => $name, 'rep_status' => $rep_status, 'status_level' => $status_level, 'tagline' => $tagline, 'archetype' => $archetype, 'position' => $position, 'twitter' => $twitter, 'youtube' => $youtube, 'twitch' => $twitch, 'type' => $type, 'rep_level' => $rep_level, 'rep_progress' => $rep_progress, 'role' => $role, 'style' => $style, 'team_grade' => $team_grade, 'skill_grade' => $skill_grade, 'per' => $per, 'fg' => $fg, 'apg' => $apg, 'apg_ppg' => $apg_ppg, 'ppg' => $ppg, 'rpg' => $rpg, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'system' => $system, 'system_username' => $system_username, 'system_password' => $system_password, 'archetype2' => $archetype2, 'overall' => $overall
+        ];
             return view('update.show')->with($data);
         }
 }

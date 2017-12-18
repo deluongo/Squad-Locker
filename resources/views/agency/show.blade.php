@@ -3,6 +3,7 @@
 @section('css')
     <!-- Page JS Plugins CSS -->
     <link rel="stylesheet" href="{{URL::asset('/js/plugins/datatables/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css">
 @endsection
 
 @section('title')
@@ -22,7 +23,7 @@
                         </span>
                     </div>
                     <h2 class="page heading push-5-t text-white">{{$name}}</h2>
-                    <h2 class="h5 text-white-op">{{$affiliation}} | {{$position}} | {{$archetype}} </h2>
+                    <h2 class="h5 text-white-op">{{$position}} | {{$archetype}} | {{$archetype2}} </h2>
                 </div>
                 <div class="col-sm-5 text-right hidden-xs">
                     <ul class="breadcrumb push-10-t">
@@ -93,56 +94,7 @@
                         <div class="row items-push">
                             <div class="form-group">
                                 <div class="form-horizontal push-20-l push-20-r">
-                                    <div class="col-xs-3 col-sm-2 col-lg-1">
-                                        <label for="search_position">Position</label>
-                                        <select class="form-control" id="search_position" name="search_position[]" size="5" multiple>
-                                            <option value="PG" @if(in_array('PG', $search_position)) selected @endif>PG</option>
-                                            <option value="SG" @if(in_array('SG', $search_position)) selected @endif>SG</option>
-                                            <option value="SF" @if(in_array('SF', $search_position)) selected @endif>SF</option>
-                                            <option value="PF" @if(in_array('PF', $search_position)) selected @endif>PF</option>
-                                            <option value="C" @if(in_array('C', $search_position)) selected @endif>C</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-5 col-sm-4 col-lg-2">
-                                        <label for="search_affiliation">Affiliation</label>
-                                        <select class="form-control" id="search_affiliation" name="search_affiliation[]" size="5" multiple>
-                                            <option value="Pro-Am Team" @if(in_array('Pro-Am Team', $search_affiliation)) selected @endif>Pro-Am Team</option>
-                                            <option value="Rivit City" @if(in_array('Rivit City', $search_affiliation)) selected @endif>Rivit City</option>
-                                            <option value="Sunset Beach" @if(in_array('Sunset Beach', $search_affiliation)) selected @endif>Sunset Beach</option>
-                                            <option value="Old Town" @if(in_array('Old Town', $search_affiliation)) selected @endif>Old Town</option>
-                                            <option value="Cross Park Squad" @if(in_array('Cross Park Squad', $search_affiliation)) selected @endif>Cross Park Squad</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-4 col-sm-4 col-lg-2">
-                                        <label for="search_rep_status">Park Rep</label>
-                                        <select class="form-control" id="search_rep_status" name="search_rep_status[]" size="5" multiple>
-                                            <option value="Rookie" @if(in_array('Rookie', $search_rep_status)) selected @endif>Rookie</option>
-                                            <option value="Pro" @if(in_array('Pro', $search_rep_status)) selected @endif>Pro</option>
-                                            <option value="All-Star" @if(in_array('All-Star', $search_rep_status)) selected @endif>All-Star</option>
-                                            <option value="Superstar" @if(in_array('Superstar', $search_rep_status)) selected @endif>Superstar</option>
-                                            <option value="Legend" @if(in_array('Legend', $search_rep_status)) selected @endif>Legend</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-3 col-sm-2 col-lg-1">
-                                        <label for="search_rep_level">Level</label>
-                                        <select class="form-control" id="search_rep_level" name="search_rep_level[]" size="5" multiple>
-                                            <option value=1 @if(in_array(1, $search_rep_level)) selected @endif>1</option>
-                                            <option value=2 @if(in_array(2, $search_rep_level)) selected @endif>2</option>
-                                            <option value=3 @if(in_array(3, $search_rep_level)) selected @endif>3</option>
-                                            <option value=4 @if(in_array(4, $search_rep_level)) selected @endif>4</option>
-                                            <option value=5 @if(in_array(5, $search_rep_level)) selected @endif>5</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-5 col-sm-4 col-lg-2">
-                                        <label for="search_type">Type | Role</label>
-                                        <select class="form-control" id="search_type" name="search_type[]" size="5" multiple>
-                                            <option value="On-Ball | Facilitator" @if(in_array('On-Ball | Facilitator', $search_type_role)) selected @endif>On-Ball | Facilitator</option>
-                                            <option value="On-Ball | Scorer" @if(in_array('On-Ball | Scorer', $search_type_role)) selected @endif>On-Ball | Scorer</option>
-                                            <option value="Off-Ball | Facilitator" @if(in_array('Off-Ball | Facilitator', $search_type_role)) selected @endif>Off-Ball | Facilitator</option>
-                                            <option value="Off-Ball | Finisher" @if(in_array('Off-Ball | Finisher', $search_type_role)) selected @endif>Off-Ball | Finisher</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-4 col-sm-4 col-lg-2">
+                                    <div class="col-xs-4 col-sm-3 col-lg-4">
                                         <label for="search_archetype">Archetype</label>
                                         <select class="form-control" id="search_archetype" name="search_archetype[]" size="5" multiple>
                                             <option value="Playmaker" @if(in_array('Playmaker', $search_archetype))  selected @endif>Playmaker</option>
@@ -157,7 +109,57 @@
                                             <option value="Shot Creator" @if(in_array('Shot Creator', $search_archetype)) selected @endif>Shot Creator</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-4 col-lg-2">
+
+
+                                    <div class="col-xs-3 col-lg-4">
+
+                                        <label for="search_overall">Player's Overall Range:</label>
+
+
+                                        Note that the slider handle that caused the value change is focused.
+
+                                        <input id="search_overall" name="search_overall" value="" data-slider-min="60" data-slider-max="99" data-slider-step="1" data-slider-value="[{{intval($search_overall_min)}},{{intval($search_overall_max)}}]"/>
+
+
+                                        <input id="search_overall_min" name="search_overall_min" class="hidden" value="{{intval($search_overall_min)}}" />
+                                        <input id="search_overall_max" name="search_overall_max" class="hidden"  value="{{intval($search_overall_max)}}" />
+
+                                    </div>
+                                    <div class="col-xs-4 col-sm-3 col-lg-4">
+                                        <label for="search_archetype2">Archetype 2</label>
+                                        <select class="form-control" id="search_archetype2" name="search_archetype2[]" size="5" multiple>
+                                            <option value="Playmaker" @if(in_array('Playmaker', $search_archetype2))  selected @endif>Playmaker</option>
+                                            <option value="Lockdown Defender" @if(in_array('Lockdown Defender', $search_archetype2)) selected @endif>Lockdown Defender</option>
+                                            <option value="Sharp Shooter" @if(in_array('Sharp Shooter', $search_archetype2)) selected @endif>Sharp Shooter</option>
+                                            <option value="Slasher" @if(in_array('Slasher', $search_archetype2)) selected @endif>Slasher</option>
+                                            <option value="Athletic Finisher" @if(in_array('Athletic Finisher', $search_archetype2)) selected @endif>Athletic Finisher</option>
+                                            <option value="Stretch Big" @if(in_array('Stretch Big', $search_archetype2)) selected @endif>Stretch Big</option>
+                                            <option value="Post Scorer" @if(in_array('Post Scorer', $search_archetype2)) selected @endif>Post Scorer</option>
+                                            <option value="Glass Cleaner" @if(in_array('Glass Cleaner', $search_archetype2)) selected @endif>Glass Cleaner</option>
+                                            <option value="Point Forward" @if(in_array('Point Forward', $search_archetype2)) selected @endif>Point Forward</option>
+                                            <option value="Shot Creator" @if(in_array('Shot Creator', $search_archetype2)) selected @endif>Shot Creator</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-2 col-lg-1">
+                                        <label for="search_position">Position</label>
+                                        <select class="form-control" id="search_position" name="search_position[]" size="5" multiple>
+                                            <option value="PG" @if(in_array('PG', $search_position)) selected @endif>PG</option>
+                                            <option value="SG" @if(in_array('SG', $search_position)) selected @endif>SG</option>
+                                            <option value="SF" @if(in_array('SF', $search_position)) selected @endif>SF</option>
+                                            <option value="PF" @if(in_array('PF', $search_position)) selected @endif>PF</option>
+                                            <option value="C" @if(in_array('C', $search_position)) selected @endif>C</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-4 col-lg-2">
+                                        <label for="search_type">Type | Role</label>
+                                        <select class="form-control" id="search_type" name="search_type[]" size="5" multiple>
+                                            <option value="On-Ball | Facilitator" @if(in_array('On-Ball | Facilitator', $search_type_role)) selected @endif>On-Ball | Facilitator</option>
+                                            <option value="On-Ball | Scorer" @if(in_array('On-Ball | Scorer', $search_type_role)) selected @endif>On-Ball | Scorer</option>
+                                            <option value="Off-Ball | Facilitator" @if(in_array('Off-Ball | Facilitator', $search_type_role)) selected @endif>Off-Ball | Facilitator</option>
+                                            <option value="Off-Ball | Finisher" @if(in_array('Off-Ball | Finisher', $search_type_role)) selected @endif>Off-Ball | Finisher</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-4 col-lg-3">
                                         <label for="search_style">Style</label>
                                         <select class="form-control" id="search_style" name="search_style[]" size="5" multiple>
                                             <option value="Dribble-N-Dime" @if(in_array('Drible-N-Dime', $search_style)) selected @endif>Dribble-N-Dime</option>
@@ -189,24 +191,16 @@
                         </div>
                     </div>
                     <div class="push-20-t text-center margin-10">
-                        <button class="btn btn-sm btn-primary push-15" name="submitButton" id="submitButton" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
+                        <button class="btn btn-sm btn-primary push-15" name="submit_type" value="filter" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
                         <button class="btn btn-sm btn-warning push-15" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
                     </div>
                 </div>
             </form>
-        </div>
-        <!-- END Filtr Form -->
+            <div class="block" id="data-table-div">
+                <div class="block-header">
 
-
-        <div class="block">
-            <div class="block-header">
-
-            </div>
-            <div class="block-content">
-               <div id=results>
-               </div>
-
-               <div id=defaultResults>
+                </div>
+                <div class="block-content">
                    <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid"> <!--aria-describedby="DataTables_Table_1_info"-->
                        <thead>
                            <tr role="row">
@@ -228,8 +222,8 @@
                        <tbody>
                            @foreach($players as $player)
                                @if(in_array($player->type, $search_type) AND in_array($player->role, $search_role) AND in_array($player->style, $search_style)
-                                   AND in_array($player->position, $search_position) AND in_array($player->affiliation, $search_affiliation) AND in_array($player->rep_status, $search_rep_status)
-                                   AND in_array($player->status_level, $search_rep_level) AND in_array($player->archetype, $search_archetype))
+                                   AND in_array($player->position, $search_position) AND ($player->overall > intval($search_overall_min)) AND ($player->overall < intval($search_overall_max))
+                                   AND in_array($player->archetype, $search_archetype) AND in_array($player->archetype2, $search_archetype2))
                                    <tr role="row" @if ($player->id & 1) class="odd" @else class="even" @endif>
                                        <td class="hidden-sm hidden-xs font-w600"><a href="/player/{{ $player->name}}">{{ $player->name }}</a></td>
                                        <td class="hidden-xs">{{ $player->type }}</td>
@@ -249,9 +243,38 @@
                                        <td class="hidden-md hidden-sm hidden-xs sorting {{$player->rpg_color}} table-num">{{ $player->rpg }}</td>
                                        <td class="text-center">
                                            <div class="btn-group">
-                                               <button class="btn btn-xs btn-success push-5-t addButton" type="submit" data-toggle="tooltip" title="" data-original-title="Edit Client" value="{{$player->id}}"><i class="fa fa-plus"></i></button>
-                                               <a class="btn btn-xs btn-default push-5-t" href="/free-agency"  data-toggle="tooltip" title="" data-original-title="Remove Client"><i class="fa fa-times"></i></a>
-                                           </div>
+
+
+
+                                               @if($player->name == Auth::user()->name)
+                                               <button class="btn btn-xs btn-info push-5-t"  name="submit_type" value="{{$player->id}}" type="submit" disabled><i class="fa fa-user"></i></button>
+
+                                               @elseif(sizeof($send_invite_from_one_of_these_teams) == 0)
+                                               <button class="btn btn-xs btn-success push-5-t"  name="submit_type" value="{{$player->id}}" type="submit" disabled><i class="fa fa-plus"></i></button>
+
+                                               @elseif(sizeof($send_invite_from_one_of_these_teams) == 1)
+                                               <button class="btn btn-xs btn-success push-5-t"  name="submit_type" value="{{$player->id}}|{{$send_invite_from_one_of_these_teams[0]->id}}" type="submit"><i class="fa fa-plus"></i></button>
+
+                                               @else
+                                               <div class="btn-group pull-right push-50-t push-5-r">
+
+                                                   <button class="btn btn-xs btn-success push-5-t dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i></button>
+
+
+                                                   <ul class="dropdown-menu dropdown-menu-right nav-users push">
+                                                       <li class="dropdown-header">From</li>
+                                                       @foreach($send_invite_from_one_of_these_teams as $team)
+                                                               <li>
+                                                                   <a tabindex="-1" name="submit_type" value="{{$player->id}}|{{$send_invite_from_one_of_these_teams[0]->id}}" type="submit">
+                                                                       <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
+                                                                       <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
+                                                                   </a>
+                                                               </li>
+                                                       @endforeach
+                                                   </ul>
+                                               </div>
+                                               @endif
+                                            </div>
                                        </td>
                                    </tr>
                                @endif
@@ -259,23 +282,68 @@
                        </tbody>
                    </table>
                 </div>
-
             </div>
         </div>
-
+        <!-- END Filtr Form -->
 
     </div>
-
-
     <!-- END Page Content -->
 @endsection
 
 @section('page-js')
 
-    @yield('ajax-js')
+    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
+    <script src="{{URL::asset('/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 
     <script>
-            /*
+
+
+
+        /*
+         *  Description: Ajax Form Submit Handler
+         */
+        $(document).ready(function(){
+           console.log("here");
+
+
+
+           // Without JQuery
+           var slider = new Slider('#search_overall', {});
+
+           slider.on("slide", function(slideEvt) {
+                console.log(slider.getValue() );
+                var overall_vals = slider.getValue();
+                $("#search_overall_min").val(overall_vals[0]);
+                $("#search_overall_max").val(overall_vals[1]);
+           });
+
+
+
+
+
+            $('#data-table-div').change(function(){
+                  console.log("here");
+                  var id = $(this).val();
+                  $.ajax({
+                      url:"/agency/store",
+                      method: "POST",
+                      data: $(this).serialize(),
+                      success: function(data){
+                          $('#data-table-div').html(data.html);
+                      }
+                  });
+              });
+
+          });
+
+
+
+
+
+
+
+        /*
          *  Document   : base_tables_datatables.js
          *  Author     : pixelcave
          *  Description: Custom JS code used in Tables Datatables Page
@@ -484,11 +552,9 @@
         jQuery(function(){ BaseTableDatatables.init(); });
 
 
-
     </script>
-    <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
-    <script src="{{URL::asset('/js/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="/js/ajax/findplayer.js"></script>
+
+
 
     <!-- END Apps Modal -->
 

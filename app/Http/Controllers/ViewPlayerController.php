@@ -37,11 +37,11 @@ class ViewPlayerController extends Controller
             $name = $player->name;
             $affiliation = $player->affiliation;
             $archetype = $player->archetype;
+            $archetype2 = $player->archetype2;
             $position = $player->position;
             $tagline = $player->tagline;
             $player_bg_pic = $player->player_bg_pic;
             $player_profile_pic = $player->player_profile_pic;
-
 
             //Park
             $rep_level = $player->rep_level;
@@ -208,7 +208,7 @@ class ViewPlayerController extends Controller
             'teams_owned_by_active_user' => $teams_owned_by_active_user, 'disable_invites_for_these_team_ids' => $disable_invites_for_these_team_ids,
             'send_invite_from_one_of_these_teams' => $send_invite_from_one_of_these_teams, 'trigger_accept_request_button_for_these_teams' => $trigger_accept_request_button_for_these_teams,
             'view_player_teams_owned' => $view_player_teams_owned, 'view_player_teams_on' => $view_player_teams_on, 'active_user_player_id' => $active_user_player_id,
-            'player' => $player
+            'player' => $player, 'archetype2' => $archetype2
 
         ];
 

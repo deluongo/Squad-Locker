@@ -218,14 +218,15 @@ class FindTeamController extends Controller
 
         # Connect this tag to this book
         # Status reference
-        # 0 = no relationship
-        # 1 = own
-        # 2 = member
-        # 3 = expressed interest
-        # 4 = rejected
+        # ---------------------------- #
+        # 1 = is ownership
+        # 2 = is on active roster
+        # 3 = team has invited player, waiting response
+        # 4 = player has requested to join team, waiting response
         # 5 = blocked
-        $player->teams()->save($team, ['status' => 3]);
-        \Session::flash('flash_message', 'Team Invite sent successfully!');
+
+        $player->teams()->save($team, ['status' => 4]);
+        \Session::flash('flash_message', "Request to join {$team->name} sent successfully!");
       }
 
       $data = ['search_type' => $search_type, 'search_members' => $search_members, 'search_movement' => $search_movement,

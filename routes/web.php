@@ -59,7 +59,7 @@ Free Agency
 ====================================================== */
 ### Find Players ###
 Route::get('/free-agency', 'AgencyController@show')->name('agency.show');
-Route::post('/free-agency', 'AgencyController@post2')->name('agency.show');
+Route::post('/free-agency', 'AgencyController@store')->name('agency.show');
 ### Find Teams ###
 Route::get('/free-agency/teams', 'FindTeamController@show')->name('findteam.show');
 Route::post('/free-agency/teams', 'FindTeamController@store')->name('findteam.show');
