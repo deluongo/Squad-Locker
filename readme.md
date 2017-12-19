@@ -1,7 +1,8 @@
 # P4 - SquadLocker
 
 Live URL:
-    http://p4.kidcoder.me/
+    www.squadlocker.io
+    (Note: Working on getting this live today. May not be deployed server side in time.)
 
 Description:
     Squad Locker allows NBA 2K video game players to form more successful teams by facilitating finding teammates based on a created players’ stats, attributes, and play styles. The website will provide information about players and teams in an informative and appealing manner, to include:
@@ -11,14 +12,13 @@ Description:
         - Competitive reviews/grades
     In addition, the site will offer Twitter and Disqus integrations to enable communication, networking, and trash talking amongst users.
 
-Screencast Demo: https://youtu.be/q93Uge6L2Qk
+Screencast Demo: https://www.youtube.com/watch?v=oGkZXOTZ8p8
 
 Code/Comment Samples:
     - https://github.com/deluongo/p4/blob/master/app/Http/Controllers/NewTeamController.php
     - https://github.com/deluongo/p4/blob/master/app/Http/Controllers/NewPlayerController.php
     - https://github.com/deluongo/p4/blob/master/app/Http/Controllers/TeamUpdateController.php
     - https://github.com/deluongo/p4/blob/master/app/Http/Controllers/UpdateController.php
-    Note: I probably put 500 more hours into this than necessary. I've provided sample code from the controllers that are managing the functionality mandated by the rubric. I did not have time to make the rest of my code as perfect as these files and almost all of the commented out code is commented out for a reason. I am not ready to remove it yet as this will become an on-going project for me.
 
 HTML Validation Samples:
     - https://github.com/deluongo/p4/blob/master/resources/views/player/show.blade.php
