@@ -108,12 +108,13 @@ class PlayerController extends Controller
         //Team relatinship arrays
         $teams_owned = [];
         $teams_on = [];
-        $teams_that_send_you_a_squad_invite = [];
+        $teams_that_sent_you_a_squad_invite = [];
         $players_that_requested_to_join_your_team = [];
+
         //Fill arrays
         foreach($player->teams as $team) {
            if ($team->pivot->status == 4) {
-               $teams_that_send_you_a_squad_invite[] = $team;
+               $teams_that_sent_you_a_squad_invite[] = $team;
            }
            elseif ($team->pivot->status == 3) {
                foreach($team->players as $plyr) {
@@ -161,9 +162,9 @@ class PlayerController extends Controller
 
 
         $chart_data = [];
-
-        if($teams_that_send_you_a_squad_invite) {
-            foreach($teams_that_send_you_a_squad_invite as $team) {
+        $teams_that_sent_you_a_squad_invite[] = Team::where("id", "=", 2)->first();
+        if($teams_that_sent_you_a_squad_invite) {
+            foreach($teams_that_sent_you_a_squad_invite as $team) {
                //$id = $team->id;
                $chart_name = 'Chart'.$team->id;
 
@@ -208,7 +209,7 @@ class PlayerController extends Controller
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color, 'players_that_requested_to_join_your_team'=>$players_that_requested_to_join_your_team,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'teams_that_send_you_a_squad_invite' => $teams_that_send_you_a_squad_invite,
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'teams_that_sent_you_a_squad_invite' => $teams_that_sent_you_a_squad_invite,
             'invite_accepted' => $invite_accepted, 'user_avatar' => $user_avatar, 'player' => $player, 'archetype2' => $archetype2
         ];
 
@@ -361,7 +362,7 @@ class PlayerController extends Controller
             'apg_ppg_color' => $apg_ppg_color, 'progress_chart_color' => $progress_chart_color, 'overall_talent_score' => $overall_talent_score,
             'find_teams_heading' => $find_teams_heading, 'progress_bar_color' => $progress_bar_color,
             'progress_chart_color' => $progress_chart_color, 'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_bg_pic' => $player_bg_pic,
-            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'teams_that_send_you_a_squad_invite' => $teams_that_send_you_a_squad_invite,
+            'player_profile_pic' => $player_profile_pic, 'team_members' => $team_members, 'all_teams' => $all_teams, 'teams_that_sent_you_a_squad_invite' => $teams_that_sent_you_a_squad_invite,
             'Chart3' => $Chart3, 'invite_accepted' => $invite_accepted
         ];
 

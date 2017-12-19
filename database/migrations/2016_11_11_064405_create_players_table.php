@@ -37,7 +37,7 @@ class CreatePlayersTable extends Migration
               $table->integer('rep_progress')->default(0);
               $table->string('rep_status')->default('');
               $table->integer('status_level')->default(0);
-              $table->integer('overall')->default(60);
+              $table->integer('overall')->default(70);
 
               # Player profile fields
               $table->string('player_profile_pic')->default('https://s30.postimg.org/td1wyddf5/Baby_Face_Assasin.png');

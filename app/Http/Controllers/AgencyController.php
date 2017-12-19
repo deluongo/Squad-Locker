@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use p4\Http\Requests;
 use DB;
 use Carbon;
-#use p4\Team; # <--- NEW
+use p4\Team; # <--- NEW
 use p4\Player; # <--- NEW
 
 class AgencyController extends Controller
@@ -96,9 +96,81 @@ class AgencyController extends Controller
         $disable_invites_for_these_team_ids = [];
         $teams_view_player_requested_to_join = [];
 
+        // check pivot table -> status
+        foreach($player->teams as $team) {
+            if ($team->pivot->status == 1) {
+                //List of Teams View Player owns
+                $view_player_teams_owned[] = $team;
+            }
+            elseif($team->pivot->status == 2) {
+                //List of Teams View Player is rostered on
+                $view_player_teams_on[] = $team;
+                //Disable "send invite" if player is rostered
+                $disable_invites_for_these_team_ids[] = $team->id;
+            }
+            elseif($team->pivot->status == 3) {
+                //Disable "send invite" if invite was already sent
+                $disable_invites_for_these_team_ids[] = $team->id;
+            }
+            elseif($team->pivot->status == 4) {
+                //List of teams this view user has requested to join
+                $teams_view_player_requested_to_join[] = $team->id;
+            }
+        }
+
+        //merge team arrays | used to find list of teammates
+        $all_teams = array_merge($view_player_teams_owned, $view_player_teams_on);
+
+        //teammate array instantiation
+        $team_members = [];
+        $player_names = [];
+
+        //search all teams
+        foreach($all_teams as $team) {
+            //search all players
+            foreach($team->players as $player) {
+                //If teammate is not alreaady in the teammate list, add them as a teammate
+                if (!in_array($player->name, $player_names)) {
+                    //Used for reference
+                    $player_names[] = $player->name;
+                    //Used to display teammate list on front end
+                    $team_members[] = $player;
+                }
+            }
+        }
+
+        /* ======================================================
+        Active User | Teams & Teammates
+        ====================================================== */
+
         //Identify the list of teams an invite can be sent from
-        $send_invite_from_one_of_these_teams = [];
-        $trigger_accept_request_button_for_these_teams = [];
+        $label_invite_sent_if_one_of_these_teams = [];
+        $add_player_to_roster_if_one_of_these_teams = [];
+        $label_invite_sent_if_one_of_these_team_ids = [];
+        $add_player_to_roster_if_one_of_these_team_ids = [];
+
+        //Iterate Active User's Team List
+        foreach($teams_owned as $team) {
+            //If team is not diabled
+            if(!in_array($team->id, $disable_invites_for_these_team_ids)) {
+                //and team has not received an incoming request
+                if(!in_array($team->id, $teams_view_player_requested_to_join)){
+                    //Add to SEND INVITE Button's team list
+                    $label_invite_sent_if_one_of_these_teams[] = $team;
+                    $label_invite_sent_if_one_of_these_team_ids[] = $team->id;
+                }
+                //if team has received an incoming request
+                else {
+                    //Add to ACCEPT REQUEST Button's team list
+                    $add_player_to_roster_if_one_of_these_teams[] = $team;
+                    $add_player_to_roster_if_one_of_these_team_ids[] = $team->id;
+                }
+            }
+        }
+
+        $send_invite_from_one_of_these_teams = array_merge($label_invite_sent_if_one_of_these_teams, $add_player_to_roster_if_one_of_these_teams);
+
+
 
 
         /* ======================================================
@@ -112,7 +184,8 @@ class AgencyController extends Controller
         'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
         'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading,  'user_avatar' => $user_avatar,
         'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_profile_pic' => $player_profile_pic,
-        'trigger_accept_request_button_for_these_teams' => $trigger_accept_request_button_for_these_teams,
+        'label_invite_sent_if_one_of_these_team_ids' => $label_invite_sent_if_one_of_these_team_ids,
+        'add_player_to_roster_if_one_of_these_team_ids' =>  $add_player_to_roster_if_one_of_these_team_ids,
         'send_invite_from_one_of_these_teams' => $send_invite_from_one_of_these_teams
     ];
 
@@ -162,6 +235,35 @@ class AgencyController extends Controller
         $archetype2 = $player->archetype2;
         $player_profile_pic = $player->player_profile_pic;
         $user_avatar = $player->player_profile_pic;
+
+        /* ======================================================
+        Form Submit Handing
+        ====================================================== */
+
+        //Filter Form Handeling
+        $search_name = $request->input('search_name');
+
+        if ($request->input('search_position') != null) {
+            $search_position = $request->input('search_position');
+        }
+
+        $search_overall_min = $request->input('search_overall_min');
+
+        $search_overall_max = $request->input('search_overall_max');
+
+        $search_overall = [];
+
+        $search_archetype = $request->input('search_archetype');
+
+
+        $search_archetype2 = $request->input('search_archetype2');
+
+
+        $search_type_role = $request->input('search_type');
+
+
+        $search_style = $request->input('search_style');
+
 
 
         /* ======================================================
@@ -222,8 +324,10 @@ class AgencyController extends Controller
         ====================================================== */
 
         //Identify the list of teams an invite can be sent from
-        $send_invite_from_one_of_these_teams = [];
-        $trigger_accept_request_button_for_these_teams = [];
+        $label_invite_sent_if_one_of_these_teams = [];
+        $add_player_to_roster_if_one_of_these_teams = [];
+        $label_invite_sent_if_one_of_these_team_ids = [];
+        $add_player_to_roster_if_one_of_these_team_ids = [];
 
         //Iterate Active User's Team List
         foreach($teams_owned as $team) {
@@ -232,44 +336,21 @@ class AgencyController extends Controller
                 //and team has not received an incoming request
                 if(!in_array($team->id, $teams_view_player_requested_to_join)){
                     //Add to SEND INVITE Button's team list
-                    $send_invite_from_one_of_these_teams[] = $team;
+                    $label_invite_sent_if_one_of_these_teams[] = $team;
+                    $label_invite_sent_if_one_of_these_team_ids[] = $team->id;
                 }
                 //if team has received an incoming request
                 else {
                     //Add to ACCEPT REQUEST Button's team list
-                    $trigger_accept_request_button_for_these_teams[] = $team;
+                    $add_player_to_roster_if_one_of_these_teams[] = $team;
+                    $add_player_to_roster_if_one_of_these_team_ids[] = $team->id;
                 }
             }
         }
 
-
-        /* ======================================================
-        Form Submit Handing
-        ====================================================== */
-
-        //Filter Form Handeling
-        $search_name = $request->input('search_name');
-
-        if ($request->input('search_position') != null) {
-            $search_position = $request->input('search_position');
-        }
-
-        $search_overall_min = $request->input('search_overall_min');
-
-        $search_overall_max = $request->input('search_overall_max');
-
-        $search_overall = 0;
-
-        $search_archetype = $request->input('search_archetype');
+        $send_invite_from_one_of_these_teams = array_merge($label_invite_sent_if_one_of_these_teams, $add_player_to_roster_if_one_of_these_teams);
 
 
-        $search_archetype2 = $request->input('search_archetype2');
-
-
-        $search_type_role = $request->input('search_type');
-
-
-        $search_style = $request->input('search_style');
 
 
         //Player Invite Handeling
@@ -283,6 +364,8 @@ class AgencyController extends Controller
         //Player Invite Processing
         $submit_val = $request->input('submit_type');
         $submit_vals_array = explode("|", $submit_val);
+
+
         if($submit_val!="filter"){
           //Form Request Data -> Player & Team ID
           $invite_this_player_id = intval($submit_vals_array[0]);
@@ -326,7 +409,8 @@ class AgencyController extends Controller
         'my_player_heading' => $my_player_heading, 'update_heading' => $update_heading, 'my_team_heading' => $my_team_heading,
         'free_agency_heading' => $free_agency_heading, 'activity_stream_heading' => $activity_stream_heading,  'user_avatar' => $user_avatar,
         'teams_owned' => $teams_owned, 'teams_on' => $teams_on, 'player_profile_pic' => $player_profile_pic,
-        'trigger_accept_request_button_for_these_teams' => $trigger_accept_request_button_for_these_teams,
+        'label_invite_sent_if_one_of_these_team_ids' => $label_invite_sent_if_one_of_these_team_ids,
+        'add_player_to_roster_if_one_of_these_team_ids' =>  $add_player_to_roster_if_one_of_these_team_ids,
         'send_invite_from_one_of_these_teams' => $send_invite_from_one_of_these_teams
     ];
 

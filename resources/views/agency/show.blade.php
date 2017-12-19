@@ -94,7 +94,17 @@
                         <div class="row items-push">
                             <div class="form-group">
                                 <div class="form-horizontal push-20-l push-20-r">
-                                    <div class="col-xs-4 col-sm-3 col-lg-4">
+                                    <div class="col-xs-2 col-sm-2 col-lg-2">
+                                        <label for="search_position">Position</label>
+                                        <select class="form-control" id="search_position" name="search_position[]" size="5" multiple>
+                                            <option value="PG" @if(in_array('PG', $search_position)) selected @endif>PG</option>
+                                            <option value="SG" @if(in_array('SG', $search_position)) selected @endif>SG</option>
+                                            <option value="SF" @if(in_array('SF', $search_position)) selected @endif>SF</option>
+                                            <option value="PF" @if(in_array('PF', $search_position)) selected @endif>PF</option>
+                                            <option value="C" @if(in_array('C', $search_position)) selected @endif>C</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-5 col-sm-5 col-lg-2">
                                         <label for="search_archetype">Archetype</label>
                                         <select class="form-control" id="search_archetype" name="search_archetype[]" size="5" multiple>
                                             <option value="Playmaker" @if(in_array('Playmaker', $search_archetype))  selected @endif>Playmaker</option>
@@ -109,23 +119,7 @@
                                             <option value="Shot Creator" @if(in_array('Shot Creator', $search_archetype)) selected @endif>Shot Creator</option>
                                         </select>
                                     </div>
-
-
-                                    <div class="col-xs-3 col-lg-4">
-
-                                        <label for="search_overall">Player's Overall Range:</label>
-
-
-                                        Note that the slider handle that caused the value change is focused.
-
-                                        <input id="search_overall" name="search_overall" value="" data-slider-min="60" data-slider-max="99" data-slider-step="1" data-slider-value="[{{intval($search_overall_min)}},{{intval($search_overall_max)}}]"/>
-
-
-                                        <input id="search_overall_min" name="search_overall_min" class="hidden" value="{{intval($search_overall_min)}}" />
-                                        <input id="search_overall_max" name="search_overall_max" class="hidden"  value="{{intval($search_overall_max)}}" />
-
-                                    </div>
-                                    <div class="col-xs-4 col-sm-3 col-lg-4">
+                                    <div class="col-xs-5 col-sm-5 col-lg-2">
                                         <label for="search_archetype2">Archetype 2</label>
                                         <select class="form-control" id="search_archetype2" name="search_archetype2[]" size="5" multiple>
                                             <option value="Playmaker" @if(in_array('Playmaker', $search_archetype2))  selected @endif>Playmaker</option>
@@ -140,17 +134,7 @@
                                             <option value="Shot Creator" @if(in_array('Shot Creator', $search_archetype2)) selected @endif>Shot Creator</option>
                                         </select>
                                     </div>
-                                    <div class="col-xs-4 col-sm-2 col-lg-1">
-                                        <label for="search_position">Position</label>
-                                        <select class="form-control" id="search_position" name="search_position[]" size="5" multiple>
-                                            <option value="PG" @if(in_array('PG', $search_position)) selected @endif>PG</option>
-                                            <option value="SG" @if(in_array('SG', $search_position)) selected @endif>SG</option>
-                                            <option value="SF" @if(in_array('SF', $search_position)) selected @endif>SF</option>
-                                            <option value="PF" @if(in_array('PF', $search_position)) selected @endif>PF</option>
-                                            <option value="C" @if(in_array('C', $search_position)) selected @endif>C</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 col-lg-2">
+                                    <div class="col-xs-6 col-sm-6 col-lg-3">
                                         <label for="search_type">Type | Role</label>
                                         <select class="form-control" id="search_type" name="search_type[]" size="5" multiple>
                                             <option value="On-Ball | Facilitator" @if(in_array('On-Ball | Facilitator', $search_type_role)) selected @endif>On-Ball | Facilitator</option>
@@ -159,7 +143,7 @@
                                             <option value="Off-Ball | Finisher" @if(in_array('Off-Ball | Finisher', $search_type_role)) selected @endif>Off-Ball | Finisher</option>
                                         </select>
                                     </div>
-                                    <div class="col-xs-6 col-sm-4 col-lg-3">
+                                    <div class="col-xs-6 col-sm-6 col-lg-3">
                                         <label for="search_style">Style</label>
                                         <select class="form-control" id="search_style" name="search_style[]" size="5" multiple>
                                             <option value="Dribble-N-Dime" @if(in_array('Drible-N-Dime', $search_style)) selected @endif>Dribble-N-Dime</option>
@@ -190,99 +174,102 @@
                             </div>
                         </div>
                     </div>
-                    <div class="push-20-t text-center margin-10">
+                    <div class="push-40-t text-center margin-10">
                         <button class="btn btn-sm btn-primary push-15" name="submit_type" value="filter" type="submit"><i class="fa fa-check push-5-r"></i> Save Changes</button>
                         <button class="btn btn-sm btn-warning push-15" type="reset"><i class="fa fa-refresh push-5-r"></i> Reset</button>
                     </div>
                 </div>
+
+                <div class="block">
+                    <div class="block-header">
+                        <div class="pull-right">
+                            <label for="search_overall" class="pull-right push-40-r"> Player Overall Range</label><br/>
+                            <input id="search_overall" name="search_overall" value="" data-slider-min="60" data-slider-max="99" data-slider-step="1" data-slider-value="[{{intval($search_overall_min)}},{{intval($search_overall_max)}}]"/>
+                            <input id="search_overall_min" name="search_overall_min" class="hidden" value="{{intval($search_overall_min)}}" />
+                            <input id="search_overall_max" name="search_overall_max" class="hidden"  value="{{intval($search_overall_max)}}" />
+                        </div>
+                    </div>
+                    <div class="block-content" id="data-table-div">
+                       <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid"> <!--aria-describedby="DataTables_Table_1_info"-->
+                           <thead>
+                               <tr role="row">
+                                   <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
+                                   <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Type: activate to sort column ascending" style="width: 250px;">Type</th>
+                                   <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 150px;">Role</th>
+                                   <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 350px;">Style</th>
+                                   <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
+                                   <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Skill Grade: activate to sort column ascending">Skill</th>
+                                   <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
+                                   <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
+                                   <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
+                                   <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
+                                   <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
+                                   <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
+                                   <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Act</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                               @foreach($players as $player)
+                                   @if(in_array($player->type, $search_type) AND in_array($player->role, $search_role) AND in_array($player->style, $search_style)
+                                       AND in_array($player->position, $search_position) AND ($player->overall >= intval($search_overall_min)) AND ($player->overall <= intval($search_overall_max))
+                                       AND in_array($player->archetype, $search_archetype) AND in_array($player->archetype2, $search_archetype2))
+                                       <tr role="row" @if ($player->id && 1) class="odd" @else class="even" @endif>
+                                           <td class="hidden-sm hidden-xs font-w600"><a href="/player/{{ $player->name}}">{{ $player->name }}</a></td>
+                                           <td class="hidden-xs">{{ $player->type }}</td>
+                                           <td class="hidden-xs">{{ $player->role }}</td>
+                                           <td class="">{{ $player->style }}</td>
+                                           <td class="center sorting">
+                                               <h3 class="text-{{$player->team_grade_color}} table-font">{{ $player->team_grade }}</h3>
+                                           </td>
+                                           <td class="center sorting">
+                                               <h3 class="text-{{$player->skill_grade_color}} table-font">{{ $player->skill_grade }}</h3>
+                                           </td>
+                                           <td class="hidden-md hidden-sm hidden-xs sorting {{$player->per_color}} table-num">{{ $player->per }}</td>
+                                           <td class="hidden-sm hidden-xs sorting {{$player->fg_color}} table-num">{{ $player->fg }}%</td>
+                                           <td class="hidden-md hidden-sm hidden-xs sorting {{$player->apg_color}} table-num">{{ $player->apg}}</td>
+                                           <td class="hidden-sm hidden-xs sorting {{$player->apg_ppg_color}} table-num">{{ $player->apg_ppg }}</td>
+                                           <td class="hidden-md hidden-sm hidden-xs sorting {{$player->ppg_color}} table-num">{{ $player->ppg }}</td>
+                                           <td class="hidden-md hidden-sm hidden-xs sorting {{$player->rpg_color}} table-num">{{ $player->rpg }}</td>
+                                           <td class="text-center">
+                                               <div class="btn-group">
+                                                   @if($player->name == Auth::user()->name)
+                                                   <button class="btn btn-xs btn-info push-5-t"  name="submit_type" value="{{$player->id}}" type="submit" disabled><i class="fa fa-user"></i></button>
+
+                                                   @elseif(sizeof($send_invite_from_one_of_these_teams) == 0)
+                                                   <button class="btn btn-xs btn-success push-5-t"  name="submit_type" value="{{$player->id}}" type="submit" disabled><i class="fa fa-plus"></i></button>
+
+                                                   @elseif(sizeof($send_invite_from_one_of_these_teams) == 1)
+                                                   <button class="btn btn-xs btn-success push-5-t"  name="submit_type" value="{{$player->id}}|{{$send_invite_from_one_of_these_teams[0]->id}}" type="submit"><i class="fa fa-plus"></i></button>
+
+                                                   @else
+                                                   <div class="btn-group pull-right push-50-t push-5-r">
+
+                                                       <button class="btn btn-xs btn-success push-5-t dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i></button>
+
+
+                                                       <ul class="dropdown-menu dropdown-menu-right nav-users push">
+                                                           <li class="dropdown-header">From</li>
+                                                           @foreach($send_invite_from_one_of_these_teams as $team)
+                                                                   <li>
+                                                                       <a tabindex="-1" name="submit_type" value="{{$player->id}}|{{$send_invite_from_one_of_these_teams[0]->id}}" type="submit">
+                                                                           <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
+                                                                           <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
+                                                                       </a>
+                                                                   </li>
+                                                           @endforeach
+                                                       </ul>
+                                                   </div>
+                                                   @endif
+                                                </div>
+                                           </td>
+                                       </tr>
+                                   @endif
+                               @endforeach
+                           </tbody>
+                       </table>
+                    </div>
+                </div>
             </form>
-            <div class="block" id="data-table-div">
-                <div class="block-header">
-
-                </div>
-                <div class="block-content">
-                   <table class="table table-bordered table-striped table-condensed table-hover js-dataTable-full dataTable no-footer table-header-bg" id="DataTables_Table_1" role="grid"> <!--aria-describedby="DataTables_Table_1_info"-->
-                       <thead>
-                           <tr role="row">
-                               <th class="hidden-sm hidden-xs" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 150px;">Name</th>
-                               <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Type: activate to sort column ascending" style="width: 250px;">Type</th>
-                               <th class="hidden-xs sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Role: activate to sort column ascending" style="width: 150px;">Role</th>
-                               <th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Play Style: activate to sort column ascending" style="width: 350px;">Style</th>
-                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Team Grade: activate to sort column ascending">Team</th>
-                               <th class="sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Skill Grade: activate to sort column ascending">Skill</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PER</th>
-                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">FG%</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">APG</th>
-                               <th class="hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">A/P</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">PPG</th>
-                               <th class="hidden-md hidden-sm hidden-xs sorting" style="width: 40px;" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Access: activate to sort column ascending">RPG</th>
-                               <th class="text-center sorting_disabled" style="width: 40px;" rowspan="1" colspan="1" aria-label="Actions">Act</th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           @foreach($players as $player)
-                               @if(in_array($player->type, $search_type) AND in_array($player->role, $search_role) AND in_array($player->style, $search_style)
-                                   AND in_array($player->position, $search_position) AND ($player->overall > intval($search_overall_min)) AND ($player->overall < intval($search_overall_max))
-                                   AND in_array($player->archetype, $search_archetype) AND in_array($player->archetype2, $search_archetype2))
-                                   <tr role="row" @if ($player->id & 1) class="odd" @else class="even" @endif>
-                                       <td class="hidden-sm hidden-xs font-w600"><a href="/player/{{ $player->name}}">{{ $player->name }}</a></td>
-                                       <td class="hidden-xs">{{ $player->type }}</td>
-                                       <td class="hidden-xs">{{ $player->role }}</td>
-                                       <td class="">{{ $player->style }}</td>
-                                       <td class="center sorting">
-                                           <h3 class="text-{{$player->team_grade_color}} table-font">{{ $player->team_grade }}</h3>
-                                       </td>
-                                       <td class="center sorting">
-                                           <h3 class="text-{{$player->skill_grade_color}} table-font">{{ $player->skill_grade }}</h3>
-                                       </td>
-                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->per_color}} table-num">{{ $player->per }}</td>
-                                       <td class="hidden-sm hidden-xs sorting {{$player->fg_color}} table-num">{{ $player->fg }}%</td>
-                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->apg_color}} table-num">{{ $player->apg}}</td>
-                                       <td class="hidden-sm hidden-xs sorting {{$player->apg_ppg_color}} table-num">{{ $player->apg_ppg }}</td>
-                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->ppg_color}} table-num">{{ $player->ppg }}</td>
-                                       <td class="hidden-md hidden-sm hidden-xs sorting {{$player->rpg_color}} table-num">{{ $player->rpg }}</td>
-                                       <td class="text-center">
-                                           <div class="btn-group">
-
-
-
-                                               @if($player->name == Auth::user()->name)
-                                               <button class="btn btn-xs btn-info push-5-t"  name="submit_type" value="{{$player->id}}" type="submit" disabled><i class="fa fa-user"></i></button>
-
-                                               @elseif(sizeof($send_invite_from_one_of_these_teams) == 0)
-                                               <button class="btn btn-xs btn-success push-5-t"  name="submit_type" value="{{$player->id}}" type="submit" disabled><i class="fa fa-plus"></i></button>
-
-                                               @elseif(sizeof($send_invite_from_one_of_these_teams) == 1)
-                                               <button class="btn btn-xs btn-success push-5-t"  name="submit_type" value="{{$player->id}}|{{$send_invite_from_one_of_these_teams[0]->id}}" type="submit"><i class="fa fa-plus"></i></button>
-
-                                               @else
-                                               <div class="btn-group pull-right push-50-t push-5-r">
-
-                                                   <button class="btn btn-xs btn-success push-5-t dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i></button>
-
-
-                                                   <ul class="dropdown-menu dropdown-menu-right nav-users push">
-                                                       <li class="dropdown-header">From</li>
-                                                       @foreach($send_invite_from_one_of_these_teams as $team)
-                                                               <li>
-                                                                   <a tabindex="-1" name="submit_type" value="{{$player->id}}|{{$send_invite_from_one_of_these_teams[0]->id}}" type="submit">
-                                                                       <div class="font-18px font-w400">{{ $team->name }} <span class="text-{{$team->progress_bar_color}}"> ({{ $team->wins }} - {{ $team->losses }}) </span> </div>
-                                                                       <div class="font-w400 text-muted h5"> <span class="text-{{$team->team_grade_color}}"> {{ $team->team_grade }} </span> | <span class="text-{{$team->skill_grade_color}}"> {{  $team->skill_grade }}</span> | <span class="text-{{$team->per_color}}"> {{ $team->per }} <small><small><small>PER</small></small></small></span>  | <span class="text-{{$team->ppg_color}}"> {{ $team->ppg }} <small><small><small>PPG</small></small></small></span>  | <span class="text-{{$team->apg_color}}"> {{ $team->apg }} <small><small><small>APG</small></small></small></span></div>
-                                                                   </a>
-                                                               </li>
-                                                       @endforeach
-                                                   </ul>
-                                               </div>
-                                               @endif
-                                            </div>
-                                       </td>
-                                   </tr>
-                               @endif
-                           @endforeach
-                       </tbody>
-                   </table>
-                </div>
-            </div>
         </div>
         <!-- END Filtr Form -->
 
@@ -326,8 +313,8 @@
                   console.log("here");
                   var id = $(this).val();
                   $.ajax({
-                      url:"/agency/store",
-                      method: "POST",
+                      url:"/free-agency",
+                      method: "post",
                       data: $(this).serialize(),
                       success: function(data){
                           $('#data-table-div').html(data.html);

@@ -53,26 +53,26 @@
                              <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-plus"></i></button>
                          </li>
                      </ul>
-                     <h3 class="block-title"> <span class="badge @if(sizeof($teams_that_send_you_a_squad_invite)>0 || sizeof($teams_that_send_you_a_squad_invite)>0) badge-danger @endif "><i class="fa fa-fw fa-exclamation-triangle"></i></span>  Scouting Report </h3>
+                     <h3 class="block-title"> <span class="badge @if(sizeof($teams_that_sent_you_a_squad_invite)>0 || sizeof($teams_that_sent_you_a_squad_invite)>0) badge-danger @endif "><i class="fa fa-fw fa-exclamation-triangle"></i></span>  Scouting Report </h3>
                  </div>
                  <!-- Tab Nav -->
                   <ul class="nav nav-tabs nav-tabs-alt nav-justified" data-toggle="tabs">
-                     <li class="@if(sizeof($teams_that_send_you_a_squad_invite)>0) active @endif">
-                        <a href="#myplayer-tabs-incoming-player-invites"><i class="fa fa-home"></i> Squad Invites @if(sizeof($teams_that_send_you_a_squad_invite)>0)<span id="invite-request" class="label h6 label-info pull-right push-25-r">{{sizeof($teams_that_send_you_a_squad_invite)}} New</span>@endif</a>
+                     <li class="@if(sizeof($teams_that_sent_you_a_squad_invite)>0) active @endif">
+                        <a href="#myplayer-tabs-incoming-player-invites"><i class="fa fa-home"></i> Squad Invites @if(sizeof($teams_that_sent_you_a_squad_invite)>0)<span id="invite-request" class="label h6 label-info pull-right push-25-r">{{sizeof($teams_that_sent_you_a_squad_invite)}} New</span>@endif</a>
                      </li>
-                     <li class="@if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)>0) active @endif">
+                     <li class="@if(sizeof($teams_that_sent_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)>0) active @endif">
                         <a href="#myplayer-tabs-incoming-player-requests"><i class="fa fa-pencil"></i> Player Requests</a>
                      </li>
-                     <li class="@if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)==0) active @endif">
+                     <li class="@if(sizeof($teams_that_sent_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)==0) active @endif">
                         <a href="#myplayer-tabs-scouting-report-central"><i class="fa fa-cog"></i> Scouting Report</a>
                      </li>
                   </ul>
                    <!-- 3 Tabs -->
                   <div class="block-content tab-content remove-margin remove-padding">
                      <!-- Invite Manager Tab -->
-                     <div class="tab-pane @if(sizeof($teams_that_send_you_a_squad_invite)>0) active @endif bg-hover-color" id="myplayer-tabs-incoming-player-invites">
+                     <div class="tab-pane @if(sizeof($teams_that_sent_you_a_squad_invite)>0) active @endif bg-hover-color" id="myplayer-tabs-incoming-player-invites">
                         <div class="row push-0">
-                           @foreach($teams_that_send_you_a_squad_invite as $team)
+                           @foreach($teams_that_sent_you_a_squad_invite as $team)
                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
                               <div class="block remove-margin margin-20-t">
                                  <div class="block-header">
@@ -133,13 +133,13 @@
                         </div>
                      </div>
                      <!-- Requests Tracker -->
-                     <div class="tab-pane @if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)>0) active @endif" id="myplayer-tabs-incoming-player-requests">
+                     <div class="tab-pane @if(sizeof($teams_that_sent_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)>0) active @endif" id="myplayer-tabs-incoming-player-requests">
 
                            <canvas id="myChart2" width="400" height="400"></canvas>
 
                      </div>
                      <!-- Scouting Report -->
-                     <div class="tab-pane @if(sizeof($teams_that_send_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)==0) active @endif" id="myplayer-tabs-scouting-report-central">
+                     <div class="tab-pane @if(sizeof($teams_that_sent_you_a_squad_invite)==0 && sizeof($players_that_requested_to_join_your_team)==0) active @endif" id="myplayer-tabs-scouting-report-central">
                         <div class="block-content">
                            <div id="disqus_thread"></div>
                                <script>
